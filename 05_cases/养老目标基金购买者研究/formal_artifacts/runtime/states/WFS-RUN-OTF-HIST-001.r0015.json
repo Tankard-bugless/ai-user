@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 15,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:14+08:00",
+    "updated_at": "2026-07-27T13:47:14+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "历史案例停在最早缺失的 Gate 2：等待真实人工审批，不补造 Gate 2、Gate 3、Gate 4 记录。",
+    "previous_record_ref": {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 14
+    }
+  },
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "current_stage": "GATE_2_REVIEW",
+  "run_status": "WAITING_GATE",
+  "active_task_ids": [],
+  "completed_task_ids": [
+    "TASK-OTF-HIST-IMPORT-001",
+    "TASK-OTF-HIST-PLAN-001"
+  ],
+  "blocked_task_ids": [],
+  "artifact_registry": [
+    {
+      "artifact_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "REVIEW-OTF-G2-001",
+        "artifact_type": "ReviewResult",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "FWP-OTF-001",
+        "artifact_type": "FieldworkPackage",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "真实执行已经发生，但历史上没有形成 Gate 2 ApprovalRecord；仅保留为追溯证据，不视为当前流程有效输入。"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "IP-OTF-001",
+        "artifact_type": "InsightPackage",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "依赖未获 Gate 2 正式批准的历史执行，且没有 Gate 3 ApprovalRecord；仅供复盘与答辩展示。"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "RR-OTF-001",
+        "artifact_type": "ResearchReport",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "历史上没有 Gate 3、Gate 4 ApprovalRecord；报告文件真实存在，但不登记为当前流程已批准输出。"
+    }
+  ],
+  "approval_refs": [
+    {
+      "artifact_id": "APR-OTF-G1-002",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "stale_artifact_refs": [
+    {
+      "artifact_id": "FWP-OTF-001",
+      "artifact_type": "FieldworkPackage",
+      "artifact_version": "0.1.0"
+    },
+    {
+      "artifact_id": "IP-OTF-001",
+      "artifact_type": "InsightPackage",
+      "artifact_version": "0.1.0"
+    },
+    {
+      "artifact_id": "RR-OTF-001",
+      "artifact_type": "ResearchReport",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "transition": {
+    "event_id": "EVT-00015-1F44CFD8",
+    "event_type": "GATE_SUBMITTED",
+    "from_stage": "INSTRUMENT_DESIGN",
+    "to_stage": "GATE_2_REVIEW",
+    "triggered_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "occurred_at": "2026-07-27T13:47:14+08:00",
+    "reason": "历史案例停在最早缺失的 Gate 2：等待真实人工审批，不补造 Gate 2、Gate 3、Gate 4 记录。",
+    "related_task_ids": [],
+    "related_artifact_refs": [
+      {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "REVIEW-OTF-G2-001",
+        "artifact_type": "ReviewResult",
+        "artifact_version": "0.2.0"
+      }
+    ]
+  },
+  "current_gate": {
+    "gate_id": "GATE_2",
+    "status": "PENDING",
+    "required_role": "经组织授权的 Gate 审批人"
+  }
+}

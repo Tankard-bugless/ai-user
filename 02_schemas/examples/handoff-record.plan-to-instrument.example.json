@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "record_id": "HANDOFF-DEMO-003",
+    "record_type": "HandoffRecord",
+    "record_revision": 1,
+    "project_id": "PROJ-DEMO-001",
+    "run_id": "RUN-DEMO-001",
+    "created_at": "2026-07-23T09:31:00+08:00",
+    "updated_at": "2026-07-23T09:31:00+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "创建从研究方案任务到研究工具设计任务的最小上下文交接。"
+  },
+  "state_ref": {
+    "record_id": "WFS-DEMO-001",
+    "record_type": "WorkflowState",
+    "record_revision": 5
+  },
+  "from_task_id": "TASK-DEMO-002",
+  "to_task_id": "TASK-DEMO-003",
+  "from_actor": {
+    "actor_id": "AGENT-CAP02",
+    "actor_type": "AGENT",
+    "role": "研究方案设计专家",
+    "model_id": "MODEL-DEMO",
+    "capability_version": "0.1.0"
+  },
+  "target": {
+    "target_type": "CAPABILITY",
+    "target_id": "design-research-instrument"
+  },
+  "purpose": "交付已完成预审的研究方案及 Gate 1 授权范围，供 CAP-03 设计一个问卷 InstrumentSpec。",
+  "status": "DELIVERED",
+  "payload": {
+    "artifact_refs": [
+      {
+        "artifact_id": "RP-DEMO-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.1.0"
+      },
+      {
+        "artifact_id": "APR-DEMO-G1-001",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "record_refs": [
+      {
+        "record_id": "WFS-DEMO-001",
+        "record_type": "WorkflowState",
+        "record_revision": 5
+      }
+    ],
+    "included_artifact_fields": [
+      {
+        "artifact_ref": {
+          "artifact_id": "RP-DEMO-001",
+          "artifact_type": "ResearchPlan",
+          "artifact_version": "0.1.0"
+        },
+        "field_paths": [
+          "/question_method_map",
+          "/method_specs",
+          "/sampling_plan",
+          "/analysis_plan",
+          "/materials_plan",
+          "/learning_resources_plan",
+          "/quality_plan"
+        ]
+      },
+      {
+        "artifact_ref": {
+          "artifact_id": "APR-DEMO-G1-001",
+          "artifact_type": "ApprovalRecord",
+          "artifact_version": "0.1.0"
+        },
+        "field_paths": [
+          "/gate_id",
+          "/status",
+          "/primary_target_ref",
+          "/accepted_risks"
+        ]
+      }
+    ],
+    "excluded_data_categories": [
+      "客户姓名和联系方式",
+      "交易明细",
+      "与当前方法实例无关的聊天记录"
+    ],
+    "chat_history_included": false,
+    "personal_data_access": "NONE",
+    "minimization_rationale": "CAP-03 只需要已批准的研究边界、方法、分析和材料配置，不需要参与者或客户个人信息。"
+  },
+  "expected_output": {
+    "output_kind": "ARTIFACT",
+    "artifact_type": "InstrumentSpec",
+    "schema_uri": "https://schemas.local/user-research-workflow/v1/instrument-spec.schema.json",
+    "cardinality": "SINGLE"
+  },
+  "acceptance_criteria": [
+    "目标能力能够读取所有必需的精确版本引用。",
+    "交接内容足以生成工具，但不包含上游未批准的新研究目标。",
+    "聊天历史和非必要个人信息未进入交接包。"
+  ],
+  "return_route": {
+    "on_success": "RETURN_TO_ORCHESTRATOR",
+    "on_failure_stage": "PLAN_DESIGN",
+    "escalation_role": "研究负责人"
+  },
+  "delivered_at": "2026-07-23T09:31:00+08:00"
+}

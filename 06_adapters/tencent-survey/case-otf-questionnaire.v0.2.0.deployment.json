@@ -1,0 +1,33 @@
+{
+  "adapter": "tencent-survey",
+  "adapter_version": "0.2.0",
+  "deployment_environment": "TEST",
+  "source_manifest": "case-otf-questionnaire.v0.2.0.manifest.json",
+  "survey_id": 27390837,
+  "hash": "c5d8",
+  "url": "https://wj.qq.com/s2/27390837/c5d8",
+  "created_at": "2026-07-23T19:46:54+08:00",
+  "status": "TEST_VALIDATED",
+  "validated_at": "2026-07-23T20:10:45+08:00",
+  "validation_summary": {
+    "page_count": 10,
+    "answerable_question_count": 35,
+    "choice_option_count": 213,
+    "logic_rule_count": 3,
+    "logic_error_count": 0,
+    "login_check": false,
+    "location_collection": false,
+    "result": "PASS"
+  },
+  "supersedes_test_deployment": {
+    "survey_id": 27388585,
+    "hash": "6e69",
+    "source_version": "0.1.0"
+  },
+  "notes": [
+    "v0.1 线上版本保留为历史测试稿，不原地修改。",
+    "Q9A 在平台上采用有序单选实现，以保留 1—5 与“记不清”的独立编码。",
+    "多选上限和互斥选项仍需在正式投放前做一次平台人工检查。",
+    "本记录只表示测试问卷已创建，不构成 Gate 2 批准或正式投放授权。"
+  ]
+}

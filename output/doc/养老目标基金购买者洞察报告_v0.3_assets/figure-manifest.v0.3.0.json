@@ -1,0 +1,57 @@
+{
+  "version": "0.3.0",
+  "created_at": "2026-07-27",
+  "style": "accessible business report; direct labels; zero baselines; no pie or 3D charts",
+  "figures": [
+    {
+      "file": "fig00_summary_cards_v0.3.png",
+      "title": "购买已经发生，但理解、比较和持有期信息支持仍有缺口",
+      "source": "问卷关键指标，n=200；长期与焦虑信号 n=157"
+    },
+    {
+      "file": "fig01_sample_profile_v0.3.png",
+      "title": "本次样本以中青年、具有一定基金经验的购买者为主",
+      "source": "Q31、Q32，n=200"
+    },
+    {
+      "file": "fig02_sample_status_v0.3.png",
+      "title": "72.0%仍在持有，但购买渠道与时间跨度较分散",
+      "source": "Q1-Q3，n=200"
+    },
+    {
+      "file": "fig03_knowledge_v0.3.png",
+      "title": "“单项知道”不等于“整体会判断”",
+      "source": "Q17-Q20，n=200"
+    },
+    {
+      "file": "fig04_decision_path_v0.3.png",
+      "title": "风险类型更接近最终决策；下滑曲线在主动比较阶段明显掉队",
+      "source": "Q7-Q9，n=200；多选题比例不加总为100%"
+    },
+    {
+      "file": "fig05_glide_path_v0.3.png",
+      "title": "62.5%听说过下滑曲线，但只有3.5%在购买前主动比较",
+      "source": "Q8、Q13-Q15，n=200；不同指标不构成漏斗"
+    },
+    {
+      "file": "fig06_information_gap_v0.3.png",
+      "title": "信息问题同时出现在购买前和持有期",
+      "source": "Q9A、Q15，n=200"
+    },
+    {
+      "file": "fig07_holding_tension_v0.3.png",
+      "title": "有长期持有意愿，并不代表没有短期焦虑",
+      "source": "Q23，经历明显下跌者 n=157；多选回答信号"
+    },
+    {
+      "file": "fig08_subgroup_comparison_v0.3.png",
+      "title": "看得见方向差异，但本样本不足以确认稳定的人群差异",
+      "source": "Q17-Q18、Q26、Q31-Q32，n=200；探索性卡方检验"
+    },
+    {
+      "file": "fig09_investor_education_v0.3.png",
+      "title": "投教应围绕“配置怎么变、现在风险多大、我该怎么选”",
+      "source": "Q26-Q28，n=200；多选题比例不加总为100%"
+    }
+  ]
+}

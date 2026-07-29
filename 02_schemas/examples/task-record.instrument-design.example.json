@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "record_id": "TASK-DEMO-003",
+    "record_type": "TaskRecord",
+    "record_revision": 1,
+    "project_id": "PROJ-DEMO-001",
+    "run_id": "RUN-DEMO-001",
+    "created_at": "2026-07-23T09:30:00+08:00",
+    "updated_at": "2026-07-23T09:30:00+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "创建研究工具设计任务。"
+  },
+  "state_ref": {
+    "record_id": "WFS-DEMO-001",
+    "record_type": "WorkflowState",
+    "record_revision": 5
+  },
+  "task_kind": "EXPERT",
+  "purpose": "依据已完成预审的 ResearchPlan，为问卷方法实例生成一个平台无关的 InstrumentSpec。",
+  "status": "READY",
+  "target": {
+    "target_type": "CAPABILITY",
+    "target_id": "design-research-instrument"
+  },
+  "idempotency_key": "PROJ-DEMO-001|design-research-instrument|RP-DEMO-001@0.1.0|survey",
+  "attempt": 1,
+  "max_attempts": 2,
+  "dependency_task_ids": [
+    "TASK-DEMO-002"
+  ],
+  "input_artifact_refs": [
+    {
+      "artifact_id": "RP-DEMO-001",
+      "artifact_type": "ResearchPlan",
+      "artifact_version": "0.1.0"
+    },
+    {
+      "artifact_id": "APR-DEMO-G1-001",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "input_record_refs": [
+    {
+      "record_id": "WFS-DEMO-001",
+      "record_type": "WorkflowState",
+      "record_revision": 5
+    }
+  ],
+  "expected_output": {
+    "output_kind": "ARTIFACT",
+    "artifact_type": "InstrumentSpec",
+    "schema_uri": "https://schemas.local/user-research-workflow/v1/instrument-spec.schema.json",
+    "cardinality": "SINGLE"
+  },
+  "output_artifact_refs": [],
+  "output_record_refs": [],
+  "external_output_refs": [],
+  "entry_conditions": [
+    "Gate 1 的 ApprovalRecord 有效。",
+    "ResearchPlan 精确版本已完成结构校验，且没有未解决的 BLOCKER 或 MAJOR。",
+    "本任务只处理 ResearchPlan 中指定的一个方法实例。"
+  ],
+  "completion_criteria": [
+    "生成一个符合 InstrumentSpec Schema 的草稿。",
+    "所有核心组件能够追溯到 ResearchPlan 的研究问题、假设和分析用途。",
+    "未发布问卷、未联系参与者、未生成 ApprovalRecord。"
+  ],
+  "permission_scope": {
+    "data_access": [
+      "NO_PERSONAL_DATA"
+    ],
+    "allowed_actions": [
+      "READ_ARTIFACT",
+      "READ_CONTROL_RECORD",
+      "CREATE_ARTIFACT_DRAFT",
+      "RUN_VALIDATOR"
+    ],
+    "forbidden_actions": [
+      "不得发布问卷或写入外部问卷平台。",
+      "不得联系研究参与者。",
+      "不得创建或伪造人工审批记录。"
+    ],
+    "external_write_allowed": false,
+    "human_approval_required": false
+  }
+}

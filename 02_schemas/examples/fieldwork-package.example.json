@@ -1,0 +1,125 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "FWP-DEMO-001",
+    "artifact_type": "FieldworkPackage",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：新基金说明材料理解研究执行包",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-08-15T10:00:00+08:00",
+    "updated_at": "2026-08-15T10:00:00+08:00",
+    "created_by": {"actor_id": "HUMAN-FIELDWORK-LEAD", "actor_type": "HUMAN", "role": "调研执行负责人"},
+    "upstream_refs": [
+      {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0", "approval_id": "APR-DEMO-G2-001"},
+      {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+      {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "CONFIDENTIAL",
+    "contains_personal_data": false,
+    "change_summary": "合成的主调研执行、资料清单、质量检查与脱敏记录。"
+  },
+  "research_plan_ref": {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0", "approval_id": "APR-DEMO-G2-001"},
+  "gate_2_approval_ref": {"artifact_id": "APR-DEMO-G2-001", "artifact_type": "ApprovalRecord", "artifact_version": "0.1.0"},
+  "instrument_refs": [
+    {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+    {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}
+  ],
+  "execution_summary": {
+    "fieldwork_scope": "MAIN",
+    "status": "COMPLETED",
+    "started_at": "2026-08-03T09:00:00+08:00",
+    "ended_at": "2026-08-14T18:00:00+08:00",
+    "timezone": "Asia/Shanghai",
+    "method_completion": [
+      {"method_id": "METHOD-INT-001", "instrument_ref": {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "planned": 8, "invited": 13, "started": 8, "completed": 8, "included": 8, "excluded": 0},
+      {"method_id": "METHOD-SUR-001", "instrument_ref": {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "planned": 100, "invited": 146, "started": 111, "completed": 100, "included": 96, "excluded": 4}
+    ]
+  },
+  "participant_index": {
+    "storage_uri": "urn:synthetic:participant-index:PROJ-DEMO-001",
+    "content_hash": "synthetic-index-hash-001",
+    "total_records": 108,
+    "id_scheme": "访谈使用 P-INT-NNN；问卷使用 ROW-SUR-NNN；联系方式映射不进入研究包。",
+    "contains_direct_identifiers": false,
+    "contact_linkage_separated": true
+  },
+  "consent_summary": {
+    "consent_process": "问卷首页确认研究同意；访谈开始前确认参与和单独录音同意。",
+    "consented": 108,
+    "declined": 3,
+    "withdrawn": 0,
+    "recording_consented": 8,
+    "recording_declined": 0,
+    "withdrawal_handling": "撤回时停止采集并按参与者要求删除尚未匿名汇总的数据。"
+  },
+  "source_records": [
+    {"source_id": "SRC-SURVEY-001", "source_type": "SURVEY_DATASET", "method_id": "METHOD-SUR-001", "instrument_ref": {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "storage_uri": "urn:synthetic:survey-dataset:PROJ-DEMO-001:v1", "captured_at": "2026-08-14T18:00:00+08:00", "version": "1", "content_hash": "synthetic-survey-hash-001", "sensitivity_level": "CONFIDENTIAL", "contains_direct_identifiers": false, "deidentification_status": "COMPLETED", "quality_status": "ACCEPTED", "included_in_analysis": true, "locator_scheme": "ROW_AND_ITEM_ID"},
+    {"source_id": "SRC-TRANSCRIPTS-001", "source_type": "TRANSCRIPT_CORPUS", "participant_or_record_ids": ["P-INT-001", "P-INT-002", "P-INT-003", "P-INT-004", "P-INT-005", "P-INT-006", "P-INT-007", "P-INT-008"], "method_id": "METHOD-INT-001", "instrument_ref": {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "storage_uri": "urn:synthetic:transcript-corpus:PROJ-DEMO-001:v1", "captured_at": "2026-08-12T18:00:00+08:00", "version": "1", "content_hash": "synthetic-transcript-hash-001", "sensitivity_level": "CONFIDENTIAL", "contains_direct_identifiers": false, "deidentification_status": "COMPLETED", "quality_status": "ACCEPTED", "included_in_analysis": true, "locator_scheme": "PARTICIPANT_ID_PLUS_LINE_RANGE"},
+    {"source_id": "SRC-NOTES-001", "source_type": "MODERATOR_NOTES", "method_id": "METHOD-INT-001", "instrument_ref": {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "storage_uri": "urn:synthetic:moderator-notes:PROJ-DEMO-001:v1", "captured_at": "2026-08-12T18:00:00+08:00", "version": "1", "content_hash": "synthetic-notes-hash-001", "sensitivity_level": "CONFIDENTIAL", "contains_direct_identifiers": false, "deidentification_status": "COMPLETED", "quality_status": "ACCEPTED", "included_in_analysis": true, "locator_scheme": "PARTICIPANT_ID_PLUS_NOTE_ID"},
+    {"source_id": "SRC-EXECUTION-001", "source_type": "EXECUTION_LOG", "method_id": "METHOD-SUR-001", "instrument_ref": {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "storage_uri": "urn:synthetic:execution-log:PROJ-DEMO-001:v1", "captured_at": "2026-08-14T18:00:00+08:00", "version": "1", "content_hash": "synthetic-execution-hash-001", "sensitivity_level": "INTERNAL", "contains_direct_identifiers": false, "deidentification_status": "NOT_REQUIRED", "quality_status": "CHECKED", "included_in_analysis": false, "locator_scheme": "EVENT_ID"}
+  ],
+  "fieldwork_events": [
+    {"event_id": "EVENT-FIELD-START", "event_type": "FIELDWORK_STARTED", "occurred_at": "2026-08-03T09:00:00+08:00", "description": "按 Gate 2 批准版本开始主调研。", "resolution_status": "NOT_APPLICABLE"},
+    {"event_id": "EVENT-TECH-001", "event_type": "TECHNICAL_ISSUE", "occurred_at": "2026-08-07T15:20:00+08:00", "participant_or_record_id": "P-INT-005", "description": "访谈中视频中断两分钟，录音连续。", "resolution_status": "RESOLVED", "resolution": "切换至语音继续，核心问题未缺失并在执行笔记中标记。"},
+    {"event_id": "EVENT-FIELD-END", "event_type": "FIELDWORK_COMPLETED", "occurred_at": "2026-08-14T18:00:00+08:00", "description": "问卷和访谈达到计划完成量，停止采集。", "resolution_status": "NOT_APPLICABLE"}
+  ],
+  "learning_resource_delivery": [
+    {"resource_id": "LR-IMA-001", "instrument_ref": {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "placement": "AFTER_SURVEY_SECTION", "delivery_status": "AVAILABLE", "checked_at": "2026-08-03T08:30:00+08:00", "evidence_use": "NOT_RESEARCH_EVIDENCE", "notes": "位于理解题之后，供用户自行学习；未记录点击或停留。"},
+    {"resource_id": "LR-IMA-001", "instrument_ref": {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}, "placement": "POST_INTERVIEW_FOLLOW_UP", "delivery_status": "AVAILABLE", "checked_at": "2026-08-03T08:30:00+08:00", "evidence_use": "NOT_RESEARCH_EVIDENCE", "notes": "访谈结束后可选发送；是否打开不作为研究数据。"}
+  ],
+  "data_quality": {
+    "overall_status": "PASS_WITH_ISSUES",
+    "quality_checks": [
+      {"check_id": "DQ-CONSENT-001", "label": "研究同意完整性", "status": "PASS", "details": "所有纳入记录均有有效研究同意。"},
+      {"check_id": "DQ-SURVEY-001", "label": "问卷完整度和重复记录", "status": "WARNING", "details": "4 份完成答卷触发预设质量规则并被排除，保留排除原因。"},
+      {"check_id": "DQ-TRANSCRIPT-001", "label": "逐字稿可定位性", "status": "PASS", "details": "8 份逐字稿均使用参与者编号和行号，可回溯录音。"}
+    ],
+    "response_status_summary": {
+      "unassessed_count": 0,
+      "valid_count": 104,
+      "review_required_count": 0,
+      "excluded_count": 4
+    },
+    "reason_code_summary": [
+      {"reason_code": "NO_SUBSTANTIVE_DATA", "count": 2},
+      {"reason_code": "INELIGIBLE", "count": 1},
+      {"reason_code": "CONFIRMED_DUPLICATE", "count": 1}
+    ],
+    "dataset_status": "ANALYSIS_READY_WITH_LIMITS",
+    "dataset_status_reason": "全部记录状态已解决且字段可对应批准版本；问卷存在 4 份有记录的排除，结果只描述本次样本。",
+    "excluded_records": [
+      {"record_or_participant_id": "ROW-SUR-097", "method_id": "METHOD-SUR-001", "exclusion_rule": "NO_SUBSTANTIVE_DATA", "reason": "完成时长和高缺失触发复核，人工确认除甄别外无任何核心模块的有效作答。", "decided_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"}},
+      {"record_or_participant_id": "ROW-SUR-098", "method_id": "METHOD-SUR-001", "exclusion_rule": "INELIGIBLE", "reason": "关键甄别冲突触发复核，人工确认不符合目标参与者条件。", "decided_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"}},
+      {"record_or_participant_id": "ROW-SUR-099", "method_id": "METHOD-SUR-001", "exclusion_rule": "CONFIRMED_DUPLICATE", "reason": "疑似重复触发复核，人工确认重复提交并按预设规则保留首份。", "decided_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"}},
+      {"record_or_participant_id": "ROW-SUR-100", "method_id": "METHOD-SUR-001", "exclusion_rule": "NO_SUBSTANTIVE_DATA", "reason": "核心题高缺失触发复核，人工确认没有足以支持任何研究问题的有效作答。", "decided_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"}}
+    ],
+    "missing_data_summary": "96 份纳入问卷的核心理解题无缺失；2 个非核心开放题存在零星空值，按原样保留。",
+    "transcription_quality": {"applicable": true, "unclear_segments": 3, "review_rule": "不清楚片段以[听不清]标记，不根据上下文补写；引用不得跨越未确认片段。"},
+    "duplicate_handling": "使用匿名设备令牌和回答模式检查重复；发现 1 份重复提交并按预设规则排除后提交记录。"
+  },
+  "deviations": [
+    {"deviation_id": "DEV-001", "planned_rule": "访谈使用视频会议完成。", "actual_execution": "P-INT-005 中途切换为语音两分钟。", "reason": "网络中断。", "affected_records": ["P-INT-005"], "impact_assessment": "录音和问题覆盖完整，不影响语言证据；该时段不用于视觉观察。", "decision": "INCLUDE_WITH_LIMITATION"}
+  ],
+  "deidentification": {
+    "status": "COMPLETED",
+    "direct_identifier_rule": "姓名、联系方式、具体单位和可识别第三方信息不进入分析资料。",
+    "replacement_rule": "使用稳定参与者编号替换身份信息；必要情境只保留研究相关的泛化描述。",
+    "linkage_storage_rule": "联系方式与参与者编号映射由授权运营人员在独立受控位置保存，分析人员不可访问。",
+    "completed_by": {"actor_id": "HUMAN-DATA-STEWARD", "actor_type": "HUMAN", "role": "数据管理人员"},
+    "completed_at": "2026-08-15T09:30:00+08:00"
+  },
+  "unresolved_issues": [
+    {
+      "risk_id": "RISK-FIELD-001",
+      "category": "SAMPLE",
+      "description": "有限授权渠道导致样本选择偏差，不能代表全部客户。",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "在分析和报告中持续声明样本来源与外推边界。",
+      "owner_role": "研究负责人"
+    }
+  ]
+}

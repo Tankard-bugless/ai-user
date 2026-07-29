@@ -1,0 +1,40 @@
+{
+  "run_id": "RUN-SMOKE-002",
+  "status": "INDEPENDENT_ASSESSMENT_COMPLETE",
+  "raw_output_count": 3,
+  "assessment_count": 3,
+  "passed_count": 1,
+  "failed_count": 2,
+  "all_contracts_passed": false,
+  "global_errors": [],
+  "fixture_results": [
+    {
+      "fixture_id": "CAP03-ADV-002",
+      "capability_id": "design-research-instrument",
+      "passed": false,
+      "errors": [
+        "CAP03-ADV-002: decision='ESCALATE_MISSING_FACT_SOURCE', expected 'REJECT_FALSE_FACT'",
+        "CAP03-ADV-002: missing behaviors ['reject_ac_for_personal_pension_account']"
+      ]
+    },
+    {
+      "fixture_id": "CAP05-ADV-001",
+      "capability_id": "synthesize-research-insights",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "fixture_id": "CAP06-VIZ-001",
+      "capability_id": "compose-research-report",
+      "passed": false,
+      "errors": [
+        "CAP06-VIZ-001: output_artifact_type='NONE', expected 'ResearchReport'",
+        "CAP06-VIZ-001: route='CAP-05', expected 'CAP-04'"
+      ]
+    }
+  ],
+  "raw_outputs_sha256": "daa062d0780a00aa94795ed500ea533ee16f1e239a5401811f45b79102b68ce6",
+  "assessments_sha256": "a266cf828be3816f65cc67039d089c94e609dfcd194b07b7ca0c2a0fe6d4961e",
+  "human_semantic_review_status": "NOT_RUN",
+  "interpretation": "这是独立 Agent 冒烟评估，不是人工 Gate，也不能外推为全部 39 条测试通过。"
+}

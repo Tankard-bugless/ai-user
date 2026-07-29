@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "APR-DEMO-G3-001",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：Gate 3 证据与洞察确认记录",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-08-21T10:00:00+08:00",
+    "updated_at": "2026-08-21T10:00:00+08:00",
+    "created_by": {"actor_id": "HUMAN-RESEARCH-LEAD", "actor_type": "HUMAN", "role": "研究负责人"},
+    "upstream_refs": [
+      {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0"},
+      {"artifact_id": "FWP-DEMO-001", "artifact_type": "FieldworkPackage", "artifact_version": "0.1.0"}
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "合成的 Gate 3 人工批准记录。"
+  },
+  "gate_id": "GATE_3",
+  "status": "APPROVED",
+  "primary_target_ref": {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0"},
+  "reviewed_refs": [
+    {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0"},
+    {"artifact_id": "FWP-DEMO-001", "artifact_type": "FieldworkPackage", "artifact_version": "0.1.0"}
+  ],
+  "reviewer": {"actor_id": "HUMAN-RESEARCH-LEAD", "actor_type": "HUMAN", "role": "研究负责人"},
+  "reviewer_role": "研究负责人",
+  "authority_basis": "被授权确认研究证据、分析口径和洞察边界。",
+  "recorded_at": "2026-08-21T10:00:00+08:00",
+  "decided_at": "2026-08-21T10:00:00+08:00",
+  "decision_basis": "引文和统计均可定位，反例与限制已呈现，发现—洞察—建议层级清楚。",
+  "blocking_issues": [],
+  "required_changes": [],
+  "accepted_risks": ["有限样本和非概率抽样只允许项目内描述。", "候选分群不得写入正式客户标签。"],
+  "attestations": {
+    "reviewed_primary_target": true,
+    "reviewed_supporting_artifacts": true,
+    "reviewed_material_changes": true,
+    "authorized_to_decide": true
+  },
+  "comments": "允许基于该洞察包生成报告；研究建议仍需业务方另行决策。",
+  "invalidation_rule": "ANY_REVIEWED_ARTIFACT_VERSION_CHANGE_REQUIRES_NEW_APPROVAL",
+  "is_ai_approval": false
+}

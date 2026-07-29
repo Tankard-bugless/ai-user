@@ -1,0 +1,54 @@
+{
+  "adapter": "tencent-survey",
+  "adapter_version": "0.2.0",
+  "deployment_environment": "FOMO_TEAM",
+  "source_manifest": "case-otf-questionnaire.v0.2.0.manifest.json",
+  "source_dsl": "case-otf-questionnaire.v0.2.0.dsl.txt",
+  "source_dsl_sha256": "98acf83293196d0a0f0c80ea3e5b48c986ca21cddd93677b936f497e0bbe2289",
+  "word_artifact": "../../output/doc/养老目标基金购买与持有情况调查问卷_FOMO_v0.2.docx",
+  "survey_id": 27394126,
+  "hash": "fb35",
+  "url": "https://wj.qq.com/s2/27394126/fb35",
+  "project_id": 9221539,
+  "project_name": "团队默认项目",
+  "created_at": "2026-07-24T10:25:36+08:00",
+  "status": "CONTENT_VALIDATED_LOGIC_PERMISSION_BLOCKED",
+  "validation_summary": {
+    "page_count": 10,
+    "all_question_node_count": 46,
+    "answerable_question_count": 35,
+    "choice_option_count": 213,
+    "login_check": false,
+    "location_collection": false,
+    "word_question_count": 35,
+    "word_choice_option_count": 213,
+    "word_visual_review": "PASS",
+    "content_result": "PASS",
+    "logic_result": "BLOCKED_BY_TEAM_PERMISSION"
+  },
+  "required_logic": {
+    "source_file": "case-otf-questionnaire.v0.2.0.fomo.logic.dsl",
+    "rule_count": 3,
+    "rules": [
+      "C0=不同意 -> END",
+      "S1=没有 -> END",
+      "Q22=没有经历过或记不清 -> Q24"
+    ],
+    "platform_error": "paid_function_trial_no_permission"
+  },
+  "release_blockers": [
+    "FOMO 团队当前无自定义逻辑权限，三条跳转尚未启用。",
+    "正式投放前仍需人工确认多选上限和互斥选项。",
+    "尚未取得 Gate 2 正式批准。"
+  ],
+  "abandoned_empty_creation": {
+    "survey_id": 27394101,
+    "hash": "8dfc",
+    "reason": "首次命令行参数被换行截断，仅创建标题且无题目；不得投放。"
+  },
+  "notes": [
+    "本部署使用用户指定的 FOMO 团队凭证创建；未修改原尊享版团队中的测试问卷。",
+    "问卷正文、分页、题型、必答状态和选项已按 V0.2 定稿源验证。",
+    "当前链接用于内容检查，不应在跳转问题解决前正式投放。"
+  ]
+}

@@ -1,0 +1,451 @@
+{
+  "mapping_version": "0.1.0",
+  "project_id": "PROJ-OTF-001",
+  "source_file": "FOF问卷回答_200人.csv",
+  "source_sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+  "instrument_ref": {
+    "artifact_id": "INS-OTF-SURVEY-001",
+    "artifact_type": "InstrumentSpec",
+    "artifact_version": "0.2.0"
+  },
+  "shape": {
+    "rows": 200,
+    "raw_columns": 131,
+    "question_groups": 35,
+    "excluded_platform_metadata_columns": 15
+  },
+  "fields": [
+    {
+      "item_id": "ITEM-C0",
+      "variable_name": "consent",
+      "item_type": "CONSENT",
+      "source_columns": [
+        "1.C0. 我已阅读上述说明，自愿参加本次匿名研究。"
+      ]
+    },
+    {
+      "item_id": "ITEM-S1",
+      "variable_name": "purchase_eligibility",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "2.S1. 在填写本问卷之前，您是否实际购买过养老目标基金？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q1",
+      "variable_name": "holding_status",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "3.Q1. 您目前对最近一次购买的这只养老目标基金，处于哪种状态？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q2",
+      "variable_name": "pension_share_type",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "4.Q2. 您当时通过哪类账户或份额购买？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q3",
+      "variable_name": "purchase_recency",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "5.Q3. 您最近一次购买养老目标基金，大约是在什么时候？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q4",
+      "variable_name": "first_awareness_channel",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "6.Q4. 您最早是从哪里知道这只基金或这类基金的？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q5",
+      "variable_name": "decision_role",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "7.Q5. 这次购买主要是谁作出的决定？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q6",
+      "variable_name": "purchase_trigger",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:提前为退休生活做准备",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:希望长期投资，不想频繁操作",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:希望分散配置风险",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:个人养老金税收优惠",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:客户经理或专业人员推荐",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:亲友推荐",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:看重历史表现或排名",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:认可基金公司或管理团队",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:费率或 Y 份额安排",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:购买方便或起购门槛合适",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:其他",
+        "8.Q6. 当时促使您购买养老目标基金的主要原因有哪些？:记不清"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q7",
+      "variable_name": "information_seen_before_purchase",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "9.Q7. 购买前，您实际看过哪些信息？:基金名称或目标年份",
+        "9.Q7. 购买前，您实际看过哪些信息？:稳健、平衡、积极等风险类型",
+        "9.Q7. 购买前，您实际看过哪些信息？:历史业绩或排名",
+        "9.Q7. 购买前，您实际看过哪些信息？:当前股票、债券等资产配置",
+        "9.Q7. 购买前，您实际看过哪些信息？:下滑曲线或未来配置调整方式",
+        "9.Q7. 购买前，您实际看过哪些信息？:基金经理或管理团队",
+        "9.Q7. 购买前，您实际看过哪些信息？:基金公司品牌",
+        "9.Q7. 购买前，您实际看过哪些信息？:费率或 Y 份额说明",
+        "9.Q7. 购买前，您实际看过哪些信息？:持有、申购和赎回规则",
+        "9.Q7. 购买前，您实际看过哪些信息？:客户经理或平台的产品介绍",
+        "9.Q7. 购买前，您实际看过哪些信息？:没有仔细看",
+        "9.Q7. 购买前，您实际看过哪些信息？:记不清"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q8",
+      "variable_name": "information_compared_before_purchase",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "10.Q8. 购买前，您认真比较过哪些信息？:退休年份是否匹配",
+        "10.Q8. 购买前，您认真比较过哪些信息？:风险类型是否符合自己的选择",
+        "10.Q8. 购买前，您认真比较过哪些信息？:历史业绩或排名",
+        "10.Q8. 购买前，您认真比较过哪些信息？:股票、债券等资产配置",
+        "10.Q8. 购买前，您认真比较过哪些信息？:下滑曲线或未来配置调整方式",
+        "10.Q8. 购买前，您认真比较过哪些信息？:基金经理或管理团队",
+        "10.Q8. 购买前，您认真比较过哪些信息？:基金公司品牌",
+        "10.Q8. 购买前，您认真比较过哪些信息？:费率或 Y 份额安排",
+        "10.Q8. 购买前，您认真比较过哪些信息？:持有、申购和赎回规则",
+        "10.Q8. 购买前，您认真比较过哪些信息？:与其他基金或养老产品的差别",
+        "10.Q8. 购买前，您认真比较过哪些信息？:主要听取推荐，没有认真比较",
+        "10.Q8. 购买前，您认真比较过哪些信息？:其他",
+        "10.Q8. 购买前，您认真比较过哪些信息？:记不清"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q9",
+      "variable_name": "factor_most_important",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "11.Q9. 以下哪一项对您最终购买的影响最大？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q9A",
+      "variable_name": "purchase_information_clarity_5",
+      "item_type": "LIKERT",
+      "source_columns": [
+        "12.Q9A. 总体来说，您当时觉得购买前看到的产品信息有多清楚？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q10",
+      "variable_name": "reported_fund_type",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "13.Q10. 根据您的印象，您最近一次购买的养老目标基金属于哪一类？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q11",
+      "variable_name": "reported_fund_name",
+      "item_type": "TEXT_SHORT",
+      "source_columns": [
+        "14.Q11. 如果您还记得，可以填写基金名称或名称中的目标年份。"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q12",
+      "variable_name": "fund_type_familiarity",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "15.Q12. 在今天填写问卷之前，您对“目标日期型”和“目标风险型”的区别了解多少？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q13",
+      "variable_name": "glide_path_awareness",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "16.Q13. 在今天填写问卷之前，您是否听说过“下滑曲线”？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q14",
+      "variable_name": "glide_path_viewed_before_purchase",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "17.Q14. 购买这只基金之前，您是否看过它的下滑曲线或未来资产配置调整说明？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q15",
+      "variable_name": "glide_path_viewed_during_holding",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "18.Q15. 购买以后，您是否再次查看过下滑曲线或资产配置变化？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q16",
+      "variable_name": "glide_path_used_in_decision",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "19.Q16. 下滑曲线或资产配置调整方式，对您的决定影响最大的是哪一种？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q17",
+      "variable_name": "target_date_knowledge",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "20.Q17. 下面哪项更符合目标日期型养老目标基金的一般设计思路？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q18",
+      "variable_name": "target_risk_knowledge",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "21.Q18. 下面哪项更符合目标风险型养老目标基金的一般设计思路？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q19",
+      "variable_name": "glide_path_meaning",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "22.Q19. 在养老目标基金中，“下滑曲线”通常主要表示什么？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q20",
+      "variable_name": "glide_path_risk_boundary",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "23.Q20. 如果基金接近目标日期时降低波动较高资产的比例，下面哪种理解更合适？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q21",
+      "variable_name": "holding_action",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "24.Q21. 购买以后，您做过哪些操作？:一直持有，没有调整",
+        "24.Q21. 购买以后，您做过哪些操作？:定投或追加购买",
+        "24.Q21. 购买以后，您做过哪些操作？:部分赎回",
+        "24.Q21. 购买以后，您做过哪些操作？:全部赎回",
+        "24.Q21. 购买以后，您做过哪些操作？:转换为其他基金或养老产品",
+        "24.Q21. 购买以后，您做过哪些操作？:其他",
+        "24.Q21. 购买以后，您做过哪些操作？:记不清"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q22",
+      "variable_name": "reaction_to_volatility",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "25.Q22. 最近一次遇到基金净值明显下跌时，您主要怎么做？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q23",
+      "variable_name": "action_reason",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:把它当作长期养老投资，愿意继续持有",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:理解净值波动可能是正常现象",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:担心继续亏损",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:不清楚为什么下跌",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:认为产品不再符合自己的退休安排",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:听取客户经理、专业人员或亲友建议",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:临时需要使用资金",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:与其他产品相比表现不理想",
+        "26.Q23. 您当时采取上述做法，主要是因为什么？:其他"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q24",
+      "variable_name": "allocation_change_check",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "27.Q24. 持有期间，您是否查看过基金的资产配置有没有按原来的思路变化？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q25",
+      "variable_name": "holding_uncertainty",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:现在承担的风险有多大",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:当前股票等波动较高资产占多少",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:未来资产配置会怎样变化",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:为什么要调整资产配置",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:产品是否仍与自己的退休年份相匹配",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:目标日期型和目标风险型到底有什么区别",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:Y 份额的费率和账户规则",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:持有、追加和赎回规则",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:应该怎样看待短期业绩",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:没有明显不确定",
+        "28.Q25. 对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？:其他"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q26",
+      "variable_name": "information_need",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "29.Q26. 今后您最希望看到哪些内容？:目标日期型和目标风险型的简单区别",
+        "29.Q26. 今后您最希望看到哪些内容？:怎样根据退休年份或风险类型选择",
+        "29.Q26. 今后您最希望看到哪些内容？:当前资产配置和风险水平",
+        "29.Q26. 今后您最希望看到哪些内容？:未来配置会怎样变化，也就是下滑曲线",
+        "29.Q26. 今后您最希望看到哪些内容？:为什么要调整资产配置",
+        "29.Q26. 今后您最希望看到哪些内容？:市场下跌时怎样理解产品表现",
+        "29.Q26. 今后您最希望看到哪些内容？:Y 份额的费率和个人养老金账户规则",
+        "29.Q26. 今后您最希望看到哪些内容？:持有、追加和赎回规则",
+        "29.Q26. 今后您最希望看到哪些内容？:与其他基金或养老产品的差别",
+        "29.Q26. 今后您最希望看到哪些内容？:目前不需要更多信息",
+        "29.Q26. 今后您最希望看到哪些内容？:其他"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q27",
+      "variable_name": "preferred_explanation_format",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "30.Q27. 哪种形式更方便您理解这些内容？:一句话说明",
+        "30.Q27. 哪种形式更方便您理解这些内容？:结合年龄或退休年份举例",
+        "30.Q27. 哪种形式更方便您理解这些内容？:简单的下滑曲线图",
+        "30.Q27. 哪种形式更方便您理解这些内容？:资产配置表",
+        "30.Q27. 哪种形式更方便您理解这些内容？:常见问题与回答",
+        "30.Q27. 哪种形式更方便您理解这些内容？:1-3 分钟短视频",
+        "30.Q27. 哪种形式更方便您理解这些内容？:可以自行搜索的知识库",
+        "30.Q27. 哪种形式更方便您理解这些内容？:其他"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q28",
+      "variable_name": "information_timing",
+      "item_type": "MULTI_SELECT",
+      "source_columns": [
+        "31.Q28. 您更希望在什么时候看到这些说明？:第一次了解产品时",
+        "31.Q28. 您更希望在什么时候看到这些说明？:购买页面上",
+        "31.Q28. 您更希望在什么时候看到这些说明？:购买后定期收到",
+        "31.Q28. 您更希望在什么时候看到这些说明？:市场波动较大时",
+        "31.Q28. 您更希望在什么时候看到这些说明？:基金调整资产配置时",
+        "31.Q28. 您更希望在什么时候看到这些说明？:自己需要时再搜索",
+        "31.Q28. 您更希望在什么时候看到这些说明？:其他"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q29",
+      "variable_name": "optional_open_comment",
+      "item_type": "TEXT_LONG",
+      "source_columns": [
+        "32.Q29. 关于养老目标基金，还有什么是您一直没有弄明白、但希望得到解释的？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q30",
+      "variable_name": "years_to_retirement",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "33.Q30. 您距离自己预计退休的时间大约还有多久？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q31",
+      "variable_name": "fund_experience",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "34.Q31. 您投资基金大约有多长时间？"
+      ]
+    },
+    {
+      "item_id": "ITEM-Q32",
+      "variable_name": "age_group",
+      "item_type": "SINGLE_SELECT",
+      "source_columns": [
+        "35.Q32. 您的年龄段是？"
+      ]
+    }
+  ],
+  "excluded_platform_metadata": [
+    {
+      "column": "编号",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "开始答题时间",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "结束答题时间",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "答题时长",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "语言",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "清洗数据结果",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "智能清洗数据无效概率",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "地理位置国家和地区",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "地理位置省",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "地理位置市",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "自定义字段",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "IP",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "UA",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "Referrer",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    },
+    {
+      "column": "Unnamed: 130",
+      "reason": "平台元数据不属于问卷研究变量；IP、UA、地理位置等不得进入脱敏分析数据。"
+    }
+  ],
+  "transformations": [
+    "单选值移除平台生成的 A./B. 等前缀。",
+    "多选值按 InstrumentSpec 选项文本转换为 JSON 数组。",
+    "互斥选项与实质选项并存时，只移除互斥的无/不确定项。",
+    "Q22 为无相关经历时，Q23 重编码为空数组并视为结构性缺失。",
+    "Q17-Q20 按冻结版正确答案生成知识题正确标记与分数。",
+    "速度、互斥冲突、缺失、超选和重复只生成复核信号，不自动排除。"
+  ],
+  "mapping_issues": []
+}

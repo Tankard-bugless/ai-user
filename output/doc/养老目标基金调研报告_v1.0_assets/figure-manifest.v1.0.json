@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "created_from": "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+  "source_sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+  "style": {
+    "font": "Microsoft YaHei",
+    "palette": {
+      "blue": "#1F6E8C",
+      "green": "#2A9D8F",
+      "orange": "#C85C1A",
+      "gold": "#B7791F",
+      "purple": "#7C5C99"
+    },
+    "principles": [
+      "百分比条形图从零起点",
+      "颜色之外使用分面、排序和直接标签",
+      "不同题目口径不绘制为漏斗",
+      "图题陈述结论，图注明确样本和边界"
+    ]
+  },
+  "figures": [
+    {
+      "figure_id": "FIG-OTF-01",
+      "file": "fig1_knowledge_v1.0.png",
+      "title": "单项知识正确率约六成，但四项全部答对仅 20.0%",
+      "source": "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+      "source_fields": [
+        "knowledge_summary"
+      ],
+      "transformations": [
+        "使用 analysis-results.v0.1.0.json 中已校正的百分比",
+        "无平滑、无插值、无再加权",
+        "条形图从零起点；百分比直接标值"
+      ],
+      "note": "四道题均为预定义知识题；组合指标由同一答卷上的正确情况计算。"
+    },
+    {
+      "figure_id": "FIG-OTF-02",
+      "file": "fig2_glide_v1.0.png",
+      "title": "主动比较仅 3.5%，提示后自报影响达到 51.0%",
+      "source": "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+      "source_fields": [
+        "glide_path_indicators",
+        "knowledge_summary.both_glide_correct"
+      ],
+      "transformations": [
+        "使用 analysis-results.v0.1.0.json 中已校正的百分比",
+        "无平滑、无插值、无再加权",
+        "条形图从零起点；百分比直接标值"
+      ],
+      "note": "自然行为、提示后回忆性自报和知识理解分面展示，不按漏斗或因果链解释。"
+    },
+    {
+      "figure_id": "FIG-OTF-03",
+      "file": "fig3_decision_path_v1.0.png",
+      "title": "触发关注与最终判断是两层机制",
+      "source": "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+      "source_fields": [
+        "descriptive_results.Q6",
+        "descriptive_results.Q8",
+        "descriptive_results.Q9"
+      ],
+      "transformations": [
+        "使用 analysis-results.v0.1.0.json 中已校正的百分比",
+        "无平滑、无插值、无再加权",
+        "条形图从零起点；百分比直接标值"
+      ],
+      "note": "Q6、Q8 为多选题，Q9 为单选题；仅展示各题排名前三，不跨题相加。"
+    },
+    {
+      "figure_id": "FIG-OTF-04",
+      "file": "fig4_education_v1.0.png",
+      "title": "投教应贯穿购买前与持有期，优先场景化、可视化解释",
+      "source": "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+      "source_fields": [
+        "descriptive_results.Q26",
+        "descriptive_results.Q27",
+        "descriptive_results.Q28"
+      ],
+      "transformations": [
+        "使用 analysis-results.v0.1.0.json 中已校正的百分比",
+        "无平滑、无插值、无再加权",
+        "条形图从零起点；百分比直接标值"
+      ],
+      "note": "三题均为多选题，仅展示各题前五项；各题比例不相加，偏好不等同于效果。"
+    },
+    {
+      "figure_id": "FIG-OTF-05",
+      "file": "fig5_age_heatmap_v1.0.png",
+      "title": "年龄差异适合指导原型选择，不宜转化为客户标签",
+      "source": "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+      "source_fields": [
+        "age_metrics",
+        "age_tables.Q27_preferred_format"
+      ],
+      "transformations": [
+        "使用 analysis-results.v0.1.0.json 中已校正的百分比",
+        "无平滑、无插值、无再加权",
+        "条形图从零起点；百分比直接标值"
+      ],
+      "note": "各年龄组 n 均不低于 20；仅作描述性比较，未检验显著性，也不用于个体标签。"
+    }
+  ]
+}

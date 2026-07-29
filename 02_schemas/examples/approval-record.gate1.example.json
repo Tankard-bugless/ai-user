@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "APR-DEMO-G1-001",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：Gate 1 研究问题确认记录",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-23T09:30:00+08:00",
+    "updated_at": "2026-07-23T09:30:00+08:00",
+    "created_by": {"actor_id": "HUMAN-RESEARCH-LEAD", "actor_type": "HUMAN", "role": "研究负责人"},
+    "upstream_refs": [{"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"}],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "合成的 Gate 1 人工批准记录。"
+  },
+  "gate_id": "GATE_1",
+  "status": "APPROVED",
+  "primary_target_ref": {"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"},
+  "reviewed_refs": [{"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"}],
+  "reviewer": {"actor_id": "HUMAN-RESEARCH-LEAD", "actor_type": "HUMAN", "role": "研究负责人"},
+  "reviewer_role": "研究负责人",
+  "authority_basis": "项目研究负责人对研究问题和范围具有确认权限。",
+  "recorded_at": "2026-07-23T09:30:00+08:00",
+  "decided_at": "2026-07-23T09:30:00+08:00",
+  "decision_basis": "研究目标、问题、待支持决策与范围一致，且假设保持可证伪。",
+  "blocking_issues": [],
+  "required_changes": [],
+  "accepted_risks": ["可联系样本有限，后续结论不得外推至全部客户。"],
+  "attestations": {
+    "reviewed_primary_target": true,
+    "reviewed_supporting_artifacts": true,
+    "reviewed_material_changes": true,
+    "authorized_to_decide": true
+  },
+  "comments": "允许进入研究方案设计；不代表问卷、访谈提纲或材料已获批准。",
+  "invalidation_rule": "ANY_REVIEWED_ARTIFACT_VERSION_CHANGE_REQUIRES_NEW_APPROVAL",
+  "is_ai_approval": false
+}

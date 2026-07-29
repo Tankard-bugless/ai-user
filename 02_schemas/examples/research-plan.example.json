@@ -1,0 +1,439 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "RP-DEMO-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：新基金说明材料理解研究方案",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-23T10:00:00+08:00",
+    "updated_at": "2026-07-23T10:00:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-METHOD-001",
+      "actor_type": "AGENT",
+      "role": "定性定量研究设计专家",
+      "model_id": "demo-model",
+      "capability_version": "0.1.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RB-DEMO-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.1.0",
+        "approval_id": "APR-DEMO-G1-001"
+      }
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "基于合成 ResearchBrief 设计访谈后问卷的组合研究方案。"
+  },
+  "research_brief_ref": {
+    "artifact_id": "RB-DEMO-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.1.0",
+    "approval_id": "APR-DEMO-G1-001"
+  },
+  "gate_1_approval_ref": {
+    "artifact_id": "APR-DEMO-G1-001",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0"
+  },
+  "research_design": {
+    "design_type": "MIXED",
+    "rationale": "先用探索型访谈识别真实理解路径和未预期误解，再将关键假设和选项转化为问卷进行样本内描述与比较。两种方法分别运行，不创建第三套混合工具逻辑。",
+    "method_ids": [
+      "METHOD-INT-001",
+      "METHOD-SUR-001"
+    ],
+    "sequence_logic": "METHOD-INT-001 完成初步编码并更新问卷选项后，再执行 METHOD-SUR-001；所有变更保留版本记录。"
+  },
+  "method_specs": [
+    {
+      "method_id": "METHOD-INT-001",
+      "method_type": "INTERVIEW",
+      "method_mode": "MATERIAL_COMPREHENSION",
+      "purpose": "探索阅读前理解、阅读过程、复述方式和未预期误解。",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-002"
+      ],
+      "execution_mode": "REMOTE_MODERATED",
+      "sequence": 1,
+      "depends_on_method_ids": []
+    },
+    {
+      "method_id": "METHOD-SUR-001",
+      "method_type": "SURVEY",
+      "method_mode": "HYPOTHESIS_VALIDATION",
+      "purpose": "描述材料理解表现，并比较预设基金投资经验分组。",
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003"
+      ],
+      "execution_mode": "REMOTE_UNMODERATED",
+      "sequence": 2,
+      "depends_on_method_ids": [
+        "METHOD-INT-001"
+      ]
+    }
+  ],
+  "question_method_map": [
+    {
+      "research_question_id": "RQ-001",
+      "method_ids": [
+        "METHOD-INT-001"
+      ],
+      "required_evidence": "能够定位到逐字稿的具体经历、解释路径、原话和反例。",
+      "planned_output": "阅读前理解模式、误解机制和候选编码。"
+    },
+    {
+      "research_question_id": "RQ-002",
+      "method_ids": [
+        "METHOD-INT-001",
+        "METHOD-SUR-001"
+      ],
+      "required_evidence": "材料暴露记录、开放复述、理解题作答及不符合主模式的案例。",
+      "planned_output": "材料理解发现、典型误解、题目级正确作答情况和限制。"
+    },
+    {
+      "research_question_id": "RQ-003",
+      "method_ids": [
+        "METHOD-SUR-001"
+      ],
+      "required_evidence": "预定义经验分组、各组有效样本数和同一理解指标。",
+      "planned_output": "本样本内分组比较，不外推总体。"
+    }
+  ],
+  "sampling_plan": {
+    "unit_of_sampling": "PARTICIPANT",
+    "target_population": "符合 ResearchBrief 纳入条件并具有研究联系授权的成年人。",
+    "sampling_strategy": "QUOTA",
+    "total_target": 108,
+    "method_sample_targets": [
+      {
+        "method_id": "METHOD-INT-001",
+        "minimum": 6,
+        "target": 8,
+        "maximum": 10,
+        "rationale": "以覆盖主要投资经验差异、理解路径和重要反例为目标；是否停止还要结合信息充分度判断。",
+        "segment_targets": [
+          {
+            "segment_id": "SEG-INT-LOWEXP",
+            "definition": "从未购买基金或累计基金投资经验不足一年。",
+            "minimum": 3,
+            "target": 4,
+            "rationale": "覆盖假设中可能更容易出现术语误解的访谈对象。"
+          },
+          {
+            "segment_id": "SEG-INT-HIGHEXP",
+            "definition": "累计基金投资经验一年及以上。",
+            "minimum": 3,
+            "target": 4,
+            "rationale": "探索经验较高参与者是否使用不同理解线索。"
+          }
+        ]
+      },
+      {
+        "method_id": "METHOD-SUR-001",
+        "minimum": 80,
+        "target": 100,
+        "maximum": 110,
+        "rationale": "用于题目级描述和预设经验分组的方向性比较，不用于估计市场总体。",
+        "segment_targets": [
+          {
+            "segment_id": "SEG-SUR-LOWEXP",
+            "definition": "从未购买基金或累计基金投资经验不足一年。",
+            "minimum": 35,
+            "target": 50,
+            "rationale": "覆盖假设中可能更容易出现术语误解的人群。"
+          },
+          {
+            "segment_id": "SEG-SUR-HIGHEXP",
+            "definition": "累计基金投资经验一年及以上。",
+            "minimum": 35,
+            "target": 50,
+            "rationale": "用于与低经验组进行项目内比较。"
+          }
+        ]
+      }
+    ],
+    "inclusion_criteria": [
+      {
+        "criterion_id": "INC-001",
+        "statement": "年满 18 周岁。",
+        "rationale": "仅纳入成年人。"
+      },
+      {
+        "criterion_id": "INC-002",
+        "statement": "过去一年曾主动了解基金产品或计划在未来一年了解基金产品。",
+        "rationale": "保证研究任务相关性。"
+      }
+    ],
+    "exclusion_criteria": [
+      {
+        "criterion_id": "EXC-001",
+        "statement": "直接参与测试材料或研究工具设计。",
+        "rationale": "避免预先熟悉导致的理解度高估。"
+      }
+    ],
+    "preferred_criteria": [
+      {
+        "criterion_id": "PREF-001",
+        "statement": "样本中覆盖使用不同金融信息来源的参与者。",
+        "rationale": "帮助识别参与者既有信息习惯对材料阅读路径的影响；该条件只用于多样性，不作为淘汰门槛。"
+      },
+      {
+        "criterion_id": "PREF-002",
+        "statement": "访谈样本中覆盖承担家庭投资信息搜集或共同决策角色的人。",
+        "rationale": "探索信息转述场景，但不据此形成长期客户标签。"
+      }
+    ],
+    "representativeness_limits": "样本来自有限的授权触达渠道，不能代表全部客户或市场总体；配额仅保证研究覆盖，不代表总体分布。"
+  },
+  "recruitment_plan": {
+    "channels": [
+      "经授权的企业微信一对一邀请",
+      "内部客户回访名单中的可研究联系对象"
+    ],
+    "responsible_role": "客户研究运营人员",
+    "screening_process": "先由授权人员完成联系许可检查，再通过独立甄别题确认年龄、相关性和投资经验分组。",
+    "contact_permission_rule": "Agent 不直接发送邀请；仅由具有客户触达权限的人员使用批准话术联系。",
+    "incentive": "按机构研究激励规则执行，邀请时明确激励与任何投资行为无关。",
+    "verification_rule": "通过最近一次了解基金信息的具体行为追问验证研究相关性；不要求提供账户资产、持仓截图或其他超出研究需要的金融证据。",
+    "replacement_rule": "访谈每个经验组预留 1 名替补；问卷按有效答卷和分组最低值持续跟踪，不以降低甄别标准填补配额。",
+    "supplier_deliverables": []
+  },
+  "fieldwork_plan": {
+    "planned_start_date": "2026-08-03",
+    "planned_end_date": "2026-08-14",
+    "timezone": "Asia/Shanghai",
+    "owner_role": "研究负责人",
+    "channels": [
+      "远程视频访谈",
+      "内部问卷平台"
+    ],
+    "consent_process": "访谈开始前口头确认并记录同意；问卷首页勾选同意后方可继续。",
+    "recording_rule": "访谈仅在单独取得录音同意后录制；问卷不收集音视频。",
+    "deviation_logging_rule": "样本、材料版本、问题顺序或执行环境的任何偏离均写入 FieldworkPackage 执行日志。"
+  },
+  "materials_plan": [
+    {
+      "material_id": "MAT-PRODUCT-001",
+      "title": "示例基金产品说明材料",
+      "source_type": "OFFICIAL_PRODUCT",
+      "uri": "https://example.invalid/product/demo-fund-material",
+      "version": "demo-2026-07-23",
+      "content_hash": "synthetic-demo-hash-001",
+      "purpose": "作为统一暴露材料，测试产品特征、风险和流动性信息的理解。",
+      "presentation_position": "阅读前基线问题之后、理解度测量之前。",
+      "exposure_tracking": {
+        "method": "LINK_OPEN",
+        "minimum_exposure_seconds": 60,
+        "notes": "如平台无法记录停留时长，保留链接打开日志并增加自报阅读完成度。"
+      },
+      "approval_required": true
+    }
+  ],
+  "learning_resources_plan": [
+    {
+      "resource_id": "LR-IMA-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "在核心材料理解问题回答完成后，为参与者提供继续搜索金融常识的自愿学习入口。",
+      "placement": "AFTER_SURVEY_SECTION",
+      "placement_after_component_id": "SEC-COMPREHENSION",
+      "recommended_search_prompt": "可根据自己不熟悉的概念，在知识库中搜索基金风险、净值波动、持有期或赎回等金融常识。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "REVIEWED",
+      "review_notes": "不记录是否点击或停留时长，不以访问行为判断用户是否理解。"
+    }
+  ],
+  "analysis_plan": {
+    "unit_of_analysis": "参与者及其题目作答、逐字稿片段和材料暴露记录。",
+    "question_analysis": [
+      {
+        "research_question_id": "RQ-001",
+        "method_ids": [
+          "METHOD-INT-001"
+        ],
+        "analysis_type": "THEMATIC_CODING",
+        "variables_or_codes": [
+          "稳健的自发定义",
+          "对波动和回撤的理解",
+          "判断风险时使用的信息线索",
+          "本金保障误解"
+        ],
+        "decision_rule": "由至少两个可追溯证据单元支持的重复模式形成候选 Finding；单例保留为 Observation 或 Negative Case。"
+      },
+      {
+        "research_question_id": "RQ-002",
+        "method_ids": [
+          "METHOD-INT-001",
+          "METHOD-SUR-001"
+        ],
+        "analysis_type": "CONTENT_ANALYSIS",
+        "variables_or_codes": [
+          "材料是否实际打开",
+          "非保本边界识别",
+          "净值波动识别",
+          "流动性约束识别",
+          "开放复述中的误解"
+        ],
+        "decision_rule": "材料暴露、正确理解、错误理解和态度分别编码；未达到暴露标准者不纳入材料理解主分析。"
+      },
+      {
+        "research_question_id": "RQ-003",
+        "method_ids": [
+          "METHOD-SUR-001"
+        ],
+        "analysis_type": "COMPARATIVE_ANALYSIS",
+        "variables_or_codes": [
+          "fund_experience_group",
+          "comprehension_score",
+          "principal_guarantee_misunderstanding"
+        ],
+        "decision_rule": "同时报告各组分子、分母、缺失值和差异方向；样本不足时只描述，不进行显著性推断。"
+      }
+    ],
+    "qualitative_plan": {
+      "applicable": true,
+      "coding_approach": "先开放编码，再围绕研究问题形成代码本；保留未预期主题和反例。",
+      "quality_check": "研究负责人复核全部高风险金融表达片段，并由第二位研究人员抽查至少 25% 的编码片段。"
+    },
+    "quantitative_plan": {
+      "applicable": true,
+      "statistics": [
+        "题目级有效人数、分子和比例",
+        "理解度总分分布",
+        "投资经验分组的描述性比较"
+      ],
+      "weighting_rule": "不加权；样本不用于推断客户总体。",
+      "subgroup_rule": "仅分析预先定义且有效样本达到计划最低值的投资经验分组，不进行临时切分。"
+    },
+    "missing_data_rule": "逐题报告缺失；理解度总分仅在核心理解题全部有效时计算，未达到材料暴露标准者单独标记。",
+    "negative_case_rule": "任何与主要模式相反且来源可核验的案例均进入反例表，不因频次低而删除。",
+    "evidence_thresholds": [
+      {
+        "claim_type": "FINDING",
+        "minimum_requirement": "至少有两个独立证据单元或一个定量汇总支持，并明确样本范围、反例和数据质量。",
+        "confidence_rule": "按证据等级规范结合来源独立性、数据质量、反例和方法一致性判为低、中或高。"
+      },
+      {
+        "claim_type": "INSIGHT",
+        "minimum_requirement": "至少引用一个已确认 Finding，并说明推理、替代解释和适用边界。",
+        "confidence_rule": "不得高于其关键上游 Finding 的可靠程度，除非有额外独立证据。"
+      },
+      {
+        "claim_type": "RECOMMENDATION",
+        "minimum_requirement": "至少引用一个 Insight，并说明预期作用、风险、假设和后续验证。",
+        "confidence_rule": "作为待业务方评估的行动建议，不标记为已批准决策。"
+      }
+    ],
+    "synthesis_plan": "访谈用于解释问卷中的模式和异常，问卷用于描述访谈中形成的关键理解类别；两类证据不一致时并列呈现并降低置信度。"
+  },
+  "quality_plan": {
+    "pilot_required": true,
+    "pilot_plan": {
+      "participants_or_records": 5,
+      "success_criteria": [
+        "参与者能理解引导语和主要题目",
+        "材料链接可以打开并记录暴露状态",
+        "问卷中位完成时长不超过 12 分钟",
+        "访谈模块总时长不超过 45 分钟",
+        "理解度题不泄露正确答案"
+      ],
+      "revision_rule": "出现阻断性链接、逻辑或理解问题时必须修订 InstrumentSpec 并重新预测试；所有修订产生新版本。"
+    },
+    "instrument_review_rules": [
+      "检查诱导性、双重问题和抽象回忆",
+      "检查题目与研究问题映射",
+      "检查问卷跳转、终止和配额逻辑",
+      "检查访谈追问是否要求具体经历和反例",
+      "检查金融表达、隐私和材料版本"
+    ],
+    "invalid_response_rules": [
+      "未取得同意",
+      "未通过年龄甄别",
+      "完成时长低于预测试合理下限且存在直线作答",
+      "核心题目大量缺失",
+      "重复设备或重复参与者记录经人工确认"
+    ],
+    "fieldwork_quality_checks": [
+      "每日检查样本与配额",
+      "访谈后 24 小时内记录执行偏离",
+      "材料版本与链接可用性每日核验",
+      "不得由 Agent 自动触达客户"
+    ]
+  },
+  "data_management": {
+    "participant_id_scheme": "问卷使用 SUR-P0001 格式，访谈使用 INT-P001 格式；联系信息与研究数据分表保存。",
+    "data_minimization": "不采集姓名、证件号、账户资产或具体持仓；只保留研究所需分组变量。",
+    "deidentification": "转写前替换姓名、机构、地点和其他可识别信息；分析只使用参与者编号。",
+    "access_roles": [
+      "研究负责人",
+      "经授权的分析人员",
+      "必要时的合规审核人员"
+    ],
+    "retention_rule": "按机构批准的用户研究数据保存周期执行，并在项目档案记录到期日。",
+    "deletion_rule": "到期后由数据责任人删除原始联系映射和未获继续保存授权的录音。",
+    "external_transfer_rule": "未经批准不向外部模型或平台传输可识别客户信息；外部处理仅使用脱敏内容。"
+  },
+  "risks": [
+    {
+      "risk_id": "RISK-PLAN-001",
+      "category": "SAMPLE",
+      "description": "有限触达渠道可能导致经验分组配额无法完成。",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "设置最低和目标样本，不在配额不足时强行进行分组推断，并记录招募漏斗。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-PLAN-002",
+      "category": "TECHNICAL",
+      "description": "问卷发布后，IMA 学习入口可能因共享设置变化而暂时不可访问。",
+      "likelihood": "LOW",
+      "impact": "LOW",
+      "mitigation": "预测试和发布前人工检查链接；学习入口不可用不影响已经完成的研究回答。",
+      "owner_role": "问卷执行负责人"
+    }
+  ],
+  "limitations": [
+    "样本不是概率抽样，不能估计客户总体比例。",
+    "自报阅读完成度可能高估实际材料暴露。",
+    "研究测量材料理解，不测量真实购买行为。",
+    "研究分组仅用于当前项目，不形成正式客户标签。"
+  ],
+  "deliverables": [
+    {
+      "deliverable_type": "InstrumentSpec",
+      "owner_role": "问卷与访谈设计专家",
+      "due_date": "2026-07-29"
+    },
+    {
+      "deliverable_type": "ReviewResult",
+      "owner_role": "研究质量审核专家",
+      "due_date": "2026-07-31"
+    },
+    {
+      "deliverable_type": "FieldworkPackage",
+      "owner_role": "研究执行负责人",
+      "due_date": "2026-08-17"
+    },
+    {
+      "deliverable_type": "InsightPackage",
+      "owner_role": "研究分析专家",
+      "due_date": "2026-08-21"
+    },
+    {
+      "deliverable_type": "ResearchReport",
+      "owner_role": "研究负责人",
+      "due_date": "2026-08-25"
+    }
+  ]
+}

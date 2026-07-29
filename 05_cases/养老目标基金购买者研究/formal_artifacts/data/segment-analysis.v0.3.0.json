@@ -1,0 +1,3288 @@
+{
+  "metadata": {
+    "source_file": "FOF问卷回答_200人.csv",
+    "source_sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+    "analysis_version": "0.3.0",
+    "analysis_date": "2026-07-27",
+    "scope": "200 份养老目标基金购买者问卷的描述性与探索性分群分析",
+    "statistical_method": "二元结果采用 Pearson 卡方检验；效应量为 Cramér's V；50 组预设比较统一采用 Benjamini-Hochberg FDR 校正。期望频数小于 5 的比较不作显著性判断。"
+  },
+  "sample": {
+    "n": 200,
+    "age": [
+      {
+        "label": "18—29 岁",
+        "count": 33,
+        "percent": 16.5
+      },
+      {
+        "label": "30—39 岁",
+        "count": 63,
+        "percent": 31.5
+      },
+      {
+        "label": "40—49 岁",
+        "count": 70,
+        "percent": 35.0
+      },
+      {
+        "label": "50—59 岁",
+        "count": 34,
+        "percent": 17.0
+      }
+    ],
+    "fund_experience": [
+      {
+        "label": "不足 1 年",
+        "count": 27,
+        "percent": 13.5
+      },
+      {
+        "label": "1-3 年",
+        "count": 81,
+        "percent": 40.5
+      },
+      {
+        "label": "4-6 年",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "6 年以上",
+        "count": 52,
+        "percent": 26.0
+      }
+    ],
+    "holding_status": [
+      {
+        "label": "目前仍在持有",
+        "count": 144,
+        "percent": 72.0
+      },
+      {
+        "label": "过去购买过，但目前已经全部赎回",
+        "count": 50,
+        "percent": 25.0
+      },
+      {
+        "label": "不确定",
+        "count": 6,
+        "percent": 3.0
+      }
+    ],
+    "account_type": [
+      {
+        "label": "普通基金账户中的 A/C 等份额",
+        "count": 87,
+        "percent": 43.5
+      },
+      {
+        "label": "个人养老金账户中的 Y 份额",
+        "count": 58,
+        "percent": 29.0
+      },
+      {
+        "label": "两类都买过",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "不确定",
+        "count": 15,
+        "percent": 7.5
+      }
+    ],
+    "purchase_recency": [
+      {
+        "label": "3 年以前",
+        "count": 77,
+        "percent": 38.5
+      },
+      {
+        "label": "记不清",
+        "count": 55,
+        "percent": 27.5
+      },
+      {
+        "label": "1-3 年前",
+        "count": 47,
+        "percent": 23.5
+      },
+      {
+        "label": "1 年以内",
+        "count": 21,
+        "percent": 10.5
+      }
+    ],
+    "gender": {
+      "status": "NOT_COLLECTED",
+      "note": "本轮问卷未设置性别题，无法报告性别结构。"
+    },
+    "region": {
+      "status": "NOT_USED",
+      "note": "本轮问卷未直接询问常住地区；平台 IP 定位属于技术元数据，未作为预先声明的研究变量，因此不进入用户画像。"
+    }
+  },
+  "overall_metrics": [
+    {
+      "metric": "四道核心知识题全部答对",
+      "definition": "Q17-Q20 四题均选择正确答案",
+      "count": 40,
+      "percent": 20.0
+    },
+    {
+      "metric": "两类产品设计思路均答对",
+      "definition": "Q17 与 Q18 均答对",
+      "count": 79,
+      "percent": 39.5
+    },
+    {
+      "metric": "购买前看过下滑曲线",
+      "definition": "Q14 选择“认真看过”或“大致看过”",
+      "count": 88,
+      "percent": 44.0
+    },
+    {
+      "metric": "购买前主动比较下滑曲线",
+      "definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+      "count": 7,
+      "percent": 3.5
+    },
+    {
+      "metric": "购买前信息比较清楚",
+      "definition": "Q9A 评分为 4 或 5",
+      "count": 58,
+      "percent": 29.0
+    },
+    {
+      "metric": "购买后再次查看配置变化",
+      "definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "count": 60,
+      "percent": 30.0
+    },
+    {
+      "metric": "购买后存在信息触达缺口",
+      "definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "count": 119,
+      "percent": 59.5
+    },
+    {
+      "metric": "持有期会主动或事件驱动查看配置",
+      "definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "count": 134,
+      "percent": 67.0
+    },
+    {
+      "metric": "希望了解未来配置变化",
+      "definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "count": 62,
+      "percent": 31.0
+    },
+    {
+      "metric": "希望了解市场下跌时的产品表现",
+      "definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "count": 40,
+      "percent": 20.0
+    }
+  ],
+  "knowledge_score_distribution": [
+    {
+      "score": 0,
+      "count": 9,
+      "percent": 4.5
+    },
+    {
+      "score": 1,
+      "count": 34,
+      "percent": 17.0
+    },
+    {
+      "score": 2,
+      "count": 51,
+      "percent": 25.5
+    },
+    {
+      "score": 3,
+      "count": 66,
+      "percent": 33.0
+    },
+    {
+      "score": 4,
+      "count": 40,
+      "percent": 20.0
+    }
+  ],
+  "subgroup_tests": [
+    {
+      "n": 200,
+      "chi_square": 5.8957,
+      "dof": 3,
+      "p_value": 0.116795,
+      "cramers_v": 0.172,
+      "minimum_expected": 6.6,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 3,
+          "rate_percent": 9.1
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 15,
+          "rate_percent": 23.8
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 18,
+          "rate_percent": 25.7
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 4,
+          "rate_percent": 11.8
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 9.1,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 25.7,
+      "gap_pp": 16.6,
+      "grouping": "年龄",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 6.0055,
+      "dof": 3,
+      "p_value": 0.111343,
+      "cramers_v": 0.173,
+      "minimum_expected": 13.04,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 9,
+          "rate_percent": 27.3
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 26,
+          "rate_percent": 41.3
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 34,
+          "rate_percent": 48.6
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 10,
+          "rate_percent": 29.4
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 27.3,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 48.6,
+      "gap_pp": 21.3,
+      "grouping": "年龄",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.4206,
+      "dof": 3,
+      "p_value": 0.935952,
+      "cramers_v": 0.046,
+      "minimum_expected": 14.52,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 13,
+          "rate_percent": 39.4
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 28,
+          "rate_percent": 44.4
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 31,
+          "rate_percent": 44.3
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 16,
+          "rate_percent": 47.1
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 39.4,
+      "highest_group": "50—59 岁",
+      "highest_rate_percent": 47.1,
+      "gap_pp": 7.7,
+      "grouping": "年龄",
+      "outcome": "购买前看过下滑曲线",
+      "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+      "fdr_q_value": 0.988511,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.6875,
+      "dof": 3,
+      "p_value": 0.196167,
+      "cramers_v": 0.153,
+      "minimum_expected": 1.16,
+      "expected_cells_below_5": 4,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 1,
+          "rate_percent": 3.0
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 1,
+          "rate_percent": 1.6
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 5,
+          "rate_percent": 7.1
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 0,
+          "rate_percent": 0.0
+        }
+      ],
+      "lowest_group": "50—59 岁",
+      "lowest_rate_percent": 0.0,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 7.1,
+      "gap_pp": 7.1,
+      "grouping": "年龄",
+      "outcome": "购买前主动比较下滑曲线",
+      "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 1.7163,
+      "dof": 3,
+      "p_value": 0.633313,
+      "cramers_v": 0.093,
+      "minimum_expected": 9.57,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 11,
+          "rate_percent": 33.3
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 18,
+          "rate_percent": 28.6
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 17,
+          "rate_percent": 24.3
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 12,
+          "rate_percent": 35.3
+        }
+      ],
+      "lowest_group": "40—49 岁",
+      "lowest_rate_percent": 24.3,
+      "highest_group": "50—59 岁",
+      "highest_rate_percent": 35.3,
+      "gap_pp": 11.0,
+      "grouping": "年龄",
+      "outcome": "购买前信息比较清楚",
+      "outcome_definition": "Q9A 评分为 4 或 5",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.0612,
+      "dof": 3,
+      "p_value": 0.559796,
+      "cramers_v": 0.102,
+      "minimum_expected": 9.9,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 8,
+          "rate_percent": 24.2
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 23,
+          "rate_percent": 36.5
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 20,
+          "rate_percent": 28.6
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 9,
+          "rate_percent": 26.5
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 24.2,
+      "highest_group": "30—39 岁",
+      "highest_rate_percent": 36.5,
+      "gap_pp": 12.3,
+      "grouping": "年龄",
+      "outcome": "购买后再次查看配置变化",
+      "outcome_definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.0837,
+      "dof": 3,
+      "p_value": 0.378894,
+      "cramers_v": 0.124,
+      "minimum_expected": 13.37,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 20,
+          "rate_percent": 60.6
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 33,
+          "rate_percent": 52.4
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 42,
+          "rate_percent": 60.0
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 24,
+          "rate_percent": 70.6
+        }
+      ],
+      "lowest_group": "30—39 岁",
+      "lowest_rate_percent": 52.4,
+      "highest_group": "50—59 岁",
+      "highest_rate_percent": 70.6,
+      "gap_pp": 18.2,
+      "grouping": "年龄",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.789363,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.0061,
+      "dof": 3,
+      "p_value": 0.260806,
+      "cramers_v": 0.142,
+      "minimum_expected": 10.89,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 20,
+          "rate_percent": 60.6
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 48,
+          "rate_percent": 76.2
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 43,
+          "rate_percent": 61.4
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 23,
+          "rate_percent": 67.6
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 60.6,
+      "highest_group": "30—39 岁",
+      "highest_rate_percent": 76.2,
+      "gap_pp": 15.6,
+      "grouping": "年龄",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.6229,
+      "dof": 3,
+      "p_value": 0.131469,
+      "cramers_v": 0.168,
+      "minimum_expected": 10.23,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 10,
+          "rate_percent": 30.3
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 21,
+          "rate_percent": 33.3
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 26,
+          "rate_percent": 37.1
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 5,
+          "rate_percent": 14.7
+        }
+      ],
+      "lowest_group": "50—59 岁",
+      "lowest_rate_percent": 14.7,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 37.1,
+      "gap_pp": 22.4,
+      "grouping": "年龄",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.924,
+      "dof": 3,
+      "p_value": 0.403485,
+      "cramers_v": 0.121,
+      "minimum_expected": 6.6,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 5,
+          "rate_percent": 15.2
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 14,
+          "rate_percent": 22.2
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 17,
+          "rate_percent": 24.3
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 4,
+          "rate_percent": 11.8
+        }
+      ],
+      "lowest_group": "50—59 岁",
+      "lowest_rate_percent": 11.8,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 24.3,
+      "gap_pp": 12.5,
+      "grouping": "年龄",
+      "outcome": "希望了解市场下跌时的产品表现",
+      "outcome_definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "fdr_q_value": 0.806971,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.1489,
+      "dof": 3,
+      "p_value": 0.54208,
+      "cramers_v": 0.104,
+      "minimum_expected": 5.4,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 3,
+          "rate_percent": 11.1
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 16,
+          "rate_percent": 19.8
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 8,
+          "rate_percent": 20.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 13,
+          "rate_percent": 25.0
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 11.1,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 25.0,
+      "gap_pp": 13.9,
+      "grouping": "基金投资经验",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.6522,
+      "dof": 3,
+      "p_value": 0.199109,
+      "cramers_v": 0.153,
+      "minimum_expected": 10.66,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 7,
+          "rate_percent": 25.9
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 29,
+          "rate_percent": 35.8
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 18,
+          "rate_percent": 45.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 25,
+          "rate_percent": 48.1
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 25.9,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 48.1,
+      "gap_pp": 22.2,
+      "grouping": "基金投资经验",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.848,
+      "dof": 3,
+      "p_value": 0.837961,
+      "cramers_v": 0.065,
+      "minimum_expected": 11.88,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 14,
+          "rate_percent": 51.9
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 34,
+          "rate_percent": 42.0
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 17,
+          "rate_percent": 42.5
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 23,
+          "rate_percent": 44.2
+        }
+      ],
+      "lowest_group": "1-3 年",
+      "lowest_rate_percent": 42.0,
+      "highest_group": "不足 1 年",
+      "highest_rate_percent": 51.9,
+      "gap_pp": 9.9,
+      "grouping": "基金投资经验",
+      "outcome": "购买前看过下滑曲线",
+      "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 8.0863,
+      "dof": 3,
+      "p_value": 0.044261,
+      "cramers_v": 0.201,
+      "minimum_expected": 0.94,
+      "expected_cells_below_5": 4,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 0,
+          "rate_percent": 0.0
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 1,
+          "rate_percent": 1.2
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 1,
+          "rate_percent": 2.5
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 5,
+          "rate_percent": 9.6
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 0.0,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 9.6,
+      "gap_pp": 9.6,
+      "grouping": "基金投资经验",
+      "outcome": "购买前主动比较下滑曲线",
+      "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 1.3115,
+      "dof": 3,
+      "p_value": 0.726415,
+      "cramers_v": 0.081,
+      "minimum_expected": 7.83,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 7,
+          "rate_percent": 25.9
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 21,
+          "rate_percent": 25.9
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 12,
+          "rate_percent": 30.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 18,
+          "rate_percent": 34.6
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 25.9,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 34.6,
+      "gap_pp": 8.7,
+      "grouping": "基金投资经验",
+      "outcome": "购买前信息比较清楚",
+      "outcome_definition": "Q9A 评分为 4 或 5",
+      "fdr_q_value": 0.955809,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.6994,
+      "dof": 3,
+      "p_value": 0.295806,
+      "cramers_v": 0.136,
+      "minimum_expected": 8.1,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 10,
+          "rate_percent": 37.0
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 23,
+          "rate_percent": 28.4
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 8,
+          "rate_percent": 20.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 19,
+          "rate_percent": 36.5
+        }
+      ],
+      "lowest_group": "4-6 年",
+      "lowest_rate_percent": 20.0,
+      "highest_group": "不足 1 年",
+      "highest_rate_percent": 37.0,
+      "gap_pp": 17.0,
+      "grouping": "基金投资经验",
+      "outcome": "购买后再次查看配置变化",
+      "outcome_definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "fdr_q_value": 0.736484,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.2233,
+      "dof": 3,
+      "p_value": 0.15616,
+      "cramers_v": 0.162,
+      "minimum_expected": 10.94,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 15,
+          "rate_percent": 55.6
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 51,
+          "rate_percent": 63.0
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 28,
+          "rate_percent": 70.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 25,
+          "rate_percent": 48.1
+        }
+      ],
+      "lowest_group": "6 年以上",
+      "lowest_rate_percent": 48.1,
+      "highest_group": "4-6 年",
+      "highest_rate_percent": 70.0,
+      "gap_pp": 21.9,
+      "grouping": "基金投资经验",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.4132,
+      "dof": 3,
+      "p_value": 0.491184,
+      "cramers_v": 0.11,
+      "minimum_expected": 8.91,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 18,
+          "rate_percent": 66.7
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 58,
+          "rate_percent": 71.6
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 23,
+          "rate_percent": 57.5
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 35,
+          "rate_percent": 67.3
+        }
+      ],
+      "lowest_group": "4-6 年",
+      "lowest_rate_percent": 57.5,
+      "highest_group": "1-3 年",
+      "highest_rate_percent": 71.6,
+      "gap_pp": 14.1,
+      "grouping": "基金投资经验",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.4954,
+      "dof": 3,
+      "p_value": 0.212697,
+      "cramers_v": 0.15,
+      "minimum_expected": 8.37,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 11,
+          "rate_percent": 40.7
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 23,
+          "rate_percent": 28.4
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 16,
+          "rate_percent": 40.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 12,
+          "rate_percent": 23.1
+        }
+      ],
+      "lowest_group": "6 年以上",
+      "lowest_rate_percent": 23.1,
+      "highest_group": "不足 1 年",
+      "highest_rate_percent": 40.7,
+      "gap_pp": 17.6,
+      "grouping": "基金投资经验",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.7645,
+      "dof": 3,
+      "p_value": 0.857942,
+      "cramers_v": 0.062,
+      "minimum_expected": 5.4,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 4,
+          "rate_percent": 14.8
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 16,
+          "rate_percent": 19.8
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 8,
+          "rate_percent": 20.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 12,
+          "rate_percent": 23.1
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 14.8,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 23.1,
+      "gap_pp": 8.3,
+      "grouping": "基金投资经验",
+      "outcome": "希望了解市场下跌时的产品表现",
+      "outcome_definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.0157,
+      "dof": 1,
+      "p_value": 0.900139,
+      "cramers_v": 0.009,
+      "minimum_expected": 10.31,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 30,
+          "rate_percent": 20.8
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 10,
+          "rate_percent": 20.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 20.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 20.8,
+      "gap_pp": 0.8,
+      "grouping": "持有状态",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.978412,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.9113,
+      "dof": 1,
+      "p_value": 0.339764,
+      "cramers_v": 0.069,
+      "minimum_expected": 19.85,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 60,
+          "rate_percent": 41.7
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 17,
+          "rate_percent": 34.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 34.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 41.7,
+      "gap_pp": 7.7,
+      "grouping": "持有状态",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.772192,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.0761,
+      "dof": 1,
+      "p_value": 0.782607,
+      "cramers_v": 0.02,
+      "minimum_expected": 22.16,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 63,
+          "rate_percent": 43.8
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 23,
+          "rate_percent": 46.0
+        }
+      ],
+      "lowest_group": "目前仍在持有",
+      "lowest_rate_percent": 43.8,
+      "highest_group": "过去购买过，但目前已经全部赎回",
+      "highest_rate_percent": 46.0,
+      "gap_pp": 2.2,
+      "grouping": "持有状态",
+      "outcome": "购买前看过下滑曲线",
+      "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 3.7355,
+      "dof": 1,
+      "p_value": 0.053268,
+      "cramers_v": 0.139,
+      "minimum_expected": 1.8,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 3,
+          "rate_percent": 2.1
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 4,
+          "rate_percent": 8.0
+        }
+      ],
+      "lowest_group": "目前仍在持有",
+      "lowest_rate_percent": 2.1,
+      "highest_group": "过去购买过，但目前已经全部赎回",
+      "highest_rate_percent": 8.0,
+      "gap_pp": 5.9,
+      "grouping": "持有状态",
+      "outcome": "购买前主动比较下滑曲线",
+      "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.2695,
+      "dof": 1,
+      "p_value": 0.603695,
+      "cramers_v": 0.037,
+      "minimum_expected": 14.43,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 43,
+          "rate_percent": 29.9
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 13,
+          "rate_percent": 26.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 26.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 29.9,
+      "gap_pp": 3.9,
+      "grouping": "持有状态",
+      "outcome": "购买前信息比较清楚",
+      "outcome_definition": "Q9A 评分为 4 或 5",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.0422,
+      "dof": 1,
+      "p_value": 0.837262,
+      "cramers_v": 0.015,
+      "minimum_expected": 14.43,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 41,
+          "rate_percent": 28.5
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 15,
+          "rate_percent": 30.0
+        }
+      ],
+      "lowest_group": "目前仍在持有",
+      "lowest_rate_percent": 28.5,
+      "highest_group": "过去购买过，但目前已经全部赎回",
+      "highest_rate_percent": 30.0,
+      "gap_pp": 1.5,
+      "grouping": "持有状态",
+      "outcome": "购买后再次查看配置变化",
+      "outcome_definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.8101,
+      "dof": 1,
+      "p_value": 0.368101,
+      "cramers_v": 0.065,
+      "minimum_expected": 19.33,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 91,
+          "rate_percent": 63.2
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 28,
+          "rate_percent": 56.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 56.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 63.2,
+      "gap_pp": 7.2,
+      "grouping": "持有状态",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.789363,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 3.0723,
+      "dof": 1,
+      "p_value": 0.079639,
+      "cramers_v": 0.126,
+      "minimum_expected": 15.98,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 93,
+          "rate_percent": 64.6
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 39,
+          "rate_percent": 78.0
+        }
+      ],
+      "lowest_group": "目前仍在持有",
+      "lowest_rate_percent": 64.6,
+      "highest_group": "过去购买过，但目前已经全部赎回",
+      "highest_rate_percent": 78.0,
+      "gap_pp": 13.4,
+      "grouping": "持有状态",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.0271,
+      "dof": 1,
+      "p_value": 0.869134,
+      "cramers_v": 0.012,
+      "minimum_expected": 15.46,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 45,
+          "rate_percent": 31.2
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 15,
+          "rate_percent": 30.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 30.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 31.2,
+      "gap_pp": 1.2,
+      "grouping": "持有状态",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.2489,
+      "dof": 1,
+      "p_value": 0.617864,
+      "cramers_v": 0.036,
+      "minimum_expected": 9.79,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 27,
+          "rate_percent": 18.8
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 11,
+          "rate_percent": 22.0
+        }
+      ],
+      "lowest_group": "目前仍在持有",
+      "lowest_rate_percent": 18.8,
+      "highest_group": "过去购买过，但目前已经全部赎回",
+      "highest_rate_percent": 22.0,
+      "gap_pp": 3.2,
+      "grouping": "持有状态",
+      "outcome": "希望了解市场下跌时的产品表现",
+      "outcome_definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.7471,
+      "dof": 3,
+      "p_value": 0.124583,
+      "cramers_v": 0.17,
+      "minimum_expected": 3.0,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 8,
+          "rate_percent": 13.8
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 19,
+          "rate_percent": 21.8
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 12,
+          "rate_percent": 30.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 1,
+          "rate_percent": 6.7
+        }
+      ],
+      "lowest_group": "不确定",
+      "lowest_rate_percent": 6.7,
+      "highest_group": "两类都买过",
+      "highest_rate_percent": 30.0,
+      "gap_pp": 23.3,
+      "grouping": "购买账户/份额",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 1.4593,
+      "dof": 3,
+      "p_value": 0.691696,
+      "cramers_v": 0.085,
+      "minimum_expected": 5.92,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 22,
+          "rate_percent": 37.9
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 33,
+          "rate_percent": 37.9
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 19,
+          "rate_percent": 47.5
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 5,
+          "rate_percent": 33.3
+        }
+      ],
+      "lowest_group": "不确定",
+      "lowest_rate_percent": 33.3,
+      "highest_group": "两类都买过",
+      "highest_rate_percent": 47.5,
+      "gap_pp": 14.2,
+      "grouping": "购买账户/份额",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.934724,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.2094,
+      "dof": 3,
+      "p_value": 0.239727,
+      "cramers_v": 0.145,
+      "minimum_expected": 6.6,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 27,
+          "rate_percent": 46.6
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 36,
+          "rate_percent": 41.4
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 15,
+          "rate_percent": 37.5
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 10,
+          "rate_percent": 66.7
+        }
+      ],
+      "lowest_group": "两类都买过",
+      "lowest_rate_percent": 37.5,
+      "highest_group": "不确定",
+      "highest_rate_percent": 66.7,
+      "gap_pp": 29.2,
+      "grouping": "购买账户/份额",
+      "outcome": "购买前看过下滑曲线",
+      "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 1.0839,
+      "dof": 3,
+      "p_value": 0.780959,
+      "cramers_v": 0.074,
+      "minimum_expected": 0.53,
+      "expected_cells_below_5": 4,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 2,
+          "rate_percent": 3.4
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 2,
+          "rate_percent": 2.3
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 2,
+          "rate_percent": 5.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 1,
+          "rate_percent": 6.7
+        }
+      ],
+      "lowest_group": "普通基金账户中的 A/C 等份额",
+      "lowest_rate_percent": 2.3,
+      "highest_group": "不确定",
+      "highest_rate_percent": 6.7,
+      "gap_pp": 4.4,
+      "grouping": "购买账户/份额",
+      "outcome": "购买前主动比较下滑曲线",
+      "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 1.7507,
+      "dof": 3,
+      "p_value": 0.625731,
+      "cramers_v": 0.094,
+      "minimum_expected": 4.35,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 20,
+          "rate_percent": 34.5
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 25,
+          "rate_percent": 28.7
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 10,
+          "rate_percent": 25.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 3,
+          "rate_percent": 20.0
+        }
+      ],
+      "lowest_group": "不确定",
+      "lowest_rate_percent": 20.0,
+      "highest_group": "个人养老金账户中的 Y 份额",
+      "highest_rate_percent": 34.5,
+      "gap_pp": 14.5,
+      "grouping": "购买账户/份额",
+      "outcome": "购买前信息比较清楚",
+      "outcome_definition": "Q9A 评分为 4 或 5",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.465,
+      "dof": 3,
+      "p_value": 0.215436,
+      "cramers_v": 0.149,
+      "minimum_expected": 4.5,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 14,
+          "rate_percent": 24.1
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 29,
+          "rate_percent": 33.3
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 15,
+          "rate_percent": 37.5
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 2,
+          "rate_percent": 13.3
+        }
+      ],
+      "lowest_group": "不确定",
+      "lowest_rate_percent": 13.3,
+      "highest_group": "两类都买过",
+      "highest_rate_percent": 37.5,
+      "gap_pp": 24.2,
+      "grouping": "购买账户/份额",
+      "outcome": "购买后再次查看配置变化",
+      "outcome_definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.0718,
+      "dof": 3,
+      "p_value": 0.253813,
+      "cramers_v": 0.143,
+      "minimum_expected": 6.08,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 37,
+          "rate_percent": 63.8
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 48,
+          "rate_percent": 55.2
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 22,
+          "rate_percent": 55.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 12,
+          "rate_percent": 80.0
+        }
+      ],
+      "lowest_group": "两类都买过",
+      "lowest_rate_percent": 55.0,
+      "highest_group": "不确定",
+      "highest_rate_percent": 80.0,
+      "gap_pp": 25.0,
+      "grouping": "购买账户/份额",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.1788,
+      "dof": 3,
+      "p_value": 0.980932,
+      "cramers_v": 0.03,
+      "minimum_expected": 4.95,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 40,
+          "rate_percent": 69.0
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 58,
+          "rate_percent": 66.7
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 26,
+          "rate_percent": 65.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 10,
+          "rate_percent": 66.7
+        }
+      ],
+      "lowest_group": "两类都买过",
+      "lowest_rate_percent": 65.0,
+      "highest_group": "个人养老金账户中的 Y 份额",
+      "highest_rate_percent": 69.0,
+      "gap_pp": 4.0,
+      "grouping": "购买账户/份额",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.999037,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 1.7389,
+      "dof": 3,
+      "p_value": 0.628317,
+      "cramers_v": 0.093,
+      "minimum_expected": 4.65,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 15,
+          "rate_percent": 25.9
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 31,
+          "rate_percent": 35.6
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 12,
+          "rate_percent": 30.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 4,
+          "rate_percent": 26.7
+        }
+      ],
+      "lowest_group": "个人养老金账户中的 Y 份额",
+      "lowest_rate_percent": 25.9,
+      "highest_group": "普通基金账户中的 A/C 等份额",
+      "highest_rate_percent": 35.6,
+      "gap_pp": 9.7,
+      "grouping": "购买账户/份额",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.1667,
+      "dof": 3,
+      "p_value": 0.24402,
+      "cramers_v": 0.144,
+      "minimum_expected": 3.0,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 16,
+          "rate_percent": 27.6
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 15,
+          "rate_percent": 17.2
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 8,
+          "rate_percent": 20.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 1,
+          "rate_percent": 6.7
+        }
+      ],
+      "lowest_group": "不确定",
+      "lowest_rate_percent": 6.7,
+      "highest_group": "个人养老金账户中的 Y 份额",
+      "highest_rate_percent": 27.6,
+      "gap_pp": 20.9,
+      "grouping": "购买账户/份额",
+      "outcome": "希望了解市场下跌时的产品表现",
+      "outcome_definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.3635,
+      "dof": 3,
+      "p_value": 0.500474,
+      "cramers_v": 0.109,
+      "minimum_expected": 4.2,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 2,
+          "rate_percent": 9.5
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 8,
+          "rate_percent": 17.0
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 18,
+          "rate_percent": 23.4
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 12,
+          "rate_percent": 21.8
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 9.5,
+      "highest_group": "3 年以前",
+      "highest_rate_percent": 23.4,
+      "gap_pp": 13.9,
+      "grouping": "最近购买时间",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.1133,
+      "dof": 3,
+      "p_value": 0.163686,
+      "cramers_v": 0.16,
+      "minimum_expected": 8.29,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 5,
+          "rate_percent": 23.8
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 18,
+          "rate_percent": 38.3
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 37,
+          "rate_percent": 48.1
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 19,
+          "rate_percent": 34.5
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 23.8,
+      "highest_group": "3 年以前",
+      "highest_rate_percent": 48.1,
+      "gap_pp": 24.3,
+      "grouping": "最近购买时间",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.0237,
+      "dof": 3,
+      "p_value": 0.999037,
+      "cramers_v": 0.011,
+      "minimum_expected": 9.24,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 9,
+          "rate_percent": 42.9
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 21,
+          "rate_percent": 44.7
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 34,
+          "rate_percent": 44.2
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 24,
+          "rate_percent": 43.6
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 42.9,
+      "highest_group": "1-3 年前",
+      "highest_rate_percent": 44.7,
+      "gap_pp": 1.8,
+      "grouping": "最近购买时间",
+      "outcome": "购买前看过下滑曲线",
+      "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+      "fdr_q_value": 0.999037,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 7.2186,
+      "dof": 3,
+      "p_value": 0.065246,
+      "cramers_v": 0.19,
+      "minimum_expected": 0.73,
+      "expected_cells_below_5": 4,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 0,
+          "rate_percent": 0.0
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 1,
+          "rate_percent": 2.1
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 6,
+          "rate_percent": 7.8
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 0,
+          "rate_percent": 0.0
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 0.0,
+      "highest_group": "3 年以前",
+      "highest_rate_percent": 7.8,
+      "gap_pp": 7.8,
+      "grouping": "最近购买时间",
+      "outcome": "购买前主动比较下滑曲线",
+      "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.8448,
+      "dof": 3,
+      "p_value": 0.278719,
+      "cramers_v": 0.139,
+      "minimum_expected": 6.09,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 4,
+          "rate_percent": 19.0
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 10,
+          "rate_percent": 21.3
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 27,
+          "rate_percent": 35.1
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 17,
+          "rate_percent": 30.9
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 19.0,
+      "highest_group": "3 年以前",
+      "highest_rate_percent": 35.1,
+      "gap_pp": 16.1,
+      "grouping": "最近购买时间",
+      "outcome": "购买前信息比较清楚",
+      "outcome_definition": "Q9A 评分为 4 或 5",
+      "fdr_q_value": 0.733471,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.357,
+      "dof": 3,
+      "p_value": 0.94897,
+      "cramers_v": 0.042,
+      "minimum_expected": 6.3,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 7,
+          "rate_percent": 33.3
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 14,
+          "rate_percent": 29.8
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 24,
+          "rate_percent": 31.2
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 15,
+          "rate_percent": 27.3
+        }
+      ],
+      "lowest_group": "记不清",
+      "lowest_rate_percent": 27.3,
+      "highest_group": "1 年以内",
+      "highest_rate_percent": 33.3,
+      "gap_pp": 6.0,
+      "grouping": "最近购买时间",
+      "outcome": "购买后再次查看配置变化",
+      "outcome_definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "fdr_q_value": 0.988511,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 0.6764,
+      "dof": 3,
+      "p_value": 0.878752,
+      "cramers_v": 0.058,
+      "minimum_expected": 8.51,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 13,
+          "rate_percent": 61.9
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 30,
+          "rate_percent": 63.8
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 45,
+          "rate_percent": 58.4
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 31,
+          "rate_percent": 56.4
+        }
+      ],
+      "lowest_group": "记不清",
+      "lowest_rate_percent": 56.4,
+      "highest_group": "1-3 年前",
+      "highest_rate_percent": 63.8,
+      "gap_pp": 7.4,
+      "grouping": "最近购买时间",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.976391,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.039,
+      "dof": 3,
+      "p_value": 0.564355,
+      "cramers_v": 0.101,
+      "minimum_expected": 6.93,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 13,
+          "rate_percent": 61.9
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 33,
+          "rate_percent": 70.2
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 48,
+          "rate_percent": 62.3
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 40,
+          "rate_percent": 72.7
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 61.9,
+      "highest_group": "记不清",
+      "highest_rate_percent": 72.7,
+      "gap_pp": 10.8,
+      "grouping": "最近购买时间",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.2809,
+      "dof": 3,
+      "p_value": 0.516198,
+      "cramers_v": 0.107,
+      "minimum_expected": 6.51,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 9,
+          "rate_percent": 42.9
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 14,
+          "rate_percent": 29.8
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 25,
+          "rate_percent": 32.5
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 14,
+          "rate_percent": 25.5
+        }
+      ],
+      "lowest_group": "记不清",
+      "lowest_rate_percent": 25.5,
+      "highest_group": "1 年以内",
+      "highest_rate_percent": 42.9,
+      "gap_pp": 17.4,
+      "grouping": "最近购买时间",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.5896,
+      "dof": 3,
+      "p_value": 0.309323,
+      "cramers_v": 0.134,
+      "minimum_expected": 4.2,
+      "expected_cells_below_5": 1,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 4,
+          "rate_percent": 19.0
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 5,
+          "rate_percent": 10.6
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 18,
+          "rate_percent": 23.4
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 13,
+          "rate_percent": 23.6
+        }
+      ],
+      "lowest_group": "1-3 年前",
+      "lowest_rate_percent": 10.6,
+      "highest_group": "记不清",
+      "highest_rate_percent": 23.6,
+      "gap_pp": 13.0,
+      "grouping": "最近购买时间",
+      "outcome": "希望了解市场下跌时的产品表现",
+      "outcome_definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "fdr_q_value": 0.736484,
+      "reliable_asymptotic_test": false,
+      "statistical_label": "仅作描述"
+    }
+  ],
+  "top_reliable_subgroup_tests": [
+    {
+      "n": 200,
+      "chi_square": 6.0055,
+      "dof": 3,
+      "p_value": 0.111343,
+      "cramers_v": 0.173,
+      "minimum_expected": 13.04,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 9,
+          "rate_percent": 27.3
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 26,
+          "rate_percent": 41.3
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 34,
+          "rate_percent": 48.6
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 10,
+          "rate_percent": 29.4
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 27.3,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 48.6,
+      "gap_pp": 21.3,
+      "grouping": "年龄",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.8957,
+      "dof": 3,
+      "p_value": 0.116795,
+      "cramers_v": 0.172,
+      "minimum_expected": 6.6,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 3,
+          "rate_percent": 9.1
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 15,
+          "rate_percent": 23.8
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 18,
+          "rate_percent": 25.7
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 4,
+          "rate_percent": 11.8
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 9.1,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 25.7,
+      "gap_pp": 16.6,
+      "grouping": "年龄",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.6229,
+      "dof": 3,
+      "p_value": 0.131469,
+      "cramers_v": 0.168,
+      "minimum_expected": 10.23,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 10,
+          "rate_percent": 30.3
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 21,
+          "rate_percent": 33.3
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 26,
+          "rate_percent": 37.1
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 5,
+          "rate_percent": 14.7
+        }
+      ],
+      "lowest_group": "50—59 岁",
+      "lowest_rate_percent": 14.7,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 37.1,
+      "gap_pp": 22.4,
+      "grouping": "年龄",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.2233,
+      "dof": 3,
+      "p_value": 0.15616,
+      "cramers_v": 0.162,
+      "minimum_expected": 10.94,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 15,
+          "rate_percent": 55.6
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 51,
+          "rate_percent": 63.0
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 28,
+          "rate_percent": 70.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 25,
+          "rate_percent": 48.1
+        }
+      ],
+      "lowest_group": "6 年以上",
+      "lowest_rate_percent": 48.1,
+      "highest_group": "4-6 年",
+      "highest_rate_percent": 70.0,
+      "gap_pp": 21.9,
+      "grouping": "基金投资经验",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 5.1133,
+      "dof": 3,
+      "p_value": 0.163686,
+      "cramers_v": 0.16,
+      "minimum_expected": 8.29,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 5,
+          "rate_percent": 23.8
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 18,
+          "rate_percent": 38.3
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 37,
+          "rate_percent": 48.1
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 19,
+          "rate_percent": 34.5
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 23.8,
+      "highest_group": "3 年以前",
+      "highest_rate_percent": 48.1,
+      "gap_pp": 24.3,
+      "grouping": "最近购买时间",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.6522,
+      "dof": 3,
+      "p_value": 0.199109,
+      "cramers_v": 0.153,
+      "minimum_expected": 10.66,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 7,
+          "rate_percent": 25.9
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 29,
+          "rate_percent": 35.8
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 18,
+          "rate_percent": 45.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 25,
+          "rate_percent": 48.1
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 25.9,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 48.1,
+      "gap_pp": 22.2,
+      "grouping": "基金投资经验",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.4954,
+      "dof": 3,
+      "p_value": 0.212697,
+      "cramers_v": 0.15,
+      "minimum_expected": 8.37,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 11,
+          "rate_percent": 40.7
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 23,
+          "rate_percent": 28.4
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 16,
+          "rate_percent": 40.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 12,
+          "rate_percent": 23.1
+        }
+      ],
+      "lowest_group": "6 年以上",
+      "lowest_rate_percent": 23.1,
+      "highest_group": "不足 1 年",
+      "highest_rate_percent": 40.7,
+      "gap_pp": 17.6,
+      "grouping": "基金投资经验",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.2094,
+      "dof": 3,
+      "p_value": 0.239727,
+      "cramers_v": 0.145,
+      "minimum_expected": 6.6,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 27,
+          "rate_percent": 46.6
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 36,
+          "rate_percent": 41.4
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 15,
+          "rate_percent": 37.5
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 10,
+          "rate_percent": 66.7
+        }
+      ],
+      "lowest_group": "两类都买过",
+      "lowest_rate_percent": 37.5,
+      "highest_group": "不确定",
+      "highest_rate_percent": 66.7,
+      "gap_pp": 29.2,
+      "grouping": "购买账户/份额",
+      "outcome": "购买前看过下滑曲线",
+      "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.0718,
+      "dof": 3,
+      "p_value": 0.253813,
+      "cramers_v": 0.143,
+      "minimum_expected": 6.08,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "个人养老金账户中的 Y 份额",
+          "n": 58,
+          "yes": 37,
+          "rate_percent": 63.8
+        },
+        {
+          "group": "普通基金账户中的 A/C 等份额",
+          "n": 87,
+          "yes": 48,
+          "rate_percent": 55.2
+        },
+        {
+          "group": "两类都买过",
+          "n": 40,
+          "yes": 22,
+          "rate_percent": 55.0
+        },
+        {
+          "group": "不确定",
+          "n": 15,
+          "yes": 12,
+          "rate_percent": 80.0
+        }
+      ],
+      "lowest_group": "两类都买过",
+      "lowest_rate_percent": 55.0,
+      "highest_group": "不确定",
+      "highest_rate_percent": 80.0,
+      "gap_pp": 25.0,
+      "grouping": "购买账户/份额",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 4.0061,
+      "dof": 3,
+      "p_value": 0.260806,
+      "cramers_v": 0.142,
+      "minimum_expected": 10.89,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 20,
+          "rate_percent": 60.6
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 48,
+          "rate_percent": 76.2
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 43,
+          "rate_percent": 61.4
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 23,
+          "rate_percent": 67.6
+        }
+      ],
+      "lowest_group": "18—29 岁",
+      "lowest_rate_percent": 60.6,
+      "highest_group": "30—39 岁",
+      "highest_rate_percent": 76.2,
+      "gap_pp": 15.6,
+      "grouping": "年龄",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 3.0723,
+      "dof": 1,
+      "p_value": 0.079639,
+      "cramers_v": 0.126,
+      "minimum_expected": 15.98,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 93,
+          "rate_percent": 64.6
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 39,
+          "rate_percent": 78.0
+        }
+      ],
+      "lowest_group": "目前仍在持有",
+      "lowest_rate_percent": 64.6,
+      "highest_group": "过去购买过，但目前已经全部赎回",
+      "highest_rate_percent": 78.0,
+      "gap_pp": 13.4,
+      "grouping": "持有状态",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.72446,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.8448,
+      "dof": 3,
+      "p_value": 0.278719,
+      "cramers_v": 0.139,
+      "minimum_expected": 6.09,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 4,
+          "rate_percent": 19.0
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 10,
+          "rate_percent": 21.3
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 27,
+          "rate_percent": 35.1
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 17,
+          "rate_percent": 30.9
+        }
+      ],
+      "lowest_group": "1 年以内",
+      "lowest_rate_percent": 19.0,
+      "highest_group": "3 年以前",
+      "highest_rate_percent": 35.1,
+      "gap_pp": 16.1,
+      "grouping": "最近购买时间",
+      "outcome": "购买前信息比较清楚",
+      "outcome_definition": "Q9A 评分为 4 或 5",
+      "fdr_q_value": 0.733471,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.6994,
+      "dof": 3,
+      "p_value": 0.295806,
+      "cramers_v": 0.136,
+      "minimum_expected": 8.1,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 10,
+          "rate_percent": 37.0
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 23,
+          "rate_percent": 28.4
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 8,
+          "rate_percent": 20.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 19,
+          "rate_percent": 36.5
+        }
+      ],
+      "lowest_group": "4-6 年",
+      "lowest_rate_percent": 20.0,
+      "highest_group": "不足 1 年",
+      "highest_rate_percent": 37.0,
+      "gap_pp": 17.0,
+      "grouping": "基金投资经验",
+      "outcome": "购买后再次查看配置变化",
+      "outcome_definition": "Q15 选择“查看过一次”或“查看过多次”",
+      "fdr_q_value": 0.736484,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.9113,
+      "dof": 1,
+      "p_value": 0.339764,
+      "cramers_v": 0.069,
+      "minimum_expected": 19.85,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 60,
+          "rate_percent": 41.7
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 17,
+          "rate_percent": 34.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 34.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 41.7,
+      "gap_pp": 7.7,
+      "grouping": "持有状态",
+      "outcome": "两类产品设计思路均答对",
+      "outcome_definition": "Q17 与 Q18 均答对",
+      "fdr_q_value": 0.772192,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 3.0837,
+      "dof": 3,
+      "p_value": 0.378894,
+      "cramers_v": 0.124,
+      "minimum_expected": 13.37,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 20,
+          "rate_percent": 60.6
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 33,
+          "rate_percent": 52.4
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 42,
+          "rate_percent": 60.0
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 24,
+          "rate_percent": 70.6
+        }
+      ],
+      "lowest_group": "30—39 岁",
+      "lowest_rate_percent": 52.4,
+      "highest_group": "50—59 岁",
+      "highest_rate_percent": 70.6,
+      "gap_pp": 18.2,
+      "grouping": "年龄",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.789363,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 194,
+      "chi_square": 0.8101,
+      "dof": 1,
+      "p_value": 0.368101,
+      "cramers_v": 0.065,
+      "minimum_expected": 19.33,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "目前仍在持有",
+          "n": 144,
+          "yes": 91,
+          "rate_percent": 63.2
+        },
+        {
+          "group": "过去购买过，但目前已经全部赎回",
+          "n": 50,
+          "yes": 28,
+          "rate_percent": 56.0
+        }
+      ],
+      "lowest_group": "过去购买过，但目前已经全部赎回",
+      "lowest_rate_percent": 56.0,
+      "highest_group": "目前仍在持有",
+      "highest_rate_percent": 63.2,
+      "gap_pp": 7.2,
+      "grouping": "持有状态",
+      "outcome": "购买后存在信息触达缺口",
+      "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+      "fdr_q_value": 0.789363,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.924,
+      "dof": 3,
+      "p_value": 0.403485,
+      "cramers_v": 0.121,
+      "minimum_expected": 6.6,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "18—29 岁",
+          "n": 33,
+          "yes": 5,
+          "rate_percent": 15.2
+        },
+        {
+          "group": "30—39 岁",
+          "n": 63,
+          "yes": 14,
+          "rate_percent": 22.2
+        },
+        {
+          "group": "40—49 岁",
+          "n": 70,
+          "yes": 17,
+          "rate_percent": 24.3
+        },
+        {
+          "group": "50—59 岁",
+          "n": 34,
+          "yes": 4,
+          "rate_percent": 11.8
+        }
+      ],
+      "lowest_group": "50—59 岁",
+      "lowest_rate_percent": 11.8,
+      "highest_group": "40—49 岁",
+      "highest_rate_percent": 24.3,
+      "gap_pp": 12.5,
+      "grouping": "年龄",
+      "outcome": "希望了解市场下跌时的产品表现",
+      "outcome_definition": "Q26 勾选“市场下跌时怎样理解产品表现”",
+      "fdr_q_value": 0.806971,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.4132,
+      "dof": 3,
+      "p_value": 0.491184,
+      "cramers_v": 0.11,
+      "minimum_expected": 8.91,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 18,
+          "rate_percent": 66.7
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 58,
+          "rate_percent": 71.6
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 23,
+          "rate_percent": 57.5
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 35,
+          "rate_percent": 67.3
+        }
+      ],
+      "lowest_group": "4-6 年",
+      "lowest_rate_percent": 57.5,
+      "highest_group": "1-3 年",
+      "highest_rate_percent": 71.6,
+      "gap_pp": 14.1,
+      "grouping": "基金投资经验",
+      "outcome": "持有期会主动或事件驱动查看配置",
+      "outcome_definition": "Q24 选择定期、偶尔或市场波动时查看",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.2809,
+      "dof": 3,
+      "p_value": 0.516198,
+      "cramers_v": 0.107,
+      "minimum_expected": 6.51,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "1 年以内",
+          "n": 21,
+          "yes": 9,
+          "rate_percent": 42.9
+        },
+        {
+          "group": "1-3 年前",
+          "n": 47,
+          "yes": 14,
+          "rate_percent": 29.8
+        },
+        {
+          "group": "3 年以前",
+          "n": 77,
+          "yes": 25,
+          "rate_percent": 32.5
+        },
+        {
+          "group": "记不清",
+          "n": 55,
+          "yes": 14,
+          "rate_percent": 25.5
+        }
+      ],
+      "lowest_group": "记不清",
+      "lowest_rate_percent": 25.5,
+      "highest_group": "1 年以内",
+      "highest_rate_percent": 42.9,
+      "gap_pp": 17.4,
+      "grouping": "最近购买时间",
+      "outcome": "希望了解未来配置变化",
+      "outcome_definition": "Q26 勾选“未来配置会怎样变化，也就是下滑曲线”",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    },
+    {
+      "n": 200,
+      "chi_square": 2.1489,
+      "dof": 3,
+      "p_value": 0.54208,
+      "cramers_v": 0.104,
+      "minimum_expected": 5.4,
+      "expected_cells_below_5": 0,
+      "rates": [
+        {
+          "group": "不足 1 年",
+          "n": 27,
+          "yes": 3,
+          "rate_percent": 11.1
+        },
+        {
+          "group": "1-3 年",
+          "n": 81,
+          "yes": 16,
+          "rate_percent": 19.8
+        },
+        {
+          "group": "4-6 年",
+          "n": 40,
+          "yes": 8,
+          "rate_percent": 20.0
+        },
+        {
+          "group": "6 年以上",
+          "n": 52,
+          "yes": 13,
+          "rate_percent": 25.0
+        }
+      ],
+      "lowest_group": "不足 1 年",
+      "lowest_rate_percent": 11.1,
+      "highest_group": "6 年以上",
+      "highest_rate_percent": 25.0,
+      "gap_pp": 13.9,
+      "grouping": "基金投资经验",
+      "outcome": "四道核心知识题全部答对",
+      "outcome_definition": "Q17-Q20 四题均选择正确答案",
+      "fdr_q_value": 0.879601,
+      "reliable_asymptotic_test": true,
+      "statistical_label": "仅作描述"
+    }
+  ],
+  "notes": [
+    "分群分析属于探索性分析，不代表总体推断或因果关系。",
+    "样本没有抽样框、投放渠道和加权信息，不能宣称代表全部养老目标基金投资者。",
+    "性别与常住地区未作为问卷变量采集，报告不补造画像。"
+  ]
+}

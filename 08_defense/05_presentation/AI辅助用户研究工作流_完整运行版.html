@@ -1,0 +1,2124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI辅助用户研究工作流｜完整运行版</title>
+<style>
+  :root {
+    /* Primary palette */
+    --ivory: #FAF9F5;
+    --slate: #141413;
+    --clay: #D97757;
+    --clay-d: #B85C3E;
+    --oat: #E3DACC;
+    --olive: #788C5D;
+    --rust: #B04A3F;
+    --white: #FFFFFF;
+
+    /* Gray scale */
+    --gray-100: #F0EEE6;
+    --gray-200: #E6E3DA;
+    --gray-300: #D1CFC5;
+    --gray-500: #87867F;
+    --gray-700: #3D3D3A;
+
+    /* Semantic */
+    --success: #788C5D;
+    --warning: #C78E3F;
+    --danger:  #B04A4A;
+    --info:    #5C7CA3;
+
+    /* Typography */
+    --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+    --sans:  system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono:  ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+    /* Radius */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-panel: 12px;
+    --radius-row: 8px;
+    --radius-pill: 999px;
+
+    /* Borders */
+    --border: 1.5px solid var(--gray-300);
+    --border-light: 1px solid var(--gray-100);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(20, 20, 19, 0.06);
+    --shadow-md: 0 4px 10px rgba(20, 20, 19, 0.08);
+    --shadow-lg: 0 12px 28px rgba(20, 20, 19, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--ivory);
+    color: var(--slate);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    scroll-snap-type: y mandatory;
+    overflow-x: hidden;
+  }
+  .page { width: 100%; }
+  .slide {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(34px, 5vh, 64px) clamp(34px, 5vw, 82px);
+    position: relative;
+    overflow: hidden;
+    background: var(--ivory);
+  }
+  .slide.invert {
+    background: var(--slate);
+    color: var(--ivory);
+  }
+  .slide-inner {
+    width: 100%;
+    max-width: 1180px;
+    max-height: 88vh;
+    position: relative;
+  }
+  .slide.compact .slide-inner { max-width: 1240px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 13px;
+  }
+  .invert .eyebrow { color: var(--oat); }
+  h1, h2, h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    font-size: clamp(46px, 6.2vw, 82px);
+    line-height: 1.08;
+    margin: 0 0 18px;
+  }
+  h2 {
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1.14;
+    margin: 0 0 10px;
+  }
+  h3 {
+    font-size: clamp(18px, 1.7vw, 24px);
+    line-height: 1.25;
+    margin: 0 0 8px;
+  }
+  p { margin: 0; color: var(--gray-700); }
+  .invert p { color: var(--gray-200); }
+  .sub {
+    max-width: 850px;
+    font-size: clamp(17px, 1.65vw, 23px);
+    line-height: 1.55;
+    color: var(--gray-500);
+  }
+  .invert .sub { color: var(--gray-300); }
+  .lead {
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.56;
+    color: var(--gray-700);
+    max-width: 950px;
+  }
+  .invert .lead { color: var(--gray-200); }
+  .rule {
+    border: none;
+    border-top: 1.5px solid var(--gray-300);
+    margin: 14px 0 24px;
+  }
+  .invert .rule { border-color: var(--gray-700); }
+  .accent { color: var(--clay); }
+  .muted { color: var(--gray-500); }
+  .mono {
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+  strong { color: var(--slate); font-weight: 650; }
+  .invert strong { color: var(--white); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+  }
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 20px 22px;
+    transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--slate);
+  }
+  .invert .card {
+    background: var(--gray-700);
+    border-color: var(--gray-500);
+  }
+  .invert .card:hover { border-color: var(--oat); }
+  .card p { font-size: 14px; line-height: 1.52; }
+  .card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 9px;
+  }
+  .card-number {
+    font-family: var(--serif);
+    font-size: 38px;
+    line-height: 1;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+  .panel-oat {
+    background: var(--oat);
+    border-radius: var(--radius-panel);
+    padding: 22px 24px;
+  }
+  .panel-oat p { color: var(--gray-700); }
+  .thesis {
+    border-left: 5px solid var(--clay);
+    background: var(--white);
+    border-radius: var(--radius-row);
+    padding: 15px 20px;
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--gray-700);
+  }
+  .invert .thesis {
+    background: var(--gray-700);
+    color: var(--gray-100);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 8px;
+    border-radius: var(--radius-xs);
+    background: var(--gray-100);
+    color: var(--gray-700);
+    white-space: nowrap;
+  }
+  .tag.accent-tag { background: var(--oat); color: var(--clay-d); }
+  .tag.success-tag { background: var(--gray-100); color: var(--olive); }
+  .invert .tag { background: var(--gray-700); color: var(--gray-200); }
+
+  .highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .highlights li {
+    position: relative;
+    padding: 0 0 14px 26px;
+    font-size: 15px;
+    color: var(--gray-700);
+  }
+  .highlights li::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--clay);
+  }
+  .invert .highlights li { color: var(--gray-200); }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 18px 20px 16px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: clamp(35px, 4vw, 54px);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--slate);
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.35;
+  }
+  .stat-note {
+    margin-top: 7px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--clay);
+  }
+
+  .problem-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 25px;
+  }
+  .problem {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 17px 16px;
+    min-height: 178px;
+  }
+  .problem .index {
+    font-family: var(--mono);
+    color: var(--clay);
+    font-size: 11px;
+    margin-bottom: 28px;
+  }
+  .problem h3 { font-size: 19px; }
+  .problem p { font-size: 13px; }
+
+  .layer-stack {
+    display: grid;
+    gap: 11px;
+    margin-top: 20px;
+  }
+  .layer {
+    display: grid;
+    grid-template-columns: 180px 1fr 270px;
+    align-items: center;
+    gap: 18px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 15px 18px;
+  }
+  .layer-name {
+    font-family: var(--serif);
+    font-size: 22px;
+  }
+  .layer-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .layer-purpose {
+    font-size: 13px;
+    color: var(--gray-500);
+    border-left: 1.5px solid var(--gray-300);
+    padding-left: 16px;
+  }
+
+  .workflow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 22px;
+    margin-top: 26px;
+  }
+  .step {
+    position: relative;
+    border: 1.5px solid var(--gray-500);
+    border-radius: var(--radius-panel);
+    padding: 17px 17px 16px;
+    min-height: 126px;
+    background: var(--gray-700);
+  }
+  .step::after {
+    content: "→";
+    position: absolute;
+    right: -19px;
+    top: 42%;
+    color: var(--clay);
+    font-family: var(--serif);
+    font-size: 25px;
+  }
+  .step:nth-child(4)::after,
+  .step:nth-child(8)::after { display: none; }
+  .step-no {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--oat);
+    letter-spacing: 0.08em;
+    margin-bottom: 9px;
+  }
+  .step h3 { color: var(--white); font-size: 20px; }
+  .step p { color: var(--gray-300); font-size: 12.5px; }
+
+  .agent-map {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .agent {
+    border: var(--border);
+    background: var(--white);
+    border-radius: var(--radius-panel);
+    padding: 16px 18px;
+    min-height: 130px;
+  }
+  .agent-id {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--clay);
+  }
+  .agent h3 { font-size: 20px; margin-top: 6px; }
+  .agent p { font-size: 12.5px; }
+  .controller {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 20px;
+    align-items: center;
+    background: var(--slate);
+    color: var(--white);
+    border-color: var(--slate);
+    min-height: auto;
+  }
+  .controller p { color: var(--gray-300); }
+
+  .contract {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .contract-box {
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    background: var(--white);
+    padding: 21px 22px;
+  }
+  .contract-row {
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    gap: 14px;
+    padding: 9px 0;
+    border-bottom: var(--border-light);
+  }
+  .contract-row:last-child { border-bottom: none; }
+  .contract-key {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--clay);
+  }
+  .contract-value { font-size: 13px; color: var(--gray-700); }
+  .prompt-box {
+    background: var(--gray-100);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 20px 22px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--gray-700);
+  }
+  .prompt-box .mono { color: var(--clay-d); font-size: 11px; }
+
+  .handoff-map {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 22px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .handoff-column {
+    display: grid;
+    gap: 12px;
+  }
+  .handoff-node {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 15px 17px;
+  }
+  .handoff-center {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 42px;
+    color: var(--clay);
+  }
+  .handoff-footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .handoff-footer div {
+    padding: 12px;
+    background: var(--gray-100);
+    border-radius: var(--radius-row);
+    font-size: 12px;
+  }
+  .handoff-footer span {
+    display: block;
+    font-family: var(--mono);
+    color: var(--clay);
+    font-size: 9px;
+    margin-bottom: 4px;
+  }
+
+  .artifact-chain {
+    display: flex;
+    align-items: stretch;
+    gap: 9px;
+    margin-top: 25px;
+  }
+  .artifact {
+    flex: 1;
+    min-width: 0;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .artifact-id {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--clay);
+    margin-bottom: 8px;
+  }
+  .artifact-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.2;
+  }
+  .artifact-desc {
+    font-size: 10.5px;
+    color: var(--gray-500);
+    margin-top: 7px;
+    line-height: 1.35;
+  }
+  .chain-arrow {
+    align-self: center;
+    color: var(--clay);
+    font-family: var(--serif);
+    font-size: 22px;
+  }
+  .version-band {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .version-band div {
+    border-radius: var(--radius-row);
+    background: var(--gray-100);
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .gate-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .gate {
+    border: 1.5px solid var(--gray-500);
+    border-radius: var(--radius-panel);
+    padding: 20px 18px;
+    background: var(--gray-700);
+    min-height: 210px;
+  }
+  .gate-no {
+    font-family: var(--mono);
+    color: var(--clay);
+    font-size: 11px;
+    margin-bottom: 25px;
+  }
+  .gate h3 { color: var(--white); }
+  .gate p { color: var(--gray-300); font-size: 13px; }
+  .gate .owner {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--oat);
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .method-matrix {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 22px;
+    margin-top: 21px;
+  }
+  .rq-map {
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    background: var(--white);
+    padding: 18px 20px;
+  }
+  .rq-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 0.85fr;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: var(--border-light);
+    font-size: 12.5px;
+  }
+  .rq-row:last-child { border-bottom: none; }
+  .rq-row.header {
+    font-family: var(--mono);
+    color: var(--gray-500);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .instrument-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.78fr;
+    gap: 17px;
+    margin-top: 22px;
+  }
+  .instrument-card {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 20px;
+  }
+  .instrument-card ul {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    color: var(--gray-700);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .instrument-card.resource {
+    background: var(--oat);
+  }
+
+  .data-pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: center;
+    gap: 10px;
+    margin-top: 23px;
+  }
+  .data-node {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 16px 14px;
+    text-align: center;
+    min-height: 110px;
+  }
+  .data-node h3 { font-size: 17px; }
+  .data-node p { font-size: 11px; }
+  .state-row {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+  .state-panel {
+    background: var(--gray-100);
+    border-radius: var(--radius-panel);
+    padding: 16px 18px;
+  }
+  .state-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .evidence-ladder {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 25px;
+  }
+  .evidence-step {
+    position: relative;
+    background: var(--gray-700);
+    border: 1.5px solid var(--gray-500);
+    border-radius: var(--radius-panel);
+    padding: 18px 15px;
+    min-height: 146px;
+  }
+  .evidence-step h3 { color: var(--white); font-size: 18px; }
+  .evidence-step p { color: var(--gray-300); font-size: 11.5px; }
+  .evidence-step .card-label { color: var(--oat); }
+  .evidence-step.highlight { border-color: var(--clay); }
+
+  .report-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 24px;
+    margin-top: 22px;
+  }
+  .report-page {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  .report-section {
+    padding: 8px 0;
+    border-bottom: var(--border-light);
+    font-size: 13px;
+  }
+  .report-section:last-child { border-bottom: none; }
+  .asset-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .asset {
+    background: var(--gray-100);
+    border-radius: var(--radius-row);
+    padding: 14px;
+    font-size: 12px;
+  }
+
+  .adapter-map {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .adapter-col {
+    display: grid;
+    gap: 10px;
+  }
+  .adapter {
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    padding: 13px 15px;
+    font-size: 13px;
+  }
+  .core-box {
+    border: 1.5px solid var(--clay);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    text-align: center;
+    background: var(--white);
+  }
+  .core-box h3 { font-size: 26px; }
+  .core-box p { font-size: 13px; }
+  .domain-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  .case-hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 30px;
+    align-items: center;
+    margin-top: 18px;
+  }
+  .case-chain {
+    display: grid;
+    gap: 9px;
+  }
+  .case-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    align-items: center;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    padding: 11px 14px;
+  }
+  .case-step span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--clay);
+  }
+  .case-step p { font-size: 12.5px; }
+  .case-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .case-metric {
+    background: var(--gray-700);
+    border: 1.5px solid var(--gray-500);
+    border-radius: var(--radius-panel);
+    padding: 17px;
+  }
+  .case-metric .stat-num { color: var(--white); font-size: 42px; }
+  .case-metric p { color: var(--gray-300); font-size: 12px; }
+
+  .bar-list {
+    display: grid;
+    gap: 13px;
+    margin-top: 18px;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 250px 1fr 70px;
+    gap: 12px;
+    align-items: center;
+    font-size: 13px;
+  }
+  .bar-track {
+    height: 13px;
+    background: var(--gray-100);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--clay);
+    border-radius: var(--radius-pill);
+  }
+  .bar-value {
+    font-family: var(--mono);
+    color: var(--clay-d);
+  }
+  .case-conclusions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .value-card {
+    background: var(--gray-700);
+    border: 1.5px solid var(--gray-500);
+    border-radius: var(--radius-panel);
+    padding: 19px 18px;
+  }
+  .value-card h3 { color: var(--white); }
+  .value-card p { color: var(--gray-300); font-size: 12.5px; }
+
+  .slide-footer {
+    position: absolute;
+    left: clamp(34px, 5vw, 82px);
+    right: clamp(34px, 5vw, 82px);
+    bottom: 17px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    color: var(--gray-500);
+  }
+  .invert .slide-footer { color: var(--gray-500); }
+
+  .deck-nav {
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    display: grid;
+    gap: 6px;
+    padding: 9px 7px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-md);
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: var(--gray-300);
+    padding: 0;
+    cursor: pointer;
+    transition: transform 120ms ease, background 120ms ease;
+  }
+  .nav-dot:hover { transform: scale(1.35); background: var(--gray-500); }
+  .nav-dot.active { background: var(--clay); transform: scale(1.35); }
+  .slide-counter {
+    position: fixed;
+    right: 18px;
+    bottom: 17px;
+    z-index: 30;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-500);
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-pill);
+    padding: 6px 10px;
+  }
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background: var(--clay);
+    z-index: 40;
+    transition: width 120ms ease;
+  }
+
+  /* Interactive workflow navigation */
+  a { color: inherit; }
+  .flow-overview {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .flow-row {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 9px;
+    align-items: stretch;
+  }
+  .flow-node {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 126px;
+    padding: 15px 14px 13px;
+    text-decoration: none;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  }
+  .flow-node:hover,
+  .flow-node:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--slate);
+    box-shadow: var(--shadow-lg);
+    outline: none;
+  }
+  .invert .flow-node { color: var(--slate); }
+  .invert .flow-node p { color: var(--gray-700); }
+  .flow-node .flow-no {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--clay-d);
+  }
+  .flow-node h3 { font-size: 18px; margin: 7px 0 5px; }
+  .flow-node p { font-size: 11.5px; line-height: 1.42; }
+  .flow-owner {
+    margin-top: auto;
+    padding-top: 8px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--gray-500);
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 25px;
+    color: var(--clay);
+  }
+  .flow-bridge {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-500);
+  }
+  .flow-bridge::before,
+  .flow-bridge::after {
+    content: "";
+    height: 1.5px;
+    background: var(--gray-300);
+  }
+  .jump-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--clay-d);
+  }
+
+  .expert-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+    margin-top: 18px;
+  }
+  .expert-card {
+    display: block;
+    min-height: 142px;
+    padding: 17px 18px;
+    text-decoration: none;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+    transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  }
+  .expert-card:hover,
+  .expert-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--slate);
+    box-shadow: var(--shadow-lg);
+    outline: none;
+  }
+  .expert-card h3 { font-size: 19px; margin: 7px 0 6px; }
+  .expert-card p { font-size: 12px; }
+  .expert-card .responsibility {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--clay-d);
+  }
+  .cross-role {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin-top: 13px;
+  }
+  .cross-role .panel-oat { padding: 14px 17px; }
+  .cross-role h3 { font-size: 17px; margin-bottom: 5px; }
+  .cross-role p { font-size: 11.5px; }
+
+  .principle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .principle-card {
+    background: var(--gray-700);
+    border: 1.5px solid var(--gray-500);
+    border-radius: var(--radius-panel);
+    padding: 18px;
+  }
+  .principle-card h3 { color: var(--white); font-size: 18px; margin: 7px 0 6px; }
+  .principle-card p { color: var(--gray-300); font-size: 12px; }
+
+  .stage-nav {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 5px;
+    margin-bottom: 17px;
+  }
+  .stage-nav a {
+    display: flex;
+    min-height: 35px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    line-height: 1.25;
+    color: var(--gray-500);
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  }
+  .stage-nav a:hover { color: var(--slate); border-color: var(--slate); }
+  .stage-nav a.active {
+    color: var(--white);
+    background: var(--clay);
+    border-color: var(--clay);
+  }
+  .stage-grid {
+    display: grid;
+    grid-template-columns: 0.78fr 1.45fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .stage-summary {
+    display: flex;
+    flex-direction: column;
+    background: var(--oat);
+    border-radius: var(--radius-panel);
+    padding: 20px 21px;
+  }
+  .stage-summary .stage-no {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--clay-d);
+  }
+  .stage-summary h3 { font-size: 22px; margin: 8px 0 9px; }
+  .stage-summary p { font-size: 13px; }
+  .owner-box {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1.5px solid var(--gray-300);
+  }
+  .owner-box span {
+    display: block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--gray-500);
+  }
+  .owner-box strong { display: block; margin-top: 4px; font-size: 13px; }
+  .expert-jump {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--clay-d);
+    text-decoration: none;
+    border-bottom: 1.5px dotted var(--clay);
+  }
+  .expert-jump:hover { color: var(--slate); border-bottom-color: var(--slate); }
+  .stage-work {
+    display: grid;
+    gap: 10px;
+  }
+  .path-line {
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 12px 15px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+  }
+  .path-line .path-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--clay-d);
+  }
+  .path-line p { font-size: 12.5px; }
+  .path-line strong { font-weight: 600; }
+  .stage-output {
+    background: var(--slate);
+    color: var(--ivory);
+    border-color: var(--slate);
+  }
+  .stage-output .path-label { color: var(--oat); }
+  .stage-output p { color: var(--gray-100); }
+  .flow-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 13px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--clay-d);
+    text-decoration: none;
+  }
+  .flow-home:hover { text-decoration: underline; }
+
+  .review-route {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 9px;
+    align-items: stretch;
+    margin-top: 21px;
+  }
+  .review-stage,
+  .review-point {
+    padding: 16px 14px;
+    border-radius: var(--radius-panel);
+    min-height: 150px;
+  }
+  .review-stage {
+    background: var(--gray-700);
+    border: 1.5px solid var(--gray-500);
+  }
+  .review-stage h3 { color: var(--white); font-size: 18px; margin: 6px 0; }
+  .review-stage p { color: var(--gray-300); font-size: 11.5px; }
+  .review-point {
+    background: var(--white);
+    border: 1.5px solid var(--clay);
+    color: var(--slate);
+  }
+  .review-point h3 { font-size: 18px; margin: 6px 0; }
+  .review-point p { font-size: 11.5px; }
+  .invert .review-point p { color: var(--gray-700); }
+
+  .plain-port {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 18px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .tool-stack { display: grid; gap: 10px; }
+  .tool-box {
+    padding: 13px 15px;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    font-size: 12px;
+  }
+  .stable-core {
+    padding: 27px 23px;
+    text-align: center;
+    background: var(--oat);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+  }
+  .stable-core h3 { font-size: 23px; margin: 7px 0 9px; }
+
+  .case-route {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+    align-items: stretch;
+    margin-top: 18px;
+  }
+  .case-route .case-step {
+    display: block;
+    min-height: 150px;
+    padding: 14px;
+  }
+  .case-route .case-step span { display: block; margin-bottom: 7px; }
+  .case-route .case-step h3 { font-size: 17px; margin-bottom: 6px; }
+  .case-route .case-step p { font-size: 11px; }
+
+  .expert-detail {
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    margin-top: 16px;
+  }
+  .expert-profile {
+    display: flex;
+    flex-direction: column;
+    background: var(--oat);
+    border-radius: var(--radius-panel);
+    padding: 20px 21px;
+  }
+  .expert-profile .role-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--clay-d);
+  }
+  .expert-profile h3 { font-size: 24px; margin: 9px 0 10px; }
+  .expert-profile p { font-size: 12.5px; }
+  .expert-profile .fit-reason {
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1.5px solid var(--gray-300);
+  }
+  .expert-profile .fit-reason strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .expert-profile .output-note {
+    margin-top: auto;
+    padding: 11px 12px;
+    background: var(--ivory);
+    border-radius: var(--radius-row);
+    font-size: 11.5px;
+  }
+  .invert .expert-profile,
+  .invert .term-card,
+  .invert .proof-box { color: var(--slate); }
+  .invert .expert-profile p,
+  .invert .proof-box p { color: var(--gray-700); }
+  .expert-detail-main {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 12px;
+  }
+  .term-grid {
+    display: block;
+    overflow: hidden;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+  }
+  .term-card {
+    display: grid;
+    grid-template-columns: 156px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    min-height: 48px;
+    padding: 9px 15px;
+    background: var(--white);
+    border: 0;
+    border-radius: 0;
+  }
+  .term-card + .term-card {
+    border-top: 1.5px solid var(--gray-300);
+  }
+  .term-card strong {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 15.5px;
+    font-weight: 500;
+  }
+  .term-card span {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--gray-700);
+  }
+  .prompt-rules {
+    display: grid;
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    padding: 14px 17px;
+    background: var(--slate);
+    border-radius: var(--radius-panel);
+  }
+  .prompt-rules .prompt-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    color: var(--oat);
+  }
+  .prompt-rules ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 24px;
+    margin: 0;
+    padding-left: 20px;
+    color: var(--gray-100);
+    font-size: 11.5px;
+  }
+  .prompt-rules li { margin: 0; padding-left: 2px; }
+  .expert-proof {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+    background: var(--gray-100);
+    border: var(--border);
+    border-radius: var(--radius-panel);
+  }
+  .proof-box {
+    padding: 10px 14px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+  .proof-box + .proof-box {
+    border-left: 1.5px solid var(--gray-300);
+  }
+  .proof-box .proof-label {
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--clay-d);
+  }
+  .proof-box p { font-size: 11px; line-height: 1.45; }
+  .invert .prompt-rules { background: var(--gray-700); }
+  .invert .expert-proof { background: var(--gray-700); border-color: var(--gray-500); }
+  .invert .proof-box + .proof-box { border-left-color: var(--gray-500); }
+  .invert .proof-box .proof-label { color: var(--oat); }
+  .invert .proof-box p { color: var(--gray-100); }
+  .expert-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .expert-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 31px;
+    padding: 5px 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-700);
+    text-decoration: none;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius-row);
+    transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+  }
+  .expert-actions a:hover { border-color: var(--slate); color: var(--slate); background: var(--gray-100); }
+
+  @media (max-width: 980px) {
+    .grid-4, .grid-5, .problem-list, .gate-grid, .evidence-ladder,
+    .expert-flow, .principle-grid, .term-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .flow-row, .review-route, .case-route { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .flow-arrow { display: none; }
+    .layer { grid-template-columns: 140px 1fr; }
+    .layer-purpose { grid-column: 1 / -1; border-left: none; padding-left: 0; }
+    .artifact-chain { flex-wrap: wrap; }
+    .artifact { min-width: 160px; }
+    .chain-arrow { display: none; }
+  }
+  @media (max-width: 760px) {
+    .slide {
+      height: auto;
+      min-height: 100vh;
+      align-items: flex-start;
+      padding: 54px 24px 78px;
+      overflow: visible;
+    }
+    .slide-inner { max-height: none; }
+    .grid-2, .grid-3, .grid-4, .grid-5, .agent-map,
+    .contract, .handoff-map, .method-matrix, .instrument-grid,
+    .state-row, .report-layout, .adapter-map, .case-hero,
+    .case-conclusions, .value-grid, .workflow, .data-pipeline,
+    .expert-flow, .principle-grid, .stage-grid, .plain-port,
+    .cross-role, .flow-row, .review-route, .case-route,
+    .expert-detail, .term-grid, .expert-proof {
+      grid-template-columns: 1fr;
+    }
+    .prompt-rules { grid-template-columns: 1fr; }
+    .prompt-rules ol { columns: 1; }
+    .stage-nav { grid-template-columns: repeat(4, 1fr); }
+    .problem-list, .gate-grid, .evidence-ladder {
+      grid-template-columns: 1fr;
+    }
+    .controller { grid-template-columns: 1fr; }
+    .step::after { display: none; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .deck-nav { display: none; }
+    .slide-footer { left: 24px; right: 24px; }
+    .bar-row { grid-template-columns: 1fr; gap: 5px; }
+  }
+  @media print {
+    body { scroll-snap-type: none; }
+    .slide { page-break-after: always; width: 100%; height: 100vh; }
+    .deck-nav, .slide-counter, .progress { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<nav class="deck-nav" aria-label="幻灯片导航"></nav>
+<div class="slide-counter" aria-live="polite">01 / 27</div>
+
+<main class="page">
+  <section class="slide invert" id="slide-1" aria-label="封面">
+    <div class="slide-inner">
+      <div class="eyebrow">AI 辅助研究 · 完整运行工作流</div>
+      <h1>AI辅助用户研究工作流</h1>
+      <p class="sub">沿着真实研究路径，把需求理解、方案设计、问卷与访谈、数据分析、报告表达和资产沉淀连接成一套完整运行系统</p>
+      <div class="thesis"><strong>核心命题：</strong>AI不是单独生成一份问卷或报告，而是在研究人员把关下，协助不同专家共同完成一次可追溯的研究。</div>
+    </div>
+    <footer class="slide-footer"><span>完整运行版 · 交互路径稿</span><span>01</span></footer>
+  </section>
+
+  <section class="slide" id="slide-2" aria-label="结论总览">
+    <div class="slide-inner">
+      <div class="eyebrow">结论总览</div>
+      <h2>我们完成的不是一个“问卷生成器”，而是一条完整研究生产线</h2>
+      <hr class="rule">
+      <div class="grid-4">
+        <div class="card"><div class="card-number">01</div><h3>问题可研究</h3><p>把模糊业务问题转换为研究目标、目标人群、研究问题和可证伪假设。</p></div>
+        <div class="card"><div class="card-number">02</div><h3>方法可执行</h3><p>按证据需求选择问卷、访谈或组合研究，并同步定义变量与分析口径。</p></div>
+        <div class="card"><div class="card-number">03</div><h3>结论可追溯</h3><p>每项发现、洞察和建议都能回到题目、分母、访谈片段和执行条件。</p></div>
+        <div class="card"><div class="card-number">04</div><h3>流程可迁移</h3><p>更换课题、问卷工具或报告形式时，核心研究步骤和专家分工仍然稳定。</p></div>
+      </div>
+      <div class="thesis">完整工作流由 <strong>八个连续阶段、六类专家能力、一位研究总控和四个人工确认点</strong>共同运行；养老目标基金研究已经走完这条路径。</div>
+    </div>
+    <footer class="slide-footer"><span>结论先行</span><span>02</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-3" aria-label="可点击工作流总览">
+    <div class="slide-inner">
+      <div class="eyebrow">点击模块进入对应讲解</div>
+      <h2>一张图看懂：一次研究如何从需求走到报告</h2>
+      <div class="flow-overview">
+        <div class="flow-row">
+          <a class="flow-node" href="#slide-6"><span class="flow-no">01</span><h3>接收需求</h3><p>登记业务背景、待解决问题和已有材料。</p><span class="flow-owner">研究总控</span></a>
+          <div class="flow-arrow">→</div>
+          <a class="flow-node" href="#slide-7"><span class="flow-no">02</span><h3>理解问题</h3><p>明确研究目的、人群、问题、假设和边界。</p><span class="flow-owner">问题理解专家</span></a>
+          <div class="flow-arrow">→</div>
+          <a class="flow-node" href="#slide-8"><span class="flow-no">03</span><h3>设计方案</h3><p>决定用问卷、访谈还是组合研究。</p><span class="flow-owner">方案设计专家</span></a>
+          <div class="flow-arrow">→</div>
+          <a class="flow-node" href="#slide-9"><span class="flow-no">04</span><h3>设计工具</h3><p>生成题目、提纲、变量和有效性规则。</p><span class="flow-owner">工具设计专家</span></a>
+        </div>
+        <div class="flow-bridge">研究设计完成后，进入真实执行与证据生产</div>
+        <div class="flow-row">
+          <a class="flow-node" href="#slide-10"><span class="flow-no">05</span><h3>执行调研</h3><p>发行问卷、开展访谈并整理回传数据。</p><span class="flow-owner">研究总控 + 研究人员</span></a>
+          <div class="flow-arrow">→</div>
+          <a class="flow-node" href="#slide-11"><span class="flow-no">06</span><h3>分析洞察</h3><p>从数据和记录形成发现、解释与建议。</p><span class="flow-owner">证据与洞察专家</span></a>
+          <div class="flow-arrow">→</div>
+          <a class="flow-node" href="#slide-12"><span class="flow-no">07</span><h3>生成报告</h3><p>把洞察组织成管理层可理解的报告。</p><span class="flow-owner">报告表达专家</span></a>
+          <div class="flow-arrow">→</div>
+          <a class="flow-node" href="#slide-13"><span class="flow-no">08</span><h3>沉淀资产</h3><p>保存任务、工具、口径、证据和报告。</p><span class="flow-owner">研究总控 + 研究负责人</span></a>
+        </div>
+      </div>
+      <div class="jump-hint">↗ 点击任一阶段即可跳转；每个阶段页均可返回本页</div>
+    </div>
+    <footer class="slide-footer"><span>完整工作流导航</span><span>03</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-4" aria-label="专家责任地图">
+    <div class="slide-inner">
+      <div class="eyebrow">点击专家查看主要工作阶段</div>
+      <h2>每位专家只负责一种关键判断，按研究路径协作</h2>
+      <div class="expert-flow">
+        <a class="expert-card" href="#slide-21"><div class="card-label">研究前端</div><h3>研究问题理解专家</h3><p>把模糊需求变成明确的研究目的、目标人群、问题、假设和范围。</p><span class="responsibility">查看提示词与专业方法 →</span></a>
+        <a class="expert-card" href="#slide-22"><div class="card-label">方法设计</div><h3>研究方案设计专家</h3><p>判断需要什么证据，并选择问卷、访谈、组合研究和分析方式。</p><span class="responsibility">查看提示词与专业方法 →</span></a>
+        <a class="expert-card" href="#slide-23"><div class="card-label">工具设计</div><h3>问卷与访谈设计专家</h3><p>生成题目或提纲，同时定义变量、跳转、分群和数据有效性。</p><span class="responsibility">查看提示词与专业方法 →</span></a>
+        <a class="expert-card" href="#slide-24"><div class="card-label">全程复核</div><h3>研究质量审核专家</h3><p>独立检查方法、题目、金融事实、证据边界、隐私和报告可读性。</p><span class="responsibility">查看提示词与专业方法 →</span></a>
+        <a class="expert-card" href="#slide-25"><div class="card-label">证据分析</div><h3>证据与洞察专家</h3><p>把数据与访谈记录转成发现、洞察、产品建议和投资者教育建议。</p><span class="responsibility">查看提示词与专业方法 →</span></a>
+        <a class="expert-card" href="#slide-26"><div class="card-label">成果表达</div><h3>研究报告表达专家</h3><p>让没看过问卷的人也能看懂研究目的、样本、结论和业务意义。</p><span class="responsibility">查看提示词与专业方法 →</span></a>
+      </div>
+      <div class="cross-role">
+        <div class="panel-oat"><h3><a class="expert-jump" href="#slide-27">研究总控 →</a></h3><p>负责登记任务、安排顺序、交接版本、等待并行工作、记录审核结果；不替代专家判断。</p></div>
+        <div class="panel-oat"><h3>研究人员与业务负责人</h3><p>负责补充背景、确认范围、审核执行、判断建议是否采纳，并对最终发布负责。</p></div>
+      </div>
+    </div>
+    <footer class="slide-footer"><span>专家责任地图</span><span>04</span></footer>
+  </section>
+
+  <section class="slide invert" id="slide-5" aria-label="协作原理">
+    <div class="slide-inner">
+      <div class="eyebrow">听众只需理解四个运行原理</div>
+      <h2>系统如何实现：固定责任、固定交付、独立复核、人工决定</h2>
+      <div class="principle-grid">
+        <div class="principle-card"><div class="card-label">01</div><h3>一人一责</h3><p>每位专家只做自己擅长的判断，避免一个角色同时出题、分析和审核自己。</p></div>
+        <div class="principle-card"><div class="card-label">02</div><h3>逐步交付</h3><p>上一步先形成可复核的正式结果，下一位专家再据此继续，不依赖模糊对话记忆。</p></div>
+        <div class="principle-card"><div class="card-label">03</div><h3>独立复核</h3><p>质量专家指出问题并退回责任人修订，不在幕后直接改掉原来的研究判断。</p></div>
+        <div class="principle-card"><div class="card-label">04</div><h3>人工决定</h3><p>研究范围、真实执行、洞察成立和报告发布，始终由研究人员或业务负责人确认。</p></div>
+      </div>
+      <div class="thesis"><strong>专家的统一工作规则：</strong>先说明收到什么，再说明如何判断；明确不能越过的边界；最后交付一份有版本、可复核、能交给下一环节的结果。</div>
+    </div>
+    <footer class="slide-footer"><span>协作原理，而非技术名词</span><span>05</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-6" aria-label="阶段一接收研究需求">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a class="active" href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 01 / 08</div>
+      <h2>接收研究需求：先登记问题，不急着生成题目</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 01</span><h3>把业务想法变成可继续处理的研究任务</h3><p>需求可以来自新基金产品，也可以来自客户认知、投资行为、服务体验或专题研究。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-27">研究总控 →</a> + 业务提出者</strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">收到什么</div><p>业务背景、希望解决的问题、已有材料、时间要求和预期使用场景。</p></div>
+          <div class="path-line"><div class="path-label">怎么处理</div><p><strong>研究总控先登记任务和材料</strong>，标出已知事实、业务判断和仍待澄清的问题。</p></div>
+          <div class="path-line"><div class="path-label">为什么这样做</div><p>避免把“产品卖得少”“用户不了解”等未经验证的前提直接写进问卷。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>一份需求记录：说明研究背景、提出者、待澄清事项、已有资料和责任人。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 01 · 接收需求</span><span>06</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-7" aria-label="阶段二理解研究问题">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a class="active" href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 02 / 08</div>
+      <h2>理解研究问题：把模糊诉求变成明确的研究任务</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 02</span><h3>先回答“为什么研究”，再回答“问什么”</h3><p>这一阶段决定研究要支持什么业务判断、研究谁、验证什么以及不研究什么。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-21">研究问题理解专家 →</a></strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">收到什么</div><p>阶段一的需求记录，以及业务方补充的背景、材料和约束。</p></div>
+          <div class="path-line"><div class="path-label">怎么处理</div><p>区分<strong>事实、假设、未知和待支持的决策</strong>；形成研究问题、可验证假设及可能的其他解释。</p></div>
+          <div class="path-line"><div class="path-label">质量复核</div><p>检查问题是否中立、是否过宽、目标人群是否清楚，以及答案是否真的能支持业务决策。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>研究任务书：研究目的、目标人群、核心问题、假设、范围、限制和预期用途。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 02 · 理解研究问题</span><span>07</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-8" aria-label="阶段三设计研究方案">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a class="active" href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 03 / 08</div>
+      <h2>设计研究方案：先想清楚需要什么证据，再选择方法</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 03</span><h3>方法服从研究问题，而不是先决定“做一份问卷”</h3><p>同一个课题中，可以用问卷测范围与差异，用访谈解释原因，也可以组合使用。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-22">研究方案设计专家 →</a></strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">收到什么</div><p>已经确认的研究任务书和研究边界。</p></div>
+          <div class="path-line"><div class="path-label">怎么处理</div><p>把每个研究问题依次对应到<strong>所需证据、研究方法、样本要求和分析方式</strong>。</p></div>
+          <div class="path-line"><div class="path-label">方法判断</div><p>“有多普遍”适合问卷；“为什么这样理解”适合访谈；材料理解和流程障碍可采用组合研究。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>研究方案：方法选择、样本画像、分析框架、时间安排、风险和限制。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 03 · 设计研究方案</span><span>08</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-9" aria-label="阶段四设计研究工具">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a class="active" href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 04 / 08</div>
+      <h2>设计研究工具：题目、数据口径和分析方式在这里一次定义</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 04</span><h3>出题不是写文案，而是把研究问题转换为可分析证据</h3><p>问卷和访谈可以分别生成，但必须回答同一套研究问题。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-23">问卷与访谈设计专家 →</a></strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">问卷路径</div><p>设计题型、题目、选项、量表、跳转和基础分群，并同步定义变量、缺失值和有效性规则。</p></div>
+          <div class="path-line"><div class="path-label">访谈路径</div><p>设计开放主问题、中性追问、具体事件追溯、反例追问和主持提示。</p></div>
+          <div class="path-line"><div class="path-label">知识材料</div><p>复杂金融概念先做事实复核；必要时可加入<strong>IMA等官方知识库</strong>作为答题后的可选学习入口。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>可直接执行的问卷或访谈提纲，以及配套的变量、分群、分析和数据有效性说明。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 04 · 设计研究工具</span><span>09</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-10" aria-label="阶段五执行调研">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a class="active" href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 05 / 08</div>
+      <h2>执行调研：按已确认版本发行，并把真实过程一起记录</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 05</span><h3>工具只是发行渠道，研究口径不依附于某个平台</h3><p>问卷可以通过在线工具发行，结果以 Excel 或 CSV 回传；访谈保留授权、记录和匿名化信息。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-27">研究总控 →</a> + 研究人员</strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">执行前</div><p>确认题目、跳转、样本画像、隐私说明和金融事实已经通过审核。</p></div>
+          <div class="path-line"><div class="path-label">执行中</div><p>发行问卷或开展访谈，记录实际使用版本、时间、来源、偏差和异常情况。</p></div>
+          <div class="path-line"><div class="path-label">数据处理</div><p>统一字段、移除不必要的个人信息；异常时长和逻辑冲突进入复核，<strong>知识题答错不等于无效答卷</strong>。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>原始数据、清理后数据、访谈记录，以及哪些数据可分析、哪些受限制的质量说明。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 05 · 执行调研</span><span>10</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-11" aria-label="阶段六分析与洞察">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a class="active" href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 06 / 08</div>
+      <h2>分析与洞察：先呈现证据，再解释原因，最后提出行动</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 06</span><h3>分析不止是报比例，而是回答研究问题</h3><p>定量看规模与差异，定性解释机制和语境；证据不足时必须降低结论强度。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-25">证据与洞察专家 →</a></strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">收到什么</div><p>质量状态明确的数据、访谈记录、研究问题和预先设定的分析计划。</p></div>
+          <div class="path-line"><div class="path-label">怎么处理</div><p>保留分子分母、筛选条件、分群口径、访谈原句、反例、其他解释和适用边界。</p></div>
+          <div class="path-line"><div class="path-label">形成什么</div><p><strong>事实发现 → 原因解释 → 业务意义 → 产品建议与投资者教育建议</strong>，每一层都能回到证据。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>洞察结果包：证据索引、关键发现、洞察、建议、置信程度、限制和未回答问题。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 06 · 分析与洞察</span><span>11</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-12" aria-label="阶段七生成研究报告">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a class="active" href="#slide-12">7 生成报告</a><a href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 07 / 08</div>
+      <h2>生成研究报告：让第一次接触课题的人也能看懂</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 07</span><h3>报告不是分析结果的压缩包，而是面向读者的完整解释</h3><p>先交代为什么研究、研究了谁，再用清楚的语言呈现结论、证据和业务意义。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-26">研究报告表达专家 →</a></strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">开头怎么写</div><p>标题和目录明确；总览页先列出主要发现以及对业务的指导意义。</p></div>
+          <div class="path-line"><div class="path-label">正文怎么写</div><p>每一节按照<strong>背景交代 → 数据呈现 → 原因解释 → 业务意义 → 适用边界</strong>展开。</p></div>
+          <div class="path-line"><div class="path-label">如何易读</div><p>解释专业术语；重点结论和数据突出；图表服务于观点；样本画像和分群差异单独讲清楚。</p></div>
+          <div class="path-line stage-output"><div class="path-label">交付什么</div><p>经过审核的正式研究报告，包含结论总览、研究目的、样本、分析、建议、投教启示和限制。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 07 · 生成研究报告</span><span>12</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-13" aria-label="阶段八沉淀研究资产">
+    <div class="slide-inner">
+      <div class="stage-nav">
+        <a href="#slide-6">1 接收需求</a><a href="#slide-7">2 理解问题</a><a href="#slide-8">3 设计方案</a><a href="#slide-9">4 设计工具</a><a href="#slide-10">5 执行调研</a><a href="#slide-11">6 分析洞察</a><a href="#slide-12">7 生成报告</a><a class="active" href="#slide-13">8 沉淀资产</a>
+      </div>
+      <div class="eyebrow">真实路径 08 / 08</div>
+      <h2>沉淀研究资产：让下一次研究从已有经验继续，而不是重新开始</h2>
+      <div class="stage-grid">
+        <div class="stage-summary"><span class="stage-no">阶段 08</span><h3>保存的不只是报告，还包括“这项研究是怎么做出来的”</h3><p>后续项目可以复用方法、题目结构、变量定义和分析模板，但必须重新确认适用范围。</p><div class="owner-box"><span>主要负责</span><strong><a class="expert-jump" href="#slide-27">研究总控 →</a> + 研究负责人</strong></div></div>
+        <div class="stage-work">
+          <div class="path-line"><div class="path-label">保存什么</div><p>研究任务书、方案、问卷或访谈提纲、变量口径、质量规则、证据索引、洞察和正式报告。</p></div>
+          <div class="path-line"><div class="path-label">如何复用</div><p>标明课题、目标人群、时间、版本、限制和可复用条件；新课题只能借鉴，不能直接套用旧结论。</p></div>
+          <div class="path-line"><div class="path-label">客户画像</div><p>可以沉淀研究中形成的候选画像和分群假设，但不自动写入客户档案，也不代替真实客户信息。</p></div>
+          <div class="path-line stage-output"><div class="path-label">最终结果</div><p>形成组织研究资产库，使后续课题能够复用已验证的方法，同时保留完整来源和责任记录。</p></div>
+        </div>
+      </div>
+      <a class="flow-home" href="#slide-3">← 返回完整工作流</a>
+    </div>
+    <footer class="slide-footer"><span>阶段 08 · 沉淀研究资产</span><span>13</span></footer>
+  </section>
+
+  <section class="slide invert compact" id="slide-14" aria-label="人工确认与质量审核">
+    <div class="slide-inner">
+      <div class="eyebrow">质量审核贯穿流程，但四个决定必须由人确认</div>
+      <h2>AI可以生成和预审，研究责任不能交给AI</h2>
+      <div class="review-route">
+        <div class="review-point"><div class="card-label">确认点 01</div><h3>研究什么</h3><p>业务和研究负责人确认目标、人群、范围和用途。</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="review-point"><div class="card-label">确认点 02</div><h3>能否执行</h3><p>方法、题目、材料、事实、隐私和样本方案确认后才能接触真实参与者。</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="review-point"><div class="card-label">确认点 03</div><h3>洞察是否成立</h3><p>确认结论受到证据支持，替代解释和适用边界已经说明。</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="review-point"><div class="card-label">确认点 04</div><h3>能否发布</h3><p>确认报告忠实、易懂、合规，并明确分发范围。</p></div>
+      </div>
+      <div class="thesis"><strong>质量专家负责发现问题，原责任专家负责修订，授权人员负责最终确认。</strong>这样既利用AI的效率，也保留研究的责任边界。</div>
+    </div>
+    <footer class="slide-footer"><span>人工确认与质量责任</span><span>14</span></footer>
+  </section>
+
+  <section class="slide invert" id="slide-15" aria-label="证据追溯">
+    <div class="slide-inner">
+      <div class="eyebrow">每个结论都能沿原路返回</div>
+      <h2>从原始回答到业务建议，中间不能跳步</h2>
+      <div class="evidence-ladder">
+        <div class="evidence-step"><div class="card-label">01 原始来源</div><h3>用户回答</h3><p>问卷答卷、访谈原句、观察记录或其他真实资料。</p></div>
+        <div class="evidence-step"><div class="card-label">02 证据单元</div><h3>带口径的数据</h3><p>说明题目、分子分母、筛选条件、来源位置和上下文。</p></div>
+        <div class="evidence-step highlight"><div class="card-label">03 事实发现</div><h3>数据显示什么</h3><p>先描述可直接观察到的结果，不提前猜测原因。</p></div>
+        <div class="evidence-step highlight"><div class="card-label">04 研究洞察</div><h3>为什么重要</h3><p>结合矛盾、机制、反例和其他解释，说明业务意义。</p></div>
+        <div class="evidence-step"><div class="card-label">05 行动建议</div><h3>可以怎么做</h3><p>提出产品和投教方向，同时说明风险和仍需验证的假设。</p></div>
+      </div>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card"><h3>任何数字</h3><p>都能回到题目、分母、缺失处理和分群条件。</p></div>
+        <div class="card"><h3>任何解释</h3><p>都区分证据支持、合理推断和仍待验证的部分。</p></div>
+        <div class="card"><h3>任何建议</h3><p>都来自已经说明边界的洞察，不替代业务最终决策。</p></div>
+      </div>
+    </div>
+    <footer class="slide-footer"><span>证据 → 发现 → 洞察 → 建议</span><span>15</span></footer>
+  </section>
+
+  <section class="slide" id="slide-16" aria-label="迁移原理">
+    <div class="slide-inner">
+      <div class="eyebrow">不绑定某个课题，也不绑定某个工具</div>
+      <h2>可迁移的关键，是把研究方法与具体工具分开</h2>
+      <div class="plain-port">
+        <div class="tool-stack">
+          <div class="tool-box"><strong>研究输入可以变化</strong><br><span class="muted">新基金、客户认知、投资行为、服务体验、专题访谈</span></div>
+          <div class="tool-box"><strong>执行工具可以变化</strong><br><span class="muted">在线问卷、线下访谈、表格文件、访谈记录</span></div>
+          <div class="tool-box"><strong>学习材料可以变化</strong><br><span class="muted">产品介绍、官方知识库、金融事实资料</span></div>
+        </div>
+        <div class="stable-core">
+          <div class="card-label">保持稳定的核心</div>
+          <h3>同一条研究路径</h3>
+          <p>需求 → 问题 → 方案 → 工具 → 执行 → 洞察 → 报告 → 资产</p>
+          <div class="thesis">专家分工、数据口径、证据追溯和人工审核保持不变。</div>
+        </div>
+        <div class="tool-stack">
+          <div class="tool-box"><strong>输出形式可以变化</strong><br><span class="muted">Word 报告、PDF、演示文稿或内部知识资产</span></div>
+          <div class="tool-box"><strong>分析重点可以变化</strong><br><span class="muted">总体态度、年龄差异、经验差异、产品与投教建议</span></div>
+          <div class="tool-box"><strong>领域知识可以替换</strong><br><span class="muted">FOF、指数基金、养老金融或其他研究领域</span></div>
+        </div>
+      </div>
+      <div class="thesis">迁移新课题时，替换业务背景、目标人群和领域知识即可，不需要重新发明研究流程。</div>
+    </div>
+    <footer class="slide-footer"><span>可迁移的实现原理</span><span>16</span></footer>
+  </section>
+
+  <section class="slide invert compact" id="slide-17" aria-label="养老目标基金案例运行路径">
+    <div class="slide-inner">
+      <div class="eyebrow">真实运行案例 · 沿同一条路径展示</div>
+      <h2>养老目标基金研究如何走完整个工作流</h2>
+      <div class="flow-overview">
+        <div class="flow-row">
+          <div class="flow-node"><span class="flow-no">01 接收需求</span><h3>明确背景</h3><p>养老目标基金规模较小，用户认知可能不足。</p><span class="flow-owner">提出研究方向</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><span class="flow-no">02 理解问题</span><h3>修正前提</h3><p>不预设“开户后不买”，聚焦实际购买者。</p><span class="flow-owner">形成研究任务</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><span class="flow-no">03 设计方案</span><h3>确定方法</h3><p>用结构化问卷测认知、决策和持有行为。</p><span class="flow-owner">形成分析框架</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><span class="flow-no">04 设计工具</span><h3>形成问卷</h3><p>35项题目，并定义年龄分群和质量规则。</p><span class="flow-owner">完成事实审核</span></div>
+        </div>
+        <div class="flow-bridge">从研究设计进入真实数据与业务洞察</div>
+        <div class="flow-row">
+          <div class="flow-node"><span class="flow-no">05 执行调研</span><h3>发行回收</h3><p>在线发行，回传200份实际答卷数据。</p><span class="flow-owner">整理与质量复核</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><span class="flow-no">06 分析洞察</span><h3>总体与分群</h3><p>完成描述分析和年龄、经验等探索性对比。</p><span class="flow-owner">形成产品与投教建议</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><span class="flow-no">07 生成报告</span><h3>管理层表达</h3><p>结论先行，补足目的、样本、术语和业务意义。</p><span class="flow-owner">形成19页报告</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node"><span class="flow-no">08 沉淀资产</span><h3>完整留存</h3><p>保存任务、问卷、数据口径、分析和最终报告。</p><span class="flow-owner">供后续课题复用</span></div>
+        </div>
+      </div>
+    </div>
+    <footer class="slide-footer"><span>真实案例 · 全路径运行</span><span>17</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-18" aria-label="养老目标基金案例洞察">
+    <div class="slide-inner">
+      <div class="eyebrow">真实案例 · 从数据走到行动</div>
+      <h2>工作流最终回答了“用户如何理解、如何选择、持有后需要什么”</h2>
+      <div class="bar-list">
+        <div class="bar-row"><div>四道核心知识题全部答对</div><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><div class="bar-value">20.0%</div></div>
+        <div class="bar-row"><div>购买前主动比较下滑曲线</div><div class="bar-track"><div class="bar-fill" style="width:3.5%"></div></div><div class="bar-value">3.5%</div></div>
+        <div class="bar-row"><div>购买前信息比较清楚</div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><div class="bar-value">29.0%</div></div>
+        <div class="bar-row"><div>购买后存在信息触达缺口</div><div class="bar-track"><div class="bar-fill" style="width:59.5%"></div></div><div class="bar-value">59.5%</div></div>
+      </div>
+      <div class="case-conclusions">
+        <div class="card"><div class="card-label">洞察 01</div><h3>购买不等于理解</h3><p>用户知道部分概念，但产品类型、下滑曲线与风险边界没有形成稳定判断链。</p></div>
+        <div class="card"><div class="card-label">洞察 02</div><h3>入口信息不等于判断信息</h3><p>品牌、费率和业绩负责吸引注意；退休年份和风险类型更接近最终选择依据。</p></div>
+        <div class="card"><div class="card-label">洞察 03</div><h3>投教应进入持有期</h3><p>当前配置、未来变化和调整原因，是购买后持续存在的解释需求。</p></div>
+      </div>
+      <div class="thesis"><strong>业务输出：</strong>重构购买前信息层级、建设持有期配置入口，并在首次购买、配置调整和市场波动时提供场景化投教。</div>
+    </div>
+    <footer class="slide-footer"><span>真实数据 → 洞察 → 行动</span><span>18</span></footer>
+  </section>
+
+  <section class="slide" id="slide-19" aria-label="完整运行能力">
+    <div class="slide-inner">
+      <div class="eyebrow">完整工作流的六项能力</div>
+      <h2>它之所以能够运行，不是因为“AI会写”，而是因为流程已经连通</h2>
+      <div class="value-grid">
+        <div class="card"><div class="card-label">01</div><h3>能理解</h3><p>先厘清研究目的和业务假设，不让模糊需求直接变成题目。</p></div>
+        <div class="card"><div class="card-label">02</div><h3>能设计</h3><p>方法、题目、变量、分群和分析口径共同设计。</p></div>
+        <div class="card"><div class="card-label">03</div><h3>能协作</h3><p>六位专家按责任交接，质量专家独立复核，研究总控组织流程。</p></div>
+        <div class="card"><div class="card-label">04</div><h3>能审核</h3><p>关键阶段保留人工确认，金融事实、隐私和证据边界受到控制。</p></div>
+        <div class="card"><div class="card-label">05</div><h3>能追溯</h3><p>数字、结论和建议都能回到原始回答、题目和适用条件。</p></div>
+        <div class="card"><div class="card-label">06</div><h3>能复用</h3><p>研究方法与具体工具分开，可以迁移到不同课题和输出形式。</p></div>
+      </div>
+      <div class="thesis"><strong>运行证明：</strong>养老目标基金案例已经完成研究问题、35项问卷、200份答卷、分群分析、产品与投教洞察以及19页正式报告。</div>
+    </div>
+    <footer class="slide-footer"><span>完整运行能力</span><span>19</span></footer>
+  </section>
+
+  <section class="slide invert" id="slide-20" aria-label="最终总结">
+    <div class="slide-inner">
+      <div class="eyebrow">最终总结</div>
+      <h2>让AI进入研究工作，真正改变的是研究协作方式</h2>
+      <div class="principle-grid">
+        <div class="principle-card"><div class="card-label">路径清楚</div><h3>八个阶段</h3><p>从需求到资产沉淀，观众和执行者都知道研究当前走到哪里。</p></div>
+        <div class="principle-card"><div class="card-label">责任清楚</div><h3>六位专家</h3><p>不同判断由不同专家负责，避免职责混乱和自我审核。</p></div>
+        <div class="principle-card"><div class="card-label">证据清楚</div><h3>逐级追溯</h3><p>从用户回答到业务建议保留完整中间过程，不跳过证据。</p></div>
+        <div class="principle-card"><div class="card-label">边界清楚</div><h3>人工把关</h3><p>AI提高理解、生成、校验、分析和表达效率，人掌握最终研究责任。</p></div>
+      </div>
+      <div class="thesis"><strong>最终价值：</strong>我们把一次成功的研究实践，整理成了一套可重复运行、可审核、可迁移的组织能力。</div>
+      <a class="flow-home" href="#slide-3">← 回到完整工作流总览</a>
+    </div>
+    <footer class="slide-footer"><span>AI辅助用户研究工作流 · 完整运行版</span><span>20</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-21" aria-label="研究问题理解专家提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 01 / 07</div>
+      <h2>研究问题理解专家｜把业务现象转成可检验的研究问题</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">主要负责 · 阶段 02</span>
+          <h3>研究问题理解专家</h3>
+          <p>负责问题框定与决策对齐，不直接出题。它先确定研究要支持谁做出什么判断，再定义研究对象、问题、假设与范围。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>阶段二最需要的是识别预设答案、确认偏误和范围漂移，而不是快速生成内容。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>研究任务书，包括目标、问题、假设、人群与研究边界。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>决策导向框定</strong><span>先明确研究要支持谁、在什么情境下作出什么决策。</span></div>
+            <div class="term-card"><strong>可证伪性</strong><span>说明什么证据出现时，原有假设需要被修正或推翻。</span></div>
+            <div class="term-card"><strong>替代解释</strong><span>主动寻找业务直觉之外，同样能够解释现象的原因。</span></div>
+            <div class="term-card"><strong>数据最小化</strong><span>只收集回答当前研究问题真正需要的用户信息。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>原样保留业务需求，不替提出者美化。</li><li>分开事实、假设、未知和待确认事项。</li><li>形成中性研究问题、可证伪假设及替代解释。</li><li>明确可回答、不可回答及外推边界。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不直接写问卷；不把“用户不了解”写成事实；不为了以后可能有用而收集敏感画像。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>将“开户后没有继续购买”的预设，修正为对实际购买者认知、决策与持有行为的研究。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-7">回到负责阶段：理解研究问题 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>专家能力 · 问题框定与决策对齐</span><span>21</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-22" aria-label="研究方案设计专家提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 02 / 07</div>
+      <h2>研究方案设计专家｜让研究方法服从证据需求</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">主要负责 · 阶段 03</span>
+          <h3>研究方案设计专家</h3>
+          <p>把已经确认的研究问题转换为最小充分的研究方案，决定使用问卷、访谈或组合研究，并预先固定分析方式。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>方案设计需要同时理解方法适用条件、抽样偏差、推断边界和资源约束。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>研究方案，包括方法、样本、证据、分析与风险控制。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>方法适配</strong><span>根据研究是探索原因、描述现状还是比较差异，选择合适方法。</span></div>
+            <div class="term-card"><strong>问题—证据对齐</strong><span>每个研究问题都必须对应明确的证据、采集方法和分析方式。</span></div>
+            <div class="term-card"><strong>预分析计划</strong><span>在看到结果前固定指标、分群、缺失处理和比较范围。</span></div>
+            <div class="term-card"><strong>外部效度</strong><span>明确样本结论能够解释哪些人群，不能推广到哪些人群。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>先写每个问题需要的证据类型。</li><li>建立问题、证据、方法、分析的一一映射。</li><li>定义纳入排除、样本边界和非概率抽样限制。</li><li>记录未选择的方法及其原因。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不用少量便利访谈估计总体比例；不为了显得全面而堆叠无用途方法。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>围绕认知、选择和持有行为确定结构化问卷，并预设总体描述与年龄、经验分群分析。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-8">回到负责阶段：设计研究方案 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>专家能力 · 方法适配与预分析</span><span>22</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-23" aria-label="问卷与访谈设计专家提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 03 / 07</div>
+      <h2>问卷与访谈设计专家｜把抽象概念转成可测量证据</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">主要负责 · 阶段 04</span>
+          <h3>问卷与访谈设计专家</h3>
+          <p>负责题目与访谈问题的专业设计，同时定义变量、量表、跳转、分群和数据有效性，使工具能够直接进入分析。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>工具设计的核心是构念操作化与测量质量，而不是语言润色。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>问卷或访谈提纲，以及变量、分群和质量规则。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>构念操作化</strong><span>把“理解、信任、风险偏好”等抽象概念转成可回答的题目。</span></div>
+            <div class="term-card"><strong>构念效度</strong><span>确认题目真正测到的是目标概念，而不是相邻但不同的概念。</span></div>
+            <div class="term-card"><strong>认知负荷</strong><span>控制题干复杂度、回忆难度和完成问卷所需的思考负担。</span></div>
+            <div class="term-card"><strong>反应偏差</strong><span>识别社会期许、诱导措辞、回忆偏差和机械作答等影响。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>每道题必须对应研究问题和分析用途。</li><li>一题只测一个核心概念，量表端点清晰。</li><li>客观知识、主观了解、态度和意向分开测量。</li><li>金融事实需复核；题目与变量规则同步设计。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不新增方案外目标；不自动发布问卷；不把知识库链接点击当作用户理解证据。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>形成35项问卷，加入年龄分群、打分题、金融事实复核及单份与整体数据有效性规则。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-9">回到负责阶段：设计研究工具 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>专家能力 · 构念操作化与测量效度</span><span>23</span></footer>
+  </section>
+
+  <section class="slide compact invert" id="slide-24" aria-label="研究质量审核专家提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 04 / 07</div>
+      <h2>研究质量审核专家｜用独立复核阻断研究风险</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">贯穿 · 阶段 02—07</span>
+          <h3>研究质量审核专家</h3>
+          <p>独立审核指定版本，不替原作者暗中改写。它定位问题、判断严重程度，并说明责任方和修复条件。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>生成者容易延续自己的假设，需要独立角色执行方法、事实、隐私和可读性复核。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>审核结果，包括问题、证据、严重程度、责任人和通过条件。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>对抗性审核</strong><span>主动寻找可能推翻、削弱或限制研究结论的问题。</span></div>
+            <div class="term-card"><strong>严重度分级</strong><span>区分必须阻断、需要修复、轻微调整和应当披露的问题。</span></div>
+            <div class="term-card"><strong>测量污染</strong><span>识别题序、解释材料或引导措辞对用户回答产生的影响。</span></div>
+            <div class="term-card"><strong>首次阅读测试</strong><span>检验没有看过问卷的读者，能否独立理解报告结论。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>冻结待审核版本及其上游依据。</li><li>依次检查结构、研究语义、事实、隐私与证据边界。</li><li>每个问题都写明位置、证据、责任方和修复条件。</li><li>审核通过不等于人工批准。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不能批准自己审核的内容；不能因格式校验通过而忽略方法偏差或过度外推。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>识别个人养老金账户不能投资A/C份额等事实问题，并推动补充数据有效性和首次阅读说明。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-14">回到人工确认与质量审核 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>专家能力 · 对抗性审核与质量治理</span><span>24</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-25" aria-label="证据与洞察专家提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 05 / 07</div>
+      <h2>证据与洞察专家｜把数据转成有边界的解释和建议</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">主要负责 · 阶段 06</span>
+          <h3>证据与洞察专家</h3>
+          <p>整合定量和定性资料，先形成可定位的证据与事实发现，再讨论机制、矛盾、替代解释和建议。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>数据分析需要同时控制分母、筛选、负例、外推和因果措辞，避免先写观点再找数据。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>证据、发现、洞察、建议、置信程度与限制。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>证据链</strong><span>让用户回答、事实发现、研究洞察和业务建议逐级可追溯。</span></div>
+            <div class="term-card"><strong>负例分析</strong><span>主动保留不符合主要趋势的案例、异常结果和矛盾证据。</span></div>
+            <div class="term-card"><strong>三角互证</strong><span>比较不同数据、研究方法或人群结果能否相互支持。</span></div>
+            <div class="term-card"><strong>不确定性表达</strong><span>说明抽样、基数、效应大小和外推范围对结论强度的影响。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>先核对数据质量和研究问题—数据映射。</li><li>定量保留分子、分母、筛选与不确定性。</li><li>事实发现不提前写原因；洞察必须讨论替代解释。</li><li>建议只能由洞察派生，并标明风险与验证方式。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不把相关写成因果；不删除反例；不把项目内候选分群写成正式客户标签。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>将20%知识题全对、3.5%主动比较下滑曲线和59.5%信息缺口转成产品与投教洞察。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-11">回到负责阶段：分析与洞察 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>专家能力 · 证据综合与负例分析</span><span>25</span></footer>
+  </section>
+
+  <section class="slide compact" id="slide-26" aria-label="研究报告表达专家提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 06 / 07</div>
+      <h2>研究报告表达专家｜在不改变证据的前提下提高可理解性</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">主要负责 · 阶段 07</span>
+          <h3>研究报告表达专家</h3>
+          <p>根据目标读者重组已经审核的洞察，建立结论层级、正文逻辑和图表表达，但不重新分析数据或创造新发现。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>管理层报告需要同时处理信息层级、上下文、术语解释、图表诚信和披露边界。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>正式报告，包括总览、目的、样本、分析、建议与限制。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>受众中心叙事</strong><span>根据读者要作出的判断，安排信息出现的顺序和解释深度。</span></div>
+            <div class="term-card"><strong>论证闭环</strong><span>每项观点都完整说明主张、证据、业务含义和适用边界。</span></div>
+            <div class="term-card"><strong>信息层级</strong><span>让结论总览、章节观点、数据细节和附录分别承担不同任务。</span></div>
+            <div class="term-card"><strong>图表诚信</strong><span>避免错误基数、误导性坐标、构念混合和视觉夸大。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>只重组已经审核的洞察，不新增结论。</li><li>先给结论总览，再说明目的、样本和研究方向。</li><li>重要段落先交代统计对象、问题和筛选条件。</li><li>专业术语首次出现必须解释；一张图只表达一个主要判断。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不为追求叙事删除限制；不把研究建议写成已批准业务动作；不改变证据强度。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>把分析重构为19页管理层报告，补足结论汇总、样本画像、年龄与经验对比和术语解释。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-12">回到负责阶段：生成研究报告 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>专家能力 · 证据叙事与图表诚信</span><span>26</span></footer>
+  </section>
+
+  <section class="slide compact invert" id="slide-27" aria-label="研究总控提示词">
+    <div class="slide-inner">
+      <div class="eyebrow">专家方法与工作指令 · 07 / 07</div>
+      <h2>研究总控｜保证流程不跳步、不串版本、不越权</h2>
+      <div class="expert-detail">
+        <div class="expert-profile">
+          <span class="role-label">贯穿 · 阶段 01—08</span>
+          <h3>研究总控</h3>
+          <p>研究总控不是内容专家。它读取当前阶段和已确认结果，把任务交给合适专家，并记录版本、等待、退回和人工确认。</p>
+          <div class="fit-reason"><strong>为什么适合这个环节</strong><p>多专家协作的风险不在“不会生成”，而在顺序混乱、旧版本复用、权限过大和责任不清。</p></div>
+          <div class="output-note"><strong>正式交付：</strong>任务、交接、阶段、有效版本与审核状态。</div>
+        </div>
+        <div class="expert-detail-main">
+          <div class="term-grid">
+            <div class="term-card"><strong>有限状态编排</strong><span>只有满足当前阶段的前置条件，流程才能进入下一阶段。</span></div>
+            <div class="term-card"><strong>版本锁定</strong><span>每次任务绑定明确版本，避免新旧研究内容在交接中混用。</span></div>
+            <div class="term-card"><strong>最小权限</strong><span>每位专家只获得完成当前任务所需的信息和操作权限。</span></div>
+            <div class="term-card"><strong>失效传播</strong><span>上游修改后，依赖旧版本的结果和批准自动变为失效状态。</span></div>
+          </div>
+          <div class="prompt-rules"><div class="prompt-label">核心工作指令</div><ol><li>先读取当前阶段、有效版本和人工确认状态。</li><li>只向目标专家提供最小必要输入与权限。</li><li>收到结果后校验状态、交付、下一责任人和原因。</li><li>拒绝跳过审核、沿用旧批准或自行修改研究内容。</li></ol></div>
+          <div class="expert-proof">
+            <div class="proof-box"><span class="proof-label">能力边界</span><p>不拥有研究语义；不替专家选择“更喜欢的结论”；不模拟人工批准或自动联系参与者。</p></div>
+            <div class="proof-box"><span class="proof-label">案例中的作用</span><p>把研究任务、问卷版本、在线发行、200份数据回传、洞察分析和最终报告连接成连续记录。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="expert-actions"><a href="#slide-4">← 返回专家地图</a><a href="#slide-3">回到完整工作流 →</a></div>
+    </div>
+    <footer class="slide-footer"><span>研究总控 · 状态编排与最小权限</span><span>27</span></footer>
+  </section>
+</main>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const nav = document.querySelector('.deck-nav');
+  const counter = document.querySelector('.slide-counter');
+  const progress = document.querySelector('.progress');
+
+  slides.forEach((slide, index) => {
+    const button = document.createElement('button');
+    button.className = 'nav-dot';
+    button.type = 'button';
+    button.setAttribute('aria-label', `前往第 ${index + 1} 页`);
+    button.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+    nav.appendChild(button);
+  });
+
+  const dots = [...document.querySelectorAll('.nav-dot')];
+  let activeIndex = 0;
+  const setActive = index => {
+    activeIndex = index;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${slides.length}`;
+    progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+        setActive(slides.indexOf(entry.target));
+      }
+    });
+  }, { threshold: [0.55] });
+  slides.forEach(slide => observer.observe(slide));
+  setActive(0);
+
+  document.addEventListener('keydown', event => {
+    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(event.key)) {
+      event.preventDefault();
+      slides[Math.min(activeIndex + 1, slides.length - 1)].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(event.key)) {
+      event.preventDefault();
+      slides[Math.max(activeIndex - 1, 0)].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (event.key === 'Home') {
+      event.preventDefault();
+      slides[0].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (event.key === 'End') {
+      event.preventDefault();
+      slides[slides.length - 1].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>

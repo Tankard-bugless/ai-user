@@ -1,0 +1,2989 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "INS-OTF-SURVEY-001",
+    "artifact_type": "InstrumentSpec",
+    "artifact_version": "0.2.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者的选择与持有认知问卷工具规范",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-23T19:18:00+08:00",
+    "updated_at": "2026-07-23T19:18:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-03",
+      "actor_type": "AGENT",
+      "role": "研究工具设计专家",
+      "model_id": "codex",
+      "capability_version": "0.5.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "新增 S1 购买经历甄别、Q9A 五点信息清晰度、Q32 年龄段，并将变量值语义、答卷状态和数据集状态与问卷正文同版冻结。"
+  },
+  "research_plan_ref": {
+    "artifact_id": "RP-OTF-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.2.0"
+  },
+  "instrument_type": "SURVEY",
+  "instrument_mode": "STANDARD",
+  "participant_facing_title": "您是怎么选择和持有养老基金的？",
+  "purpose": "描述养老目标基金实际购买者的购买路径、产品类型与下滑曲线认知、持有行为和信息需求；不进行产品推荐、风险测评或适当性判断。",
+  "research_question_ids": [
+    "RQ-001",
+    "RQ-002",
+    "RQ-003",
+    "RQ-004",
+    "RQ-005",
+    "RQ-006"
+  ],
+  "hypothesis_ids": [
+    "HYP-001",
+    "HYP-002",
+    "HYP-003",
+    "HYP-004"
+  ],
+  "estimated_duration_minutes": 10,
+  "languages": [
+    "zh-CN"
+  ],
+  "eligibility_rules": [
+    {
+      "rule_id": "ELIG-PURCHASE-YES",
+      "criterion": "S1 明确表示目前持有或过去持有过养老目标基金。",
+      "implementation_component_ids": [
+        "ITEM-S1"
+      ],
+      "outcome": "ELIGIBLE"
+    },
+    {
+      "rule_id": "ELIG-PURCHASE-NO",
+      "criterion": "S1 明确表示从未购买过养老目标基金。",
+      "implementation_component_ids": [
+        "ITEM-S1"
+      ],
+      "outcome": "INELIGIBLE"
+    }
+  ],
+  "consent_and_intro": {
+    "participant_intro": "本问卷了解养老目标基金购买者的选择、认知和持有信息需求，预计约 10 分钟。",
+    "voluntary_statement": "参与完全自愿，可以随时停止。",
+    "data_use_statement": "答案只用于匿名用户研究，不用于投资建议、风险测评或产品推荐。",
+    "withdrawal_statement": "提交前可关闭页面退出；不要求提供身份或账户信息。",
+    "recording_notice": "本问卷不录制音频或视频。",
+    "consent_capture": "CHECKBOX"
+  },
+  "test_materials": [],
+  "learning_resources": [
+    {
+      "resource_id": "LR-IMA-OTF-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "在核心答题结束后提供继续搜索养老目标基金金融常识的自愿学习入口。",
+      "placement": "COMPLETION_PAGE",
+      "recommended_search_prompt": "可搜索“养老目标基金”“目标日期基金”“目标风险基金”或“下滑曲线”。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "UNREVIEWED",
+      "review_notes": "发布前确认链接可访问；不记录点击、停留或身份关联。"
+    }
+  ],
+  "material_measurement_plan": [],
+  "traceability_map": [
+    {
+      "component_id": "ITEM-Q1",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q2",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": []
+    },
+    {
+      "component_id": "ITEM-Q3",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q4",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q5",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q6",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q7",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q8",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q9",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q9A",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q10",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q11",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q12",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q13",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q14",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q15",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q16",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q17",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q18",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q19",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q20",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q21",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q22",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q23",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q24",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q25",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q26",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q27",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q28",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q29",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q30",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-004",
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ]
+    },
+    {
+      "component_id": "ITEM-Q31",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": []
+    },
+    {
+      "component_id": "ITEM-Q32",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-002",
+        "RQ-003",
+        "RQ-006"
+      ],
+      "hypothesis_ids": []
+    }
+  ],
+  "privacy_and_compliance": {
+    "collects_personal_data": false,
+    "personal_data_fields": [],
+    "contact_data_separation": "问卷不收集姓名、联系方式、账户号码、金额或持仓截图；外部触达名单不进入研究数据。",
+    "financial_expression_review_required": true,
+    "no_return_promise_confirmed": true,
+    "suitability_data_separated": true,
+    "review_notes": "Q2、Q10、Q17—Q20 使用 FIN-FACT-FOF@0.1.0；正式发布仍需 Gate 2 人工审核。"
+  },
+  "pilot_config": {
+    "required": false
+  },
+  "survey_spec": {
+    "sections": [
+      {
+        "section_id": "SEC-01",
+        "title": "填写说明",
+        "purpose": "取得研究同意并确认购买经历。",
+        "research_question_ids": [],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-C0",
+            "item_type": "CONSENT",
+            "prompt": "我已阅读上述说明，自愿参加本次匿名研究。",
+            "required": true,
+            "research_question_ids": [],
+            "hypothesis_ids": [],
+            "randomize_options": false,
+            "variable_name": "consent",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-C0-01",
+                "label": "同意并继续",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-C0-02",
+                "label": "不同意",
+                "value": "o02"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-S1",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "在填写本问卷之前，您是否实际购买过养老目标基金？",
+            "required": true,
+            "research_question_ids": [],
+            "hypothesis_ids": [],
+            "randomize_options": false,
+            "variable_name": "purchase_eligibility",
+            "help_text": "单选；仅开立个人养老金账户、缴存资金或购买储蓄、保险、理财，不算购买过养老目标基金；选择“没有”时结束问卷；选择“不确定”可继续作答，数据返回后只进入人工复核，不自动删除。",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-003、FF-FOF-009",
+            "answer_options": [
+              {
+                "option_id": "OPT-S1-01",
+                "label": "是，目前持有或过去曾经持有过",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-S1-02",
+                "label": "没有",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-S1-03",
+                "label": "不确定自己买的是不是养老目标基金",
+                "value": "unknown"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-02",
+        "title": "一、最近一次购买经历",
+        "purpose": "记录最近一次购买背景和当前持有状态。",
+        "research_question_ids": [
+          "RQ-001",
+          "RQ-004",
+          "RQ-005"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q1",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您目前对最近一次购买的这只养老目标基金，处于哪种状态？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "holding_status",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q1-01",
+                "label": "目前仍在持有",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q1-02",
+                "label": "过去购买过，但目前已经全部赎回",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q1-03",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q2",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您当时通过哪类账户或份额购买？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-004"
+            ],
+            "hypothesis_ids": [],
+            "randomize_options": false,
+            "variable_name": "pension_share_type",
+            "help_text": "单选",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-010",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q2-01",
+                "label": "个人养老金账户中的 Y 份额",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q2-02",
+                "label": "普通基金账户中的 A/C 等份额",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q2-03",
+                "label": "两类都买过",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q2-04",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q3",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您最近一次购买养老目标基金，大约是在什么时候？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "purchase_recency",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q3-01",
+                "label": "1 年以内",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q3-02",
+                "label": "1-3 年前",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q3-03",
+                "label": "3 年以前",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q3-04",
+                "label": "记不清",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q4",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您最早是从哪里知道这只基金或这类基金的？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "first_awareness_channel",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q4-01",
+                "label": "银行或客户经理",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q4-02",
+                "label": "基金公司 APP、网站或公众号",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q4-03",
+                "label": "第三方基金销售平台",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q4-04",
+                "label": "公司或单位宣传",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q4-05",
+                "label": "亲友介绍",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q4-06",
+                "label": "新闻、短视频或其他网络内容",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q4-07",
+                "label": "自己搜索发现",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q4-08",
+                "label": "其他",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q4-09",
+                "label": "记不清",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q5",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "这次购买主要是谁作出的决定？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "decision_role",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q5-01",
+                "label": "主要由我自己决定",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q5-02",
+                "label": "我与客户经理或专业人员共同决定",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q5-03",
+                "label": "主要听取客户经理或专业人员建议",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q5-04",
+                "label": "我与家人共同决定",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q5-05",
+                "label": "主要听取亲友建议",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q5-06",
+                "label": "其他",
+                "value": "o06"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-03",
+        "title": "二、当时是怎么选择的",
+        "purpose": "区分信息接触、认真比较、主要影响因素和主观清晰度。",
+        "research_question_ids": [
+          "RQ-001",
+          "RQ-004"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q6",
+            "item_type": "MULTI_SELECT",
+            "prompt": "当时促使您购买养老目标基金的主要原因有哪些？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001",
+              "RQ-004"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "purchase_trigger",
+            "help_text": "多选，最多选 3 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q6-01",
+                "label": "提前为退休生活做准备",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q6-02",
+                "label": "希望长期投资，不想频繁操作",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q6-03",
+                "label": "希望分散配置风险",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q6-04",
+                "label": "个人养老金税收优惠",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q6-05",
+                "label": "客户经理或专业人员推荐",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q6-06",
+                "label": "亲友推荐",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q6-07",
+                "label": "看重历史表现或排名",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q6-08",
+                "label": "认可基金公司或管理团队",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q6-09",
+                "label": "费率或 Y 份额安排",
+                "value": "o09"
+              },
+              {
+                "option_id": "OPT-Q6-10",
+                "label": "购买方便或起购门槛合适",
+                "value": "o10"
+              },
+              {
+                "option_id": "OPT-Q6-11",
+                "label": "其他",
+                "value": "o11"
+              },
+              {
+                "option_id": "OPT-Q6-12",
+                "label": "记不清",
+                "value": "unknown",
+                "exclusive": true
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q7",
+            "item_type": "MULTI_SELECT",
+            "prompt": "购买前，您实际看过哪些信息？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001",
+              "RQ-004"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "information_seen_before_purchase",
+            "help_text": "多选；若选择“没有仔细看”或“记不清”，请不要再选其他项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q7-01",
+                "label": "基金名称或目标年份",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q7-02",
+                "label": "稳健、平衡、积极等风险类型",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q7-03",
+                "label": "历史业绩或排名",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q7-04",
+                "label": "当前股票、债券等资产配置",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q7-05",
+                "label": "下滑曲线或未来配置调整方式",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q7-06",
+                "label": "基金经理或管理团队",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q7-07",
+                "label": "基金公司品牌",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q7-08",
+                "label": "费率或 Y 份额说明",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q7-09",
+                "label": "持有、申购和赎回规则",
+                "value": "o09"
+              },
+              {
+                "option_id": "OPT-Q7-10",
+                "label": "客户经理或平台的产品介绍",
+                "value": "o10"
+              },
+              {
+                "option_id": "OPT-Q7-11",
+                "label": "没有仔细看",
+                "value": "o11",
+                "exclusive": true
+              },
+              {
+                "option_id": "OPT-Q7-12",
+                "label": "记不清",
+                "value": "unknown",
+                "exclusive": true
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q8",
+            "item_type": "MULTI_SELECT",
+            "prompt": "购买前，您认真比较过哪些信息？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001",
+              "RQ-004"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "information_compared_before_purchase",
+            "help_text": "多选，最多选 3 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q8-01",
+                "label": "退休年份是否匹配",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q8-02",
+                "label": "风险类型是否符合自己的选择",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q8-03",
+                "label": "历史业绩或排名",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q8-04",
+                "label": "股票、债券等资产配置",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q8-05",
+                "label": "下滑曲线或未来配置调整方式",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q8-06",
+                "label": "基金经理或管理团队",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q8-07",
+                "label": "基金公司品牌",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q8-08",
+                "label": "费率或 Y 份额安排",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q8-09",
+                "label": "持有、申购和赎回规则",
+                "value": "o09"
+              },
+              {
+                "option_id": "OPT-Q8-10",
+                "label": "与其他基金或养老产品的差别",
+                "value": "o10"
+              },
+              {
+                "option_id": "OPT-Q8-11",
+                "label": "主要听取推荐，没有认真比较",
+                "value": "o11",
+                "exclusive": true
+              },
+              {
+                "option_id": "OPT-Q8-12",
+                "label": "其他",
+                "value": "o12"
+              },
+              {
+                "option_id": "OPT-Q8-13",
+                "label": "记不清",
+                "value": "unknown",
+                "exclusive": true
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q9",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "以下哪一项对您最终购买的影响最大？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001",
+              "RQ-004"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "factor_most_important",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q9-01",
+                "label": "退休年份是否匹配",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q9-02",
+                "label": "风险类型是否符合自己的选择",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q9-03",
+                "label": "历史业绩或排名",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q9-04",
+                "label": "股票、债券等资产配置",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q9-05",
+                "label": "下滑曲线或未来配置调整方式",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q9-06",
+                "label": "基金经理或管理团队",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q9-07",
+                "label": "基金公司品牌",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q9-08",
+                "label": "费率或 Y 份额安排",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q9-09",
+                "label": "持有、申购和赎回规则",
+                "value": "o09"
+              },
+              {
+                "option_id": "OPT-Q9-10",
+                "label": "客户经理、平台或亲友推荐",
+                "value": "o10"
+              },
+              {
+                "option_id": "OPT-Q9-11",
+                "label": "其他",
+                "value": "o11"
+              },
+              {
+                "option_id": "OPT-Q9-12",
+                "label": "记不清",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q9A",
+            "item_type": "LIKERT",
+            "prompt": "总体来说，您当时觉得购买前看到的产品信息有多清楚？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-004"
+            ],
+            "hypothesis_ids": [
+              "HYP-003"
+            ],
+            "randomize_options": false,
+            "variable_name": "purchase_information_clarity_5",
+            "help_text": "五点评分；1 表示非常不清楚，5 表示非常清楚；“记不清”单独列出",
+            "quality_note": "主观清晰度与客观知识题分开；记不清不占用中点。",
+            "scale": {
+              "minimum": 1,
+              "maximum": 5,
+              "step": 1,
+              "minimum_label": "非常不清楚",
+              "maximum_label": "非常清楚",
+              "direction": "LOW_TO_HIGH",
+              "not_applicable_option": {
+                "option_id": "OPT-Q9A-98",
+                "label": "记不清",
+                "value": 98
+              }
+            }
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-04",
+        "title": "三、您对产品类型的了解",
+        "purpose": "测量产品类型自报与主观了解。",
+        "research_question_ids": [
+          "RQ-002"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q10",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "根据您的印象，您最近一次购买的养老目标基金属于哪一类？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "randomize_options": false,
+            "variable_name": "reported_fund_type",
+            "help_text": "单选；不确定时请直接选择“不确定”",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-003、FF-FOF-004、FF-FOF-005",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q10-01",
+                "label": "目标日期型，基金名称通常带有 2035、2040、2045 等目标年份",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q10-02",
+                "label": "目标风险型，通常标有稳健、平衡、积极等风险类型",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q10-03",
+                "label": "两类都买过",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q10-04",
+                "label": "其他或无法判断",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q10-05",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q11",
+            "item_type": "TEXT_SHORT",
+            "prompt": "如果您还记得，可以填写基金名称或名称中的目标年份。",
+            "required": false,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "randomize_options": false,
+            "variable_name": "reported_fund_name",
+            "help_text": "选填；请勿填写账户号码、金额或其他身份信息"
+          },
+          {
+            "item_id": "ITEM-Q12",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "在今天填写问卷之前，您对“目标日期型”和“目标风险型”的区别了解多少？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "randomize_options": false,
+            "variable_name": "fund_type_familiarity",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q12-01",
+                "label": "比较了解，能够向别人解释",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q12-02",
+                "label": "大概知道，但说不清楚",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q12-03",
+                "label": "听说过，但不了解区别",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q12-04",
+                "label": "以前没有听说过",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q12-05",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-05",
+        "title": "四、您是否看过下滑曲线",
+        "purpose": "测量下滑曲线的知晓、查看和使用行为。",
+        "research_question_ids": [
+          "RQ-003"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q13",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "在今天填写问卷之前，您是否听说过“下滑曲线”？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "randomize_options": false,
+            "variable_name": "glide_path_awareness",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q13-01",
+                "label": "听说过，也比较了解",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q13-02",
+                "label": "听说过，但不太清楚",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q13-03",
+                "label": "以前没有听说过",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q13-04",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q14",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "购买这只基金之前，您是否看过它的下滑曲线或未来资产配置调整说明？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "randomize_options": false,
+            "variable_name": "glide_path_viewed_before_purchase",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q14-01",
+                "label": "认真看过",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q14-02",
+                "label": "大致看过",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q14-03",
+                "label": "知道有，但没有看",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q14-04",
+                "label": "当时不知道，也没有看",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q14-05",
+                "label": "记不清",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q15",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "购买以后，您是否再次查看过下滑曲线或资产配置变化？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "randomize_options": false,
+            "variable_name": "glide_path_viewed_during_holding",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q15-01",
+                "label": "查看过多次",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q15-02",
+                "label": "查看过一次",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q15-03",
+                "label": "没有查看过",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q15-04",
+                "label": "想看，但不知道在哪里看",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q15-05",
+                "label": "记不清",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q16",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "下滑曲线或资产配置调整方式，对您的决定影响最大的是哪一种？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "randomize_options": false,
+            "variable_name": "glide_path_used_in_decision",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q16-01",
+                "label": "影响了是否购买",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q16-02",
+                "label": "影响了目标年份或风险类型的选择",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q16-03",
+                "label": "影响了后续追加、持有、减少或赎回",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q16-04",
+                "label": "看过，但没有用于决定",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q16-05",
+                "label": "没有看过或记不清",
+                "value": "o05"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-06",
+        "title": "五、概念理解",
+        "purpose": "使用经事实审核的知识题测量客观理解。",
+        "research_question_ids": [
+          "RQ-002",
+          "RQ-003"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q17",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "下面哪项更符合目标日期型养老目标基金的一般设计思路？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "randomize_options": false,
+            "variable_name": "target_date_knowledge",
+            "help_text": "单选；不知道时请选择“不确定”",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-004、FF-FOF-007",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q17-01",
+                "label": "主要根据个人偏好的风险类型选择，并长期保持相近风险水平",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q17-02",
+                "label": "主要根据预计退休年份选择，接近目标日期时通常会调整资产配置",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q17-03",
+                "label": "到达目标年份后会保证本金和收益",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q17-04",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q18",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "下面哪项更符合目标风险型养老目标基金的一般设计思路？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "randomize_options": false,
+            "variable_name": "target_risk_knowledge",
+            "help_text": "单选；不知道时请选择“不确定”",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-005、FF-FOF-007",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q18-01",
+                "label": "主要按照预设风险水平选择，并在策略范围内维持相应风险特征",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q18-02",
+                "label": "只根据出生年份自动确定投资组合",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q18-03",
+                "label": "只要选择稳健型就不会发生亏损",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q18-04",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q19",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "在养老目标基金中，“下滑曲线”通常主要表示什么？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "randomize_options": false,
+            "variable_name": "glide_path_meaning",
+            "help_text": "单选；不知道时请选择“不确定”",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-006",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q19-01",
+                "label": "随着目标日期接近，基金资产配置可能如何逐步调整",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q19-02",
+                "label": "基金未来净值或收益一定会按哪条线变化",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q19-03",
+                "label": "基金费率每年如何下降",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q19-04",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q20",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "如果基金接近目标日期时降低波动较高资产的比例，下面哪种理解更合适？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "randomize_options": false,
+            "variable_name": "glide_path_risk_boundary",
+            "help_text": "单选；不知道时请选择“不确定”",
+            "quality_note": "金融事实已映射至 FIN-FACT-FOF@0.1.0：FF-FOF-007",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q20-01",
+                "label": "之后就不会发生亏损",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q20-02",
+                "label": "仍可能出现净值波动或亏损，不代表本金和收益有保证",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q20-03",
+                "label": "到目标年份时会自动全部转成存款",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q20-04",
+                "label": "不确定",
+                "value": "unknown"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-07",
+        "title": "六、购买后的持有情况",
+        "purpose": "记录持有行为、波动应对和信息不确定。",
+        "research_question_ids": [
+          "RQ-005"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q21",
+            "item_type": "MULTI_SELECT",
+            "prompt": "购买以后，您做过哪些操作？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "holding_action",
+            "help_text": "多选；若选择“一直持有，没有调整”，请不要再选其他操作",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q21-01",
+                "label": "一直持有，没有调整",
+                "value": "o01",
+                "exclusive": true
+              },
+              {
+                "option_id": "OPT-Q21-02",
+                "label": "定投或追加购买",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q21-03",
+                "label": "部分赎回",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q21-04",
+                "label": "全部赎回",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q21-05",
+                "label": "转换为其他基金或养老产品",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q21-06",
+                "label": "其他",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q21-07",
+                "label": "记不清",
+                "value": "unknown",
+                "exclusive": true
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q22",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "最近一次遇到基金净值明显下跌时，您主要怎么做？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "reaction_to_volatility",
+            "help_text": "单选；若选择“没有经历过或记不清”，请跳到 Q24。",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q22-01",
+                "label": "继续持有，没有操作",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q22-02",
+                "label": "追加购买",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q22-03",
+                "label": "部分赎回",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q22-04",
+                "label": "全部赎回",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q22-05",
+                "label": "先查询信息或咨询他人，再决定是否操作",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q22-06",
+                "label": "没有经历过或记不清",
+                "value": "not_applicable"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q23",
+            "item_type": "MULTI_SELECT",
+            "prompt": "您当时采取上述做法，主要是因为什么？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "action_reason",
+            "help_text": "多选，最多选 3 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q23-01",
+                "label": "把它当作长期养老投资，愿意继续持有",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q23-02",
+                "label": "理解净值波动可能是正常现象",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q23-03",
+                "label": "担心继续亏损",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q23-04",
+                "label": "不清楚为什么下跌",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q23-05",
+                "label": "认为产品不再符合自己的退休安排",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q23-06",
+                "label": "听取客户经理、专业人员或亲友建议",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q23-07",
+                "label": "临时需要使用资金",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q23-08",
+                "label": "与其他产品相比表现不理想",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q23-09",
+                "label": "其他",
+                "value": "o09"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q24",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "持有期间，您是否查看过基金的资产配置有没有按原来的思路变化？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "allocation_change_check",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q24-01",
+                "label": "会定期查看",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q24-02",
+                "label": "偶尔查看",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q24-03",
+                "label": "主要在市场波动较大时查看",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q24-04",
+                "label": "从未查看",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q24-05",
+                "label": "想看，但不知道在哪里看",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q24-06",
+                "label": "记不清",
+                "value": "unknown"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q25",
+            "item_type": "MULTI_SELECT",
+            "prompt": "对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "holding_uncertainty",
+            "help_text": "多选，最多选 3 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q25-01",
+                "label": "现在承担的风险有多大",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q25-02",
+                "label": "当前股票等波动较高资产占多少",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q25-03",
+                "label": "未来资产配置会怎样变化",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q25-04",
+                "label": "为什么要调整资产配置",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q25-05",
+                "label": "产品是否仍与自己的退休年份相匹配",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q25-06",
+                "label": "目标日期型和目标风险型到底有什么区别",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q25-07",
+                "label": "Y 份额的费率和账户规则",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q25-08",
+                "label": "持有、追加和赎回规则",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q25-09",
+                "label": "应该怎样看待短期业绩",
+                "value": "o09"
+              },
+              {
+                "option_id": "OPT-Q25-10",
+                "label": "没有明显不确定",
+                "value": "o10",
+                "exclusive": true
+              },
+              {
+                "option_id": "OPT-Q25-11",
+                "label": "其他",
+                "value": "o11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-08",
+        "title": "七、您希望获得哪些信息",
+        "purpose": "收集信息主题、形式和时点偏好。",
+        "research_question_ids": [
+          "RQ-006"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q26",
+            "item_type": "MULTI_SELECT",
+            "prompt": "今后您最希望看到哪些内容？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-006"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "information_need",
+            "help_text": "多选，最多选 3 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q26-01",
+                "label": "目标日期型和目标风险型的简单区别",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q26-02",
+                "label": "怎样根据退休年份或风险类型选择",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q26-03",
+                "label": "当前资产配置和风险水平",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q26-04",
+                "label": "未来配置会怎样变化，也就是下滑曲线",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q26-05",
+                "label": "为什么要调整资产配置",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q26-06",
+                "label": "市场下跌时怎样理解产品表现",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q26-07",
+                "label": "Y 份额的费率和个人养老金账户规则",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q26-08",
+                "label": "持有、追加和赎回规则",
+                "value": "o08"
+              },
+              {
+                "option_id": "OPT-Q26-09",
+                "label": "与其他基金或养老产品的差别",
+                "value": "o09"
+              },
+              {
+                "option_id": "OPT-Q26-10",
+                "label": "目前不需要更多信息",
+                "value": "o10",
+                "exclusive": true
+              },
+              {
+                "option_id": "OPT-Q26-11",
+                "label": "其他",
+                "value": "o11"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q27",
+            "item_type": "MULTI_SELECT",
+            "prompt": "哪种形式更方便您理解这些内容？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-006"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "preferred_explanation_format",
+            "help_text": "多选，最多选 2 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q27-01",
+                "label": "一句话说明",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q27-02",
+                "label": "结合年龄或退休年份举例",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q27-03",
+                "label": "简单的下滑曲线图",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q27-04",
+                "label": "资产配置表",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q27-05",
+                "label": "常见问题与回答",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q27-06",
+                "label": "1-3 分钟短视频",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q27-07",
+                "label": "可以自行搜索的知识库",
+                "value": "o07"
+              },
+              {
+                "option_id": "OPT-Q27-08",
+                "label": "其他",
+                "value": "o08"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q28",
+            "item_type": "MULTI_SELECT",
+            "prompt": "您更希望在什么时候看到这些说明？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-006"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "information_timing",
+            "help_text": "多选，最多选 2 项",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q28-01",
+                "label": "第一次了解产品时",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q28-02",
+                "label": "购买页面上",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q28-03",
+                "label": "购买后定期收到",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q28-04",
+                "label": "市场波动较大时",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q28-05",
+                "label": "基金调整资产配置时",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q28-06",
+                "label": "自己需要时再搜索",
+                "value": "o06"
+              },
+              {
+                "option_id": "OPT-Q28-07",
+                "label": "其他",
+                "value": "o07"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q29",
+            "item_type": "TEXT_LONG",
+            "prompt": "关于养老目标基金，还有什么是您一直没有弄明白、但希望得到解释的？",
+            "required": false,
+            "research_question_ids": [
+              "RQ-006"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "optional_open_comment",
+            "help_text": "选填"
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-09",
+        "title": "八、简单背景信息",
+        "purpose": "收集预设研究变量和唯一基础分群年龄段。",
+        "research_question_ids": [
+          "RQ-001",
+          "RQ-002",
+          "RQ-003",
+          "RQ-004",
+          "RQ-005",
+          "RQ-006"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "ITEM-Q30",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您距离自己预计退休的时间大约还有多久？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-004",
+              "RQ-005"
+            ],
+            "hypothesis_ids": [
+              "HYP-004"
+            ],
+            "randomize_options": false,
+            "variable_name": "years_to_retirement",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q30-01",
+                "label": "已经退休",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q30-02",
+                "label": "5 年以内",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q30-03",
+                "label": "6-10 年",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q30-04",
+                "label": "11-20 年",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q30-05",
+                "label": "20 年以上",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q30-06",
+                "label": "不确定或不愿回答",
+                "value": "unknown_or_prefer_not"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q31",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您投资基金大约有多长时间？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-004"
+            ],
+            "hypothesis_ids": [],
+            "randomize_options": false,
+            "variable_name": "fund_experience",
+            "help_text": "单选",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q31-01",
+                "label": "不足 1 年",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q31-02",
+                "label": "1-3 年",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q31-03",
+                "label": "4-6 年",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q31-04",
+                "label": "6 年以上",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q31-05",
+                "label": "不确定或不愿回答",
+                "value": "unknown_or_prefer_not"
+              }
+            ]
+          },
+          {
+            "item_id": "ITEM-Q32",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您的年龄段是？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001",
+              "RQ-002",
+              "RQ-003",
+              "RQ-006"
+            ],
+            "hypothesis_ids": [],
+            "randomize_options": false,
+            "variable_name": "age_group",
+            "help_text": "单选；仅用于本次匿名样本的方向性分组比较",
+            "quality_note": "仅用于本项目年龄分群；不形成正式客户标签。",
+            "answer_options": [
+              {
+                "option_id": "OPT-Q32-01",
+                "label": "18—29 岁",
+                "value": "o01"
+              },
+              {
+                "option_id": "OPT-Q32-02",
+                "label": "30—39 岁",
+                "value": "o02"
+              },
+              {
+                "option_id": "OPT-Q32-03",
+                "label": "40—49 岁",
+                "value": "o03"
+              },
+              {
+                "option_id": "OPT-Q32-04",
+                "label": "50—59 岁",
+                "value": "o04"
+              },
+              {
+                "option_id": "OPT-Q32-05",
+                "label": "60 岁及以上",
+                "value": "o05"
+              },
+              {
+                "option_id": "OPT-Q32-06",
+                "label": "不愿回答",
+                "value": "prefer_not"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "logic_rules": [
+      {
+        "rule_id": "LOGIC-CONSENT-END",
+        "conditions": [
+          {
+            "source_item_id": "ITEM-C0",
+            "operator": "EQUALS",
+            "value": "o02"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "TERMINATE",
+        "target_id": "END-CONSENT",
+        "priority": 1
+      },
+      {
+        "rule_id": "LOGIC-INELIGIBLE-END",
+        "conditions": [
+          {
+            "source_item_id": "ITEM-S1",
+            "operator": "EQUALS",
+            "value": "o02"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "TERMINATE",
+        "target_id": "END-INELIGIBLE",
+        "priority": 2
+      },
+      {
+        "rule_id": "LOGIC-Q22-SKIP-Q23",
+        "conditions": [
+          {
+            "source_item_id": "ITEM-Q22",
+            "operator": "EQUALS",
+            "value": "not_applicable"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "SKIP_TO",
+        "target_id": "ITEM-Q24",
+        "priority": 3
+      }
+    ],
+    "quota_rules": [],
+    "termination_messages": [
+      {
+        "termination_id": "END-CONSENT",
+        "message": "感谢您的关注。您未同意参与，本问卷到此结束。"
+      },
+      {
+        "termination_id": "END-INELIGIBLE",
+        "message": "感谢您的关注。本研究面向实际购买过养老目标基金的投资者，本问卷到此结束。"
+      }
+    ],
+    "output_variables": [
+      {
+        "variable_id": "VAR-C0",
+        "source_item_id": "ITEM-C0",
+        "label": "我已阅读上述说明，自愿参加本次匿名研究。",
+        "data_type": "STRING",
+        "analysis_role": "CONSENT",
+        "missing_value_rule": "缺失视为 CONSENT_NOT_GIVEN，不进入研究数据。",
+        "value_mapping": {
+          "o01": "同意并继续",
+          "o02": "不同意"
+        }
+      },
+      {
+        "variable_id": "VAR-S1",
+        "source_item_id": "ITEM-S1",
+        "label": "在填写本问卷之前，您是否实际购买过养老目标基金？",
+        "data_type": "STRING",
+        "analysis_role": "ELIGIBILITY",
+        "missing_value_rule": "缺失视为甄别未完成；明确没有购买为 INELIGIBLE。",
+        "value_mapping": {
+          "o01": "是，目前持有或过去曾经持有过",
+          "o02": "没有",
+          "unknown": "不确定自己买的是不是养老目标基金"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q1",
+        "source_item_id": "ITEM-Q1",
+        "label": "您目前对最近一次购买的这只养老目标基金，处于哪种状态？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "目前仍在持有",
+          "o02": "过去购买过，但目前已经全部赎回",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q2",
+        "source_item_id": "ITEM-Q2",
+        "label": "您当时通过哪类账户或份额购买？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "个人养老金账户中的 Y 份额",
+          "o02": "普通基金账户中的 A/C 等份额",
+          "o03": "两类都买过",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q3",
+        "source_item_id": "ITEM-Q3",
+        "label": "您最近一次购买养老目标基金，大约是在什么时候？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "1 年以内",
+          "o02": "1-3 年前",
+          "o03": "3 年以前",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q4",
+        "source_item_id": "ITEM-Q4",
+        "label": "您最早是从哪里知道这只基金或这类基金的？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "银行或客户经理",
+          "o02": "基金公司 APP、网站或公众号",
+          "o03": "第三方基金销售平台",
+          "o04": "公司或单位宣传",
+          "o05": "亲友介绍",
+          "o06": "新闻、短视频或其他网络内容",
+          "o07": "自己搜索发现",
+          "o08": "其他",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q5",
+        "source_item_id": "ITEM-Q5",
+        "label": "这次购买主要是谁作出的决定？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "主要由我自己决定",
+          "o02": "我与客户经理或专业人员共同决定",
+          "o03": "主要听取客户经理或专业人员建议",
+          "o04": "我与家人共同决定",
+          "o05": "主要听取亲友建议",
+          "o06": "其他"
+        }
+      },
+      {
+        "variable_id": "VAR-Q6",
+        "source_item_id": "ITEM-Q6",
+        "label": "当时促使您购买养老目标基金的主要原因有哪些？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "提前为退休生活做准备",
+          "o02": "希望长期投资，不想频繁操作",
+          "o03": "希望分散配置风险",
+          "o04": "个人养老金税收优惠",
+          "o05": "客户经理或专业人员推荐",
+          "o06": "亲友推荐",
+          "o07": "看重历史表现或排名",
+          "o08": "认可基金公司或管理团队",
+          "o09": "费率或 Y 份额安排",
+          "o10": "购买方便或起购门槛合适",
+          "o11": "其他",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q7",
+        "source_item_id": "ITEM-Q7",
+        "label": "购买前，您实际看过哪些信息？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "基金名称或目标年份",
+          "o02": "稳健、平衡、积极等风险类型",
+          "o03": "历史业绩或排名",
+          "o04": "当前股票、债券等资产配置",
+          "o05": "下滑曲线或未来配置调整方式",
+          "o06": "基金经理或管理团队",
+          "o07": "基金公司品牌",
+          "o08": "费率或 Y 份额说明",
+          "o09": "持有、申购和赎回规则",
+          "o10": "客户经理或平台的产品介绍",
+          "o11": "没有仔细看",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q8",
+        "source_item_id": "ITEM-Q8",
+        "label": "购买前，您认真比较过哪些信息？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "退休年份是否匹配",
+          "o02": "风险类型是否符合自己的选择",
+          "o03": "历史业绩或排名",
+          "o04": "股票、债券等资产配置",
+          "o05": "下滑曲线或未来配置调整方式",
+          "o06": "基金经理或管理团队",
+          "o07": "基金公司品牌",
+          "o08": "费率或 Y 份额安排",
+          "o09": "持有、申购和赎回规则",
+          "o10": "与其他基金或养老产品的差别",
+          "o11": "主要听取推荐，没有认真比较",
+          "o12": "其他",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q9",
+        "source_item_id": "ITEM-Q9",
+        "label": "以下哪一项对您最终购买的影响最大？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "退休年份是否匹配",
+          "o02": "风险类型是否符合自己的选择",
+          "o03": "历史业绩或排名",
+          "o04": "股票、债券等资产配置",
+          "o05": "下滑曲线或未来配置调整方式",
+          "o06": "基金经理或管理团队",
+          "o07": "基金公司品牌",
+          "o08": "费率或 Y 份额安排",
+          "o09": "持有、申购和赎回规则",
+          "o10": "客户经理、平台或亲友推荐",
+          "o11": "其他",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q9A",
+        "source_item_id": "ITEM-Q9A",
+        "label": "总体来说，您当时觉得购买前看到的产品信息有多清楚？",
+        "data_type": "INTEGER",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "1": "非常不清楚",
+          "2": "比较不清楚",
+          "3": "一般",
+          "4": "比较清楚",
+          "5": "非常清楚",
+          "98": "记不清"
+        },
+        "special_value_meanings": {
+          "98": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q10",
+        "source_item_id": "ITEM-Q10",
+        "label": "根据您的印象，您最近一次购买的养老目标基金属于哪一类？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "目标日期型，基金名称通常带有 2035、2040、2045 等目标年份",
+          "o02": "目标风险型，通常标有稳健、平衡、积极等风险类型",
+          "o03": "两类都买过",
+          "o04": "其他或无法判断",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q11",
+        "source_item_id": "ITEM-Q11",
+        "label": "如果您还记得，可以填写基金名称或名称中的目标年份。",
+        "data_type": "STRING",
+        "analysis_role": "OPEN_TEXT",
+        "missing_value_rule": "选答空白记为 ITEM_MISSING，但不据此判整份答卷无效。"
+      },
+      {
+        "variable_id": "VAR-Q12",
+        "source_item_id": "ITEM-Q12",
+        "label": "在今天填写问卷之前，您对“目标日期型”和“目标风险型”的区别了解多少？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "比较了解，能够向别人解释",
+          "o02": "大概知道，但说不清楚",
+          "o03": "听说过，但不了解区别",
+          "o04": "以前没有听说过",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q13",
+        "source_item_id": "ITEM-Q13",
+        "label": "在今天填写问卷之前，您是否听说过“下滑曲线”？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "听说过，也比较了解",
+          "o02": "听说过，但不太清楚",
+          "o03": "以前没有听说过",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q14",
+        "source_item_id": "ITEM-Q14",
+        "label": "购买这只基金之前，您是否看过它的下滑曲线或未来资产配置调整说明？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "认真看过",
+          "o02": "大致看过",
+          "o03": "知道有，但没有看",
+          "o04": "当时不知道，也没有看",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q15",
+        "source_item_id": "ITEM-Q15",
+        "label": "购买以后，您是否再次查看过下滑曲线或资产配置变化？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "查看过多次",
+          "o02": "查看过一次",
+          "o03": "没有查看过",
+          "o04": "想看，但不知道在哪里看",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q16",
+        "source_item_id": "ITEM-Q16",
+        "label": "下滑曲线或资产配置调整方式，对您的决定影响最大的是哪一种？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "影响了是否购买",
+          "o02": "影响了目标年份或风险类型的选择",
+          "o03": "影响了后续追加、持有、减少或赎回",
+          "o04": "看过，但没有用于决定",
+          "o05": "没有看过或记不清"
+        }
+      },
+      {
+        "variable_id": "VAR-Q17",
+        "source_item_id": "ITEM-Q17",
+        "label": "下面哪项更符合目标日期型养老目标基金的一般设计思路？",
+        "data_type": "STRING",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "主要根据个人偏好的风险类型选择，并长期保持相近风险水平",
+          "o02": "主要根据预计退休年份选择，接近目标日期时通常会调整资产配置",
+          "o03": "到达目标年份后会保证本金和收益",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q18",
+        "source_item_id": "ITEM-Q18",
+        "label": "下面哪项更符合目标风险型养老目标基金的一般设计思路？",
+        "data_type": "STRING",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "主要按照预设风险水平选择，并在策略范围内维持相应风险特征",
+          "o02": "只根据出生年份自动确定投资组合",
+          "o03": "只要选择稳健型就不会发生亏损",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q19",
+        "source_item_id": "ITEM-Q19",
+        "label": "在养老目标基金中，“下滑曲线”通常主要表示什么？",
+        "data_type": "STRING",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "随着目标日期接近，基金资产配置可能如何逐步调整",
+          "o02": "基金未来净值或收益一定会按哪条线变化",
+          "o03": "基金费率每年如何下降",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q20",
+        "source_item_id": "ITEM-Q20",
+        "label": "如果基金接近目标日期时降低波动较高资产的比例，下面哪种理解更合适？",
+        "data_type": "STRING",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "之后就不会发生亏损",
+          "o02": "仍可能出现净值波动或亏损，不代表本金和收益有保证",
+          "o03": "到目标年份时会自动全部转成存款",
+          "unknown": "不确定"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q21",
+        "source_item_id": "ITEM-Q21",
+        "label": "购买以后，您做过哪些操作？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "一直持有，没有调整",
+          "o02": "定投或追加购买",
+          "o03": "部分赎回",
+          "o04": "全部赎回",
+          "o05": "转换为其他基金或养老产品",
+          "o06": "其他",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q22",
+        "source_item_id": "ITEM-Q22",
+        "label": "最近一次遇到基金净值明显下跌时，您主要怎么做？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "继续持有，没有操作",
+          "o02": "追加购买",
+          "o03": "部分赎回",
+          "o04": "全部赎回",
+          "o05": "先查询信息或咨询他人，再决定是否操作",
+          "not_applicable": "没有经历过或记不清"
+        },
+        "special_value_meanings": {
+          "not_applicable": "NOT_APPLICABLE"
+        }
+      },
+      {
+        "variable_id": "VAR-Q23",
+        "source_item_id": "ITEM-Q23",
+        "label": "您当时采取上述做法，主要是因为什么？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "因 Q22 选择没有经历过或记不清而跳过时为 STRUCTURAL_MISSING；应展示但缺失时为 ITEM_MISSING。",
+        "value_mapping": {
+          "o01": "把它当作长期养老投资，愿意继续持有",
+          "o02": "理解净值波动可能是正常现象",
+          "o03": "担心继续亏损",
+          "o04": "不清楚为什么下跌",
+          "o05": "认为产品不再符合自己的退休安排",
+          "o06": "听取客户经理、专业人员或亲友建议",
+          "o07": "临时需要使用资金",
+          "o08": "与其他产品相比表现不理想",
+          "o09": "其他"
+        }
+      },
+      {
+        "variable_id": "VAR-Q24",
+        "source_item_id": "ITEM-Q24",
+        "label": "持有期间，您是否查看过基金的资产配置有没有按原来的思路变化？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "会定期查看",
+          "o02": "偶尔查看",
+          "o03": "主要在市场波动较大时查看",
+          "o04": "从未查看",
+          "o05": "想看，但不知道在哪里看",
+          "unknown": "记不清"
+        },
+        "special_value_meanings": {
+          "unknown": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q25",
+        "source_item_id": "ITEM-Q25",
+        "label": "对于目前持有或曾经持有的养老目标基金，您最不确定的是什么？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "现在承担的风险有多大",
+          "o02": "当前股票等波动较高资产占多少",
+          "o03": "未来资产配置会怎样变化",
+          "o04": "为什么要调整资产配置",
+          "o05": "产品是否仍与自己的退休年份相匹配",
+          "o06": "目标日期型和目标风险型到底有什么区别",
+          "o07": "Y 份额的费率和账户规则",
+          "o08": "持有、追加和赎回规则",
+          "o09": "应该怎样看待短期业绩",
+          "o10": "没有明显不确定",
+          "o11": "其他"
+        }
+      },
+      {
+        "variable_id": "VAR-Q26",
+        "source_item_id": "ITEM-Q26",
+        "label": "今后您最希望看到哪些内容？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "目标日期型和目标风险型的简单区别",
+          "o02": "怎样根据退休年份或风险类型选择",
+          "o03": "当前资产配置和风险水平",
+          "o04": "未来配置会怎样变化，也就是下滑曲线",
+          "o05": "为什么要调整资产配置",
+          "o06": "市场下跌时怎样理解产品表现",
+          "o07": "Y 份额的费率和个人养老金账户规则",
+          "o08": "持有、追加和赎回规则",
+          "o09": "与其他基金或养老产品的差别",
+          "o10": "目前不需要更多信息",
+          "o11": "其他"
+        }
+      },
+      {
+        "variable_id": "VAR-Q27",
+        "source_item_id": "ITEM-Q27",
+        "label": "哪种形式更方便您理解这些内容？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "一句话说明",
+          "o02": "结合年龄或退休年份举例",
+          "o03": "简单的下滑曲线图",
+          "o04": "资产配置表",
+          "o05": "常见问题与回答",
+          "o06": "1-3 分钟短视频",
+          "o07": "可以自行搜索的知识库",
+          "o08": "其他"
+        }
+      },
+      {
+        "variable_id": "VAR-Q28",
+        "source_item_id": "ITEM-Q28",
+        "label": "您更希望在什么时候看到这些说明？",
+        "data_type": "ARRAY",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "第一次了解产品时",
+          "o02": "购买页面上",
+          "o03": "购买后定期收到",
+          "o04": "市场波动较大时",
+          "o05": "基金调整资产配置时",
+          "o06": "自己需要时再搜索",
+          "o07": "其他"
+        }
+      },
+      {
+        "variable_id": "VAR-Q29",
+        "source_item_id": "ITEM-Q29",
+        "label": "关于养老目标基金，还有什么是您一直没有弄明白、但希望得到解释的？",
+        "data_type": "STRING",
+        "analysis_role": "OPEN_TEXT",
+        "missing_value_rule": "选答空白记为 ITEM_MISSING，但不据此判整份答卷无效。"
+      },
+      {
+        "variable_id": "VAR-Q30",
+        "source_item_id": "ITEM-Q30",
+        "label": "您距离自己预计退休的时间大约还有多久？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "已经退休",
+          "o02": "5 年以内",
+          "o03": "6-10 年",
+          "o04": "11-20 年",
+          "o05": "20 年以上",
+          "unknown_or_prefer_not": "不确定或不愿回答"
+        },
+        "special_value_meanings": {
+          "unknown_or_prefer_not": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q31",
+        "source_item_id": "ITEM-Q31",
+        "label": "您投资基金大约有多长时间？",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "不足 1 年",
+          "o02": "1-3 年",
+          "o03": "4-6 年",
+          "o04": "6 年以上",
+          "unknown_or_prefer_not": "不确定或不愿回答"
+        },
+        "special_value_meanings": {
+          "unknown_or_prefer_not": "UNKNOWN"
+        }
+      },
+      {
+        "variable_id": "VAR-Q32",
+        "source_item_id": "ITEM-Q32",
+        "label": "您的年龄段是？",
+        "data_type": "STRING",
+        "analysis_role": "SEGMENT",
+        "missing_value_rule": "应展示但缺失时记为 ITEM_MISSING；不确定、记不清或不愿回答按预设特殊值保留。",
+        "value_mapping": {
+          "o01": "18—29 岁",
+          "o02": "30—39 岁",
+          "o03": "40—49 岁",
+          "o04": "50—59 岁",
+          "o05": "60 岁及以上",
+          "prefer_not": "不愿回答"
+        },
+        "special_value_meanings": {
+          "prefer_not": "PREFER_NOT_TO_SAY"
+        }
+      }
+    ],
+    "response_validity_plan": {
+      "initial_status": "UNASSESSED",
+      "final_statuses": [
+        "VALID",
+        "REVIEW_REQUIRED",
+        "EXCLUDED"
+      ],
+      "hard_exclusion_rules": [
+        {
+          "rule_id": "DQ-EX-CONSENT",
+          "reason_code": "CONSENT_NOT_GIVEN",
+          "condition": "C0 不同意或同意字段缺失。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "确定性规则。"
+        },
+        {
+          "rule_id": "DQ-EX-INELIGIBLE",
+          "reason_code": "INELIGIBLE",
+          "condition": "S1 明确选择没有实际购买过养老目标基金。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "确定性甄别规则。"
+        },
+        {
+          "rule_id": "DQ-EX-EMPTY",
+          "reason_code": "NO_SUBSTANTIVE_DATA",
+          "condition": "除同意与甄别外，全部核心模块均无正常作答或有效特殊值。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "确定性完整度规则；保留原因。"
+        },
+        {
+          "rule_id": "DQ-EX-SCHEMA",
+          "reason_code": "SCHEMA_OR_VERSION_ERROR",
+          "condition": "记录无法对应 InstrumentSpec 0.2.0 的字段或选项，且不能可靠修复。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "数据责任人确认版本错误。"
+        },
+        {
+          "rule_id": "DQ-EX-DUPLICATE",
+          "reason_code": "CONFIRMED_DUPLICATE",
+          "condition": "人工确认与另一记录重复，并按预设规则保留一份。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "研究人员人工确认。"
+        }
+      ],
+      "review_rules": [
+        {
+          "rule_id": "DQ-RV-ELIGIBILITY",
+          "reason_code": "ELIGIBILITY_UNCERTAIN",
+          "condition": "S1 选择不确定自己买的是不是养老目标基金。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员结合 Q10/Q11 等自报信息复核；不得由模型猜测。"
+        },
+        {
+          "rule_id": "DQ-RV-SPEED",
+          "reason_code": "SPEEDING_SUSPECTED",
+          "condition": "至少已有 30 份完成记录，且时长低于当批中位数三分之一。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员结合其他信号复核；不得仅按时长排除。"
+        },
+        {
+          "rule_id": "DQ-RV-CONFLICT",
+          "reason_code": "LOGIC_CONFLICT",
+          "condition": "关键事实或路由字段出现无法由题意和合法跳转解释的冲突。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员复核原始记录。"
+        },
+        {
+          "rule_id": "DQ-RV-DUPLICATE",
+          "reason_code": "DUPLICATE_SUSPECTED",
+          "condition": "匿名记录高度相似但尚未确认重复。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员人工确认；不保留身份字段。"
+        },
+        {
+          "rule_id": "DQ-RV-MISSING",
+          "reason_code": "HIGH_ITEM_MISSINGNESS",
+          "condition": "应展示的核心题目中 ITEM_MISSING 超过 20%。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员判断剩余信息是否足以回答至少一个研究问题。"
+        }
+      ],
+      "status_transition_rule": "导入后先标 UNASSESSED；硬规则可转 EXCLUDED，其余异常只转 REVIEW_REQUIRED；人工解决全部复核后才冻结为 VALID 或 EXCLUDED。知识题答错、不确定、年龄不愿回答和开放题空白均不能单独触发排除。",
+      "dataset_statuses": [
+        "ANALYSIS_READY",
+        "ANALYSIS_READY_WITH_LIMITS",
+        "BLOCKED"
+      ],
+      "subgroup_reporting_rule": "年龄组 n<10 不单独展示比例；10-19 标注小样本；n>=20 仍只作描述性比较，不推断总体、显著性或因果。"
+    },
+    "progress_display": true,
+    "back_navigation": false
+  }
+}

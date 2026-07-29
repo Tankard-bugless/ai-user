@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/approval-record.schema.json",
+  "title": "ApprovalRecord Schema",
+  "description": "四个关口的独立人工审批记录。审批只对记录中的精确产物版本组合有效。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "gate_id",
+    "status",
+    "primary_target_ref",
+    "reviewed_refs",
+    "reviewer",
+    "reviewer_role",
+    "authority_basis",
+    "recorded_at",
+    "decision_basis",
+    "blocking_issues",
+    "required_changes",
+    "accepted_risks",
+    "attestations",
+    "invalidation_rule",
+    "is_ai_approval"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/artifact_metadata"},
+        {"properties": {"artifact_type": {"const": "ApprovalRecord"}}}
+      ]
+    },
+    "gate_id": {"type": "string", "enum": ["GATE_1", "GATE_2", "GATE_3", "GATE_4"]},
+    "status": {"type": "string", "enum": ["PENDING", "APPROVED", "CHANGES_REQUIRED", "REJECTED", "CANCELLED"]},
+    "primary_target_ref": {"$ref": "common.schema.json#/$defs/artifact_reference"},
+    "reviewed_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "common.schema.json#/$defs/artifact_reference"}
+    },
+    "reviewer": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/actor"},
+        {"properties": {"actor_type": {"const": "HUMAN"}}}
+      ]
+    },
+    "reviewer_role": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+    "authority_basis": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "decided_at": {"type": ["string", "null"], "format": "date-time"},
+    "decision_basis": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+    "blocking_issues": {"$ref": "common.schema.json#/$defs/string_list"},
+    "required_changes": {"$ref": "common.schema.json#/$defs/string_list"},
+    "accepted_risks": {"$ref": "common.schema.json#/$defs/string_list"},
+    "attestations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewed_primary_target", "reviewed_supporting_artifacts", "reviewed_material_changes", "authorized_to_decide"],
+      "properties": {
+        "reviewed_primary_target": {"type": "boolean"},
+        "reviewed_supporting_artifacts": {"type": "boolean"},
+        "reviewed_material_changes": {"type": "boolean"},
+        "authorized_to_decide": {"type": "boolean"}
+      }
+    },
+    "comments": {"type": "string"},
+    "supersedes_approval_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "invalidation_rule": {"const": "ANY_REVIEWED_ARTIFACT_VERSION_CHANGE_REQUIRES_NEW_APPROVAL"},
+    "is_ai_approval": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "APPROVED"}}, "required": ["status"]},
+      "then": {
+        "required": ["decided_at"],
+        "properties": {
+          "decided_at": {"type": "string", "format": "date-time"},
+          "blocking_issues": {"maxItems": 0},
+          "required_changes": {"maxItems": 0},
+          "attestations": {
+            "properties": {
+              "reviewed_primary_target": {"const": true},
+              "reviewed_supporting_artifacts": {"const": true},
+              "reviewed_material_changes": {"const": true},
+              "authorized_to_decide": {"const": true}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "CHANGES_REQUIRED"}}, "required": ["status"]},
+      "then": {"properties": {"required_changes": {"minItems": 1}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "PENDING"}}, "required": ["status"]},
+      "then": {"properties": {"decided_at": {"const": null}}}
+    },
+    {
+      "if": {"properties": {"gate_id": {"const": "GATE_1"}}, "required": ["gate_id"]},
+      "then": {"properties": {"primary_target_ref": {"properties": {"artifact_type": {"const": "ResearchBrief"}}}}}
+    },
+    {
+      "if": {"properties": {"gate_id": {"const": "GATE_2"}}, "required": ["gate_id"]},
+      "then": {
+        "properties": {
+          "primary_target_ref": {"properties": {"artifact_type": {"const": "ResearchPlan"}}},
+          "reviewed_refs": {
+            "allOf": [
+              {"contains": {"properties": {"artifact_type": {"const": "InstrumentSpec"}}, "required": ["artifact_type"]}},
+              {"contains": {"properties": {"artifact_type": {"const": "ReviewResult"}}, "required": ["artifact_type"]}}
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"gate_id": {"const": "GATE_3"}}, "required": ["gate_id"]},
+      "then": {
+        "properties": {
+          "primary_target_ref": {"properties": {"artifact_type": {"const": "InsightPackage"}}},
+          "reviewed_refs": {"contains": {"properties": {"artifact_type": {"const": "FieldworkPackage"}}, "required": ["artifact_type"]}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"gate_id": {"const": "GATE_4"}}, "required": ["gate_id"]},
+      "then": {
+        "properties": {
+          "primary_target_ref": {"properties": {"artifact_type": {"const": "ResearchReport"}}},
+          "reviewed_refs": {"contains": {"properties": {"artifact_type": {"const": "InsightPackage"}}, "required": ["artifact_type"]}}
+        }
+      }
+    }
+  ]
+}

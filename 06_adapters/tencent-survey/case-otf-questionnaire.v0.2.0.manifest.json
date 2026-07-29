@@ -1,0 +1,62 @@
+{
+  "adapter": "tencent-survey",
+  "adapter_version": "0.2.0",
+  "source_document": "养老目标基金购买与持有情况调查问卷_v0.2.docx",
+  "source_sha256": "1326f22035f76065a90d873af2f85f75a5d0e148aedf597bcd7fd108bffecca2",
+  "scene": 1,
+  "answerable_question_count": 35,
+  "option_count": 213,
+  "question_ids": [
+    "C0",
+    "S1",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q9A",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q13",
+    "Q14",
+    "Q15",
+    "Q16",
+    "Q17",
+    "Q18",
+    "Q19",
+    "Q20",
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q29",
+    "Q30",
+    "Q31",
+    "Q32"
+  ],
+  "optional_question_ids": [
+    "Q11",
+    "Q29"
+  ],
+  "post_create_logic": [
+    "C0=不同意 -> END",
+    "S1=没有 -> END",
+    "Q22=没有经历过或记不清 -> Q24"
+  ],
+  "manual_release_checks": [
+    "Configure multi-select maximum selections.",
+    "Configure mutually exclusive options.",
+    "Confirm Q9A is represented as a five-point ordered response with a separate recall option.",
+    "Confirm login and location collection are disabled.",
+    "Confirm internal answer keys are absent."
+  ]
+}

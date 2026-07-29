@@ -1,0 +1,2484 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "IP-OTF-001",
+    "artifact_type": "InsightPackage",
+    "artifact_version": "0.2.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者认知与持有行为洞察包",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-28T16:21:39+08:00",
+    "updated_at": "2026-07-28T16:21:39+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-05",
+      "actor_type": "AGENT",
+      "role": "证据与洞察专家",
+      "model_id": "codex",
+      "capability_version": "0.5.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0",
+        "approval_id": "APR-OTF-G1-002"
+      },
+      {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "FWP-OTF-001",
+        "artifact_type": "FieldworkPackage",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "补充样本画像、年龄与基金投资经验探索性分群分析及多重校正边界；未形成 Gate 3 批准。"
+  },
+  "research_brief_ref": {
+    "artifact_id": "RB-OTF-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.2.0",
+    "approval_id": "APR-OTF-G1-002"
+  },
+  "research_plan_ref": {
+    "artifact_id": "RP-OTF-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.2.0"
+  },
+  "fieldwork_package_refs": [
+    {
+      "artifact_id": "FWP-OTF-001",
+      "artifact_type": "FieldworkPackage",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "analysis_scope": {
+    "included_source_ids": [
+      "SRC-OTF-SURVEY-NORMALIZED-001"
+    ],
+    "excluded_source_ids": [
+      "SRC-OTF-SURVEY-RAW-001",
+      "SRC-OTF-QUALITY-LOG-001",
+      "SRC-OTF-FIELD-MAPPING-001"
+    ],
+    "included_method_ids": [
+      "METHOD-SUR-OTF-001"
+    ],
+    "sample_scope": "历史工作分析纳入 200 份完成答卷；只支持本项目样本内的描述与方向性判断。",
+    "analysis_started_at": "2026-07-24T11:25:27+08:00",
+    "analysis_completed_at": "2026-07-24T11:49:57+08:00"
+  },
+  "codebook": {
+    "version": "0.2.0",
+    "approach": "按研究问题和冻结版分析计划建立演绎指标；不从开放题生成正式人物标签。",
+    "codes": [
+      {
+        "code_id": "CODE-OTF-KNOWLEDGE",
+        "label": "产品机制与风险边界理解",
+        "definition": "Q17—Q20 的预设正确作答及组合正确率。",
+        "include_when": "按冻结版正确答案计算单题和组合得分。",
+        "exclude_when": "自报听说过、主观清晰度或购买经历不能替代理解正确。",
+        "research_question_ids": [
+          "RQ-002",
+          "RQ-003"
+        ]
+      },
+      {
+        "code_id": "CODE-OTF-GLIDE-USAGE",
+        "label": "下滑曲线知晓—查看—使用层级",
+        "definition": "区分听说过、购买前查看、持有期查看、主动比较和提示后自报影响。",
+        "include_when": "使用 Q13—Q16 与 Q8 的对应指标。",
+        "exclude_when": "不把不同提示强度的问题合并为单一使用率。",
+        "research_question_ids": [
+          "RQ-003"
+        ]
+      },
+      {
+        "code_id": "CODE-OTF-DECISION-LAYERS",
+        "label": "购买触发与最终判断分层",
+        "definition": "分别呈现 Q6 触发因素、Q8 主动比较和 Q9 最重要因素。",
+        "include_when": "比较信息在决策链中的位置而非直接比较题型比例。",
+        "exclude_when": "不把多选触发率解释为最终决定权重。",
+        "research_question_ids": [
+          "RQ-001",
+          "RQ-004"
+        ]
+      },
+      {
+        "code_id": "CODE-OTF-HOLDING-GAP",
+        "label": "持有期信息缺口",
+        "definition": "当前风险、未来配置和调整原因等持有期不确定性。",
+        "include_when": "使用 Q25 与相关持有行为题。",
+        "exclude_when": "不把信息需求直接解释为产品缺陷。",
+        "research_question_ids": [
+          "RQ-005",
+          "RQ-006"
+        ]
+      },
+      {
+        "code_id": "CODE-OTF-EDUCATION",
+        "label": "投教内容、形式与时点",
+        "definition": "Q26—Q28 的学习内容、呈现形式和触达时点偏好。",
+        "include_when": "只作为投教设计输入和后续验证假设。",
+        "exclude_when": "不把偏好、点击或阅读意愿作为理解效果。",
+        "research_question_ids": [
+          "RQ-006"
+        ]
+      },
+      {
+        "code_id": "CODE-OTF-SEGMENT-COMPARISON",
+        "label": "年龄与投资经验探索性分群",
+        "definition": "按 Q31 年龄和 Q32 基金投资经验比较十项预设指标，并统一进行 FDR 校正。",
+        "include_when": "只报告样本内方向、组内分母和校正后结果。",
+        "exclude_when": "不把描述性差异升级为稳定标签、因果关系或总体差异。",
+        "research_question_ids": [
+          "RQ-002",
+          "RQ-003",
+          "RQ-005"
+        ]
+      }
+    ],
+    "revision_notes": [
+      "沿用 2026-07-24 已完成分析的字段、分母和确定性修正规则。",
+      "正式化时补充证据 ID、适用范围、替代解释和决策边界。"
+    ]
+  },
+  "analysis_log": [
+    {
+      "step_id": "ANALYSIS-OTF-IMPORT",
+      "performed_at": "2026-07-24T11:25:27+08:00",
+      "performed_by": {
+        "actor_id": "SYSTEM-CSV-IMPORT",
+        "actor_type": "SYSTEM",
+        "role": "CSV 字段映射与脱敏服务"
+      },
+      "method": "EXTRACTION",
+      "input_refs": [
+        "SRC-OTF-SURVEY-RAW-001"
+      ],
+      "output_ids": [
+        "SRC-OTF-SURVEY-NORMALIZED-001",
+        "SRC-OTF-QUALITY-LOG-001"
+      ],
+      "parameters_or_rules": "按 InstrumentSpec 0.2.0 映射 35 个题组，剔除平台元数据，执行互斥修正与结构性缺失规则。",
+      "notes": "原始 CSV 不复制到正式产物目录，只登记哈希。"
+    },
+    {
+      "step_id": "ANALYSIS-OTF-STATS",
+      "performed_at": "2026-07-24T11:49:57+08:00",
+      "performed_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "method": "STATISTICAL_SUMMARY",
+      "input_refs": [
+        "SRC-OTF-SURVEY-NORMALIZED-001"
+      ],
+      "output_ids": [
+        "EVID-OTF-001",
+        "EVID-OTF-002",
+        "EVID-OTF-003",
+        "EVID-OTF-004",
+        "EVID-OTF-005",
+        "EVID-OTF-006",
+        "EVID-OTF-007",
+        "EVID-OTF-008",
+        "EVID-OTF-009",
+        "EVID-OTF-010",
+        "EVID-OTF-011",
+        "EVID-OTF-012",
+        "EVID-OTF-013",
+        "EVID-OTF-014",
+        "EVID-OTF-015",
+        "EVID-OTF-016",
+        "EVID-OTF-017",
+        "EVID-OTF-018",
+        "EVID-OTF-019",
+        "EVID-OTF-020",
+        "EVID-OTF-021",
+        "EVID-OTF-022",
+        "EVID-OTF-023"
+      ],
+      "parameters_or_rules": "样本内描述统计，所有比例保留分子、分母、题目 ID；不进行总体推断。",
+      "notes": "所有 200 份进入历史工作分析，100 份正式复核信号未逐条人工解决。"
+    },
+    {
+      "step_id": "ANALYSIS-OTF-SENSITIVITY",
+      "performed_at": "2026-07-24T11:49:57+08:00",
+      "performed_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "method": "COMPARISON",
+      "input_refs": [
+        "SRC-OTF-SURVEY-NORMALIZED-001"
+      ],
+      "output_ids": [
+        "ANALYSIS-OTF-SENSITIVITY-001"
+      ],
+      "parameters_or_rules": "比较全部 200 份与排除 12 份速度信号后的关键指标；记录绝对百分点差。",
+      "notes": "关键指标变化 0.2—2.2 个百分点；该比较不替代逐条人工复核。"
+    },
+    {
+      "step_id": "ANALYSIS-OTF-SYNTHESIS",
+      "performed_at": "2026-07-27T12:18:12+08:00",
+      "performed_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "method": "SYNTHESIS",
+      "input_refs": [
+        "EVID-OTF-001",
+        "EVID-OTF-002",
+        "EVID-OTF-003",
+        "EVID-OTF-004",
+        "EVID-OTF-005",
+        "EVID-OTF-006",
+        "EVID-OTF-007",
+        "EVID-OTF-008",
+        "EVID-OTF-009",
+        "EVID-OTF-010",
+        "EVID-OTF-011",
+        "EVID-OTF-012",
+        "EVID-OTF-013",
+        "EVID-OTF-014",
+        "EVID-OTF-015",
+        "EVID-OTF-016",
+        "EVID-OTF-017",
+        "EVID-OTF-018",
+        "EVID-OTF-019",
+        "EVID-OTF-020",
+        "EVID-OTF-021",
+        "EVID-OTF-022",
+        "EVID-OTF-023"
+      ],
+      "output_ids": [
+        "FINDING-OTF-001",
+        "FINDING-OTF-002",
+        "FINDING-OTF-003",
+        "FINDING-OTF-004",
+        "FINDING-OTF-005",
+        "INSIGHT-OTF-001",
+        "INSIGHT-OTF-002",
+        "INSIGHT-OTF-003",
+        "REC-OTF-001",
+        "REC-OTF-002",
+        "REC-OTF-003"
+      ],
+      "parameters_or_rules": "发现只描述证据，洞察补充机制和替代解释，建议保持 NOT_DECIDED。",
+      "notes": "没有把项目内模式升级为正式客户标签。"
+    },
+    {
+      "step_id": "ANALYSIS-OTF-SEGMENTS",
+      "performed_at": "2026-07-28T16:21:39+08:00",
+      "performed_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "证据与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.5.0"
+      },
+      "method": "COMPARISON",
+      "input_refs": [
+        "SRC-OTF-SURVEY-NORMALIZED-001"
+      ],
+      "output_ids": [
+        "EVID-OTF-024",
+        "EVID-OTF-025",
+        "EVID-OTF-026",
+        "EVID-OTF-027",
+        "FINDING-OTF-006",
+        "INSIGHT-OTF-004",
+        "REC-OTF-004"
+      ],
+      "parameters_or_rules": "五类分群×十项预设指标；二元结果使用 Pearson 卡方检验，记录 Cramér's V，并对 50 组比较统一进行 BH-FDR 校正。",
+      "notes": "校正后无显著比较；分群结果只作为下一轮验证假设。"
+    }
+  ],
+  "evidence_units": [
+    {
+      "evidence_id": "EVID-OTF-001",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q17,ITEM-Q18;METRIC=EVID-OTF-001"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 79,
+        "denominator": 200,
+        "percent": 39.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ],
+      "code_ids": [],
+      "context": "产品类型与选择逻辑理解。",
+      "quantitative_context": {
+        "metric": "目标日期与目标风险两题均答对",
+        "numerator": 79,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q17",
+          "ITEM-Q18"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-002",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q17,ITEM-Q18,ITEM-Q19,ITEM-Q20;METRIC=EVID-OTF-002"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 40,
+        "denominator": 200,
+        "percent": 20.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-001",
+        "HYP-002"
+      ],
+      "code_ids": [],
+      "context": "产品类型、下滑曲线与风险边界综合理解。",
+      "quantitative_context": {
+        "metric": "四道知识题全部答对",
+        "numerator": 40,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q17",
+          "ITEM-Q18",
+          "ITEM-Q19",
+          "ITEM-Q20"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-003",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q9A;METRIC=EVID-OTF-003"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 58,
+        "denominator": 200,
+        "percent": 29.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "购买前信息主观清晰度。",
+      "quantitative_context": {
+        "metric": "购买前信息清晰度给出 4—5 分",
+        "numerator": 58,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q9A"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-004",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q8;METRIC=EVID-OTF-004"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 7,
+        "denominator": 200,
+        "percent": 3.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ],
+      "code_ids": [],
+      "context": "无直接提示时的主动比较行为。",
+      "quantitative_context": {
+        "metric": "购买前主动比较下滑曲线",
+        "numerator": 7,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q8"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-005",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q16;METRIC=EVID-OTF-005"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 102,
+        "denominator": 200,
+        "percent": 51.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ],
+      "code_ids": [],
+      "context": "直接提示下的回忆性自报。",
+      "quantitative_context": {
+        "metric": "自报下滑曲线曾影响购买、类型或持有决策",
+        "numerator": 102,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q16"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-006",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q15;METRIC=EVID-OTF-006"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 119,
+        "denominator": 200,
+        "percent": 59.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-003",
+        "RQ-005"
+      ],
+      "hypothesis_ids": [
+        "HYP-002",
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "持有期配置路径查看行为。",
+      "quantitative_context": {
+        "metric": "持有期从未查看或想看但找不到入口",
+        "numerator": 119,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q15"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-007",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q6;METRIC=EVID-OTF-007"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 63,
+        "denominator": 200,
+        "percent": 31.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "最近一次购买的触发因素。",
+      "quantitative_context": {
+        "metric": "购买触发：认可基金公司或管理团队",
+        "numerator": 63,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q6"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-008",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q6;METRIC=EVID-OTF-008"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 52,
+        "denominator": 200,
+        "percent": 26.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "最近一次购买的触发因素。",
+      "quantitative_context": {
+        "metric": "购买触发：费率或 Y 份额安排",
+        "numerator": 52,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q6"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-009",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q6;METRIC=EVID-OTF-009"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 51,
+        "denominator": 200,
+        "percent": 25.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "最近一次购买的触发因素。",
+      "quantitative_context": {
+        "metric": "购买触发：历史表现或排名",
+        "numerator": 51,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q6"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-010",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q8;METRIC=EVID-OTF-010"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 87,
+        "denominator": 200,
+        "percent": 43.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "购买前认真比较的信息。",
+      "quantitative_context": {
+        "metric": "主动比较：退休年份是否匹配",
+        "numerator": 87,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q8"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-011",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q8;METRIC=EVID-OTF-011"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 80,
+        "denominator": 200,
+        "percent": 40.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "购买前认真比较的信息。",
+      "quantitative_context": {
+        "metric": "主动比较：风险类型是否符合选择",
+        "numerator": 80,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q8"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-012",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q8;METRIC=EVID-OTF-012"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 75,
+        "denominator": 200,
+        "percent": 37.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "购买前认真比较的信息。",
+      "quantitative_context": {
+        "metric": "主动比较：历史业绩或排名",
+        "numerator": 75,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q8"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-013",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q9;METRIC=EVID-OTF-013"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 41,
+        "denominator": 200,
+        "percent": 20.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-004"
+      ],
+      "hypothesis_ids": [
+        "HYP-003"
+      ],
+      "code_ids": [],
+      "context": "购买决策最终最重要因素。",
+      "quantitative_context": {
+        "metric": "最终最重要因素：风险类型",
+        "numerator": 41,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q9"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-014",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q25;METRIC=EVID-OTF-014"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 55,
+        "denominator": 200,
+        "percent": 27.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "当前最希望澄清的持有期信息。",
+      "quantitative_context": {
+        "metric": "持有期不确定：未来资产配置变化",
+        "numerator": 55,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q25"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-015",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q25;METRIC=EVID-OTF-015"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 52,
+        "denominator": 200,
+        "percent": 26.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "当前最希望澄清的持有期信息。",
+      "quantitative_context": {
+        "metric": "持有期不确定：现在承担的风险",
+        "numerator": 52,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q25"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-016",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q25;METRIC=EVID-OTF-016"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 45,
+        "denominator": 200,
+        "percent": 22.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "当前最希望澄清的持有期信息。",
+      "quantitative_context": {
+        "metric": "持有期不确定：为什么调整资产配置",
+        "numerator": 45,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q25"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-017",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q27;METRIC=EVID-OTF-017"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 60,
+        "denominator": 200,
+        "percent": 30.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "通俗呈现形式偏好。",
+      "quantitative_context": {
+        "metric": "偏好形式：结合年龄或退休年份举例",
+        "numerator": 60,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q27"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-018",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q27;METRIC=EVID-OTF-018"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 49,
+        "denominator": 200,
+        "percent": 24.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "通俗呈现形式偏好。",
+      "quantitative_context": {
+        "metric": "偏好形式：资产配置表",
+        "numerator": 49,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q27"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-019",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q27;METRIC=EVID-OTF-019"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 48,
+        "denominator": 200,
+        "percent": 24.0
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "通俗呈现形式偏好。",
+      "quantitative_context": {
+        "metric": "偏好形式：一句话说明",
+        "numerator": 48,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q27"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-020",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q28;METRIC=EVID-OTF-020"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 63,
+        "denominator": 200,
+        "percent": 31.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "投教与说明信息的触达时点偏好。",
+      "quantitative_context": {
+        "metric": "偏好时点：第一次了解产品时",
+        "numerator": 63,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q28"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-021",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q28;METRIC=EVID-OTF-021"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 53,
+        "denominator": 200,
+        "percent": 26.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "投教与说明信息的触达时点偏好。",
+      "quantitative_context": {
+        "metric": "偏好时点：基金调整资产配置时",
+        "numerator": 53,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q28"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-022",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q28;METRIC=EVID-OTF-022"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 49,
+        "denominator": 200,
+        "percent": 24.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "投教与说明信息的触达时点偏好。",
+      "quantitative_context": {
+        "metric": "偏好时点：市场波动较大时",
+        "numerator": 49,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q28"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-023",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q27;METRIC=EVID-OTF-023"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "count": 17,
+        "denominator": 200,
+        "percent": 8.5
+      },
+      "extraction_method": "按冻结版字段映射对 200 份工作分析记录进行样本内描述统计；保留分子、分母、题目 ID 和复核限制。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "分析与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.4.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "hypothesis_ids": [
+        "HYP-004"
+      ],
+      "code_ids": [],
+      "context": "知识库作为次级自助入口的偏好。",
+      "quantitative_context": {
+        "metric": "偏好形式：可自行搜索的知识库",
+        "numerator": 17,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q27"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；Q23 按跳转规则处理结构性缺失；多选互斥冲突按已记录的确定性规则修正。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-024",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;ITEMS=ITEM-Q1,ITEM-Q2,ITEM-Q3,ITEM-Q31,ITEM-Q32;METRIC=SAMPLE_PROFILE"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "n": 200,
+        "age": [
+          {
+            "label": "18—29 岁",
+            "count": 33,
+            "percent": 16.5
+          },
+          {
+            "label": "30—39 岁",
+            "count": 63,
+            "percent": 31.5
+          },
+          {
+            "label": "40—49 岁",
+            "count": 70,
+            "percent": 35.0
+          },
+          {
+            "label": "50—59 岁",
+            "count": 34,
+            "percent": 17.0
+          }
+        ],
+        "fund_experience": [
+          {
+            "label": "不足 1 年",
+            "count": 27,
+            "percent": 13.5
+          },
+          {
+            "label": "1-3 年",
+            "count": 81,
+            "percent": 40.5
+          },
+          {
+            "label": "4-6 年",
+            "count": 40,
+            "percent": 20.0
+          },
+          {
+            "label": "6 年以上",
+            "count": 52,
+            "percent": 26.0
+          }
+        ],
+        "holding_status": [
+          {
+            "label": "目前仍在持有",
+            "count": 144,
+            "percent": 72.0
+          },
+          {
+            "label": "过去购买过，但目前已经全部赎回",
+            "count": 50,
+            "percent": 25.0
+          },
+          {
+            "label": "不确定",
+            "count": 6,
+            "percent": 3.0
+          }
+        ],
+        "account_type": [
+          {
+            "label": "普通基金账户中的 A/C 等份额",
+            "count": 87,
+            "percent": 43.5
+          },
+          {
+            "label": "个人养老金账户中的 Y 份额",
+            "count": 58,
+            "percent": 29.0
+          },
+          {
+            "label": "两类都买过",
+            "count": 40,
+            "percent": 20.0
+          },
+          {
+            "label": "不确定",
+            "count": 15,
+            "percent": 7.5
+          }
+        ],
+        "purchase_recency": [
+          {
+            "label": "3 年以前",
+            "count": 77,
+            "percent": 38.5
+          },
+          {
+            "label": "记不清",
+            "count": 55,
+            "percent": 27.5
+          },
+          {
+            "label": "1-3 年前",
+            "count": 47,
+            "percent": 23.5
+          },
+          {
+            "label": "1 年以内",
+            "count": 21,
+            "percent": 10.5
+          }
+        ],
+        "gender": {
+          "status": "NOT_COLLECTED",
+          "note": "本轮问卷未设置性别题，无法报告性别结构。"
+        },
+        "region": {
+          "status": "NOT_USED",
+          "note": "本轮问卷未直接询问常住地区；平台 IP 定位属于技术元数据，未作为预先声明的研究变量，因此不进入用户画像。"
+        }
+      },
+      "extraction_method": "基于脱敏标准化答卷执行预设分群描述、Pearson 卡方检验、Cramér's V 和 Benjamini-Hochberg FDR 校正。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "证据与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.5.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-005"
+      ],
+      "hypothesis_ids": [],
+      "code_ids": [
+        "CODE-OTF-SEGMENT-COMPARISON"
+      ],
+      "context": "受访者年龄、基金投资经验、持有状态、购买账户和购买时间画像。",
+      "quantitative_context": {
+        "metric": "样本画像完整分布",
+        "numerator": 200,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q1",
+          "ITEM-Q2",
+          "ITEM-Q3",
+          "ITEM-Q31",
+          "ITEM-Q32"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；沿用既有结构性缺失和互斥冲突处理规则。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-025",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;GROUP=ITEM-Q31;OUTCOMES=Q8,Q14,Q15,Q17-Q20"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": [
+        {
+          "n": 200,
+          "chi_square": 5.8957,
+          "dof": 3,
+          "p_value": 0.116795,
+          "cramers_v": 0.172,
+          "minimum_expected": 6.6,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "18—29 岁",
+              "n": 33,
+              "yes": 3,
+              "rate_percent": 9.1
+            },
+            {
+              "group": "30—39 岁",
+              "n": 63,
+              "yes": 15,
+              "rate_percent": 23.8
+            },
+            {
+              "group": "40—49 岁",
+              "n": 70,
+              "yes": 18,
+              "rate_percent": 25.7
+            },
+            {
+              "group": "50—59 岁",
+              "n": 34,
+              "yes": 4,
+              "rate_percent": 11.8
+            }
+          ],
+          "lowest_group": "18—29 岁",
+          "lowest_rate_percent": 9.1,
+          "highest_group": "40—49 岁",
+          "highest_rate_percent": 25.7,
+          "gap_pp": 16.6,
+          "grouping": "年龄",
+          "outcome": "四道核心知识题全部答对",
+          "outcome_definition": "Q17-Q20 四题均选择正确答案",
+          "fdr_q_value": 0.72446,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 6.0055,
+          "dof": 3,
+          "p_value": 0.111343,
+          "cramers_v": 0.173,
+          "minimum_expected": 13.04,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "18—29 岁",
+              "n": 33,
+              "yes": 9,
+              "rate_percent": 27.3
+            },
+            {
+              "group": "30—39 岁",
+              "n": 63,
+              "yes": 26,
+              "rate_percent": 41.3
+            },
+            {
+              "group": "40—49 岁",
+              "n": 70,
+              "yes": 34,
+              "rate_percent": 48.6
+            },
+            {
+              "group": "50—59 岁",
+              "n": 34,
+              "yes": 10,
+              "rate_percent": 29.4
+            }
+          ],
+          "lowest_group": "18—29 岁",
+          "lowest_rate_percent": 27.3,
+          "highest_group": "40—49 岁",
+          "highest_rate_percent": 48.6,
+          "gap_pp": 21.3,
+          "grouping": "年龄",
+          "outcome": "两类产品设计思路均答对",
+          "outcome_definition": "Q17 与 Q18 均答对",
+          "fdr_q_value": 0.72446,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 0.4206,
+          "dof": 3,
+          "p_value": 0.935952,
+          "cramers_v": 0.046,
+          "minimum_expected": 14.52,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "18—29 岁",
+              "n": 33,
+              "yes": 13,
+              "rate_percent": 39.4
+            },
+            {
+              "group": "30—39 岁",
+              "n": 63,
+              "yes": 28,
+              "rate_percent": 44.4
+            },
+            {
+              "group": "40—49 岁",
+              "n": 70,
+              "yes": 31,
+              "rate_percent": 44.3
+            },
+            {
+              "group": "50—59 岁",
+              "n": 34,
+              "yes": 16,
+              "rate_percent": 47.1
+            }
+          ],
+          "lowest_group": "18—29 岁",
+          "lowest_rate_percent": 39.4,
+          "highest_group": "50—59 岁",
+          "highest_rate_percent": 47.1,
+          "gap_pp": 7.7,
+          "grouping": "年龄",
+          "outcome": "购买前看过下滑曲线",
+          "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+          "fdr_q_value": 0.988511,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 4.6875,
+          "dof": 3,
+          "p_value": 0.196167,
+          "cramers_v": 0.153,
+          "minimum_expected": 1.16,
+          "expected_cells_below_5": 4,
+          "rates": [
+            {
+              "group": "18—29 岁",
+              "n": 33,
+              "yes": 1,
+              "rate_percent": 3.0
+            },
+            {
+              "group": "30—39 岁",
+              "n": 63,
+              "yes": 1,
+              "rate_percent": 1.6
+            },
+            {
+              "group": "40—49 岁",
+              "n": 70,
+              "yes": 5,
+              "rate_percent": 7.1
+            },
+            {
+              "group": "50—59 岁",
+              "n": 34,
+              "yes": 0,
+              "rate_percent": 0.0
+            }
+          ],
+          "lowest_group": "50—59 岁",
+          "lowest_rate_percent": 0.0,
+          "highest_group": "40—49 岁",
+          "highest_rate_percent": 7.1,
+          "gap_pp": 7.1,
+          "grouping": "年龄",
+          "outcome": "购买前主动比较下滑曲线",
+          "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+          "fdr_q_value": 0.72446,
+          "reliable_asymptotic_test": false,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 3.0837,
+          "dof": 3,
+          "p_value": 0.378894,
+          "cramers_v": 0.124,
+          "minimum_expected": 13.37,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "18—29 岁",
+              "n": 33,
+              "yes": 20,
+              "rate_percent": 60.6
+            },
+            {
+              "group": "30—39 岁",
+              "n": 63,
+              "yes": 33,
+              "rate_percent": 52.4
+            },
+            {
+              "group": "40—49 岁",
+              "n": 70,
+              "yes": 42,
+              "rate_percent": 60.0
+            },
+            {
+              "group": "50—59 岁",
+              "n": 34,
+              "yes": 24,
+              "rate_percent": 70.6
+            }
+          ],
+          "lowest_group": "30—39 岁",
+          "lowest_rate_percent": 52.4,
+          "highest_group": "50—59 岁",
+          "highest_rate_percent": 70.6,
+          "gap_pp": 18.2,
+          "grouping": "年龄",
+          "outcome": "购买后存在信息触达缺口",
+          "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+          "fdr_q_value": 0.789363,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        }
+      ],
+      "extraction_method": "基于脱敏标准化答卷执行预设分群描述、Pearson 卡方检验、Cramér's V 和 Benjamini-Hochberg FDR 校正。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "证据与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.5.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003",
+        "RQ-005"
+      ],
+      "hypothesis_ids": [],
+      "code_ids": [
+        "CODE-OTF-SEGMENT-COMPARISON"
+      ],
+      "context": "年龄分组的基础认知、下滑曲线接触和持有期信息缺口。",
+      "quantitative_context": {
+        "metric": "年龄分组五项指标",
+        "numerator": 200,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q8",
+          "ITEM-Q14",
+          "ITEM-Q15",
+          "ITEM-Q17",
+          "ITEM-Q18",
+          "ITEM-Q19",
+          "ITEM-Q20",
+          "ITEM-Q31"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；沿用既有结构性缺失和互斥冲突处理规则。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-026",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;GROUP=ITEM-Q32;OUTCOMES=Q8,Q14,Q15,Q17-Q20"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": [
+        {
+          "n": 200,
+          "chi_square": 2.1489,
+          "dof": 3,
+          "p_value": 0.54208,
+          "cramers_v": 0.104,
+          "minimum_expected": 5.4,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "不足 1 年",
+              "n": 27,
+              "yes": 3,
+              "rate_percent": 11.1
+            },
+            {
+              "group": "1-3 年",
+              "n": 81,
+              "yes": 16,
+              "rate_percent": 19.8
+            },
+            {
+              "group": "4-6 年",
+              "n": 40,
+              "yes": 8,
+              "rate_percent": 20.0
+            },
+            {
+              "group": "6 年以上",
+              "n": 52,
+              "yes": 13,
+              "rate_percent": 25.0
+            }
+          ],
+          "lowest_group": "不足 1 年",
+          "lowest_rate_percent": 11.1,
+          "highest_group": "6 年以上",
+          "highest_rate_percent": 25.0,
+          "gap_pp": 13.9,
+          "grouping": "基金投资经验",
+          "outcome": "四道核心知识题全部答对",
+          "outcome_definition": "Q17-Q20 四题均选择正确答案",
+          "fdr_q_value": 0.879601,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 4.6522,
+          "dof": 3,
+          "p_value": 0.199109,
+          "cramers_v": 0.153,
+          "minimum_expected": 10.66,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "不足 1 年",
+              "n": 27,
+              "yes": 7,
+              "rate_percent": 25.9
+            },
+            {
+              "group": "1-3 年",
+              "n": 81,
+              "yes": 29,
+              "rate_percent": 35.8
+            },
+            {
+              "group": "4-6 年",
+              "n": 40,
+              "yes": 18,
+              "rate_percent": 45.0
+            },
+            {
+              "group": "6 年以上",
+              "n": 52,
+              "yes": 25,
+              "rate_percent": 48.1
+            }
+          ],
+          "lowest_group": "不足 1 年",
+          "lowest_rate_percent": 25.9,
+          "highest_group": "6 年以上",
+          "highest_rate_percent": 48.1,
+          "gap_pp": 22.2,
+          "grouping": "基金投资经验",
+          "outcome": "两类产品设计思路均答对",
+          "outcome_definition": "Q17 与 Q18 均答对",
+          "fdr_q_value": 0.72446,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 0.848,
+          "dof": 3,
+          "p_value": 0.837961,
+          "cramers_v": 0.065,
+          "minimum_expected": 11.88,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "不足 1 年",
+              "n": 27,
+              "yes": 14,
+              "rate_percent": 51.9
+            },
+            {
+              "group": "1-3 年",
+              "n": 81,
+              "yes": 34,
+              "rate_percent": 42.0
+            },
+            {
+              "group": "4-6 年",
+              "n": 40,
+              "yes": 17,
+              "rate_percent": 42.5
+            },
+            {
+              "group": "6 年以上",
+              "n": 52,
+              "yes": 23,
+              "rate_percent": 44.2
+            }
+          ],
+          "lowest_group": "1-3 年",
+          "lowest_rate_percent": 42.0,
+          "highest_group": "不足 1 年",
+          "highest_rate_percent": 51.9,
+          "gap_pp": 9.9,
+          "grouping": "基金投资经验",
+          "outcome": "购买前看过下滑曲线",
+          "outcome_definition": "Q14 选择“认真看过”或“大致看过”",
+          "fdr_q_value": 0.976391,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 8.0863,
+          "dof": 3,
+          "p_value": 0.044261,
+          "cramers_v": 0.201,
+          "minimum_expected": 0.94,
+          "expected_cells_below_5": 4,
+          "rates": [
+            {
+              "group": "不足 1 年",
+              "n": 27,
+              "yes": 0,
+              "rate_percent": 0.0
+            },
+            {
+              "group": "1-3 年",
+              "n": 81,
+              "yes": 1,
+              "rate_percent": 1.2
+            },
+            {
+              "group": "4-6 年",
+              "n": 40,
+              "yes": 1,
+              "rate_percent": 2.5
+            },
+            {
+              "group": "6 年以上",
+              "n": 52,
+              "yes": 5,
+              "rate_percent": 9.6
+            }
+          ],
+          "lowest_group": "不足 1 年",
+          "lowest_rate_percent": 0.0,
+          "highest_group": "6 年以上",
+          "highest_rate_percent": 9.6,
+          "gap_pp": 9.6,
+          "grouping": "基金投资经验",
+          "outcome": "购买前主动比较下滑曲线",
+          "outcome_definition": "Q8 勾选“下滑曲线或未来配置调整方式”",
+          "fdr_q_value": 0.72446,
+          "reliable_asymptotic_test": false,
+          "statistical_label": "仅作描述"
+        },
+        {
+          "n": 200,
+          "chi_square": 5.2233,
+          "dof": 3,
+          "p_value": 0.15616,
+          "cramers_v": 0.162,
+          "minimum_expected": 10.94,
+          "expected_cells_below_5": 0,
+          "rates": [
+            {
+              "group": "不足 1 年",
+              "n": 27,
+              "yes": 15,
+              "rate_percent": 55.6
+            },
+            {
+              "group": "1-3 年",
+              "n": 81,
+              "yes": 51,
+              "rate_percent": 63.0
+            },
+            {
+              "group": "4-6 年",
+              "n": 40,
+              "yes": 28,
+              "rate_percent": 70.0
+            },
+            {
+              "group": "6 年以上",
+              "n": 52,
+              "yes": 25,
+              "rate_percent": 48.1
+            }
+          ],
+          "lowest_group": "6 年以上",
+          "lowest_rate_percent": 48.1,
+          "highest_group": "4-6 年",
+          "highest_rate_percent": 70.0,
+          "gap_pp": 21.9,
+          "grouping": "基金投资经验",
+          "outcome": "购买后存在信息触达缺口",
+          "outcome_definition": "Q15 选择“没有查看过”或“想看，但不知道在哪里看”",
+          "fdr_q_value": 0.72446,
+          "reliable_asymptotic_test": true,
+          "statistical_label": "仅作描述"
+        }
+      ],
+      "extraction_method": "基于脱敏标准化答卷执行预设分群描述、Pearson 卡方检验、Cramér's V 和 Benjamini-Hochberg FDR 校正。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "证据与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.5.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003",
+        "RQ-005"
+      ],
+      "hypothesis_ids": [],
+      "code_ids": [
+        "CODE-OTF-SEGMENT-COMPARISON"
+      ],
+      "context": "基金投资经验分组的基础认知、下滑曲线接触和持有期信息缺口。",
+      "quantitative_context": {
+        "metric": "基金投资经验分组五项指标",
+        "numerator": 200,
+        "denominator": 200,
+        "item_ids": [
+          "ITEM-Q8",
+          "ITEM-Q14",
+          "ITEM-Q15",
+          "ITEM-Q17",
+          "ITEM-Q18",
+          "ITEM-Q19",
+          "ITEM-Q20",
+          "ITEM-Q32"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；沿用既有结构性缺失和互斥冲突处理规则。"
+      }
+    },
+    {
+      "evidence_id": "EVID-OTF-027",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_locator": {
+        "scheme": "ROW_AND_ITEM_ID",
+        "value": "ALL_INCLUDED;GROUPS=Q1,Q2,Q3,Q31,Q32;METRIC=FDR_AUDIT"
+      },
+      "participant_or_record_id": "GROUP-ALL-200",
+      "exact_content_or_value": {
+        "total_predefined_comparisons": 50,
+        "fdr_significant_comparisons": 0,
+        "alpha": 0.05,
+        "method": "Benjamini-Hochberg FDR"
+      },
+      "extraction_method": "基于脱敏标准化答卷执行预设分群描述、Pearson 卡方检验、Cramér's V 和 Benjamini-Hochberg FDR 校正。",
+      "extracted_by": {
+        "actor_id": "AGENT-CAP-05",
+        "actor_type": "AGENT",
+        "role": "证据与洞察专家",
+        "model_id": "codex",
+        "capability_version": "0.5.0"
+      },
+      "human_verified": false,
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003",
+        "RQ-005"
+      ],
+      "hypothesis_ids": [],
+      "code_ids": [
+        "CODE-OTF-SEGMENT-COMPARISON"
+      ],
+      "context": "五类分群与十项指标共 50 组预设比较的多重校正结果。",
+      "quantitative_context": {
+        "metric": "FDR 校正后显著比较数",
+        "numerator": 0,
+        "denominator": 50,
+        "item_ids": [
+          "ITEM-Q1",
+          "ITEM-Q2",
+          "ITEM-Q3",
+          "ITEM-Q31",
+          "ITEM-Q32"
+        ],
+        "filter_conditions": "working_analysis_included=true；200 份均纳入历史工作分析。",
+        "missing_value_handling": "不插补；沿用既有结构性缺失和互斥冲突处理规则。"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "FINDING-OTF-001",
+      "statement": "购买经历没有自动转化为稳定的产品类型、下滑曲线与风险边界理解。",
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003",
+        "RQ-004"
+      ],
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "supporting_evidence_ids": [
+        "EVID-OTF-001",
+        "EVID-OTF-002",
+        "EVID-OTF-003"
+      ],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "历史工作分析纳入的 200 份养老目标基金购买者答卷。",
+      "conditions": "知识题和清晰度题只描述本次样本；主观清晰不等同于正确理解。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "产品选择和风险理解是购买说明与投教设计的基础。",
+      "limitations": [
+        "没有独立认知访谈验证答错原因。",
+        "100 份答卷保留未正式逐条解决的复核信号。"
+      ]
+    },
+    {
+      "finding_id": "FINDING-OTF-002",
+      "statement": "下滑曲线在主动比较中存在感较弱，但直接提示后自报使用并不低，说明知晓、主动查看与事后回忆不能合并为单一使用率。",
+      "research_question_ids": [
+        "RQ-003",
+        "RQ-005"
+      ],
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "supporting_evidence_ids": [
+        "EVID-OTF-004",
+        "EVID-OTF-005",
+        "EVID-OTF-006"
+      ],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "conditions": "不同题目提示强度不同，只能并列解释。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "决定了下滑曲线应如何展示以及如何测量真实使用。",
+      "limitations": [
+        "回忆性自报可能受题目提示影响。"
+      ]
+    },
+    {
+      "finding_id": "FINDING-OTF-003",
+      "statement": "购买触发信息与最终判断依据分成两层：品牌、费率和历史表现更像入口触发器，退休年份和风险类型更接近主动判断标准。",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "supporting_evidence_ids": [
+        "EVID-OTF-007",
+        "EVID-OTF-008",
+        "EVID-OTF-009",
+        "EVID-OTF-010",
+        "EVID-OTF-011",
+        "EVID-OTF-012",
+        "EVID-OTF-013"
+      ],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "conditions": "触发为多选、最终最重要因素为单选，不直接比较绝对比例。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "支持把吸引注意与支持判断设计为不同信息层。",
+      "limitations": [
+        "回答者可能用当前理解重构过去决策。"
+      ]
+    },
+    {
+      "finding_id": "FINDING-OTF-004",
+      "statement": "持有期信息缺口集中在当前风险、未来配置和配置调整原因。",
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "supporting_evidence_ids": [
+        "EVID-OTF-014",
+        "EVID-OTF-015",
+        "EVID-OTF-016"
+      ],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "conditions": "多选比例反映被选择频次，不等于业务优先级已批准。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "说明长期养老产品的解释需求并未在购买完成时结束。",
+      "limitations": [
+        "没有测试现有持有页面的可发现性。"
+      ]
+    },
+    {
+      "finding_id": "FINDING-OTF-005",
+      "statement": "投教更适合采用具体情境、配置表和简短解释，并覆盖首次了解、配置调整和市场波动等时点；知识库更适合作为次级自助入口。",
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "supporting_evidence_ids": [
+        "EVID-OTF-017",
+        "EVID-OTF-018",
+        "EVID-OTF-019",
+        "EVID-OTF-020",
+        "EVID-OTF-021",
+        "EVID-OTF-022",
+        "EVID-OTF-023"
+      ],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "conditions": "表达偏好不能替代理解效果测试。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "直接连接产品说明和投资者教育的内容、形式与时点设计。",
+      "limitations": [
+        "本轮没有比较具体材料版本的理解效果。"
+      ]
+    },
+    {
+      "finding_id": "FINDING-OTF-006",
+      "statement": "年龄差异不呈线性变化；基金投资经验与基础产品类型理解呈方向性上升，但没有形成稳定的综合理解优势。50 组预设比较经 FDR 校正后均未达到显著水平。",
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003",
+        "RQ-005"
+      ],
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "supporting_evidence_ids": [
+        "EVID-OTF-024",
+        "EVID-OTF-025",
+        "EVID-OTF-026",
+        "EVID-OTF-027"
+      ],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "历史工作分析纳入的 200 份养老目标基金购买者答卷。",
+      "conditions": "分群属于探索性样本内比较，只能描述方向，不能形成客户标签。",
+      "confidence": "LOW",
+      "importance": "MEDIUM",
+      "importance_rationale": "决定当前应先解决共同理解缺口，还是直接按年龄和经验定制。",
+      "limitations": [
+        "没有抽样框、加权和独立验证样本。",
+        "多重校正后无显著差异。",
+        "未控制收入、职业、投资金额等潜在混杂因素。"
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "insight_id": "INSIGHT-OTF-001",
+      "statement": "购买者处在“知道一些、但关键边界不稳定”的中间状态，增加术语曝光不能替代理解验证。",
+      "source_finding_ids": [
+        "FINDING-OTF-001",
+        "FINDING-OTF-002"
+      ],
+      "reasoning": "购买经历、术语接触和自报使用均存在，但综合知识正确率仍低；不同提示方式又产生显著不同的自报结果。",
+      "alternative_explanations": [
+        "知识题难度可能影响正确率。",
+        "样本来源未知，不能代表市场总体。"
+      ],
+      "decision_relevance": "产品说明应把核心机制与风险边界做成可验证的理解任务。",
+      "applicable_scope": "本项目 200 份工作分析答卷及当前问卷口径。",
+      "confidence": "MEDIUM"
+    },
+    {
+      "insight_id": "INSIGHT-OTF-002",
+      "statement": "入口触发与最终判断属于不同信息任务，应分别设计吸引注意的信息和支持选择的信息。",
+      "source_finding_ids": [
+        "FINDING-OTF-003"
+      ],
+      "reasoning": "品牌、费率和历史表现更多出现在购买触发，而退休年份与风险类型更多进入主动比较和最终判断。",
+      "alternative_explanations": [
+        "多选与单选题型不同。",
+        "回忆偏差可能改变对购买过程的复述。"
+      ],
+      "decision_relevance": "支持采用分层信息架构，而不是把所有卖点放在同一层。",
+      "applicable_scope": "本项目样本中的最近一次购买回忆。",
+      "confidence": "MEDIUM"
+    },
+    {
+      "insight_id": "INSIGHT-OTF-003",
+      "statement": "投教不应只发生在购买前，配置变化和市场波动是持有人重新理解产品机制的关键时点。",
+      "source_finding_ids": [
+        "FINDING-OTF-004",
+        "FINDING-OTF-005"
+      ],
+      "reasoning": "持有期的主要不确定性与配置、风险和调整原因有关，偏好时点也覆盖配置变化和市场波动。",
+      "alternative_explanations": [
+        "偏好不等于真实使用。",
+        "未测试具体材料，不能判断效果。"
+      ],
+      "decision_relevance": "支持把持有陪伴和投资者教育纳入产品全生命周期。",
+      "applicable_scope": "本项目样本表达的持有期信息需求。",
+      "confidence": "MEDIUM"
+    },
+    {
+      "insight_id": "INSIGHT-OTF-004",
+      "statement": "现阶段更适合先改通用信息路径，再把年龄和投资经验差异作为下一轮材料测试或访谈假设，而不是直接建立分群策略。",
+      "source_finding_ids": [
+        "FINDING-OTF-006"
+      ],
+      "reasoning": "年龄和经验组出现若干方向性差异，但校正后没有稳定统计证据；各组共同存在综合理解不足和持有期信息缺口。",
+      "alternative_explanations": [
+        "样本量不足以识别较小组间差异。",
+        "观察到的方向可能由未收集的职业、收入或购买渠道造成。"
+      ],
+      "decision_relevance": "避免在 Demo 阶段过早增加复杂分群和个性化内容。",
+      "applicable_scope": "本项目 200 份工作分析答卷和当前分组口径。",
+      "confidence": "LOW"
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendation_id": "REC-OTF-001",
+      "recommendation_domain": "PRODUCT_OR_SERVICE",
+      "statement": "购买说明采用“类型与匹配逻辑—当前配置与未来变化—风险边界”的三层信息顺序。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-001",
+        "INSIGHT-OTF-002"
+      ],
+      "expected_effect": "让触发信息之后出现一条支持真实选择判断的清晰路径。",
+      "risks": [
+        "信息层级过多可能增加阅读负担。",
+        "具体金融表述仍需事实与合规审核。"
+      ],
+      "assumptions": [
+        "产品页面可以调整信息顺序。"
+      ],
+      "validation_needed": [
+        "使用改版前后同口径知识题比较理解结果。",
+        "记录完成时长和主观负担。"
+      ],
+      "owner_suggestion": "产品内容负责人",
+      "suggested_priority": "HIGH",
+      "business_decision_status": "NOT_DECIDED"
+    },
+    {
+      "recommendation_id": "REC-OTF-002",
+      "recommendation_domain": "PRODUCT_OR_SERVICE",
+      "statement": "持有页面提供可找到的当前配置、未来配置变化和调整原因，并在波动或配置调整时提示查看。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-003"
+      ],
+      "expected_effect": "减少持有人在关键时点无法解释产品变化的情况。",
+      "risks": [
+        "过度推送可能造成信息疲劳。",
+        "信息更新频率需要与真实组合变化一致。"
+      ],
+      "assumptions": [
+        "可以获得经审核的配置与调整原因内容。"
+      ],
+      "validation_needed": [
+        "先做小范围可用性测试。",
+        "验证用户能找到并正确解释信息。"
+      ],
+      "owner_suggestion": "产品与持有陪伴负责人",
+      "suggested_priority": "HIGH",
+      "business_decision_status": "NOT_DECIDED"
+    },
+    {
+      "recommendation_id": "REC-OTF-003",
+      "recommendation_domain": "INVESTOR_EDUCATION",
+      "statement": "投教优先解释目标日期/目标风险选择逻辑、下滑曲线、当前风险和市场波动边界，采用年龄示例、配置表和简短问答；IMA 仅作为答题后的可选自助入口。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-001",
+        "INSIGHT-OTF-003"
+      ],
+      "expected_effect": "在不干扰核心测量的前提下，把已识别的理解缺口转化为分阶段学习内容。",
+      "risks": [
+        "链接内容和可用性可能变化。",
+        "用户可能把通用知识误解为个性化投资建议。"
+      ],
+      "assumptions": [
+        "学习资源位于核心测量之后。"
+      ],
+      "validation_needed": [
+        "使用教育前后同口径理解题或材料版本对比。",
+        "不以点击率替代理解效果。"
+      ],
+      "owner_suggestion": "投资者教育与产品内容负责人",
+      "suggested_priority": "HIGH",
+      "related_learning_resource_ids": [
+        "LR-IMA-OTF-001"
+      ],
+      "investor_education_design": {
+        "target_learning_need": "区分产品类型，理解下滑曲线、当前风险、配置变化和非保本边界。",
+        "audience_scope": "本项目中知识题未全部答对、未查看配置路径或表达相关信息需求的购买者类型；不形成正式客户标签。",
+        "content_focus": [
+          "目标日期型与目标风险型的选择逻辑",
+          "下滑曲线表示配置路径而非收益路径",
+          "降低高波动资产比例不等于本金或收益保证",
+          "当前配置、未来变化及调整原因"
+        ],
+        "recommended_moments": [
+          "首次了解产品时",
+          "基金调整资产配置时",
+          "市场波动较大时"
+        ],
+        "recommended_formats": [
+          "结合年龄或退休年份的例子",
+          "资产配置表和简单下滑曲线图",
+          "一句话说明与常见问题回答",
+          "IMA 知识库作为次级自助入口"
+        ],
+        "guardrails": [
+          "不承诺收益或本金安全",
+          "不推荐具体产品或赎回时点",
+          "不把内容偏好或链接点击当作理解效果"
+        ],
+        "effectiveness_validation": "使用教育前后同口径理解题或材料版本对比，验证是否减少误解。",
+        "evidence_boundary": "建议仅依据本项目的需求和偏好；未测试具体材料效果，不外推为全部投资者的普遍结论。"
+      },
+      "business_decision_status": "NOT_DECIDED"
+    },
+    {
+      "recommendation_id": "REC-OTF-004",
+      "recommendation_domain": "RESEARCH_FOLLOW_UP",
+      "statement": "下一轮保留年龄与基金投资经验两个基础分组，先验证通用材料是否提高理解；只有差异复现后再设计分群版本。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-004"
+      ],
+      "expected_effect": "以较低复杂度判断分群设计是否真的必要。",
+      "risks": [
+        "后续样本仍过小时可能继续无法识别真实差异。"
+      ],
+      "assumptions": [
+        "下一轮可以使用统一口径的前后理解题。"
+      ],
+      "validation_needed": [
+        "预先声明核心分组和主要指标。",
+        "扩大样本或补充专题访谈解释方向性差异。"
+      ],
+      "owner_suggestion": "用户研究负责人",
+      "suggested_priority": "MEDIUM",
+      "business_decision_status": "NOT_DECIDED"
+    }
+  ],
+  "candidate_segments": [],
+  "candidate_tags": [],
+  "learning_resource_recommendations": [
+    {
+      "resource_id": "LR-IMA-OTF-001",
+      "recommendation_ids": [
+        "REC-OTF-003"
+      ],
+      "target_learning_need": "完成核心测量后，为希望继续了解养老目标基金常识的用户提供官方知识搜索入口。",
+      "recommended_context": "问卷完成页或其他核心测量之后；不记录使用行为，不作为理解或购买意向证据。",
+      "evidence_use": "NOT_RESEARCH_EVIDENCE"
+    }
+  ],
+  "unanswered_questions": [
+    {
+      "question_id": "UQ-OTF-001",
+      "statement": "三层购买说明是否能提高理解且不过度增加阅读负担？",
+      "why_unanswered": "本轮没有测试改版材料。",
+      "suggested_next_method": "认知访谈后进行前后版本同口径理解题比较。"
+    },
+    {
+      "question_id": "UQ-OTF-002",
+      "statement": "持有页面增加配置和调整原因后，用户是否能更快找到并正确解释信息？",
+      "why_unanswered": "本轮没有可用性任务或行为数据。",
+      "suggested_next_method": "用可点击原型开展任务型可用性测试。"
+    },
+    {
+      "question_id": "UQ-OTF-003",
+      "statement": "本次样本模式能否在明确抽样框和不同渠道中复现？",
+      "why_unanswered": "未提供样本来源与抽样框。",
+      "suggested_next_method": "按渠道和核心人群配额重新采集并预注册比较口径。"
+    },
+    {
+      "question_id": "UQ-OTF-004",
+      "statement": "年龄和投资经验方向性差异能否在预先设定分组的新样本中复现？",
+      "why_unanswered": "本轮分群属于事后探索，且多重校正后没有显著差异。",
+      "suggested_next_method": "预先声明年龄、经验分组和主要指标后重新采集，必要时补充专题访谈。"
+    }
+  ],
+  "limitations": [
+    "未提供抽样框、投放渠道和代表性说明，不能外推市场总体。",
+    "100 份答卷触发正式复核信号但缺少逐条人工解析记录。",
+    "FOMO 部署未启用部分互斥与跳转逻辑，虽按确定性规则修正，仍需保留执行限制。",
+    "不同提示强度和不同题型的比例不能直接合并或进行因果解释。",
+    "开放题存在完全相同文本，仅作轻量主题计数，不作为逐字引语或真实性证明。",
+    "没有认知访谈、可用性任务或材料版本实验验证误解形成机制与建议效果。",
+    "Gate 2 与 Gate 3 未形成正式批准，洞察包保持 DRAFT。",
+    "年龄、经验等 50 组探索性比较经 FDR 校正后均未达到显著水平。"
+  ],
+  "ai_usage": [
+    {
+      "task": "CSV 字段映射、描述统计、证据封装、发现与建议草拟",
+      "model_id": "codex",
+      "capability_version": "0.4.0",
+      "input_scope": "脱敏问卷回答、InstrumentSpec、ResearchBrief、ResearchPlan 和既有 analysis-results。",
+      "output_scope": "正式 InsightPackage 草稿；不包含审批与业务决策。",
+      "human_review_status": "PARTIALLY_REVIEWED"
+    }
+  ],
+  "quality_summary": {
+    "traceability_complete": true,
+    "negative_cases_reviewed": false,
+    "sample_scope_declared": true,
+    "quantitative_denominators_complete": true,
+    "quotes_source_located": true,
+    "candidate_tags_not_promoted": true,
+    "review_notes": "所有正式统计保留来源题目、组内分母和校正方法；分群结果未升级为正式客户标签。最新洞察包尚未形成 Gate 3 正式批准。"
+  }
+}

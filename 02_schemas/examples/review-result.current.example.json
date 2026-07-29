@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "REVIEW-DEMO-002",
+    "artifact_type": "ReviewResult",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：基金说明材料理解问卷 0.1.0 质量预审",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-23T11:30:00+08:00",
+    "updated_at": "2026-07-23T11:30:00+08:00",
+    "created_by": {"actor_id": "AGENT-REVIEW-001", "actor_type": "AGENT", "role": "研究质量审核专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+    "upstream_refs": [{"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"}],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "复核旧版问题修复情况，并检查 IMA 学习链接未被用作证据。"
+  },
+  "target_ref": {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+  "review_scope": "InstrumentSpec",
+  "review_types": ["STRUCTURE", "TRACEABILITY", "LOGIC", "WORDING", "PRIVACY", "COMPLIANCE", "FINANCIAL_EXPRESSION"],
+  "reviewer": {"actor_id": "AGENT-REVIEW-001", "actor_type": "AGENT", "role": "研究质量审核专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+  "reviewed_at": "2026-07-23T11:30:00+08:00",
+  "ruleset_refs": [{"ruleset_id": "RULESET-INSTRUMENT-001", "version": "0.1.0", "uri": "../README.md"}],
+  "checks": [
+    {"check_id": "CHECK-TRACE-002", "label": "核心题目与研究问题映射", "status": "PASS", "details": "核心理解题均关联已批准的 RQ-002 或 RQ-003。", "related_issue_ids": []},
+    {"check_id": "CHECK-WORD-002", "label": "理解、主观清晰度与意向分离", "status": "PASS", "details": "修订版不再把清晰度和购买意向合并测量。", "related_issue_ids": []},
+    {"check_id": "CHECK-LEARNING-001", "label": "IMA 学习资源边界", "status": "PASS", "details": "IMA 链接位于理解题之后，仅作可选学习入口，不采集点击和停留，也不进入证据链。", "related_issue_ids": []}
+  ],
+  "issues": [],
+  "summary": {
+    "outcome": "PASS",
+    "blocker_count": 0,
+    "major_count": 0,
+    "minor_count": 0,
+    "warning_count": 0,
+    "summary_text": "机器可检项目通过，可以提交 Gate 2 人工审核；预审本身不构成批准。"
+  },
+  "residual_risks": [],
+  "recommended_next_action": "READY_FOR_HUMAN_REVIEW",
+  "is_formal_approval": false
+}

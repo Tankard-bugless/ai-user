@@ -1,0 +1,769 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/research-plan.schema.json",
+  "title": "ResearchPlan Schema",
+  "description": "定义如何从已确认的 ResearchBrief 获取足以回答研究问题的证据。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "research_brief_ref",
+    "gate_1_approval_ref",
+    "research_design",
+    "method_specs",
+    "question_method_map",
+    "materials_plan",
+    "analysis_plan",
+    "quality_plan",
+    "data_management",
+    "risks",
+    "limitations",
+    "deliverables"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_metadata"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ResearchPlan"
+            }
+          }
+        }
+      ]
+    },
+    "research_brief_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ResearchBrief"
+            }
+          }
+        }
+      ]
+    },
+    "gate_1_approval_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ApprovalRecord"
+            }
+          }
+        }
+      ]
+    },
+    "research_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "design_type",
+        "rationale",
+        "method_ids",
+        "sequence_logic"
+      ],
+      "properties": {
+        "design_type": {
+          "type": "string",
+          "enum": [
+            "QUALITATIVE",
+            "QUANTITATIVE",
+            "MIXED"
+          ]
+        },
+        "rationale": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "method_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "sequence_logic": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "method_specs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "method_id",
+          "method_type",
+          "method_mode",
+          "purpose",
+          "research_question_ids",
+          "execution_mode",
+          "sequence"
+        ],
+        "properties": {
+          "method_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "method_type": {
+            "type": "string",
+            "enum": [
+              "INTERVIEW",
+              "SURVEY"
+            ]
+          },
+          "method_mode": {
+            "type": "string",
+            "enum": [
+              "EXPLORATORY",
+              "HYPOTHESIS_VALIDATION",
+              "MATERIAL_COMPREHENSION"
+            ]
+          },
+          "purpose": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "research_question_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "execution_mode": {
+            "type": "string",
+            "enum": [
+              "REMOTE_MODERATED",
+              "REMOTE_UNMODERATED",
+              "IN_PERSON",
+              "PHONE",
+              "HYBRID"
+            ]
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "depends_on_method_ids": {
+            "$ref": "common.schema.json#/$defs/id_list"
+          }
+        }
+      }
+    },
+    "question_method_map": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "research_question_id",
+          "method_ids",
+          "required_evidence",
+          "planned_output"
+        ],
+        "properties": {
+          "research_question_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "method_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "required_evidence": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "planned_output": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          }
+        }
+      }
+    },
+    "participant_profile": {
+      "description": "简化模式下用于定义目标受访者画像和责任边界，不包含招募、联系或名单核验计划。",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "population_description",
+        "required_characteristics",
+        "excluded_characteristics",
+        "analysis_dimensions",
+        "provisioning_responsibility",
+        "system_responsibility"
+      ],
+      "properties": {
+        "population_description": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "required_characteristics": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "excluded_characteristics": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "analysis_dimensions": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "provisioning_responsibility": {
+          "const": "EXTERNAL_BUSINESS_OR_CHANNEL"
+        },
+        "system_responsibility": {
+          "const": "DEFINE_PROFILE_ONLY"
+        }
+      }
+    },
+    "sampling_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_of_sampling",
+        "target_population",
+        "sampling_strategy",
+        "total_target",
+        "method_sample_targets",
+        "inclusion_criteria",
+        "exclusion_criteria",
+        "preferred_criteria",
+        "representativeness_limits"
+      ],
+      "properties": {
+        "unit_of_sampling": {
+          "type": "string",
+          "enum": [
+            "PARTICIPANT",
+            "HOUSEHOLD",
+            "ACCOUNT",
+            "RECORD"
+          ]
+        },
+        "target_population": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "sampling_strategy": {
+          "type": "string",
+          "enum": [
+            "PURPOSIVE",
+            "QUOTA",
+            "CONVENIENCE",
+            "RANDOM",
+            "STRATIFIED",
+            "SNOWBALL",
+            "OTHER"
+          ]
+        },
+        "total_target": {
+          "description": "所有方法目标样本数之和；必须与 method_sample_targets 中 target 的合计一致。",
+          "type": "integer",
+          "minimum": 1
+        },
+        "method_sample_targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method_id",
+              "minimum",
+              "target",
+              "maximum",
+              "rationale",
+              "segment_targets"
+            ],
+            "properties": {
+              "method_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "minimum": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "target": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "maximum": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "rationale": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "segment_targets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "segment_id",
+                    "definition",
+                    "minimum",
+                    "target",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "segment_id": {
+                      "$ref": "common.schema.json#/$defs/identifier"
+                    },
+                    "definition": {
+                      "$ref": "common.schema.json#/$defs/non_empty_string"
+                    },
+                    "minimum": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "target": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rationale": {
+                      "$ref": "common.schema.json#/$defs/non_empty_string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "inclusion_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/criterion"
+          }
+        },
+        "exclusion_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/criterion"
+          }
+        },
+        "preferred_criteria": {
+          "description": "用于提升样本信息价值或多样性的加分条件，不得伪装为必要条件。",
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/criterion"
+          }
+        },
+        "representativeness_limits": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "recruitment_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channels",
+        "responsible_role",
+        "screening_process",
+        "contact_permission_rule",
+        "incentive",
+        "verification_rule",
+        "replacement_rule",
+        "supplier_deliverables"
+      ],
+      "properties": {
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "responsible_role": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "screening_process": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "contact_permission_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "incentive": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "verification_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "replacement_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "supplier_deliverables": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        }
+      }
+    },
+    "fieldwork_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planned_start_date",
+        "planned_end_date",
+        "timezone",
+        "owner_role",
+        "channels",
+        "consent_process",
+        "recording_rule",
+        "deviation_logging_rule"
+      ],
+      "properties": {
+        "planned_start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "planned_end_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "timezone": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "owner_role": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "consent_process": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "recording_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "deviation_logging_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "materials_plan": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/material_reference"
+      }
+    },
+    "learning_resources_plan": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/learning_resource"
+      }
+    },
+    "analysis_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_of_analysis",
+        "question_analysis",
+        "qualitative_plan",
+        "quantitative_plan",
+        "missing_data_rule",
+        "negative_case_rule",
+        "evidence_thresholds",
+        "synthesis_plan"
+      ],
+      "properties": {
+        "unit_of_analysis": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "question_analysis": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "research_question_id",
+              "method_ids",
+              "analysis_type",
+              "variables_or_codes",
+              "decision_rule"
+            ],
+            "properties": {
+              "research_question_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "method_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/identifier"
+                },
+                "uniqueItems": true
+              },
+              "analysis_type": {
+                "type": "string",
+                "enum": [
+                  "THEMATIC_CODING",
+                  "CONTENT_ANALYSIS",
+                  "DESCRIPTIVE_STATISTICS",
+                  "COMPARATIVE_ANALYSIS",
+                  "CROSS_TABULATION",
+                  "OTHER"
+                ]
+              },
+              "variables_or_codes": {
+                "$ref": "common.schema.json#/$defs/string_list"
+              },
+              "decision_rule": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        "qualitative_plan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "applicable",
+            "coding_approach",
+            "quality_check"
+          ],
+          "properties": {
+            "applicable": {
+              "type": "boolean"
+            },
+            "coding_approach": {
+              "type": "string"
+            },
+            "quality_check": {
+              "type": "string"
+            }
+          }
+        },
+        "quantitative_plan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "applicable",
+            "statistics",
+            "weighting_rule",
+            "subgroup_rule"
+          ],
+          "properties": {
+            "applicable": {
+              "type": "boolean"
+            },
+            "statistics": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "weighting_rule": {
+              "type": "string"
+            },
+            "subgroup_rule": {
+              "type": "string"
+            }
+          }
+        },
+        "missing_data_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "negative_case_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "evidence_thresholds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim_type",
+              "minimum_requirement",
+              "confidence_rule"
+            ],
+            "properties": {
+              "claim_type": {
+                "type": "string",
+                "enum": [
+                  "FINDING",
+                  "INSIGHT",
+                  "RECOMMENDATION"
+                ]
+              },
+              "minimum_requirement": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "confidence_rule": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        "synthesis_plan": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "quality_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pilot_required",
+        "instrument_review_rules",
+        "invalid_response_rules",
+        "fieldwork_quality_checks"
+      ],
+      "properties": {
+        "pilot_required": {
+          "type": "boolean"
+        },
+        "pilot_plan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "participants_or_records",
+            "success_criteria",
+            "revision_rule"
+          ],
+          "properties": {
+            "participants_or_records": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "success_criteria": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "revision_rule": {
+              "$ref": "common.schema.json#/$defs/non_empty_string"
+            }
+          }
+        },
+        "instrument_review_rules": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "invalid_response_rules": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "fieldwork_quality_checks": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "pilot_required": {
+                "const": true
+              }
+            },
+            "required": [
+              "pilot_required"
+            ]
+          },
+          "then": {
+            "required": [
+              "pilot_plan"
+            ]
+          }
+        }
+      ]
+    },
+    "data_management": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "participant_id_scheme",
+        "data_minimization",
+        "deidentification",
+        "access_roles",
+        "retention_rule",
+        "deletion_rule",
+        "external_transfer_rule"
+      ],
+      "properties": {
+        "participant_id_scheme": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "data_minimization": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "deidentification": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "access_roles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "retention_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "deletion_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "external_transfer_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/risk_item"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/non_empty_string"
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "deliverable_type",
+          "owner_role"
+        ],
+        "properties": {
+          "deliverable_type": {
+            "type": "string",
+            "enum": [
+              "InstrumentSpec",
+              "ReviewResult",
+              "FieldworkPackage",
+              "InsightPackage",
+              "ResearchReport",
+              "OTHER"
+            ]
+          },
+          "owner_role": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "due_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "policy_id": "WF-RUNTIME-POLICY-V1",
+  "policy_version": "0.1.0",
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "transitions": [
+    {"from_stage": "INTAKE", "event_type": "TASK_SUCCEEDED", "to_stage": "BRIEF_DESIGN", "run_status": "ACTIVE"},
+    {"from_stage": "BRIEF_DESIGN", "event_type": "GATE_SUBMITTED", "to_stage": "GATE_1_REVIEW", "run_status": "WAITING_GATE", "gate_id": "GATE_1"},
+    {"from_stage": "GATE_1_REVIEW", "event_type": "GATE_APPROVED", "to_stage": "PLAN_DESIGN", "run_status": "ACTIVE", "gate_id": "GATE_1"},
+    {"from_stage": "PLAN_DESIGN", "event_type": "TASK_SUCCEEDED", "to_stage": "INSTRUMENT_DESIGN", "run_status": "ACTIVE"},
+    {"from_stage": "INSTRUMENT_DESIGN", "event_type": "GATE_SUBMITTED", "to_stage": "GATE_2_REVIEW", "run_status": "WAITING_GATE", "gate_id": "GATE_2"},
+    {"from_stage": "GATE_2_REVIEW", "event_type": "GATE_APPROVED", "to_stage": "FIELDWORK", "run_status": "ACTIVE", "gate_id": "GATE_2"},
+    {"from_stage": "FIELDWORK", "event_type": "TASK_SUCCEEDED", "to_stage": "ANALYSIS", "run_status": "ACTIVE"},
+    {"from_stage": "ANALYSIS", "event_type": "GATE_SUBMITTED", "to_stage": "GATE_3_REVIEW", "run_status": "WAITING_GATE", "gate_id": "GATE_3"},
+    {"from_stage": "GATE_3_REVIEW", "event_type": "GATE_APPROVED", "to_stage": "REPORT_COMPOSITION", "run_status": "ACTIVE", "gate_id": "GATE_3"},
+    {"from_stage": "REPORT_COMPOSITION", "event_type": "GATE_SUBMITTED", "to_stage": "GATE_4_REVIEW", "run_status": "WAITING_GATE", "gate_id": "GATE_4"},
+    {"from_stage": "GATE_4_REVIEW", "event_type": "GATE_APPROVED", "to_stage": "ARCHIVE", "run_status": "ACTIVE", "gate_id": "GATE_4"},
+    {"from_stage": "ARCHIVE", "event_type": "ARCHIVE_COMPLETED", "to_stage": "COMPLETED", "run_status": "COMPLETED"}
+  ],
+  "gates": {
+    "GATE_1": {
+      "review_stage": "GATE_1_REVIEW",
+      "primary_artifact_type": "ResearchBrief",
+      "required_current_artifact_types": ["ResearchBrief"],
+      "passing_review_required_for": []
+    },
+    "GATE_2": {
+      "review_stage": "GATE_2_REVIEW",
+      "primary_artifact_type": "ResearchPlan",
+      "required_current_artifact_types": ["ResearchPlan", "InstrumentSpec"],
+      "passing_review_required_for": ["InstrumentSpec"]
+    },
+    "GATE_3": {
+      "review_stage": "GATE_3_REVIEW",
+      "primary_artifact_type": "InsightPackage",
+      "required_current_artifact_types": ["InsightPackage"],
+      "passing_review_required_for": ["InsightPackage"]
+    },
+    "GATE_4": {
+      "review_stage": "GATE_4_REVIEW",
+      "primary_artifact_type": "ResearchReport",
+      "required_current_artifact_types": ["ResearchReport"],
+      "passing_review_required_for": ["ResearchReport"]
+    }
+  },
+  "return_stage_by_artifact_type": {
+    "ResearchBrief": "BRIEF_DESIGN",
+    "ResearchPlan": "PLAN_DESIGN",
+    "InstrumentSpec": "INSTRUMENT_DESIGN",
+    "FieldworkPackage": "FIELDWORK",
+    "InsightPackage": "ANALYSIS",
+    "ResearchReport": "REPORT_COMPOSITION"
+  },
+  "capability_principal_map": {
+    "frame-research-question": "CAP-01",
+    "design-research-plan": "CAP-02",
+    "design-research-instrument": "CAP-03",
+    "review-research-quality": "CAP-04",
+    "synthesize-research-insights": "CAP-05",
+    "compose-research-report": "CAP-06"
+  },
+  "task_data_access": {
+    "frame-research-question": ["NO_PERSONAL_DATA"],
+    "design-research-plan": ["NO_PERSONAL_DATA"],
+    "design-research-instrument": ["NO_PERSONAL_DATA"],
+    "review-research-quality": ["NO_PERSONAL_DATA", "DEIDENTIFIED_RESEARCH_DATA"],
+    "synthesize-research-insights": ["DEIDENTIFIED_RESEARCH_DATA"],
+    "compose-research-report": ["NO_PERSONAL_DATA"]
+  }
+}

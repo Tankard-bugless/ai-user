@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/review-result.schema.json",
+  "title": "ReviewResult Schema",
+  "description": "记录对指定产物版本的结构、方法、逻辑、内容或合规检查；不构成正式审批。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "target_ref",
+    "review_scope",
+    "review_types",
+    "reviewer",
+    "reviewed_at",
+    "ruleset_refs",
+    "checks",
+    "issues",
+    "summary",
+    "residual_risks",
+    "recommended_next_action",
+    "is_formal_approval"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_metadata"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ReviewResult"
+            }
+          }
+        }
+      ]
+    },
+    "target_ref": {
+      "$ref": "common.schema.json#/$defs/artifact_reference"
+    },
+    "review_scope": {
+      "type": "string",
+      "enum": [
+        "ResearchBrief",
+        "ResearchPlan",
+        "InstrumentSpec",
+        "FieldworkPackage",
+        "InsightPackage",
+        "ResearchReport",
+        "OTHER"
+      ]
+    },
+    "review_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "STRUCTURE",
+          "METHOD",
+          "TRACEABILITY",
+          "LOGIC",
+          "WORDING",
+          "ACCESSIBILITY",
+          "PRIVACY",
+          "COMPLIANCE",
+          "FINANCIAL_EXPRESSION",
+          "DATA_QUALITY"
+        ]
+      }
+    },
+    "reviewer": {
+      "$ref": "common.schema.json#/$defs/actor"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ruleset_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ruleset_id",
+          "version"
+        ],
+        "properties": {
+          "ruleset_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "version": {
+            "$ref": "common.schema.json#/$defs/semantic_version"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri-reference"
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check_id",
+          "label",
+          "status",
+          "details"
+        ],
+        "properties": {
+          "check_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "WARNING",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "details": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "related_issue_ids": {
+            "$ref": "common.schema.json#/$defs/id_list"
+          }
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "issue_id",
+          "severity",
+          "category",
+          "rule_id",
+          "location",
+          "description",
+          "evidence",
+          "recommended_change",
+          "status"
+        ],
+        "properties": {
+          "issue_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "BLOCKER",
+              "MAJOR",
+              "MINOR",
+              "WARNING"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "MISSING_FIELD",
+              "TRACEABILITY_GAP",
+              "METHOD_MISMATCH",
+              "SAMPLE_RISK",
+              "LEADING_WORDING",
+              "DOUBLE_BARRELED",
+              "RECALL_BIAS",
+              "OPTION_GAP",
+              "BRANCHING_ERROR",
+              "SCALE_ERROR",
+              "TIME_CONFLICT",
+              "MATERIAL_CONFUSION",
+              "PRIVACY_RISK",
+              "COMPLIANCE_RISK",
+              "FINANCIAL_EXPRESSION_RISK",
+              "ACCESSIBILITY_RISK",
+              "OTHER"
+            ]
+          },
+          "rule_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "json_pointer",
+              "component_id"
+            ],
+            "properties": {
+              "json_pointer": {
+                "type": "string",
+                "pattern": "^/"
+              },
+              "component_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              }
+            }
+          },
+          "description": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "evidence": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "recommended_change": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "RESOLVED",
+              "ACCEPTED_RISK",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "owner_role": {
+            "type": "string"
+          },
+          "resolution_ref": {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outcome",
+        "blocker_count",
+        "major_count",
+        "minor_count",
+        "warning_count",
+        "summary_text"
+      ],
+      "properties": {
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "PASS_WITH_WARNINGS",
+            "CHANGES_REQUIRED",
+            "BLOCKED"
+          ]
+        },
+        "blocker_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "major_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minor_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warning_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "summary_text": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "residual_risks": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/risk_item"
+      }
+    },
+    "recommended_next_action": {
+      "type": "string",
+      "enum": [
+        "READY_FOR_HUMAN_REVIEW",
+        "REVISE_TARGET",
+        "RETURN_TO_UPSTREAM",
+        "ESCALATE_SPECIALIST",
+        "STOP"
+      ]
+    },
+    "is_formal_approval": {
+      "const": false
+    }
+  }
+}

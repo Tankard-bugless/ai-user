@@ -1,0 +1,404 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "RB-OTF-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者的选择与持有认知研究任务书",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-23T14:40:21+08:00",
+    "updated_at": "2026-07-23T15:01:51+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-01",
+      "actor_type": "AGENT",
+      "role": "研究问题理解专家",
+      "model_id": "codex",
+      "capability_version": "0.1.0"
+    },
+    "upstream_refs": [],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "将课题收紧为问卷生成与报告生成主链；系统只定义受访者画像，不承担招募、甄别、触达或人工试答。"
+  },
+  "raw_demand": {
+    "statement": "希望开展购买过养老目标基金的基民调研，具体了解他们是否清楚目标日期基金、目标风险基金和下滑曲线，以及买基金时是否会查看下滑曲线；问题应具体、简单易懂，不做过于宽泛的养老调查。",
+    "requester_role": "客户研究项目发起人",
+    "business_context": "养老目标基金规模相对有限，团队初步判断产品类型和长期配置机制的认知可能不足。研究需要从真实购买者出发，理解购买时如何选择、买后如何持有，以及产品说明和投资者陪伴内容应优先解决哪些问题。上述判断均为待验证假设。",
+    "received_at": "2026-07-23T14:40:21+08:00"
+  },
+  "supported_decisions": [
+    {
+      "decision_id": "SD-001",
+      "owner_role": "产品、投教与客户研究负责人（Gate 1 前明确唯一决策人）",
+      "decision_statement": "决定养老目标基金的产品说明、购买页面或沟通材料应优先解释哪些概念，并采用何种信息顺序。",
+      "available_actions": [
+        "维持现有说明结构",
+        "前置解释目标日期与目标风险的区别",
+        "增加下滑曲线的通俗解释和示例",
+        "减少非关键术语并强化与投资者选择相关的信息"
+      ],
+      "research_contribution": "提供购买者真实选择过程、既有认知、常见误解和信息需求的研究证据；不替代产品事实、合规和适当性判断。",
+      "non_research_inputs": [
+        "基金合同、招募说明书和产品资料概要",
+        "合规与销售适当性要求",
+        "页面和内容改造成本"
+      ]
+    },
+    {
+      "decision_id": "SD-002",
+      "owner_role": "客户陪伴与投教负责人（Gate 1 前确认）",
+      "decision_statement": "决定购买后应向持有人持续解释哪些配置变化、波动信息和持有相关问题。",
+      "available_actions": [
+        "维持现有持有期内容",
+        "增加资产配置变化和调整原因说明",
+        "按持有阶段提供不同内容",
+        "补充常见误解和风险边界说明"
+      ],
+      "research_contribution": "识别购买后仍然存在的不确定、误解和信息缺口，并区分实际行为与主观偏好。",
+      "non_research_inputs": [
+        "产品实际运作和信息披露安排",
+        "客服与渠道执行能力",
+        "合规审核意见"
+      ]
+    }
+  ],
+  "research_objectives": [
+    {
+      "objective_id": "OBJ-001",
+      "statement": "还原养老目标基金购买者最近一次购买时的触发、信息来源、比较过程和关键决策依据。",
+      "supported_decision_ids": [
+        "SD-001"
+      ]
+    },
+    {
+      "objective_id": "OBJ-002",
+      "statement": "了解购买者能否识别自己所购产品属于目标日期或目标风险类型，并如何理解对应的选择逻辑。",
+      "supported_decision_ids": [
+        "SD-001",
+        "SD-002"
+      ]
+    },
+    {
+      "objective_id": "OBJ-003",
+      "statement": "了解购买者在购买前后是否接触、查看和使用过下滑曲线，以及对其作用和风险边界的理解。",
+      "supported_decision_ids": [
+        "SD-001",
+        "SD-002"
+      ]
+    },
+    {
+      "objective_id": "OBJ-004",
+      "statement": "识别购买后的持有行为、面对波动时的判断方式，以及仍需要的产品解释和陪伴信息。",
+      "supported_decision_ids": [
+        "SD-002"
+      ]
+    }
+  ],
+  "research_questions": [
+    {
+      "research_question_id": "RQ-001",
+      "statement": "购买者最近一次购买养老目标基金时，由什么触发、通过什么渠道了解、由谁作出决定，并实际查看了哪些信息？",
+      "question_type": "EXPLORATORY",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-001"
+      ],
+      "answer_boundary": "还原本研究样本中的具体购买过程，不推断全部养老投资者的购买路径。"
+    },
+    {
+      "research_question_id": "RQ-002",
+      "statement": "购买者是否知道自己购买的是目标日期型还是目标风险型产品，并如何解释该类型与自身退休时间或风险选择的关系？",
+      "question_type": "DESCRIPTIVE",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-002"
+      ],
+      "answer_boundary": "区分产品识别、概念理解和自我感觉，不把“听说过”直接认定为理解。"
+    },
+    {
+      "research_question_id": "RQ-003",
+      "statement": "购买者在购买前和持有期间是否看过下滑曲线或相关资产配置路径，并如何理解其作用、变化方向和风险边界？",
+      "question_type": "DESCRIPTIVE",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-003"
+      ],
+      "answer_boundary": "分别记录知晓、实际查看、理解和使用行为；不因看过材料就推断其已经理解。"
+    },
+    {
+      "research_question_id": "RQ-004",
+      "statement": "产品类型、退休年份、风险水平、历史表现、品牌或渠道推荐、费率与份额类别等因素，分别在购买决策中起到了什么作用？",
+      "question_type": "DESCRIPTIVE",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-001",
+        "OBJ-002"
+      ],
+      "answer_boundary": "区分购买前实际看到的信息、参与比较的信息和最终最重要的因素，不把事后评价当作当时决策依据。"
+    },
+    {
+      "research_question_id": "RQ-005",
+      "statement": "购买后，持有人如何判断产品是否仍符合自己的养老安排，遇到净值波动或配置变化时采取过哪些行动？",
+      "question_type": "EXPLORATORY",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-004"
+      ],
+      "answer_boundary": "描述持有、追加、减少或赎回等自报行为及其理由，不评价行为是否正确，也不作投资建议。"
+    },
+    {
+      "research_question_id": "RQ-006",
+      "statement": "购买者目前最希望获得哪些产品解释和持有期信息，哪些通俗呈现形式更便于其判断与自身的关系？",
+      "question_type": "DESCRIPTIVE",
+      "priority": "SUPPORTING",
+      "objective_ids": [
+        "OBJ-004"
+      ],
+      "answer_boundary": "收集信息需求和呈现偏好；若要证明某种表达能提高理解度，需在后续方案中另行设计材料比较或理解任务。"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "HYP-001",
+      "statement": "实际购买过养老目标基金并不必然意味着购买者能够准确识别自己购买的产品类型或解释该类型的选择逻辑。",
+      "rationale": "业务方观察到目标日期、目标风险和养老目标基金等名称容易混淆，但尚无本项目证据。",
+      "falsification_condition": "参与者能够稳定、准确地识别所购产品类型，并用与正式产品定义一致的语言解释其选择逻辑，且不确定或混淆仅为个别情况。",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "hypothesis_id": "HYP-002",
+      "statement": "下滑曲线不是多数购买者在购买前或持有期间主动查看和使用的决策信息。",
+      "rationale": "业务方初步判断投资者很少在购买时查看下滑曲线，该判断需要通过具体行为问题检验。",
+      "falsification_condition": "参与者能够具体回忆查看下滑曲线或等价配置路径，并说明其如何影响购买、追加、持有或赎回判断。",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "hypothesis_id": "HYP-003",
+      "statement": "渠道推荐、品牌或历史表现等直观信息，比退休年份匹配、目标风险水平和长期配置机制更常成为实际购买依据。",
+      "rationale": "该解释可帮助判断当前产品信息是否突出真正影响选择的内容，但不能作为预设结论写入题干。",
+      "falsification_condition": "购买者能基于具体购买经历说明，退休年份、目标风险或长期配置机制是其主动比较并最终决定购买的主要依据。",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-004"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "hypothesis_id": "HYP-004",
+      "statement": "购买后的常见信息缺口不仅是收益表现，还包括当前资产配置、配置为何变化以及产品是否仍与个人退休安排相匹配。",
+      "rationale": "养老目标基金强调长期安排，但现有材料可能未持续支持持有人理解产品运作。",
+      "falsification_condition": "参与者能够从现有信息中清楚判断配置变化及其与自身养老安排的关系，并不需要补充相关解释。",
+      "research_question_ids": [
+        "RQ-005",
+        "RQ-006"
+      ],
+      "status": "ACTIVE"
+    }
+  ],
+  "target_participants": {
+    "population_description": "年满 18 周岁、目前持有或过去曾实际购买过至少一只养老目标基金，并愿意回顾具体购买与持有经历的基金投资者。",
+    "inclusion_criteria": [
+      {
+        "criterion_id": "INC-001",
+        "statement": "年满 18 周岁。",
+        "rationale": "研究涉及个人基金投资经历，仅纳入成年人。"
+      },
+      {
+        "criterion_id": "INC-002",
+        "statement": "目前持有或过去曾实际购买过养老目标基金，而非仅开立个人养老金账户、浏览产品或购买其他普通基金。",
+        "rationale": "确保参与者能够回答真实购买决策和持有经历。"
+      }
+    ],
+    "exclusion_criteria": [
+      {
+        "criterion_id": "EXC-001",
+        "statement": "只开立个人养老金账户或缴存资金，但从未购买养老目标基金。",
+        "rationale": "该人群不能回答本课题的实际购买和持有问题。"
+      },
+      {
+        "criterion_id": "EXC-002",
+        "statement": "仅购买过个人养老金储蓄、保险、理财产品或非养老目标基金。",
+        "rationale": "避免不同产品机制混入主分析。"
+      },
+      {
+        "criterion_id": "EXC-003",
+        "statement": "直接参与本次研究设计、待测试内容制作或相关产品营销决策。",
+        "rationale": "减少预先知情和角色立场导致的偏差。"
+      }
+    ],
+    "relevant_dimensions": [
+      "目标日期型、目标风险型或无法确认",
+      "个人养老金账户 Y 份额、普通份额或无法确认",
+      "自主选择、专业人员推荐、亲友协助或共同决策",
+      "当前持有、追加、减少或已经赎回",
+      "距离预期退休的大致年限",
+      "基金投资经验"
+    ]
+  },
+  "scope": {
+    "in_scope": [
+      "最近一次养老目标基金购买的触发、渠道、比较和决策过程",
+      "对所购产品类型及其选择逻辑的识别与理解",
+      "购买前后对下滑曲线或资产配置路径的知晓、查看、理解和使用",
+      "历史表现、品牌、推荐、费率、Y 份额等信息在实际决策中的作用",
+      "购买后的持有行为、波动应对和信息需求",
+      "通俗产品说明和持有陪伴内容的改进方向"
+    ],
+    "out_of_scope": [
+      "个人养老金账户未开立、未缴存或未购买产品的原因",
+      "估计养老目标基金市场规模、渗透率或全部购买者的总体比例",
+      "评价某只基金的投资价值、业绩优劣或未来收益",
+      "判断参与者的风险承受能力、产品适当性或给出投资建议",
+      "形成或更新正式客户标签和销售线索",
+      "评价 IMA 知识库本身的使用效果",
+      "寻找、筛选、联系、核验或替换受访者",
+      "把人工试答或独立访谈作为问卷生成的必需步骤"
+    ]
+  },
+  "constraints": {
+    "timeline": "Gate 1 通过后直接生成简化研究方案和正式问卷；问卷投放排期与受访者组织由业务方或外部渠道安排。",
+    "available_channels": [
+      "由业务方选择的问卷平台",
+      "业务方或外部渠道提供的匿名答卷数据"
+    ],
+    "resource_constraints": [
+      "工作流不掌握受访者名单，也不负责招募和购买经历核验",
+      "业务方提供的受访者可能混淆养老目标基金、普通 FOF 和其他个人养老金产品",
+      "问卷平台功能和最终答卷字段格式尚未确认",
+      "样本来源由业务方决定，报告只能依据实际答卷说明，不能默认具有总体代表性"
+    ],
+    "mandatory_rules": [
+      "题目使用普通投资者能理解的语言，首次测量既有认知前不得先用定义提示答案",
+      "事实、业务假设、参与者自报和研究发现必须分开记录",
+      "知晓、实际查看、理解、态度和购买意向不得合并测量",
+      "不得暗示保本、确定收益、产品优越性或推荐参与者交易",
+      "目标日期、目标风险、下滑曲线和 Y 份额的事实表述必须由正式产品文件和合规人员复核",
+      "不收集账户号码、持仓截图、精确资产、精确购买金额或其他非必要敏感信息",
+      "IMA 如进入问卷，只放在核心答题完成后的结束区，作为自愿学习入口，不进入研究证据链"
+    ]
+  },
+  "data_and_sensitivity": {
+    "available_sources": [
+      {
+        "source_id": "SRC-OFFICIAL-FOF-001",
+        "source_type": "KNOWLEDGE_MATERIAL",
+        "description": "《易方达fof》官方内容，可用于核对目标日期、目标风险和 Y 份额的基础定义；其中排名、业绩和营销性表述不直接进入中性问卷。",
+        "access_status": "AVAILABLE"
+      },
+      {
+        "source_id": "SRC-PUBLIC-ARTICLE-001",
+        "source_type": "KNOWLEDGE_MATERIAL",
+        "description": "《公众号内容》可用于扩展业务假设和投资者语言线索，不作为市场事实或问卷结论依据。",
+        "access_status": "AVAILABLE"
+      }
+    ],
+    "missing_information": [
+      "现有购买页面和持有期内容的冻结版本",
+      "最终决策人和使用研究结果的时间点",
+      "问卷平台可导出的答卷字段格式"
+    ],
+    "expected_personal_data": false,
+    "expected_sensitive_financial_data": false,
+    "minimum_data_principle": "工作流只接收匿名答卷数据；问卷仅询问回答研究问题所必需的产品类别、购买与持有行为，不收集姓名、联系方式、账户标识、精确金额、资产总额或交易截图。受访者名单和触达信息不进入本系统。"
+  },
+  "success_criteria": [
+    {
+      "criterion_id": "SC-001",
+      "statement": "ResearchBrief 清楚定义目标受访者画像，后续问卷和报告始终使用同一口径。",
+      "rationale": "系统负责定义“问谁”，但不介入受访者招募和名单管理。"
+    },
+    {
+      "criterion_id": "SC-002",
+      "statement": "每个核心研究问题都能追溯到购买者的具体行为、作答证据和预先定义的分析口径。",
+      "rationale": "避免只用态度评价替代真实购买和持有过程。"
+    },
+    {
+      "criterion_id": "SC-003",
+      "statement": "报告分别呈现产品识别、概念理解、实际查看、使用行为和信息偏好，不互相替代。",
+      "rationale": "防止把听过、看过或自称看懂误写为真正理解和使用。"
+    },
+    {
+      "criterion_id": "SC-004",
+      "statement": "研究输出能够明确指出产品说明和持有陪伴内容各自可采取的改进方向、证据强度与限制。",
+      "rationale": "确保研究能够支持具体内容决策，同时不过度外推。"
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "RISK-001",
+      "category": "SAMPLE",
+      "description": "受访者由业务方或外部渠道提供，样本来源、规模和覆盖可能有限。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "工作流记录目标画像和业务方提供的实际样本说明；报告仅描述本次答卷，不估计总体比例。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-002",
+      "category": "METHOD",
+      "description": "参与者可能把普通 FOF、养老理财或其他个人养老金产品误认为养老目标基金。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "问卷提供“不确定”选项并询问基金名称或目标年份等非敏感信息；报告将无法判断产品类型者单独呈现，不承担名单核验。",
+      "owner_role": "研究工具设计负责人"
+    },
+    {
+      "risk_id": "RISK-003",
+      "category": "METHOD",
+      "description": "购买发生时间较早时，参与者可能用当前认知重构当时查看的信息和决策原因。",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "围绕最近一次具体购买提问，先问行为和场景再问评价，并在报告中标记自报与回忆限制。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-004",
+      "category": "METHOD",
+      "description": "团队已有“认知不足、很少查看下滑曲线”的判断，可能导致问题和报告只寻找支持证据。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "把判断写成可证伪假设，保留“不知道”和反例路径，质量审核同时检查支持和反驳证据。",
+      "owner_role": "研究质量审核负责人"
+    },
+    {
+      "risk_id": "RISK-005",
+      "category": "FINANCIAL_EXPRESSION",
+      "description": "题目或解释材料可能被理解为产品宣传、收益判断或个体投资建议。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "工具发布前由合规人员核对产品事实、风险边界和中性表达；不展示未审核的业绩比较和推荐性话术。",
+      "owner_role": "合规审核人员"
+    },
+    {
+      "risk_id": "RISK-006",
+      "category": "PRIVACY",
+      "description": "问卷涉及购买和持有行为，如果同时采集身份或账户信息会增加隐私风险。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "本系统只接收匿名答卷；问卷不采集身份、账户、精确金额、截图和无关资产信息，受访者名单保留在外部渠道。",
+      "owner_role": "隐私与数据责任人"
+    }
+  ],
+  "assumptions": [
+    "本课题的首要对象是实际购买过养老目标基金的投资者，而不是所有个人养老金账户持有人。",
+    "“购买者认知不足”和“下滑曲线使用较少”仅作为待验证假设，不作为筛选或报告结论。",
+    "业务方或外部渠道会按照本项目定义的受访者画像提供答卷，工作流不承担招募、甄别、联系和替换责任。",
+    "本案例采用问卷作为唯一正式研究工具，不要求另行开展深度访谈或人工试答。",
+    "产品事实以正式法律文件和经审核的官方材料为准，公众号内容只用于提出假设和理解语言。",
+    "IMA 仅作为问卷结束后的可选学习桥梁，不记录访问行为，也不用于证明理解或购买意向。"
+  ],
+  "open_questions": [
+    "SD-001 与 SD-002 是否由同一位最终决策人负责，研究结果需要在什么时间点进入业务决策？",
+    "现有产品说明、购买页面和持有陪伴内容中，哪些版本将作为后续研究背景材料？",
+    "业务方最终提供的匿名答卷将采用哪种文件和字段格式？"
+  ]
+}

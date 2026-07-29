@@ -1,0 +1,1365 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/instrument-spec.schema.json",
+  "title": "InstrumentSpec Schema",
+  "description": "平台无关的问卷或访谈工具规格，通过 instrument_type 分流。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "research_plan_ref",
+    "instrument_type",
+    "instrument_mode",
+    "participant_facing_title",
+    "purpose",
+    "research_question_ids",
+    "hypothesis_ids",
+    "estimated_duration_minutes",
+    "languages",
+    "eligibility_rules",
+    "consent_and_intro",
+    "test_materials",
+    "material_measurement_plan",
+    "traceability_map",
+    "privacy_and_compliance",
+    "pilot_config"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_metadata"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "InstrumentSpec"
+            }
+          }
+        }
+      ]
+    },
+    "research_plan_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ResearchPlan"
+            }
+          }
+        }
+      ]
+    },
+    "instrument_type": {
+      "type": "string",
+      "enum": [
+        "SURVEY",
+        "INTERVIEW"
+      ]
+    },
+    "instrument_mode": {
+      "type": "string",
+      "enum": [
+        "STANDARD",
+        "MATERIAL_COMPREHENSION"
+      ]
+    },
+    "participant_facing_title": {
+      "$ref": "common.schema.json#/$defs/non_empty_string"
+    },
+    "purpose": {
+      "$ref": "common.schema.json#/$defs/non_empty_string"
+    },
+    "research_question_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/identifier"
+      },
+      "uniqueItems": true
+    },
+    "hypothesis_ids": {
+      "$ref": "common.schema.json#/$defs/id_list"
+    },
+    "estimated_duration_minutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 240
+    },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 2
+      },
+      "uniqueItems": true
+    },
+    "eligibility_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "criterion",
+          "implementation_component_ids",
+          "outcome"
+        ],
+        "properties": {
+          "rule_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "criterion": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "implementation_component_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "ELIGIBLE",
+              "INELIGIBLE",
+              "QUOTA_DEPENDENT"
+            ]
+          }
+        }
+      }
+    },
+    "consent_and_intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "participant_intro",
+        "voluntary_statement",
+        "data_use_statement",
+        "withdrawal_statement",
+        "recording_notice",
+        "consent_capture"
+      ],
+      "properties": {
+        "participant_intro": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "voluntary_statement": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "data_use_statement": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "withdrawal_statement": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "recording_notice": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "consent_capture": {
+          "type": "string",
+          "enum": [
+            "CHECKBOX",
+            "VERBAL",
+            "WRITTEN",
+            "EXTERNAL_SYSTEM"
+          ]
+        }
+      }
+    },
+    "test_materials": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/material_reference"
+      }
+    },
+    "learning_resources": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/learning_resource"
+      }
+    },
+    "material_measurement_plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "material_id",
+          "baseline_component_ids",
+          "exposure_check_component_ids",
+          "comprehension_component_ids",
+          "attitude_component_ids",
+          "separation_rule"
+        ],
+        "properties": {
+          "material_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "baseline_component_ids": {
+            "$ref": "common.schema.json#/$defs/id_list"
+          },
+          "exposure_check_component_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "comprehension_component_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "attitude_component_ids": {
+            "$ref": "common.schema.json#/$defs/id_list"
+          },
+          "separation_rule": {
+            "description": "说明如何区分材料暴露、理解、态度和意向。",
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          }
+        }
+      }
+    },
+    "traceability_map": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "component_id",
+          "component_type",
+          "research_question_ids",
+          "hypothesis_ids"
+        ],
+        "properties": {
+          "component_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "component_type": {
+            "type": "string",
+            "enum": [
+              "SURVEY_ITEM",
+              "SURVEY_SECTION",
+              "INTERVIEW_QUESTION",
+              "INTERVIEW_MODULE",
+              "SCREENER",
+              "MATERIAL"
+            ]
+          },
+          "research_question_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "hypothesis_ids": {
+            "$ref": "common.schema.json#/$defs/id_list"
+          }
+        }
+      }
+    },
+    "privacy_and_compliance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "collects_personal_data",
+        "personal_data_fields",
+        "contact_data_separation",
+        "financial_expression_review_required",
+        "no_return_promise_confirmed",
+        "suitability_data_separated",
+        "review_notes"
+      ],
+      "properties": {
+        "collects_personal_data": {
+          "type": "boolean"
+        },
+        "personal_data_fields": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "contact_data_separation": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "financial_expression_review_required": {
+          "type": "boolean"
+        },
+        "no_return_promise_confirmed": {
+          "type": "boolean"
+        },
+        "suitability_data_separated": {
+          "type": "boolean"
+        },
+        "review_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "pilot_config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "planned_participants": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "objectives": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "success_criteria": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "revision_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "required": {
+                "const": true
+              }
+            },
+            "required": [
+              "required"
+            ]
+          },
+          "then": {
+            "required": [
+              "planned_participants",
+              "objectives",
+              "success_criteria",
+              "revision_rule"
+            ]
+          }
+        }
+      ]
+    },
+    "survey_spec": {
+      "$ref": "#/$defs/survey_spec"
+    },
+    "interview_spec": {
+      "$ref": "#/$defs/interview_spec"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "instrument_type": {
+            "const": "SURVEY"
+          }
+        },
+        "required": [
+          "instrument_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "survey_spec"
+        ],
+        "not": {
+          "required": [
+            "interview_spec"
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "interview_spec"
+        ],
+        "not": {
+          "required": [
+            "survey_spec"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "instrument_mode": {
+            "const": "MATERIAL_COMPREHENSION"
+          }
+        },
+        "required": [
+          "instrument_mode"
+        ]
+      },
+      "then": {
+        "properties": {
+          "test_materials": {
+            "minItems": 1
+          },
+          "material_measurement_plan": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "answer_option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "option_id",
+        "label",
+        "value"
+      ],
+      "properties": {
+        "option_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        },
+        "exclusive": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "scale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum",
+        "maximum",
+        "step",
+        "minimum_label",
+        "maximum_label",
+        "direction"
+      ],
+      "properties": {
+        "minimum": {
+          "type": "number"
+        },
+        "maximum": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minimum_label": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "maximum_label": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "LOW_TO_HIGH",
+            "HIGH_TO_LOW"
+          ]
+        },
+        "not_applicable_option": {
+          "$ref": "#/$defs/answer_option"
+        }
+      }
+    },
+    "item_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimum_selections": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum_selections": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_value": {
+          "type": "number"
+        },
+        "maximum_value": {
+          "type": "number"
+        },
+        "minimum_length": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum_length": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "validation_message": {
+          "type": "string"
+        }
+      }
+    },
+    "matrix_definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rows",
+        "columns"
+      ],
+      "properties": {
+        "rows": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/answer_option"
+          }
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/answer_option"
+          }
+        }
+      }
+    },
+    "survey_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_id",
+        "item_type",
+        "prompt",
+        "required",
+        "research_question_ids",
+        "hypothesis_ids"
+      ],
+      "properties": {
+        "item_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "item_type": {
+          "type": "string",
+          "enum": [
+            "INFO",
+            "CONSENT",
+            "SINGLE_SELECT",
+            "MULTI_SELECT",
+            "LIKERT",
+            "MATRIX_SINGLE",
+            "MATRIX_MULTI",
+            "RANKING",
+            "NUMERIC",
+            "TEXT_SHORT",
+            "TEXT_LONG"
+          ]
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "help_text": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "research_question_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "hypothesis_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "material_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "answer_options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/answer_option"
+          }
+        },
+        "scale": {
+          "$ref": "#/$defs/scale"
+        },
+        "matrix": {
+          "$ref": "#/$defs/matrix_definition"
+        },
+        "validation": {
+          "$ref": "#/$defs/item_validation"
+        },
+        "randomize_options": {
+          "type": "boolean",
+          "default": false
+        },
+        "variable_name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{1,63}$"
+        },
+        "quality_note": {
+          "description": "记录设计者主动检查的偏差风险，不面向参与者展示。",
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "item_type": {
+                "enum": [
+                  "CONSENT",
+                  "SINGLE_SELECT",
+                  "MULTI_SELECT",
+                  "RANKING"
+                ]
+              }
+            },
+            "required": [
+              "item_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "answer_options"
+            ],
+            "properties": {
+              "answer_options": {
+                "minItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "item_type": {
+                "const": "LIKERT"
+              }
+            },
+            "required": [
+              "item_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "scale"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "item_type": {
+                "enum": [
+                  "MATRIX_SINGLE",
+                  "MATRIX_MULTI"
+                ]
+              }
+            },
+            "required": [
+              "item_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "matrix"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "item_type": {
+                "const": "INFO"
+              }
+            },
+            "required": [
+              "item_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "required": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "survey_section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "section_id",
+        "title",
+        "purpose",
+        "research_question_ids",
+        "randomize_items",
+        "items"
+      ],
+      "properties": {
+        "section_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "purpose": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "research_question_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "randomize_items": {
+          "type": "boolean"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/survey_item"
+          }
+        }
+      }
+    },
+    "logic_condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_item_id",
+        "operator"
+      ],
+      "properties": {
+        "source_item_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "EQUALS",
+            "NOT_EQUALS",
+            "IN",
+            "NOT_IN",
+            "CONTAINS",
+            "IS_ANSWERED",
+            "IS_NOT_ANSWERED",
+            "GREATER_THAN",
+            "LESS_THAN"
+          ]
+        },
+        "value": {}
+      }
+    },
+    "logic_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "conditions",
+        "condition_join",
+        "action",
+        "target_id",
+        "priority"
+      ],
+      "properties": {
+        "rule_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/logic_condition"
+          }
+        },
+        "condition_join": {
+          "type": "string",
+          "enum": [
+            "ALL",
+            "ANY"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "SHOW",
+            "HIDE",
+            "SKIP_TO",
+            "TERMINATE",
+            "SET_FLAG"
+          ]
+        },
+        "target_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "message": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "quota_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quota_id",
+        "label",
+        "conditions",
+        "target_count",
+        "action_when_full"
+      ],
+      "properties": {
+        "quota_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/logic_condition"
+          }
+        },
+        "target_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "action_when_full": {
+          "type": "string",
+          "enum": [
+            "TERMINATE",
+            "REDIRECT",
+            "CONTINUE_AND_FLAG"
+          ]
+        }
+      }
+    },
+    "response_quality_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "reason_code",
+        "condition",
+        "default_action",
+        "decision_authority"
+      ],
+      "properties": {
+        "rule_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "reason_code": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "condition": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "default_action": {
+          "type": "string",
+          "enum": [
+            "EXCLUDE",
+            "REVIEW"
+          ]
+        },
+        "decision_authority": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "response_validity_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_status",
+        "final_statuses",
+        "hard_exclusion_rules",
+        "review_rules",
+        "status_transition_rule",
+        "dataset_statuses",
+        "subgroup_reporting_rule"
+      ],
+      "properties": {
+        "initial_status": {
+          "const": "UNASSESSED"
+        },
+        "final_statuses": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "VALID",
+              "REVIEW_REQUIRED",
+              "EXCLUDED"
+            ]
+          }
+        },
+        "hard_exclusion_rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/response_quality_rule"
+          }
+        },
+        "review_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/response_quality_rule"
+          }
+        },
+        "status_transition_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "dataset_statuses": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "ANALYSIS_READY",
+              "ANALYSIS_READY_WITH_LIMITS",
+              "BLOCKED"
+            ]
+          }
+        },
+        "subgroup_reporting_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "output_variable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "variable_id",
+        "source_item_id",
+        "label",
+        "data_type",
+        "missing_value_rule"
+      ],
+      "properties": {
+        "variable_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "source_item_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "data_type": {
+          "type": "string",
+          "enum": [
+            "STRING",
+            "INTEGER",
+            "NUMBER",
+            "BOOLEAN",
+            "ARRAY"
+          ]
+        },
+        "analysis_role": {
+          "type": "string",
+          "enum": [
+            "CONSENT",
+            "ELIGIBILITY",
+            "OUTCOME",
+            "SEGMENT",
+            "KNOWLEDGE",
+            "QUALITY_SIGNAL",
+            "OPEN_TEXT",
+            "DERIVED"
+          ]
+        },
+        "missing_value_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "special_value_meanings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "SUBSTANTIVE",
+              "UNKNOWN",
+              "NOT_APPLICABLE",
+              "PREFER_NOT_TO_SAY",
+              "STRUCTURAL_MISSING",
+              "ITEM_MISSING"
+            ]
+          }
+        },
+        "value_mapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        }
+      }
+    },
+    "survey_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sections",
+        "logic_rules",
+        "quota_rules",
+        "termination_messages",
+        "output_variables",
+        "response_validity_plan",
+        "progress_display",
+        "back_navigation"
+      ],
+      "properties": {
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/survey_section"
+          }
+        },
+        "logic_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/logic_rule"
+          }
+        },
+        "quota_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quota_rule"
+          }
+        },
+        "termination_messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "termination_id",
+              "message"
+            ],
+            "properties": {
+              "termination_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "message": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        "output_variables": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/output_variable"
+          }
+        },
+        "response_validity_plan": {
+          "$ref": "#/$defs/response_validity_plan"
+        },
+        "progress_display": {
+          "type": "boolean"
+        },
+        "back_navigation": {
+          "type": "boolean"
+        }
+      }
+    },
+    "probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "prompt",
+        "probe_type",
+        "trigger"
+      ],
+      "properties": {
+        "probe_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "probe_type": {
+          "type": "string",
+          "enum": [
+            "CLARIFICATION",
+            "EXAMPLE",
+            "PROCESS",
+            "WHY",
+            "CONTRAST",
+            "COUNTEREXAMPLE",
+            "MATERIAL_COMPREHENSION"
+          ]
+        },
+        "trigger": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "interview_question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "prompt",
+        "purpose",
+        "research_question_ids",
+        "hypothesis_ids",
+        "priority",
+        "probes",
+        "key_probe_points",
+        "unexpected_answer_followup",
+        "material_ids",
+        "avoid_suggesting",
+        "estimated_minutes",
+        "capture_notes"
+      ],
+      "properties": {
+        "question_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "purpose": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "research_question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "hypothesis_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "CORE",
+            "OPTIONAL"
+          ]
+        },
+        "probes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/probe"
+          }
+        },
+        "key_probe_points": {
+          "description": "即使参与者未主动提到，也需要在不诱导的前提下确认的关键点。",
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "unexpected_answer_followup": {
+          "description": "出现意外或与假设相反的回答时，主持人应如何继续探索。",
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "material_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "avoid_suggesting": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "estimated_minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "capture_notes": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "interview_module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module_id",
+        "title",
+        "objective",
+        "research_question_ids",
+        "estimated_minutes",
+        "moderator_instructions",
+        "questions"
+      ],
+      "properties": {
+        "module_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "objective": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "research_question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "estimated_minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "moderator_instructions": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/interview_question"
+          }
+        }
+      }
+    },
+    "capture_field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field_id",
+        "label",
+        "source",
+        "required"
+      ],
+      "properties": {
+        "field_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "TRANSCRIPT",
+            "MODERATOR_NOTE",
+            "OBSERVATION",
+            "MATERIAL_EXPOSURE_LOG",
+            "PARTICIPANT_SELF_REPORT"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "interview_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "opening_script",
+        "consent_check",
+        "modules",
+        "closing_script",
+        "follow_up_permission_prompt",
+        "capture_fields",
+        "flexibility_rule",
+        "distress_or_risk_protocol",
+        "moderator_memo"
+      ],
+      "properties": {
+        "opening_script": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "consent_check": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "modules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/interview_module"
+          }
+        },
+        "closing_script": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "follow_up_permission_prompt": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "capture_fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/capture_field"
+          }
+        },
+        "flexibility_rule": {
+          "description": "说明何时可跳过、调整顺序或追问，以及如何记录偏离。",
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "distress_or_risk_protocol": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "moderator_memo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "priority_topics",
+            "backup_prompts",
+            "timebox_notes",
+            "bias_watchouts",
+            "evidence_to_seek"
+          ],
+          "properties": {
+            "priority_topics": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "backup_prompts": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "timebox_notes": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "bias_watchouts": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "evidence_to_seek": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            }
+          }
+        }
+      }
+    }
+  }
+}

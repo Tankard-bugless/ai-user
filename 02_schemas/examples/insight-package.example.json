@@ -1,0 +1,285 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "IP-DEMO-001",
+    "artifact_type": "InsightPackage",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：新基金说明材料理解研究洞察包",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-08-20T16:00:00+08:00",
+    "updated_at": "2026-08-20T16:00:00+08:00",
+    "created_by": {"actor_id": "AGENT-INSIGHT-001", "actor_type": "AGENT", "role": "分析与洞察专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+    "upstream_refs": [
+      {"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"},
+      {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+      {"artifact_id": "FWP-DEMO-001", "artifact_type": "FieldworkPackage", "artifact_version": "0.1.0"}
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "合成的证据—发现—洞察—建议链，用于 M3 贯通验证。"
+  },
+  "research_brief_ref": {"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"},
+  "research_plan_ref": {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+  "fieldwork_package_refs": [{"artifact_id": "FWP-DEMO-001", "artifact_type": "FieldworkPackage", "artifact_version": "0.1.0"}],
+  "analysis_scope": {
+    "included_source_ids": ["SRC-SURVEY-001", "SRC-TRANSCRIPTS-001", "SRC-NOTES-001"],
+    "excluded_source_ids": ["SRC-EXECUTION-001"],
+    "included_method_ids": ["METHOD-INT-001", "METHOD-SUR-001"],
+    "sample_scope": "8 名纳入访谈参与者和 96 份纳入问卷；仅支持该项目样本内的模式描述与方向性比较。",
+    "analysis_started_at": "2026-08-15T13:00:00+08:00",
+    "analysis_completed_at": "2026-08-20T15:30:00+08:00"
+  },
+  "codebook": {
+    "version": "0.1.0",
+    "approach": "先按研究问题建立演绎编码，再从逐字稿中补充误解形成路径、信息定位与替代行为等归纳编码。",
+    "codes": [
+      {"code_id": "CODE-ABSOLUTE-SAFETY", "label": "相对稳健被解释为绝对安全", "definition": "参与者把相对风险或波动描述转化为本金不会损失、收益确定等绝对判断。", "include_when": "回答明确出现保本、不会亏、固定收益或同义判断。", "exclude_when": "参与者仅说波动可能较小，同时明确仍可能亏损。", "research_question_ids": ["RQ-001", "RQ-002"]},
+      {"code_id": "CODE-SOURCE-HEURISTIC", "label": "依赖显眼词而非完整边界", "definition": "参与者主要依据标题、粗体词或熟悉术语形成判断，未整合后续限定条件。", "include_when": "能够指出决定判断的单一显眼词或位置，且遗漏限定条件。", "exclude_when": "参与者综合多个段落并准确复述边界。", "research_question_ids": ["RQ-002"]},
+      {"code_id": "CODE-CLARITY-GAP", "label": "主观清晰与正确理解不一致", "definition": "参与者评价材料清晰，但在独立理解题或复述中没有识别关键风险边界。", "include_when": "清晰度评价较高，同时至少一项核心理解错误。", "exclude_when": "清晰度和正确理解方向一致。", "research_question_ids": ["RQ-002"]}
+    ],
+    "revision_notes": ["预测试后把保本、不会亏和固定收益合并至同一上位编码。", "人工复核时保留准确区分相对稳健与保本的反例。"]
+  },
+  "analysis_log": [
+    {"step_id": "ANALYSIS-EXTRACT-001", "performed_at": "2026-08-16T10:00:00+08:00", "performed_by": {"actor_id": "AGENT-INSIGHT-001", "actor_type": "AGENT", "role": "分析与洞察专家", "model_id": "demo-model", "capability_version": "0.1.0"}, "method": "EXTRACTION", "input_refs": ["SRC-TRANSCRIPTS-001", "SRC-NOTES-001"], "output_ids": ["EVID-001", "EVID-002", "EVID-005"], "parameters_or_rules": "只提取可定位原话；不清楚片段不补写；同时搜索与主模式矛盾的案例。", "notes": "机器生成候选片段，研究人员逐条对照逐字稿。"},
+    {"step_id": "ANALYSIS-STATS-001", "performed_at": "2026-08-17T15:00:00+08:00", "performed_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"}, "method": "STATISTICAL_SUMMARY", "input_refs": ["SRC-SURVEY-001"], "output_ids": ["EVID-003", "EVID-004", "EVID-006", "EVID-007"], "parameters_or_rules": "使用纳入的 96 份答卷；经验组各 48 人；所有比例保留分子、分母和题目 ID。", "notes": "只做样本内描述，不进行总体推断。"},
+    {"step_id": "ANALYSIS-SYNTH-001", "performed_at": "2026-08-19T14:00:00+08:00", "performed_by": {"actor_id": "AGENT-INSIGHT-001", "actor_type": "AGENT", "role": "分析与洞察专家", "model_id": "demo-model", "capability_version": "0.1.0"}, "method": "SYNTHESIS", "input_refs": ["EVID-001", "EVID-002", "EVID-003", "EVID-004", "EVID-005", "EVID-006", "EVID-007"], "output_ids": ["FINDING-001", "FINDING-002", "INSIGHT-001", "INSIGHT-002", "REC-001", "REC-002"], "parameters_or_rules": "发现只描述证据模式；洞察补充机制解释和替代解释；建议必须引用洞察并标记为待决策。", "notes": "没有把候选分群升级为正式客户标签。"},
+    {"step_id": "ANALYSIS-REVIEW-001", "performed_at": "2026-08-20T15:00:00+08:00", "performed_by": {"actor_id": "HUMAN-RESEARCH-LEAD", "actor_type": "HUMAN", "role": "研究负责人"}, "method": "HUMAN_REVIEW", "input_refs": ["IP-DEMO-001-DRAFT"], "output_ids": ["IP-DEMO-001"], "parameters_or_rules": "逐项复核原话、统计口径、反例、限制和建议边界。", "notes": "所有 AI 辅助提取和归纳均已人工复核。"}
+  ],
+  "evidence_units": [
+    {
+      "evidence_id": "EVID-001",
+      "evidence_type": "QUOTE",
+      "source_id": "SRC-TRANSCRIPTS-001",
+      "source_locator": {"scheme": "LINE_RANGE", "value": "P-INT-001:L118-L121"},
+      "participant_or_record_id": "P-INT-001",
+      "exact_content_or_value": "我一看到‘偏稳健’，第一感觉就是本金应该不会动，后面的风险提示我没太注意。",
+      "extraction_method": "按 CODE-ABSOLUTE-SAFETY 和 CODE-SOURCE-HEURISTIC 从脱敏逐字稿提取。",
+      "extracted_by": {"actor_id": "AGENT-INSIGHT-001", "actor_type": "AGENT", "role": "分析与洞察专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-001", "RQ-002"],
+      "hypothesis_ids": ["HYP-001"],
+      "code_ids": ["CODE-ABSOLUTE-SAFETY", "CODE-SOURCE-HEURISTIC"],
+      "context": "低经验组参与者阅读材料后进行无提示复述。",
+      "quote_context": {"original_language": "zh-CN", "is_verbatim": true, "transcription_clarity": "CLEAR"}
+    },
+    {
+      "evidence_id": "EVID-002",
+      "evidence_type": "QUOTE",
+      "source_id": "SRC-TRANSCRIPTS-001",
+      "source_locator": {"scheme": "LINE_RANGE", "value": "P-INT-002:L96-L100"},
+      "participant_or_record_id": "P-INT-002",
+      "exact_content_or_value": "我主要记住了前面写的稳健，风险那段字很多，我以为只是常规提醒。",
+      "extraction_method": "按 CODE-SOURCE-HEURISTIC 从脱敏逐字稿提取。",
+      "extracted_by": {"actor_id": "AGENT-INSIGHT-001", "actor_type": "AGENT", "role": "分析与洞察专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-002"],
+      "hypothesis_ids": ["HYP-001"],
+      "code_ids": ["CODE-SOURCE-HEURISTIC"],
+      "context": "低经验组参与者解释自己的材料阅读路径。",
+      "quote_context": {"original_language": "zh-CN", "is_verbatim": true, "transcription_clarity": "CLEAR"}
+    },
+    {
+      "evidence_id": "EVID-003",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-SURVEY-001",
+      "source_locator": {"scheme": "ROW_AND_ITEM_ID", "value": "GROUP=LOW_EXP;ITEM=Q-COMP-RISK"},
+      "participant_or_record_id": "GROUP-LOW-EXP",
+      "exact_content_or_value": 0.6667,
+      "extraction_method": "按预设低经验分组统计选择本金不会亏损的答卷比例。",
+      "extracted_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-002", "RQ-003"],
+      "hypothesis_ids": ["HYP-001"],
+      "code_ids": ["CODE-ABSOLUTE-SAFETY"],
+      "context": "低经验组 48 份纳入答卷中的样本内比例。",
+      "quantitative_context": {"metric": "低经验组本金保障误解比例", "numerator": 32, "denominator": 48, "item_ids": ["Q-COMP-RISK"], "filter_conditions": "Q-EXP=从未购买或经验不足一年，且答卷通过全部质量规则。", "missing_value_handling": "核心题无缺失；不进行插补。"}
+    },
+    {
+      "evidence_id": "EVID-004",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-SURVEY-001",
+      "source_locator": {"scheme": "ROW_AND_ITEM_ID", "value": "GROUP=HIGH_EXP;ITEM=Q-COMP-RISK"},
+      "participant_or_record_id": "GROUP-HIGH-EXP",
+      "exact_content_or_value": 0.1667,
+      "extraction_method": "按预设高经验分组统计选择本金不会亏损的答卷比例。",
+      "extracted_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-002", "RQ-003"],
+      "hypothesis_ids": ["HYP-001"],
+      "code_ids": ["CODE-ABSOLUTE-SAFETY"],
+      "context": "高经验组 48 份纳入答卷中的样本内比例。",
+      "quantitative_context": {"metric": "高经验组本金保障误解比例", "numerator": 8, "denominator": 48, "item_ids": ["Q-COMP-RISK"], "filter_conditions": "Q-EXP=累计基金投资经验一年及以上，且答卷通过全部质量规则。", "missing_value_handling": "核心题无缺失；不进行插补。"}
+    },
+    {
+      "evidence_id": "EVID-005",
+      "evidence_type": "QUOTE",
+      "source_id": "SRC-TRANSCRIPTS-001",
+      "source_locator": {"scheme": "LINE_RANGE", "value": "P-INT-006:L130-L134"},
+      "participant_or_record_id": "P-INT-006",
+      "exact_content_or_value": "稳健只是相对说法，净值还是会波动，也不能从这个词推断一定不亏。",
+      "extraction_method": "作为与主要误解模式相反的案例，从脱敏逐字稿提取。",
+      "extracted_by": {"actor_id": "AGENT-INSIGHT-001", "actor_type": "AGENT", "role": "分析与洞察专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-001", "RQ-002"],
+      "hypothesis_ids": ["HYP-001"],
+      "code_ids": [],
+      "context": "高经验组参与者主动区分相对稳健与本金保障，作为负例保留。",
+      "quote_context": {"original_language": "zh-CN", "is_verbatim": true, "transcription_clarity": "CLEAR"}
+    },
+    {
+      "evidence_id": "EVID-006",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-SURVEY-001",
+      "source_locator": {"scheme": "ROW_AND_ITEM_ID", "value": "ALL_INCLUDED;ITEM=Q-CLARITY"},
+      "participant_or_record_id": "GROUP-ALL-INCLUDED",
+      "exact_content_or_value": 0.7813,
+      "extraction_method": "统计对材料清晰度给出较高评价的纳入答卷比例。",
+      "extracted_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-002"],
+      "hypothesis_ids": [],
+      "code_ids": ["CODE-CLARITY-GAP"],
+      "context": "全部 96 份纳入答卷。",
+      "quantitative_context": {"metric": "主观清晰度较高比例", "numerator": 75, "denominator": 96, "item_ids": ["Q-CLARITY"], "filter_conditions": "所有通过质量规则的纳入答卷。", "missing_value_handling": "该题无缺失；不进行插补。"}
+    },
+    {
+      "evidence_id": "EVID-007",
+      "evidence_type": "STATISTIC",
+      "source_id": "SRC-SURVEY-001",
+      "source_locator": {"scheme": "ROW_AND_ITEM_ID", "value": "ALL_INCLUDED;ITEM=Q-COMP-RISK"},
+      "participant_or_record_id": "GROUP-ALL-INCLUDED",
+      "exact_content_or_value": 0.5625,
+      "extraction_method": "统计正确识别非保本和净值波动边界的纳入答卷比例。",
+      "extracted_by": {"actor_id": "HUMAN-DATA-ANALYST", "actor_type": "HUMAN", "role": "数据分析人员"},
+      "human_verified": true,
+      "research_question_ids": ["RQ-002"],
+      "hypothesis_ids": ["HYP-002"],
+      "code_ids": ["CODE-CLARITY-GAP"],
+      "context": "全部 96 份纳入答卷。",
+      "quantitative_context": {"metric": "正确识别风险边界比例", "numerator": 54, "denominator": 96, "item_ids": ["Q-COMP-RISK"], "filter_conditions": "所有通过质量规则的纳入答卷。", "missing_value_handling": "该题无缺失；不进行插补。"}
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "FINDING-001",
+      "statement": "在本样本中，低经验组更常把“偏稳健”解释为本金不会亏损；访谈显示显眼词优先和忽略限定条件是常见路径，但也存在能准确区分相对风险与保本的反例。",
+      "research_question_ids": ["RQ-001", "RQ-002", "RQ-003"],
+      "method_ids": ["METHOD-INT-001", "METHOD-SUR-001"],
+      "supporting_evidence_ids": ["EVID-001", "EVID-002", "EVID-003", "EVID-004"],
+      "negative_case_evidence_ids": ["EVID-005"],
+      "sample_scope": "8 名访谈参与者及问卷中预设的低经验组 48 人、高经验组 48 人。",
+      "conditions": "结论只描述本项目有限授权渠道样本和冻结版说明材料。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "该误解直接影响用户对风险边界的解释，并与材料改写决策相关。",
+      "limitations": ["非概率抽样，不能估计全部客户中的发生率。", "经验分组可能同时包含金融知识来源等未控制差异。"]
+    },
+    {
+      "finding_id": "FINDING-002",
+      "statement": "主观认为材料清晰的人数比例高于正确识别关键风险边界的人数比例，说明清晰度自评不能替代理解测量。",
+      "research_question_ids": ["RQ-002"],
+      "method_ids": ["METHOD-SUR-001"],
+      "supporting_evidence_ids": ["EVID-006", "EVID-007"],
+      "negative_case_evidence_ids": [],
+      "sample_scope": "96 份纳入问卷。",
+      "conditions": "主观清晰度和风险理解采用独立题目，比例仅作样本内描述。",
+      "confidence": "MEDIUM",
+      "importance": "HIGH",
+      "importance_rationale": "如果只看满意或清晰度评价，团队可能错判材料已经被理解。",
+      "limitations": ["两项比例来自不同题型，差异不是因果效应。"]
+    }
+  ],
+  "insights": [
+    {
+      "insight_id": "INSIGHT-001",
+      "statement": "“偏稳健”这一相对术语容易被部分低经验用户当作绝对安全捷径，后置的完整风险段落未必能修正已经形成的第一判断。",
+      "source_finding_ids": ["FINDING-001"],
+      "reasoning": "定性证据显示参与者先抓取显眼词再弱化限定条件，定量分组差异与这一机制方向一致；反例说明该机制不是所有用户的普遍规律。",
+      "alternative_explanations": ["低经验组可能更依赖日常语言，而非材料版式本身。", "既有销售或媒体表达可能在阅读前已经建立了保本联想。"],
+      "decision_relevance": "支持决定是否前置非保本边界、减少相对术语歧义并增加可验证解释。",
+      "applicable_scope": "当前冻结版说明材料及本项目覆盖的有限样本。",
+      "confidence": "MEDIUM"
+    },
+    {
+      "insight_id": "INSIGHT-002",
+      "statement": "语言流畅带来的“看起来清楚”可能形成理解错觉，因此材料评估需要独立的复述或风险边界题，而不能只问清晰度。",
+      "source_finding_ids": ["FINDING-002"],
+      "reasoning": "主观清晰度较高与核心理解正确之间存在明显样本内落差，且两项构念在工具中已分开测量。",
+      "alternative_explanations": ["参与者可能把版面易读等同于内容清晰。", "理解题难度也可能放大落差，需要后续题目校准。"],
+      "decision_relevance": "支持建立固定的材料理解自检模块和后续版本对比口径。",
+      "applicable_scope": "当前材料评估，不外推为所有金融内容的普遍规律。",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendation_id": "REC-001",
+      "recommendation_domain": "PRODUCT_OR_SERVICE",
+      "statement": "在产品事实和合规边界不变的前提下，把“非保本、净值会波动”的明确说明放在“偏稳健”首次出现的位置附近，并用一个具体反例解释相对含义。",
+      "source_insight_ids": ["INSIGHT-001"],
+      "expected_effect": "减少用户仅依据显眼术语形成绝对安全判断的机会。",
+      "risks": ["表达过长可能降低阅读意愿。", "具体措辞仍需产品事实与合规审核。"],
+      "assumptions": ["首屏或首段的解释顺序可以调整。"],
+      "validation_needed": ["用修订版材料复测无提示复述和风险边界题。"],
+      "owner_suggestion": "产品内容负责人和投教负责人",
+      "suggested_priority": "HIGH",
+      "business_decision_status": "NOT_DECIDED"
+    },
+    {
+      "recommendation_id": "REC-002",
+      "recommendation_domain": "INVESTOR_EDUCATION",
+      "statement": "保留独立理解自检题；答题完成后可提供 IMA 知识库链接，引导用户自行搜索相关金融常识，但不记录点击、不据此判断理解。",
+      "source_insight_ids": ["INSIGHT-002"],
+      "expected_effect": "同时形成调研与可选学习的衔接，并保持研究测量不受学习内容污染。",
+      "risks": ["链接内容或可用性可能变化。", "用户可能把知识入口误认为个性化投资建议。"],
+      "assumptions": ["学习链接放在核心答题之后。"],
+      "validation_needed": ["发布前人工检查链接可用性和引导语边界。"],
+      "owner_suggestion": "问卷设计人员和投教内容负责人",
+      "suggested_priority": "MEDIUM",
+      "related_learning_resource_ids": ["LR-IMA-001"],
+      "investor_education_design": {
+        "target_learning_need": "帮助容易把“偏稳健”理解为本金安全的参与者区分相对风险、净值波动与非保本边界。",
+        "audience_scope": "仅指本项目中出现相关误解或主动表达学习需求的参与者类型，不形成正式客户标签。",
+        "content_focus": ["相对风险不等于本金安全", "基金净值仍会波动", "主观觉得清楚不等于已经理解"],
+        "recommended_moments": ["完成核心理解测量后", "阅读相关产品说明或风险揭示材料时"],
+        "recommended_formats": ["简短风险边界卡片", "可选的官方知识库搜索入口"],
+        "guardrails": ["不承诺收益或本金安全", "不推荐具体产品", "不把学习资源点击作为理解或购买意向证据"],
+        "effectiveness_validation": "如需判断投教是否有效，应另行比较教育前后的理解题结果；本轮只能识别学习需求与形式偏好。",
+        "evidence_boundary": "建议只依据本项目的误解模式与学习需求，不外推到全部投资者。"
+      },
+      "business_decision_status": "NOT_DECIDED"
+    }
+  ],
+  "candidate_segments": [
+    {"segment_id": "CSEG-LOW-EXP-ABSOLUTE", "label": "低经验且容易将相对术语绝对化的项目内候选分群", "definition": "本项目低经验组中，在理解题或无提示复述中把相对稳健解释为本金不会亏损的参与者。", "evidence_ids": ["EVID-001", "EVID-003", "EVID-005"], "applicable_scope": "仅用于本项目分析和后续招募假设。", "size_claim": "问卷低经验组中 32/48 出现预设误解；不代表客户总体规模。", "official_customer_tag_status": "NOT_CREATED"}
+  ],
+  "candidate_tags": [
+    {"tag_id": "CTAG-ABSOLUTE-SAFETY", "label": "相对概念绝对化", "definition": "在特定材料任务中把相对风险表述解释为绝对安全。", "evidence_ids": ["EVID-001", "EVID-003", "EVID-004", "EVID-005"], "validation_needed": "在不同材料、不同渠道和独立样本中验证稳定性，并确认业务用途与合规边界。", "official_customer_tag_status": "NOT_CREATED"}
+  ],
+  "learning_resource_recommendations": [
+    {"resource_id": "LR-IMA-001", "recommendation_ids": ["REC-002"], "target_learning_need": "在完成核心理解测量后，给希望继续了解风险、波动和非保本概念的用户一个官方知识搜索入口。", "recommended_context": "放在问卷理解题之后或访谈结束后的可选学习提示中；不记录使用行为。", "evidence_use": "NOT_RESEARCH_EVIDENCE"}
+  ],
+  "unanswered_questions": [
+    {"question_id": "UQ-001", "statement": "改写后的前置信息是否能持续降低误解，而不会显著增加阅读负担？", "why_unanswered": "本轮只评估当前材料，没有测试改写版本。", "suggested_next_method": "对修订版进行小规模认知访谈，再使用同口径理解题做版本对比。"}
+  ],
+  "limitations": [
+    "样本来自有限的授权联系渠道，不能代表全部客户或市场总体。",
+    "问卷分组比较为描述性结果，没有随机分配，不能推断投资经验造成误解。",
+    "示例数据与引文均为合成内容，只用于验证工作流。"
+  ],
+  "ai_usage": [
+    {"task": "候选引文提取、初步编码和发现草拟", "model_id": "demo-model", "capability_version": "0.1.0", "input_scope": "脱敏逐字稿、主持人笔记和结构化问卷汇总。", "output_scope": "候选证据、编码和发现草稿，不包含正式批准。", "human_review_status": "FULLY_REVIEWED"}
+  ],
+  "quality_summary": {
+    "traceability_complete": true,
+    "negative_cases_reviewed": true,
+    "sample_scope_declared": true,
+    "quantitative_denominators_complete": true,
+    "quotes_source_located": true,
+    "candidate_tags_not_promoted": true,
+    "review_notes": "所有引文已对照逐字稿定位，统计保留分子分母；IMA 学习资源未进入证据单元。"
+  }
+}

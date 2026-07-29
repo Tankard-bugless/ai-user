@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "APR-DEMO-G4-001",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：Gate 4 报告发布与归档确认记录",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-08-23T11:00:00+08:00",
+    "updated_at": "2026-08-23T11:00:00+08:00",
+    "created_by": {"actor_id": "HUMAN-BUSINESS-OWNER", "actor_type": "HUMAN", "role": "业务决策代表"},
+    "upstream_refs": [
+      {"artifact_id": "REPORT-DEMO-001", "artifact_type": "ResearchReport", "artifact_version": "0.1.0"},
+      {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0"}
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "合成的 Gate 4 人工批准记录。"
+  },
+  "gate_id": "GATE_4",
+  "status": "APPROVED",
+  "primary_target_ref": {"artifact_id": "REPORT-DEMO-001", "artifact_type": "ResearchReport", "artifact_version": "0.1.0"},
+  "reviewed_refs": [
+    {"artifact_id": "REPORT-DEMO-001", "artifact_type": "ResearchReport", "artifact_version": "0.1.0"},
+    {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0"}
+  ],
+  "reviewer": {"actor_id": "HUMAN-BUSINESS-OWNER", "actor_type": "HUMAN", "role": "业务决策代表"},
+  "reviewer_role": "业务决策代表",
+  "authority_basis": "被授权确认内部报告的发布范围与归档方式。",
+  "recorded_at": "2026-08-23T11:00:00+08:00",
+  "decided_at": "2026-08-23T11:00:00+08:00",
+  "decision_basis": "报告内容与已批准洞察包一致，限制、证据引用、分享范围和建议边界清楚。",
+  "blocking_issues": [],
+  "required_changes": [],
+  "accepted_risks": ["研究建议是否实施仍需另行作出业务决策。"],
+  "attestations": {
+    "reviewed_primary_target": true,
+    "reviewed_supporting_artifacts": true,
+    "reviewed_material_changes": true,
+    "authorized_to_decide": true
+  },
+  "comments": "批准在限定内部范围发布和归档；本记录不批准任何产品改动或客户标签。",
+  "invalidation_rule": "ANY_REVIEWED_ARTIFACT_VERSION_CHANGE_REQUIRES_NEW_APPROVAL",
+  "is_ai_approval": false
+}

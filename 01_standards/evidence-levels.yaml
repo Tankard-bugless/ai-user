@@ -1,0 +1,178 @@
+standard:
+  id: STD-EVIDENCE-LEVELS
+  version: 0.1.0
+  status: draft
+  last_updated: "2026-07-22"
+  purpose: "统一证据成熟度、主张类型与置信度的口径，防止把假设、单条原话、洞察和建议混为一谈。"
+
+principles:
+  - id: separate_maturity_and_confidence
+    rule: "证据成熟度表示分析链所处阶段；置信度表示主张的可靠程度。两者不得互相替代。"
+  - id: traceability_required
+    rule: "E1 及以上对象必须能够追溯到原始资料或上游主张。"
+  - id: no_automatic_promotion
+    rule: "AI 不得自动把假设升级为发现、把发现升级为洞察，或把研究标签升级为正式客户标签。"
+  - id: sample_scope_required
+    rule: "所有发现和洞察必须声明适用样本与研究情境。"
+
+maturity_levels:
+  - code: E0
+    name: SOURCE_RECORD
+    chinese_name: 原始资料
+    definition: "未经分析改写的答卷、逐字稿、录音、日志、观察记录或数据文件。"
+    minimum_requirements:
+      - source_id
+      - source_type
+      - collection_time
+      - project_id
+      - version
+      - sensitivity_level
+    allowed_use:
+      - "作为证据提取和复核的来源"
+    prohibited_use:
+      - "直接作为研究洞察或业务建议"
+
+  - code: E1
+    name: EVIDENCE_UNIT
+    chinese_name: 证据单元
+    definition: "从原始资料中提取的、可定位、可复核的最小证据。"
+    minimum_requirements:
+      - evidence_id
+      - source_id
+      - source_locator
+      - participant_or_record_id
+      - exact_content_or_value
+      - extraction_method
+    allowed_use:
+      - "支持观察、发现和反例"
+    prohibited_use:
+      - "用单个证据单元代表客户总体"
+
+  - code: E2
+    name: FINDING
+    chinese_name: 研究发现
+    definition: "在本项目样本范围内，由一组证据单元支持的模式、差异、关系或问题描述。"
+    minimum_requirements:
+      - finding_id
+      - statement
+      - research_question_ids
+      - supporting_evidence_ids
+      - sample_scope
+      - negative_cases
+      - confidence
+    allowed_use:
+      - "回答研究问题中的描述性部分"
+      - "作为洞察的上游依据"
+    prohibited_use:
+      - "未说明条件时宣称因果关系"
+      - "把样本内比例外推为总体比例"
+
+  - code: E3
+    name: INSIGHT
+    chinese_name: 洞察
+    definition: "基于一个或多个发现，对其机制、意义或决策影响作出的解释。"
+    minimum_requirements:
+      - insight_id
+      - statement
+      - source_finding_ids
+      - reasoning
+      - alternative_explanations
+      - applicable_scope
+      - confidence
+    allowed_use:
+      - "说明发现为什么重要"
+      - "形成机会方向和建议"
+    prohibited_use:
+      - "脱离发现和证据独立生成"
+      - "隐去重要反例或替代解释"
+
+  - code: E4
+    name: RECOMMENDATION
+    chinese_name: 建议
+    definition: "由洞察推导出的可考虑行动，不代表业务方已经作出决定。"
+    minimum_requirements:
+      - recommendation_id
+      - statement
+      - source_insight_ids
+      - expected_effect
+      - risks
+      - assumptions
+      - validation_needed
+      - owner_suggestion
+    allowed_use:
+      - "进入报告和业务讨论"
+      - "形成后续试验或产品探索"
+    prohibited_use:
+      - "标记为已批准的业务决策"
+      - "直接触发客户标签或产品变更"
+
+claim_types:
+  HYPOTHESIS:
+    chinese_name: 假设
+    definition: "收集证据前提出的可证伪解释。它不是证据成熟度中的一个更高等级。"
+    required_fields:
+      - hypothesis_id
+      - statement
+      - rationale
+      - falsification_condition
+      - research_question_ids
+      - status
+  OBSERVATION:
+    chinese_name: 观察
+    definition: "对单个或少量证据的描述性记录，尚未形成跨证据模式。"
+  NEGATIVE_CASE:
+    chinese_name: 反例
+    definition: "不符合主要模式、用于检验或限定发现边界的证据。"
+  BUSINESS_DECISION:
+    chinese_name: 业务决策
+    definition: "由有权限的业务负责人作出，不属于研究证据成熟度。"
+
+confidence_levels:
+  LOW:
+    chinese_name: 低
+    criteria:
+      - "证据数量或质量有限，或主要依赖单一来源。"
+      - "存在重要未解释反例、测量问题或替代解释。"
+      - "尚未达到 ResearchPlan 预先定义的最低证据要求。"
+    required_action: "仅作为早期信号或待验证假设呈现。"
+
+  MEDIUM:
+    chinese_name: 中
+    criteria:
+      - "存在多个可追溯且相互独立的证据单元。"
+      - "样本内模式相对稳定，但跨方法、跨人群或跨项目验证有限。"
+      - "主要反例已被记录，但仍有合理替代解释。"
+    required_action: "可以形成项目内发现或洞察，但必须声明适用边界。"
+
+  HIGH:
+    chinese_name: 高
+    criteria:
+      - "满足 ResearchPlan 预先定义的证据要求。"
+      - "得到不同参与者、来源、方法或项目的三角验证。"
+      - "数据质量良好，主要反例和替代解释已被处理。"
+    required_action: "可以作为重要洞察进入正式报告，仍不得省略限制。"
+
+source_specific_rules:
+  qualitative:
+    - "原话必须逐字保留，不得由 AI 美化后继续标为原话。"
+    - "原话必须包含参与者编号与时间戳、行号或段落定位。"
+    - "频次只能描述本样本，不得自动代表总体发生率。"
+    - "单个参与者的重要内容可以作为观察或反例，不因人数少而删除。"
+  quantitative:
+    - "比例必须同时保存分子、分母、筛选条件、题目 ID 和缺失值处理。"
+    - "统计关系不得在无研究设计支持时表述为因果关系。"
+    - "问卷质量、无效答卷和样本偏差必须进入限制说明。"
+  behavioral:
+    - "行为日志必须说明事件定义、时间窗口、去重规则和数据完整性。"
+  ai_generated:
+    - "AI 总结、聚类或推断必须标记模型与版本，并经过人工复核。"
+    - "模拟用户和合成数据只能用于测试研究工具，不得进入正式证据链。"
+
+label_rules:
+  candidate_research_tag:
+    maximum_maturity: E3
+    rule: "研究可以提出候选研究标签，但只能作为洞察或分析产物。"
+  official_customer_tag:
+    rule: "正式客户标签需要独立治理、充分证据和人工审批，不由本标准自动升级。"
+  suitability_tag:
+    rule: "适当性标签必须与研究标签物理和语义隔离。"

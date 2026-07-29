@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "APR-OTF-G1-001",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者研究 Gate 1 确认记录",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-23T15:01:51+08:00",
+    "updated_at": "2026-07-23T15:01:51+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CTRL-01",
+      "actor_type": "AGENT",
+      "role": "研究总控",
+      "model_id": "codex",
+      "capability_version": "0.2.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "记录项目发起人确认简化研究范围并同意进入 ResearchPlan 生成阶段。"
+  },
+  "gate_id": "GATE_1",
+  "status": "APPROVED",
+  "primary_target_ref": {
+    "artifact_id": "RB-OTF-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.1.0"
+  },
+  "reviewed_refs": [
+    {
+      "artifact_id": "RB-OTF-001",
+      "artifact_type": "ResearchBrief",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "reviewer": {
+    "actor_id": "HUMAN-PROJECT-SPONSOR",
+    "actor_type": "HUMAN",
+    "role": "客户研究项目发起人"
+  },
+  "reviewer_role": "客户研究项目发起人",
+  "authority_basis": "项目发起人在当前任务中确认研究对象、简化运行边界，并明确要求继续生成 ResearchPlan。",
+  "recorded_at": "2026-07-23T15:01:51+08:00",
+  "decided_at": "2026-07-23T15:01:51+08:00",
+  "decision_basis": "研究对象已限定为养老目标基金实际购买者；研究问题聚焦购买选择、产品类型认知、下滑曲线、持有行为和信息需求；系统只定义受访者画像，不承担招募、核验或人工试答。",
+  "blocking_issues": [],
+  "required_changes": [],
+  "accepted_risks": [
+    "受访者由业务方或外部渠道提供，系统无法保证样本代表性，报告必须限制外推。",
+    "本案例不进行人工试答，接受仍可能存在少量题意理解偏差的风险，并通过自动检查和研究人员审核降低风险。",
+    "购买经历和产品类型主要依赖匿名答卷自报，无法确认者需单独呈现。"
+  ],
+  "attestations": {
+    "reviewed_primary_target": true,
+    "reviewed_supporting_artifacts": true,
+    "reviewed_material_changes": true,
+    "authorized_to_decide": true
+  },
+  "comments": "允许进入简化 ResearchPlan 设计；本批准不代表后续问卷题目或报告已通过 Gate 2 或 Gate 4。",
+  "invalidation_rule": "ANY_REVIEWED_ARTIFACT_VERSION_CHANGE_REQUIRES_NEW_APPROVAL",
+  "is_ai_approval": false
+}

@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 5,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:13+08:00",
+    "updated_at": "2026-07-27T13:47:13+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "提交案例中真实存在的 ResearchBrief v0.2.0 及既有 Gate 1 审批。",
+    "previous_record_ref": {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 4
+    }
+  },
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "current_stage": "GATE_1_REVIEW",
+  "run_status": "WAITING_GATE",
+  "active_task_ids": [],
+  "completed_task_ids": [
+    "TASK-OTF-HIST-IMPORT-001"
+  ],
+  "blocked_task_ids": [],
+  "artifact_registry": [
+    {
+      "artifact_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    }
+  ],
+  "approval_refs": [],
+  "stale_artifact_refs": [],
+  "transition": {
+    "event_id": "EVT-00005-1354C51B",
+    "event_type": "GATE_SUBMITTED",
+    "from_stage": "BRIEF_DESIGN",
+    "to_stage": "GATE_1_REVIEW",
+    "triggered_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "occurred_at": "2026-07-27T13:47:13+08:00",
+    "reason": "提交案例中真实存在的 ResearchBrief v0.2.0 及既有 Gate 1 审批。",
+    "related_task_ids": [],
+    "related_artifact_refs": [
+      {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      }
+    ]
+  },
+  "current_gate": {
+    "gate_id": "GATE_1",
+    "status": "PENDING",
+    "required_role": "经组织授权的 Gate 审批人"
+  }
+}

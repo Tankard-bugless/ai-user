@@ -1,0 +1,519 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/workflow-state.schema.json",
+  "title": "WorkflowState Schema",
+  "description": "研究工作流一次运行在某个时点的不可变控制快照；不保存聊天记录或参与者个人信息。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "workflow_template",
+    "current_stage",
+    "run_status",
+    "active_task_ids",
+    "completed_task_ids",
+    "blocked_task_ids",
+    "artifact_registry",
+    "approval_refs",
+    "stale_artifact_refs",
+    "transition"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/control_record_metadata"
+        },
+        {
+          "properties": {
+            "record_type": {
+              "const": "WorkflowState"
+            }
+          }
+        }
+      ]
+    },
+    "workflow_template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_id",
+        "template_version"
+      ],
+      "properties": {
+        "template_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "template_version": {
+          "$ref": "common.schema.json#/$defs/semantic_version"
+        }
+      }
+    },
+    "current_stage": {
+      "$ref": "common.schema.json#/$defs/workflow_stage"
+    },
+    "run_status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "WAITING_GATE",
+        "PAUSED_RISK",
+        "FAILED_TECHNICAL",
+        "CANCELLED",
+        "COMPLETED"
+      ]
+    },
+    "current_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "status",
+        "required_role"
+      ],
+      "properties": {
+        "gate_id": {
+          "$ref": "common.schema.json#/$defs/gate_id"
+        },
+        "status": {
+          "const": "PENDING"
+        },
+        "required_role": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "approval_task_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        }
+      }
+    },
+    "active_task_ids": {
+      "$ref": "common.schema.json#/$defs/id_list"
+    },
+    "completed_task_ids": {
+      "$ref": "common.schema.json#/$defs/id_list"
+    },
+    "blocked_task_ids": {
+      "$ref": "common.schema.json#/$defs/id_list"
+    },
+    "artifact_registry": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact_ref",
+          "workflow_validity"
+        ],
+        "properties": {
+          "artifact_ref": {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          "workflow_validity": {
+            "type": "string",
+            "enum": [
+              "CURRENT",
+              "STALE",
+              "SUPERSEDED"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          {
+            "properties": {
+              "artifact_type": {
+                "const": "ApprovalRecord"
+              }
+            }
+          }
+        ]
+      },
+      "uniqueItems": true
+    },
+    "stale_artifact_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/artifact_reference"
+      },
+      "uniqueItems": true
+    },
+    "pause_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk_id",
+        "category",
+        "reason",
+        "required_human_role",
+        "resume_condition"
+      ],
+      "properties": {
+        "risk_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "PRIVACY",
+            "COMPLIANCE",
+            "FINANCIAL_EXPRESSION",
+            "PERMISSION",
+            "METHOD",
+            "OTHER"
+          ]
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "required_human_role": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "resume_condition": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "technical_failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "error_code",
+        "message",
+        "failed_task_id",
+        "retry_count",
+        "retry_allowed"
+      ],
+      "properties": {
+        "error_code": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "message": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "failed_task_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "retry_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retry_allowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "event_type",
+        "from_stage",
+        "to_stage",
+        "triggered_by",
+        "occurred_at",
+        "reason",
+        "related_task_ids",
+        "related_artifact_refs"
+      ],
+      "properties": {
+        "event_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "PROJECT_CREATED",
+            "TASK_CREATED",
+            "TASK_STATUS_CHANGED",
+            "REGISTRY_UPDATED",
+            "TASK_SUCCEEDED",
+            "VALIDATION_FAILED",
+            "REVIEW_COMPLETED",
+            "GATE_SUBMITTED",
+            "GATE_APPROVED",
+            "GATE_CHANGES_REQUIRED",
+            "GATE_REJECTED",
+            "RISK_PAUSED",
+            "RISK_RESOLVED",
+            "TECHNICAL_FAILED",
+            "RETRY_REQUESTED",
+            "UPSTREAM_REVISED",
+            "PROJECT_CANCELLED",
+            "ARCHIVE_COMPLETED"
+          ]
+        },
+        "from_stage": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/workflow_stage"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "to_stage": {
+          "$ref": "common.schema.json#/$defs/workflow_stage"
+        },
+        "triggered_by": {
+          "$ref": "common.schema.json#/$defs/actor"
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "related_task_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "related_artifact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "current_stage": {
+            "enum": [
+              "GATE_1_REVIEW",
+              "GATE_2_REVIEW",
+              "GATE_3_REVIEW",
+              "GATE_4_REVIEW"
+            ]
+          }
+        },
+        "required": [
+          "current_stage"
+        ]
+      },
+      "then": {
+        "required": [
+          "current_gate"
+        ],
+        "properties": {
+          "run_status": {
+            "enum": [
+              "WAITING_GATE",
+              "PAUSED_RISK"
+            ]
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "current_gate"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "run_status": {
+            "const": "WAITING_GATE"
+          }
+        },
+        "required": [
+          "run_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "current_stage": {
+            "enum": [
+              "GATE_1_REVIEW",
+              "GATE_2_REVIEW",
+              "GATE_3_REVIEW",
+              "GATE_4_REVIEW"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "current_stage": {
+            "const": "GATE_1_REVIEW"
+          }
+        },
+        "required": [
+          "current_stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "current_gate": {
+            "properties": {
+              "gate_id": {
+                "const": "GATE_1"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "current_stage": {
+            "const": "GATE_2_REVIEW"
+          }
+        },
+        "required": [
+          "current_stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "current_gate": {
+            "properties": {
+              "gate_id": {
+                "const": "GATE_2"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "current_stage": {
+            "const": "GATE_3_REVIEW"
+          }
+        },
+        "required": [
+          "current_stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "current_gate": {
+            "properties": {
+              "gate_id": {
+                "const": "GATE_3"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "current_stage": {
+            "const": "GATE_4_REVIEW"
+          }
+        },
+        "required": [
+          "current_stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "current_gate": {
+            "properties": {
+              "gate_id": {
+                "const": "GATE_4"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "run_status": {
+            "const": "PAUSED_RISK"
+          }
+        },
+        "required": [
+          "run_status"
+        ]
+      },
+      "then": {
+        "required": [
+          "pause_context"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "run_status": {
+            "const": "FAILED_TECHNICAL"
+          }
+        },
+        "required": [
+          "run_status"
+        ]
+      },
+      "then": {
+        "required": [
+          "technical_failure"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "current_stage": {
+            "const": "COMPLETED"
+          }
+        },
+        "required": [
+          "current_stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "run_status": {
+            "const": "COMPLETED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "run_status": {
+            "const": "COMPLETED"
+          }
+        },
+        "required": [
+          "run_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "current_stage": {
+            "const": "COMPLETED"
+          }
+        }
+      }
+    }
+  ]
+}

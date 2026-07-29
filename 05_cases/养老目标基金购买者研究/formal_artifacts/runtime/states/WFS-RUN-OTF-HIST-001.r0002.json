@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 2,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:13+08:00",
+    "updated_at": "2026-07-27T13:47:13+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "创建任务 TASK-OTF-HIST-IMPORT-001，权限主体 SYSTEM-VALIDATOR。",
+    "previous_record_ref": {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 1
+    }
+  },
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "current_stage": "INTAKE",
+  "run_status": "ACTIVE",
+  "active_task_ids": [
+    "TASK-OTF-HIST-IMPORT-001"
+  ],
+  "completed_task_ids": [],
+  "blocked_task_ids": [],
+  "artifact_registry": [],
+  "approval_refs": [],
+  "stale_artifact_refs": [],
+  "transition": {
+    "event_id": "EVT-00002-898018CA",
+    "event_type": "TASK_CREATED",
+    "from_stage": "INTAKE",
+    "to_stage": "INTAKE",
+    "triggered_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "occurred_at": "2026-07-27T13:47:13+08:00",
+    "reason": "创建任务 TASK-OTF-HIST-IMPORT-001，权限主体 SYSTEM-VALIDATOR。",
+    "related_task_ids": [
+      "TASK-OTF-HIST-IMPORT-001"
+    ],
+    "related_artifact_refs": []
+  }
+}

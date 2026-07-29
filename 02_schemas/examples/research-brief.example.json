@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "RB-DEMO-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：新基金说明材料理解研究任务书",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-23T09:00:00+08:00",
+    "updated_at": "2026-07-23T09:00:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-SEMANTIC-001",
+      "actor_type": "AGENT",
+      "role": "需求转化与语义理解专家",
+      "model_id": "demo-model",
+      "capability_version": "0.1.0"
+    },
+    "upstream_refs": [],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "用于验证 ResearchBrief Schema 的首个合成示例。"
+  },
+  "raw_demand": {
+    "statement": "我们准备介绍一只新的基金产品，希望了解潜在客户能否看懂现有说明材料，以及哪些地方最容易被误解。",
+    "requester_role": "产品与投教负责人",
+    "business_context": "团队需要在材料对外使用前决定是否调整解释顺序、风险表达和补充说明。研究不负责判断产品是否应当发行，也不向客户作投资推荐。",
+    "received_at": "2026-07-22T15:30:00+08:00"
+  },
+  "supported_decisions": [
+    {
+      "decision_id": "SD-001",
+      "owner_role": "产品与投教负责人",
+      "decision_statement": "决定现有说明材料中哪些内容应重写、前置或补充解释。",
+      "available_actions": [
+        "维持现有材料",
+        "调整表达与信息顺序",
+        "增加风险与流动性解释",
+        "针对不同经验人群提供分层说明"
+      ],
+      "decision_deadline": "2026-08-25",
+      "research_contribution": "提供材料理解、误解位置及不同投资经验人群差异的证据。",
+      "non_research_inputs": [
+        "合规审核意见",
+        "产品事实与法定披露要求",
+        "制作成本和上线时间"
+      ]
+    }
+  ],
+  "research_objectives": [
+    {
+      "objective_id": "OBJ-001",
+      "statement": "理解潜在客户当前如何解释基金风险、收益和流动性相关信息。",
+      "supported_decision_ids": [
+        "SD-001"
+      ]
+    },
+    {
+      "objective_id": "OBJ-002",
+      "statement": "评估参与者接触指定说明材料后能够正确复述和识别哪些关键信息。",
+      "supported_decision_ids": [
+        "SD-001"
+      ]
+    },
+    {
+      "objective_id": "OBJ-003",
+      "statement": "识别不同基金投资经验人群在理解和误解上的项目内差异。",
+      "supported_decision_ids": [
+        "SD-001"
+      ]
+    }
+  ],
+  "research_questions": [
+    {
+      "research_question_id": "RQ-001",
+      "statement": "参与者在阅读材料前如何理解稳健、波动、回撤和流动性等概念？",
+      "question_type": "EXPLORATORY",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-001"
+      ],
+      "answer_boundary": "描述本研究样本中的既有理解路径和典型误解，不估计客户总体比例。"
+    },
+    {
+      "research_question_id": "RQ-002",
+      "statement": "参与者接触指定材料后能够正确复述哪些产品特征和风险边界，仍会误解哪些内容？",
+      "question_type": "EVALUATIVE",
+      "priority": "CORE",
+      "objective_ids": [
+        "OBJ-002"
+      ],
+      "answer_boundary": "评估材料暴露后的理解表现，不把购买意向或风险承受能力当作理解度。"
+    },
+    {
+      "research_question_id": "RQ-003",
+      "statement": "不同基金投资经验的参与者在材料理解表现上存在哪些样本内差异？",
+      "question_type": "COMPARATIVE",
+      "priority": "SUPPORTING",
+      "objective_ids": [
+        "OBJ-003"
+      ],
+      "answer_boundary": "比较本项目预设经验分组，不形成正式客户标签，也不外推总体规模。"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "HYP-001",
+      "statement": "基金投资经验较少的参与者更容易把稳健表述理解为本金保障。",
+      "rationale": "来自需求方对过往沟通中常见误解的初步观察，尚未形成研究发现。",
+      "falsification_condition": "在预先定义的理解度指标上，低经验组未表现出更高的本金保障误解，或差异方向相反。",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-003"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "hypothesis_id": "HYP-002",
+      "statement": "实际完成材料阅读的参与者更能识别净值波动和非保本边界。",
+      "rationale": "材料包含相关说明，但其表达是否被注意和正确解释尚未知。",
+      "falsification_condition": "达到预设材料暴露标准的参与者在相关理解题上的表现没有更好，或仍普遍给出相反解释。",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "status": "ACTIVE"
+    }
+  ],
+  "target_participants": {
+    "population_description": "符合研究联系授权、年满 18 周岁，并愿意讨论基金信息理解过程的潜在客户或现有客户。",
+    "inclusion_criteria": [
+      {
+        "criterion_id": "INC-001",
+        "statement": "年满 18 周岁。",
+        "rationale": "研究涉及金融产品说明材料，仅纳入成年人。"
+      },
+      {
+        "criterion_id": "INC-002",
+        "statement": "过去一年曾主动了解基金产品或计划在未来一年了解基金产品。",
+        "rationale": "确保材料阅读任务与参与者具有基本相关性。"
+      }
+    ],
+    "exclusion_criteria": [
+      {
+        "criterion_id": "EXC-001",
+        "statement": "直接参与该示例材料设计或本研究方案设计。",
+        "rationale": "避免因预先了解内容而高估理解度。"
+      }
+    ],
+    "relevant_dimensions": [
+      "基金投资经验",
+      "常用金融信息来源",
+      "是否实际完成材料阅读",
+      "是否承担家庭投资决策角色"
+    ]
+  },
+  "analysis_intent": {
+    "primary_segment": {
+      "variable_id": "FUND_EXPERIENCE_GROUP",
+      "label": "基金投资经验",
+      "categories": [
+        "1年以下",
+        "1—3年",
+        "3年以上",
+        "不确定或不愿回答"
+      ],
+      "rationale": "用于观察不同经验参与者在材料理解表现上的项目内差异。",
+      "collection_rule": "在问卷末段以单选区间收集，不询问具体开户日期或交易记录。",
+      "privacy_rule": "仅用于本项目分组分析，不形成正式客户标签。"
+    },
+    "intended_comparisons": [
+      {
+        "comparison_id": "COMP-EXP-001",
+        "statement": "按基金投资经验比较材料理解表现和典型误解。",
+        "research_question_ids": [
+          "RQ-003"
+        ],
+        "outcome_concepts": [
+          "产品特征理解",
+          "风险边界理解",
+          "典型误解"
+        ]
+      }
+    ],
+    "measurement_dimensions": [
+      {
+        "dimension": "BEHAVIOR",
+        "purpose": "记录材料阅读和既有信息获取行为。",
+        "preferred_question_types": [
+          "SINGLE_SELECT",
+          "MULTI_SELECT"
+        ]
+      },
+      {
+        "dimension": "KNOWLEDGE",
+        "purpose": "测量产品特征和风险边界的客观理解。",
+        "preferred_question_types": [
+          "SINGLE_SELECT"
+        ]
+      },
+      {
+        "dimension": "PERCEPTION_OR_ATTITUDE",
+        "purpose": "测量参与者对材料清晰度的主观感受。",
+        "preferred_question_types": [
+          "RATING_5_POINT"
+        ]
+      },
+      {
+        "dimension": "PROFILE",
+        "purpose": "收集完成预设分组所需的基金投资经验。",
+        "preferred_question_types": [
+          "SINGLE_SELECT"
+        ]
+      }
+    ],
+    "analysis_boundary": "只进行本项目样本内的描述性比较；不把经验组差异外推到全部客户，也不据此形成客户标签。"
+  },
+  "scope": {
+    "in_scope": [
+      "材料中的产品特征、风险和流动性信息理解",
+      "材料暴露与理解表现的记录",
+      "不同投资经验分组的项目内比较",
+      "材料表达和信息顺序的改进机会"
+    ],
+    "out_of_scope": [
+      "判断客户是否适合购买该产品",
+      "预测认购转化率",
+      "形成正式客户标签",
+      "决定基金产品是否发行"
+    ]
+  },
+  "constraints": {
+    "timeline": "预计四周内完成方案、预测试、执行和初稿。",
+    "available_channels": [
+      "经授权的企业微信一对一邀请",
+      "内部问卷平台链接",
+      "远程访谈"
+    ],
+    "resource_constraints": [
+      "目前没有全量客户信息",
+      "仅能使用少量经授权的客户线索",
+      "问卷平台通过适配器配置"
+    ],
+    "mandatory_rules": [
+      "不得承诺收益或暗示保本",
+      "不得将研究分组写入适当性标签",
+      "正式触达由授权人员执行",
+      "研究前完成材料和隐私审核"
+    ]
+  },
+  "data_and_sensitivity": {
+    "available_sources": [
+      {
+        "source_id": "SRC-PRODUCT-001",
+        "source_type": "KNOWLEDGE_MATERIAL",
+        "description": "用于材料理解测试的冻结版官方产品说明。",
+        "access_status": "PARTIAL"
+      },
+      {
+        "source_id": "SRC-LEAD-001",
+        "source_type": "INTERNAL_ACCOUNT",
+        "description": "少量具有联系授权的潜在参与者线索，不包含全量客户画像。",
+        "access_status": "PARTIAL"
+      }
+    ],
+    "missing_information": [
+      "目标客户总体分布",
+      "全量客户历史行为",
+      "不同渠道材料的真实阅读日志"
+    ],
+    "expected_personal_data": true,
+    "expected_sensitive_financial_data": false,
+    "minimum_data_principle": "仅收集招募、分组和回答研究问题所必需的信息；分析阶段使用参与者编号。"
+  },
+  "success_criteria": [
+    {
+      "criterion_id": "SC-001",
+      "statement": "每个核心研究问题均有明确方法、分析计划和可追溯证据。",
+      "rationale": "保证研究结果能够支持而非替代待支持决策。"
+    },
+    {
+      "criterion_id": "SC-002",
+      "statement": "材料暴露、理解、态度和意向在工具与报告中分别测量和表达。",
+      "rationale": "避免把看过材料或愿意购买误写为真正理解。"
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "RISK-001",
+      "category": "SAMPLE",
+      "description": "可联系样本有限，可能偏向与机构已有互动的人群。",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "报告明确样本来源和外推限制，并优先保证投资经验维度覆盖。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-002",
+      "category": "FINANCIAL_EXPRESSION",
+      "description": "材料或问题表述可能被参与者理解为产品推荐或收益暗示。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "Gate 2 前由合规人员审核材料、引导语和问题表述。",
+      "owner_role": "合规审核人员"
+    }
+  ],
+  "assumptions": [
+    "需求方能够提供冻结版本的材料内容。",
+    "存在足够的联系授权用于完成小规模研究。",
+    "IMA 仅作为核心答题后的可选学习入口，不采集用户访问行为。"
+  ],
+  "open_questions": [
+    "最终用于测试的材料版本何时冻结？",
+    "用于正式测量的产品说明材料采用哪种最小暴露确认方式？",
+    "合规审核需要预留多少工作日？"
+  ]
+}

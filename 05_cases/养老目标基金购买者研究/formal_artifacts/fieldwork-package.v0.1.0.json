@@ -1,0 +1,361 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "FWP-OTF-001",
+    "artifact_type": "FieldworkPackage",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者问卷执行与数据质量包",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-27T12:18:12+08:00",
+    "updated_at": "2026-07-27T12:18:12+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-FIELDWORK-PACKAGER",
+      "actor_type": "SYSTEM",
+      "role": "CSV 字段映射、脱敏与质量处理服务"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "把已完成问卷的原始文件清单、脱敏字段映射、逐条质量信号、历史分析纳入口径和治理缺口封装为正式执行包；未补造 Gate 2。",
+    "extensions": {
+      "fieldwork.source_sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+      "fieldwork.mapping_sha256": "a21232d3e7f5202eb567cd4e28f460d5fdb606497998cd0708bd48a9c426cac8",
+      "fieldwork.normalized_sha256": "fb910b37d4a6ca55ac3921a95192adef42f382717c81e19a9c825e9e9a3aa6f2",
+      "fieldwork.quality_sha256": "5e78462499e167e53e1aff633f9ef39cb4fb58ea2c8c5331994cdc5123faef50"
+    }
+  },
+  "research_plan_ref": {
+    "artifact_id": "RP-OTF-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.2.0"
+  },
+  "gate_2_governance_gap": {
+    "gate_id": "GATE_2",
+    "status": "NOT_RECORDED",
+    "reason": "该真实案例先于完整治理链落地运行，当时没有形成可验证的正式批准记录。",
+    "operational_effect": "问卷已实际发布并回收，ResearchPlan 与 InstrumentSpec 仍为 DRAFT；本执行包只能登记为 DRAFT，不能宣称按正式 Gate 2 批准版本执行。",
+    "required_next_action": "本案例继续作为内部复盘与答辩演示材料；任何对外发布需基于当前产物重新完成相应审核。未来新项目必须在发布前取得真实 Gate 2。",
+    "retrospective_approval_prohibited": true
+  },
+  "instrument_refs": [
+    {
+      "artifact_id": "INS-OTF-SURVEY-001",
+      "artifact_type": "InstrumentSpec",
+      "artifact_version": "0.2.0"
+    }
+  ],
+  "execution_summary": {
+    "fieldwork_scope": "MAIN",
+    "status": "COMPLETED",
+    "started_at": "2026-07-24T10:01:15+08:00",
+    "ended_at": "2026-07-24T14:29:30+08:00",
+    "timezone": "Asia/Shanghai",
+    "method_completion": [
+      {
+        "method_id": "METHOD-SUR-OTF-001",
+        "instrument_ref": {
+          "artifact_id": "INS-OTF-SURVEY-001",
+          "artifact_type": "InstrumentSpec",
+          "artifact_version": "0.2.0"
+        },
+        "planned": 200,
+        "invited": 200,
+        "started": 200,
+        "completed": 200,
+        "included": 200,
+        "excluded": 0
+      }
+    ]
+  },
+  "participant_index": {
+    "storage_uri": "formal_artifacts/data/normalized-responses.v0.1.0.csv",
+    "content_hash": "fb910b37d4a6ca55ac3921a95192adef42f382717c81e19a9c825e9e9a3aa6f2",
+    "total_records": 200,
+    "id_scheme": "RESP-OTF-NNNN；平台 IP、UA、地理位置和其他元数据不进入脱敏分析文件。",
+    "contains_direct_identifiers": false,
+    "contact_linkage_separated": true
+  },
+  "consent_summary": {
+    "consent_process": "问卷首页 C0 选择“同意并继续”后进入研究题目。",
+    "consented": 200,
+    "declined": 0,
+    "withdrawn": 0,
+    "recording_consented": 0,
+    "recording_declined": 0,
+    "withdrawal_handling": "本项目无录音；若发生撤回，应在原始数据与后续派生数据中按稳定响应编号删除。"
+  },
+  "source_records": [
+    {
+      "source_id": "SRC-OTF-SURVEY-RAW-001",
+      "source_type": "SURVEY_DATASET",
+      "method_id": "METHOD-SUR-OTF-001",
+      "instrument_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "storage_uri": "urn:source:PROJ-OTF-001:FOF-questionnaire-200:sha256:a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+      "captured_at": "2026-07-24T14:29:30+08:00",
+      "version": "raw-1",
+      "content_hash": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+      "sensitivity_level": "RESTRICTED",
+      "contains_direct_identifiers": true,
+      "deidentification_status": "PENDING",
+      "quality_status": "RAW",
+      "included_in_analysis": false,
+      "locator_scheme": "ROW_AND_ITEM_ID"
+    },
+    {
+      "source_id": "SRC-OTF-SURVEY-NORMALIZED-001",
+      "source_type": "SURVEY_DATASET",
+      "method_id": "METHOD-SUR-OTF-001",
+      "instrument_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "storage_uri": "formal_artifacts/data/normalized-responses.v0.1.0.csv",
+      "captured_at": "2026-07-27T12:18:12+08:00",
+      "version": "0.1.0",
+      "content_hash": "fb910b37d4a6ca55ac3921a95192adef42f382717c81e19a9c825e9e9a3aa6f2",
+      "sensitivity_level": "INTERNAL",
+      "contains_direct_identifiers": false,
+      "deidentification_status": "COMPLETED",
+      "quality_status": "CHECKED",
+      "included_in_analysis": true,
+      "locator_scheme": "ROW_AND_ITEM_ID"
+    },
+    {
+      "source_id": "SRC-OTF-QUALITY-LOG-001",
+      "source_type": "EXECUTION_LOG",
+      "method_id": "METHOD-SUR-OTF-001",
+      "instrument_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "storage_uri": "formal_artifacts/data/response-quality.v0.1.0.csv",
+      "captured_at": "2026-07-27T12:18:12+08:00",
+      "version": "0.1.0",
+      "content_hash": "5e78462499e167e53e1aff633f9ef39cb4fb58ea2c8c5331994cdc5123faef50",
+      "sensitivity_level": "INTERNAL",
+      "contains_direct_identifiers": false,
+      "deidentification_status": "COMPLETED",
+      "quality_status": "CHECKED",
+      "included_in_analysis": false,
+      "locator_scheme": "ROW_AND_ITEM_ID"
+    },
+    {
+      "source_id": "SRC-OTF-FIELD-MAPPING-001",
+      "source_type": "EXECUTION_LOG",
+      "method_id": "METHOD-SUR-OTF-001",
+      "instrument_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "storage_uri": "formal_artifacts/data/field-mapping.v0.1.0.json",
+      "captured_at": "2026-07-27T12:18:12+08:00",
+      "version": "0.1.0",
+      "content_hash": "a21232d3e7f5202eb567cd4e28f460d5fdb606497998cd0708bd48a9c426cac8",
+      "sensitivity_level": "INTERNAL",
+      "contains_direct_identifiers": false,
+      "deidentification_status": "NOT_REQUIRED",
+      "quality_status": "CHECKED",
+      "included_in_analysis": false,
+      "locator_scheme": "OTHER"
+    }
+  ],
+  "fieldwork_events": [
+    {
+      "event_id": "EVENT-OTF-FIELD-START",
+      "event_type": "FIELDWORK_STARTED",
+      "occurred_at": "2026-07-24T10:01:15+08:00",
+      "description": "按平台返回的最早开始答题时间登记主问卷开始。",
+      "resolution_status": "NOT_APPLICABLE"
+    },
+    {
+      "event_id": "EVENT-OTF-NO-GATE2",
+      "event_type": "PROCESS_DEVIATION",
+      "occurred_at": "2026-07-24T10:01:15+08:00",
+      "description": "问卷发布前没有形成正式 Gate 2 ApprovalRecord。",
+      "resolution_status": "ACCEPTED_RISK",
+      "resolution": "禁止追溯补造批准；所有后续正式产物保持 DRAFT 并标明治理缺口。"
+    },
+    {
+      "event_id": "EVENT-OTF-FOMO-LOGIC",
+      "event_type": "PROCESS_DEVIATION",
+      "occurred_at": "2026-07-24T14:29:30+08:00",
+      "description": "FOMO 团队部署未启用自定义互斥与部分跳转逻辑，导致互斥项和实质选项并存。",
+      "resolution_status": "RESOLVED",
+      "resolution": "保留实质选项、删除互斥的无/不确定项；Q23 按 Q22 重编码为结构性缺失，并保存逐条质量信号。"
+    },
+    {
+      "event_id": "EVENT-OTF-FIELD-END",
+      "event_type": "FIELDWORK_COMPLETED",
+      "occurred_at": "2026-07-24T14:29:30+08:00",
+      "description": "按平台返回的最晚结束答题时间登记本批 200 份问卷回收完成。",
+      "resolution_status": "NOT_APPLICABLE"
+    }
+  ],
+  "learning_resource_delivery": [
+    {
+      "resource_id": "LR-IMA-OTF-001",
+      "instrument_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "placement": "COMPLETION_PAGE",
+      "delivery_status": "CONFIGURED",
+      "checked_at": "2026-07-23T19:18:00+08:00",
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "notes": "冻结工具中已配置链接；未保存发布后可用性复核记录，不记录点击或停留，也不作为研究证据。"
+    }
+  ],
+  "data_quality": {
+    "overall_status": "PASS_WITH_ISSUES",
+    "quality_checks": [
+      {
+        "check_id": "DQ-OTF-MAPPING",
+        "label": "CSV 字段与 InstrumentSpec 映射",
+        "status": "PASS",
+        "details": "35 个题目组完成映射，未发现缺失题目或未定义题目。"
+      },
+      {
+        "check_id": "DQ-OTF-PRIVACY",
+        "label": "平台元数据剔除",
+        "status": "PASS",
+        "details": "IP、UA、地理位置、平台清洗字段等 15 列未进入脱敏分析数据。"
+      },
+      {
+        "check_id": "DQ-OTF-REVIEW",
+        "label": "单份答卷复核状态",
+        "status": "WARNING",
+        "details": "100 份触发正式复核信号，但历史逐条人工解析记录未保存。"
+      },
+      {
+        "check_id": "DQ-OTF-SENSITIVITY",
+        "label": "低时长敏感性比较",
+        "status": "PASS",
+        "details": "排除 12 份低时长答卷后，已登记关键指标绝对变化为 0.2—2.2 个百分点。"
+      },
+      {
+        "check_id": "DQ-OTF-GOVERNANCE",
+        "label": "执行前 Gate 2",
+        "status": "WARNING",
+        "details": "未形成正式 Gate 2；不得把本执行包解释为合规放行记录。"
+      }
+    ],
+    "response_status_summary": {
+      "unassessed_count": 0,
+      "valid_count": 100,
+      "review_required_count": 100,
+      "excluded_count": 0
+    },
+    "reason_code_summary": [
+      {
+        "reason_code": "SPEEDING_SUSPECTED",
+        "count": 12
+      },
+      {
+        "reason_code": "MULTISELECT_EXCLUSIVITY_CONFLICT",
+        "count": 94
+      }
+    ],
+    "dataset_status": "ANALYSIS_READY_WITH_LIMITS",
+    "dataset_status_reason": "历史工作分析实际纳入 200 份并完成互斥修正与速度敏感性比较；但 100 份正式复核信号没有逐条人工解决记录，因此该状态仅描述既有内部分析用途，不是对原质量计划的完全合规结论。",
+    "excluded_records": [],
+    "missing_data_summary": "核心必答题无高缺失记录；Q23 在 Q22 无相关经历时按设计重编码为结构性缺失。",
+    "transcription_quality": {
+      "applicable": false,
+      "unclear_segments": 0,
+      "review_rule": "本项目为结构化问卷，无逐字稿。"
+    },
+    "duplicate_handling": "按全部研究答案生成精确签名；未发现精确重复答卷。"
+  },
+  "deviations": [
+    {
+      "deviation_id": "DEV-OTF-GATE2",
+      "planned_rule": "主调研发布前必须取得 Gate 2 正式批准。",
+      "actual_execution": "问卷实际发布并回收，但未形成 Gate 2 ApprovalRecord。",
+      "reason": "完整治理链尚未落地。",
+      "affected_records": [],
+      "impact_assessment": "不能宣称按正式批准版本执行；所有正式化产物保持 DRAFT。",
+      "decision": "INCLUDE_WITH_LIMITATION"
+    },
+    {
+      "deviation_id": "DEV-OTF-REVIEW-LOG",
+      "planned_rule": "所有 REVIEW_REQUIRED 必须由研究人员逐条转为 VALID 或 EXCLUDED。",
+      "actual_execution": "100 份触发信号的答卷在确定性互斥修正和速度敏感性比较后进入工作分析，未保存逐条人工决定记录。",
+      "reason": "历史分析先于逐条质量日志机制。",
+      "affected_records": [],
+      "impact_assessment": "统计仅用于内部洞察草稿；外发前需要重新审核证据和质量边界。",
+      "decision": "INCLUDE_WITH_LIMITATION"
+    },
+    {
+      "deviation_id": "DEV-OTF-TIMESTAMP",
+      "planned_rule": "平台执行时间与文件接收时间应形成一致时间链。",
+      "actual_execution": "CSV 内的最晚答题时间晚于本地文件系统记录的接收时间。",
+      "reason": "平台时区、导出时间或本地文件时间口径未保存，无法追溯确认。",
+      "affected_records": [],
+      "impact_assessment": "只使用日期描述调研期，不据此计算投放节奏或因果顺序。",
+      "decision": "INCLUDE_WITH_LIMITATION"
+    }
+  ],
+  "deidentification": {
+    "status": "COMPLETED",
+    "direct_identifier_rule": "平台 IP、UA、地理位置、自定义字段及其他非研究元数据不进入分析数据。",
+    "replacement_rule": "每份答卷仅保留稳定编号 RESP-OTF-NNNN。",
+    "linkage_storage_rule": "原始 CSV 保留在项目发起人提供的外部位置，不复制到 formal_artifacts；正式分析只引用内容哈希。",
+    "completed_by": {
+      "actor_id": "SYSTEM-FIELDWORK-PACKAGER",
+      "actor_type": "SYSTEM",
+      "role": "CSV 字段映射、脱敏与质量处理服务"
+    },
+    "completed_at": "2026-07-27T12:18:12+08:00"
+  },
+  "unresolved_issues": [
+    {
+      "risk_id": "RISK-OTF-SAMPLE",
+      "category": "SAMPLE",
+      "description": "未提供抽样框、投放渠道明细和代表性说明。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "所有比例只描述本次 200 份答卷，不外推市场总体。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-OTF-REVIEW",
+      "category": "DATA",
+      "description": "100 份答卷的正式复核信号缺少逐条人工解析记录。",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "保留逐条信号、确定性修正规则和敏感性比较；报告外发前重新人工审核。",
+      "owner_role": "数据质量负责人"
+    },
+    {
+      "risk_id": "RISK-OTF-GOVERNANCE",
+      "category": "COMPLIANCE",
+      "description": "Gate 2 未记录，后续 Gate 3 与 Gate 4 也未形成正式批准。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "禁止追溯补造；产物保持 DRAFT，限制为内部复盘与答辩演示。",
+      "owner_role": "研究负责人"
+    }
+  ]
+}

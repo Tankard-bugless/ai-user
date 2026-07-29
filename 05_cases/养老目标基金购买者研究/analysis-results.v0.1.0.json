@@ -1,0 +1,2044 @@
+{
+  "metadata": {
+    "analysis_id": "ANALYSIS-OTF-200-001",
+    "project_id": "PROJ-OTF-001",
+    "source_file": "FOF问卷回答_200人.csv",
+    "source_sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+    "instrument_id": "INS-OTF-SURVEY-001",
+    "instrument_version": "0.2.0",
+    "analysis_date": "2026-07-24",
+    "content_classification": "REAL",
+    "data_provenance_note": "按项目发起人回传文件分析；未提供抽样框、投放渠道明细或代表性说明。"
+  },
+  "data_quality": {
+    "raw_records": 200,
+    "working_analysis_records": 200,
+    "hard_exclusions": 0,
+    "mapping_issue_count": 0,
+    "speed_flag_records": 12,
+    "exclusive_conflict_records": 94,
+    "exclusive_corrections_by_question": {
+      "Q8": 17,
+      "Q21": 34,
+      "Q25": 47,
+      "Q26": 26
+    },
+    "multi_select_cap_violation_records": 0,
+    "high_missing_records": 0,
+    "exact_duplicate_records": 0,
+    "formal_review_signal_records": 100,
+    "dataset_status": "ANALYSIS_READY_WITH_LIMITS",
+    "resolution_note": "无硬排除。已知平台未启用互斥逻辑，因此在互斥项与实质选项并存时仅删除互斥项；12 份低时长记录不因单一时长信号排除，并进行了剔除后的敏感性比较。IP、地理位置、UA 等平台字段不进入分析。",
+    "governance_note": "正式 Gate 2、逐条人工 REVIEW_REQUIRED 解析和 Gate 3/4 批准尚未形成；本结果为内部分析与报告草稿，外发前需人工确认。",
+    "sensitivity": [
+      {
+        "metric": "Q17 正确",
+        "all_200_percent": 60.0,
+        "excluding_12_speed_flags_percent": 62.2,
+        "absolute_difference_pp": 2.2
+      },
+      {
+        "metric": "Q18 正确",
+        "all_200_percent": 61.5,
+        "excluding_12_speed_flags_percent": 60.6,
+        "absolute_difference_pp": 0.9
+      },
+      {
+        "metric": "Q19 正确",
+        "all_200_percent": 63.5,
+        "excluding_12_speed_flags_percent": 63.3,
+        "absolute_difference_pp": 0.2
+      },
+      {
+        "metric": "Q20 正确",
+        "all_200_percent": 62.0,
+        "excluding_12_speed_flags_percent": 61.7,
+        "absolute_difference_pp": 0.3
+      },
+      {
+        "metric": "比较退休年份",
+        "all_200_percent": 43.5,
+        "excluding_12_speed_flags_percent": 43.1,
+        "absolute_difference_pp": 0.4
+      },
+      {
+        "metric": "比较风险类型",
+        "all_200_percent": 40.0,
+        "excluding_12_speed_flags_percent": 41.0,
+        "absolute_difference_pp": 1.0
+      },
+      {
+        "metric": "希望了解下滑曲线",
+        "all_200_percent": 31.0,
+        "excluding_12_speed_flags_percent": 31.4,
+        "absolute_difference_pp": 0.4
+      }
+    ]
+  },
+  "sample": {
+    "n": 200,
+    "age_distribution": [
+      {
+        "label": "40—49 岁",
+        "count": 70,
+        "percent": 35.0
+      },
+      {
+        "label": "30—39 岁",
+        "count": 63,
+        "percent": 31.5
+      },
+      {
+        "label": "50—59 岁",
+        "count": 34,
+        "percent": 17.0
+      },
+      {
+        "label": "18—29 岁",
+        "count": 33,
+        "percent": 16.5
+      }
+    ],
+    "fund_experience_distribution": [
+      {
+        "label": "1-3 年",
+        "count": 81,
+        "percent": 40.5
+      },
+      {
+        "label": "6 年以上",
+        "count": 52,
+        "percent": 26.0
+      },
+      {
+        "label": "4-6 年",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "不足 1 年",
+        "count": 27,
+        "percent": 13.5
+      }
+    ],
+    "holding_status_distribution": [
+      {
+        "label": "目前仍在持有",
+        "count": 144,
+        "percent": 72.0
+      },
+      {
+        "label": "过去购买过，但目前已经全部赎回",
+        "count": 50,
+        "percent": 25.0
+      },
+      {
+        "label": "不确定",
+        "count": 6,
+        "percent": 3.0
+      }
+    ]
+  },
+  "descriptive_results": {
+    "C0": [
+      {
+        "label": "同意并继续",
+        "count": 200,
+        "percent": 100.0
+      }
+    ],
+    "S1": [
+      {
+        "label": "是，目前持有或过去曾经持有过",
+        "count": 200,
+        "percent": 100.0
+      }
+    ],
+    "Q1": [
+      {
+        "label": "目前仍在持有",
+        "count": 144,
+        "percent": 72.0
+      },
+      {
+        "label": "过去购买过，但目前已经全部赎回",
+        "count": 50,
+        "percent": 25.0
+      },
+      {
+        "label": "不确定",
+        "count": 6,
+        "percent": 3.0
+      }
+    ],
+    "Q2": [
+      {
+        "label": "普通基金账户中的 A/C 等份额",
+        "count": 87,
+        "percent": 43.5
+      },
+      {
+        "label": "个人养老金账户中的 Y 份额",
+        "count": 58,
+        "percent": 29.0
+      },
+      {
+        "label": "两类都买过",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "不确定",
+        "count": 15,
+        "percent": 7.5
+      }
+    ],
+    "Q3": [
+      {
+        "label": "3 年以前",
+        "count": 77,
+        "percent": 38.5
+      },
+      {
+        "label": "记不清",
+        "count": 55,
+        "percent": 27.5
+      },
+      {
+        "label": "1-3 年前",
+        "count": 47,
+        "percent": 23.5
+      },
+      {
+        "label": "1 年以内",
+        "count": 21,
+        "percent": 10.5
+      }
+    ],
+    "Q4": [
+      {
+        "label": "第三方基金销售平台",
+        "count": 37,
+        "percent": 18.5
+      },
+      {
+        "label": "银行或客户经理",
+        "count": 37,
+        "percent": 18.5
+      },
+      {
+        "label": "新闻、短视频或其他网络内容",
+        "count": 34,
+        "percent": 17.0
+      },
+      {
+        "label": "亲友介绍",
+        "count": 27,
+        "percent": 13.5
+      },
+      {
+        "label": "基金公司 APP、网站或公众号",
+        "count": 25,
+        "percent": 12.5
+      },
+      {
+        "label": "自己搜索发现",
+        "count": 20,
+        "percent": 10.0
+      },
+      {
+        "label": "公司或单位宣传",
+        "count": 10,
+        "percent": 5.0
+      },
+      {
+        "label": "其他",
+        "count": 9,
+        "percent": 4.5
+      },
+      {
+        "label": "记不清",
+        "count": 1,
+        "percent": 0.5
+      }
+    ],
+    "Q5": [
+      {
+        "label": "主要由我自己决定",
+        "count": 68,
+        "percent": 34.0
+      },
+      {
+        "label": "我与家人共同决定",
+        "count": 39,
+        "percent": 19.5
+      },
+      {
+        "label": "主要听取客户经理或专业人员建议",
+        "count": 37,
+        "percent": 18.5
+      },
+      {
+        "label": "我与客户经理或专业人员共同决定",
+        "count": 32,
+        "percent": 16.0
+      },
+      {
+        "label": "主要听取亲友建议",
+        "count": 18,
+        "percent": 9.0
+      },
+      {
+        "label": "其他",
+        "count": 6,
+        "percent": 3.0
+      }
+    ],
+    "Q6": [
+      {
+        "label": "认可基金公司或管理团队",
+        "count": 63,
+        "percent": 31.5
+      },
+      {
+        "label": "费率或 Y 份额安排",
+        "count": 52,
+        "percent": 26.0
+      },
+      {
+        "label": "看重历史表现或排名",
+        "count": 51,
+        "percent": 25.5
+      },
+      {
+        "label": "购买方便或起购门槛合适",
+        "count": 46,
+        "percent": 23.0
+      },
+      {
+        "label": "个人养老金税收优惠",
+        "count": 46,
+        "percent": 23.0
+      },
+      {
+        "label": "希望分散配置风险",
+        "count": 35,
+        "percent": 17.5
+      },
+      {
+        "label": "客户经理或专业人员推荐",
+        "count": 35,
+        "percent": 17.5
+      },
+      {
+        "label": "提前为退休生活做准备",
+        "count": 29,
+        "percent": 14.5
+      },
+      {
+        "label": "亲友推荐",
+        "count": 24,
+        "percent": 12.0
+      },
+      {
+        "label": "希望长期投资，不想频繁操作",
+        "count": 10,
+        "percent": 5.0
+      }
+    ],
+    "Q7": [
+      {
+        "label": "基金名称或目标年份",
+        "count": 122,
+        "percent": 61.0
+      },
+      {
+        "label": "稳健、平衡、积极等风险类型",
+        "count": 107,
+        "percent": 53.5
+      },
+      {
+        "label": "历史业绩或排名",
+        "count": 97,
+        "percent": 48.5
+      },
+      {
+        "label": "基金经理或管理团队",
+        "count": 78,
+        "percent": 39.0
+      },
+      {
+        "label": "基金公司品牌",
+        "count": 72,
+        "percent": 36.0
+      },
+      {
+        "label": "客户经理或平台的产品介绍",
+        "count": 64,
+        "percent": 32.0
+      },
+      {
+        "label": "费率或 Y 份额说明",
+        "count": 64,
+        "percent": 32.0
+      },
+      {
+        "label": "当前股票、债券等资产配置",
+        "count": 54,
+        "percent": 27.0
+      },
+      {
+        "label": "下滑曲线或未来配置调整方式",
+        "count": 45,
+        "percent": 22.5
+      },
+      {
+        "label": "持有、申购和赎回规则",
+        "count": 44,
+        "percent": 22.0
+      },
+      {
+        "label": "没有仔细看",
+        "count": 11,
+        "percent": 5.5
+      }
+    ],
+    "Q8": [
+      {
+        "label": "退休年份是否匹配",
+        "count": 87,
+        "percent": 43.5
+      },
+      {
+        "label": "风险类型是否符合自己的选择",
+        "count": 80,
+        "percent": 40.0
+      },
+      {
+        "label": "历史业绩或排名",
+        "count": 75,
+        "percent": 37.5
+      },
+      {
+        "label": "基金经理或管理团队",
+        "count": 38,
+        "percent": 19.0
+      },
+      {
+        "label": "基金公司品牌",
+        "count": 37,
+        "percent": 18.5
+      },
+      {
+        "label": "与其他基金或养老产品的差别",
+        "count": 30,
+        "percent": 15.0
+      },
+      {
+        "label": "股票、债券等资产配置",
+        "count": 14,
+        "percent": 7.0
+      },
+      {
+        "label": "持有、申购和赎回规则",
+        "count": 11,
+        "percent": 5.5
+      },
+      {
+        "label": "主要听取推荐，没有认真比较",
+        "count": 10,
+        "percent": 5.0
+      },
+      {
+        "label": "费率或 Y 份额安排",
+        "count": 10,
+        "percent": 5.0
+      },
+      {
+        "label": "下滑曲线或未来配置调整方式",
+        "count": 7,
+        "percent": 3.5
+      }
+    ],
+    "Q9": [
+      {
+        "label": "风险类型是否符合自己的选择",
+        "count": 41,
+        "percent": 20.5
+      },
+      {
+        "label": "历史业绩或排名",
+        "count": 26,
+        "percent": 13.0
+      },
+      {
+        "label": "退休年份是否匹配",
+        "count": 22,
+        "percent": 11.0
+      },
+      {
+        "label": "客户经理、平台或亲友推荐",
+        "count": 20,
+        "percent": 10.0
+      },
+      {
+        "label": "基金经理或管理团队",
+        "count": 17,
+        "percent": 8.5
+      },
+      {
+        "label": "基金公司品牌",
+        "count": 16,
+        "percent": 8.0
+      },
+      {
+        "label": "股票、债券等资产配置",
+        "count": 16,
+        "percent": 8.0
+      },
+      {
+        "label": "下滑曲线或未来配置调整方式",
+        "count": 15,
+        "percent": 7.5
+      },
+      {
+        "label": "费率或 Y 份额安排",
+        "count": 11,
+        "percent": 5.5
+      },
+      {
+        "label": "持有、申购和赎回规则",
+        "count": 6,
+        "percent": 3.0
+      },
+      {
+        "label": "记不清",
+        "count": 6,
+        "percent": 3.0
+      },
+      {
+        "label": "其他",
+        "count": 4,
+        "percent": 2.0
+      }
+    ],
+    "Q9A": [
+      {
+        "label": "3—一般",
+        "count": 76,
+        "percent": 38.0
+      },
+      {
+        "label": "4—比较清楚",
+        "count": 45,
+        "percent": 22.5
+      },
+      {
+        "label": "2—比较不清楚",
+        "count": 36,
+        "percent": 18.0
+      },
+      {
+        "label": "1—非常不清楚",
+        "count": 18,
+        "percent": 9.0
+      },
+      {
+        "label": "5—非常清楚",
+        "count": 13,
+        "percent": 6.5
+      },
+      {
+        "label": "记不清",
+        "count": 12,
+        "percent": 6.0
+      }
+    ],
+    "Q10": [
+      {
+        "label": "目标日期型，基金名称通常带有 2035、2040、2045 等目标年份",
+        "count": 94,
+        "percent": 47.0
+      },
+      {
+        "label": "目标风险型，通常标有稳健、平衡、积极等风险类型",
+        "count": 64,
+        "percent": 32.0
+      },
+      {
+        "label": "其他或无法判断",
+        "count": 16,
+        "percent": 8.0
+      },
+      {
+        "label": "两类都买过",
+        "count": 15,
+        "percent": 7.5
+      },
+      {
+        "label": "不确定",
+        "count": 11,
+        "percent": 5.5
+      }
+    ],
+    "Q11": [
+      {
+        "label": "嘉实养老目标2040",
+        "count": 5,
+        "percent": 6.4
+      },
+      {
+        "label": "中欧养老目标2030",
+        "count": 4,
+        "percent": 5.1
+      },
+      {
+        "label": "南方养老目标2035",
+        "count": 4,
+        "percent": 5.1
+      },
+      {
+        "label": "嘉实养老目标2035",
+        "count": 4,
+        "percent": 5.1
+      },
+      {
+        "label": "华夏养老目标2040",
+        "count": 4,
+        "percent": 5.1
+      },
+      {
+        "label": "汇添富养老目标2035",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "中欧养老目标2038",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "广发养老目标2038",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "汇添富养老目标2030",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "汇添富养老目标2045",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "广发养老目标2045",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "华夏养老目标2030",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "易方达养老目标2035",
+        "count": 3,
+        "percent": 3.8
+      },
+      {
+        "label": "兴全养老目标2040",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "南方养老目标2050",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "华夏养老目标2050",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "兴全养老目标2035",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "汇添富养老目标2050",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "广发养老目标2050",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "兴全养老目标2038",
+        "count": 2,
+        "percent": 2.6
+      },
+      {
+        "label": "嘉实养老目标2045",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "南方养老目标2038",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "易方达养老目标2040",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "南方养老目标2030",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "易方达养老目标2050",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "嘉实养老目标2030",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "中欧养老目标2045",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "兴全养老目标2030",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "嘉实养老目标2038",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "华夏养老目标2045",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "嘉实养老目标2050",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "广发养老目标2035",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "中欧养老目标2040",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "易方达养老目标2038",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "中欧养老目标2050",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "汇添富养老目标2040",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "汇添富养老目标2038",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "兴全养老目标2050",
+        "count": 1,
+        "percent": 1.3
+      },
+      {
+        "label": "广发养老目标2040",
+        "count": 1,
+        "percent": 1.3
+      }
+    ],
+    "Q12": [
+      {
+        "label": "大概知道，但说不清楚",
+        "count": 66,
+        "percent": 33.0
+      },
+      {
+        "label": "听说过，但不了解区别",
+        "count": 49,
+        "percent": 24.5
+      },
+      {
+        "label": "比较了解，能够向别人解释",
+        "count": 35,
+        "percent": 17.5
+      },
+      {
+        "label": "以前没有听说过",
+        "count": 32,
+        "percent": 16.0
+      },
+      {
+        "label": "不确定",
+        "count": 18,
+        "percent": 9.0
+      }
+    ],
+    "Q13": [
+      {
+        "label": "听说过，但不太清楚",
+        "count": 74,
+        "percent": 37.0
+      },
+      {
+        "label": "以前没有听说过",
+        "count": 52,
+        "percent": 26.0
+      },
+      {
+        "label": "听说过，也比较了解",
+        "count": 51,
+        "percent": 25.5
+      },
+      {
+        "label": "不确定",
+        "count": 23,
+        "percent": 11.5
+      }
+    ],
+    "Q14": [
+      {
+        "label": "大致看过",
+        "count": 60,
+        "percent": 30.0
+      },
+      {
+        "label": "当时不知道，也没有看",
+        "count": 46,
+        "percent": 23.0
+      },
+      {
+        "label": "知道有，但没有看",
+        "count": 42,
+        "percent": 21.0
+      },
+      {
+        "label": "认真看过",
+        "count": 28,
+        "percent": 14.0
+      },
+      {
+        "label": "记不清",
+        "count": 24,
+        "percent": 12.0
+      }
+    ],
+    "Q15": [
+      {
+        "label": "没有查看过",
+        "count": 85,
+        "percent": 42.5
+      },
+      {
+        "label": "想看，但不知道在哪里看",
+        "count": 34,
+        "percent": 17.0
+      },
+      {
+        "label": "查看过一次",
+        "count": 32,
+        "percent": 16.0
+      },
+      {
+        "label": "查看过多次",
+        "count": 28,
+        "percent": 14.0
+      },
+      {
+        "label": "记不清",
+        "count": 21,
+        "percent": 10.5
+      }
+    ],
+    "Q16": [
+      {
+        "label": "没有看过或记不清",
+        "count": 54,
+        "percent": 27.0
+      },
+      {
+        "label": "看过，但没有用于决定",
+        "count": 44,
+        "percent": 22.0
+      },
+      {
+        "label": "影响了后续追加、持有、减少或赎回",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "影响了是否购买",
+        "count": 36,
+        "percent": 18.0
+      },
+      {
+        "label": "影响了目标年份或风险类型的选择",
+        "count": 26,
+        "percent": 13.0
+      }
+    ],
+    "Q17": [
+      {
+        "label": "主要根据预计退休年份选择，接近目标日期时通常会调整资产配置",
+        "count": 120,
+        "percent": 60.0
+      },
+      {
+        "label": "主要根据个人偏好的风险类型选择，并长期保持相近风险水平",
+        "count": 30,
+        "percent": 15.0
+      },
+      {
+        "label": "不确定",
+        "count": 26,
+        "percent": 13.0
+      },
+      {
+        "label": "到达目标年份后会保证本金和收益",
+        "count": 24,
+        "percent": 12.0
+      }
+    ],
+    "Q18": [
+      {
+        "label": "主要按照预设风险水平选择，并在策略范围内维持相应风险特征",
+        "count": 123,
+        "percent": 61.5
+      },
+      {
+        "label": "只根据出生年份自动确定投资组合",
+        "count": 33,
+        "percent": 16.5
+      },
+      {
+        "label": "只要选择稳健型就不会发生亏损",
+        "count": 27,
+        "percent": 13.5
+      },
+      {
+        "label": "不确定",
+        "count": 17,
+        "percent": 8.5
+      }
+    ],
+    "Q19": [
+      {
+        "label": "随着目标日期接近，基金资产配置可能如何逐步调整",
+        "count": 127,
+        "percent": 63.5
+      },
+      {
+        "label": "基金未来净值或收益一定会按哪条线变化",
+        "count": 34,
+        "percent": 17.0
+      },
+      {
+        "label": "不确定",
+        "count": 27,
+        "percent": 13.5
+      },
+      {
+        "label": "基金费率每年如何下降",
+        "count": 12,
+        "percent": 6.0
+      }
+    ],
+    "Q20": [
+      {
+        "label": "仍可能出现净值波动或亏损，不代表本金和收益有保证",
+        "count": 124,
+        "percent": 62.0
+      },
+      {
+        "label": "不确定",
+        "count": 33,
+        "percent": 16.5
+      },
+      {
+        "label": "之后就不会发生亏损",
+        "count": 23,
+        "percent": 11.5
+      },
+      {
+        "label": "到目标年份时会自动全部转成存款",
+        "count": 20,
+        "percent": 10.0
+      }
+    ],
+    "Q21": [
+      {
+        "label": "一直持有，没有调整",
+        "count": 99,
+        "percent": 49.5
+      },
+      {
+        "label": "定投或追加购买",
+        "count": 71,
+        "percent": 35.5
+      },
+      {
+        "label": "全部赎回",
+        "count": 32,
+        "percent": 16.0
+      },
+      {
+        "label": "部分赎回",
+        "count": 32,
+        "percent": 16.0
+      },
+      {
+        "label": "转换为其他基金或养老产品",
+        "count": 16,
+        "percent": 8.0
+      },
+      {
+        "label": "记不清",
+        "count": 4,
+        "percent": 2.0
+      }
+    ],
+    "Q22": [
+      {
+        "label": "先查询信息或咨询他人，再决定是否操作",
+        "count": 61,
+        "percent": 30.5
+      },
+      {
+        "label": "继续持有，没有操作",
+        "count": 46,
+        "percent": 23.0
+      },
+      {
+        "label": "没有经历过或记不清",
+        "count": 43,
+        "percent": 21.5
+      },
+      {
+        "label": "追加购买",
+        "count": 22,
+        "percent": 11.0
+      },
+      {
+        "label": "部分赎回",
+        "count": 20,
+        "percent": 10.0
+      },
+      {
+        "label": "全部赎回",
+        "count": 8,
+        "percent": 4.0
+      }
+    ],
+    "Q23": [
+      {
+        "label": "把它当作长期养老投资，愿意继续持有",
+        "count": 69,
+        "percent": 43.9
+      },
+      {
+        "label": "理解净值波动可能是正常现象",
+        "count": 69,
+        "percent": 43.9
+      },
+      {
+        "label": "担心继续亏损",
+        "count": 58,
+        "percent": 36.9
+      },
+      {
+        "label": "听取客户经理、专业人员或亲友建议",
+        "count": 40,
+        "percent": 25.5
+      },
+      {
+        "label": "认为产品不再符合自己的退休安排",
+        "count": 28,
+        "percent": 17.8
+      },
+      {
+        "label": "不清楚为什么下跌",
+        "count": 27,
+        "percent": 17.2
+      },
+      {
+        "label": "临时需要使用资金",
+        "count": 13,
+        "percent": 8.3
+      },
+      {
+        "label": "其他",
+        "count": 10,
+        "percent": 6.4
+      },
+      {
+        "label": "与其他产品相比表现不理想",
+        "count": 5,
+        "percent": 3.2
+      }
+    ],
+    "Q24": [
+      {
+        "label": "偶尔查看",
+        "count": 58,
+        "percent": 29.0
+      },
+      {
+        "label": "主要在市场波动较大时查看",
+        "count": 48,
+        "percent": 24.0
+      },
+      {
+        "label": "从未查看",
+        "count": 31,
+        "percent": 15.5
+      },
+      {
+        "label": "想看，但不知道在哪里看",
+        "count": 29,
+        "percent": 14.5
+      },
+      {
+        "label": "会定期查看",
+        "count": 28,
+        "percent": 14.0
+      },
+      {
+        "label": "记不清",
+        "count": 6,
+        "percent": 3.0
+      }
+    ],
+    "Q25": [
+      {
+        "label": "未来资产配置会怎样变化",
+        "count": 55,
+        "percent": 27.5
+      },
+      {
+        "label": "现在承担的风险有多大",
+        "count": 52,
+        "percent": 26.0
+      },
+      {
+        "label": "为什么要调整资产配置",
+        "count": 45,
+        "percent": 22.5
+      },
+      {
+        "label": "目标日期型和目标风险型到底有什么区别",
+        "count": 43,
+        "percent": 21.5
+      },
+      {
+        "label": "当前股票等波动较高资产占多少",
+        "count": 39,
+        "percent": 19.5
+      },
+      {
+        "label": "产品是否仍与自己的退休年份相匹配",
+        "count": 33,
+        "percent": 16.5
+      },
+      {
+        "label": "Y 份额的费率和账户规则",
+        "count": 33,
+        "percent": 16.5
+      },
+      {
+        "label": "应该怎样看待短期业绩",
+        "count": 31,
+        "percent": 15.5
+      },
+      {
+        "label": "持有、追加和赎回规则",
+        "count": 20,
+        "percent": 10.0
+      },
+      {
+        "label": "没有明显不确定",
+        "count": 3,
+        "percent": 1.5
+      }
+    ],
+    "Q26": [
+      {
+        "label": "未来配置会怎样变化，也就是下滑曲线",
+        "count": 62,
+        "percent": 31.0
+      },
+      {
+        "label": "当前资产配置和风险水平",
+        "count": 52,
+        "percent": 26.0
+      },
+      {
+        "label": "怎样根据退休年份或风险类型选择",
+        "count": 51,
+        "percent": 25.5
+      },
+      {
+        "label": "为什么要调整资产配置",
+        "count": 41,
+        "percent": 20.5
+      },
+      {
+        "label": "市场下跌时怎样理解产品表现",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "与其他基金或养老产品的差别",
+        "count": 38,
+        "percent": 19.0
+      },
+      {
+        "label": "目标日期型和目标风险型的简单区别",
+        "count": 36,
+        "percent": 18.0
+      },
+      {
+        "label": "Y 份额的费率和个人养老金账户规则",
+        "count": 34,
+        "percent": 17.0
+      },
+      {
+        "label": "持有、追加和赎回规则",
+        "count": 30,
+        "percent": 15.0
+      },
+      {
+        "label": "目前不需要更多信息",
+        "count": 1,
+        "percent": 0.5
+      }
+    ],
+    "Q27": [
+      {
+        "label": "结合年龄或退休年份举例",
+        "count": 60,
+        "percent": 30.0
+      },
+      {
+        "label": "资产配置表",
+        "count": 49,
+        "percent": 24.5
+      },
+      {
+        "label": "一句话说明",
+        "count": 48,
+        "percent": 24.0
+      },
+      {
+        "label": "常见问题与回答",
+        "count": 43,
+        "percent": 21.5
+      },
+      {
+        "label": "1-3 分钟短视频",
+        "count": 42,
+        "percent": 21.0
+      },
+      {
+        "label": "简单的下滑曲线图",
+        "count": 37,
+        "percent": 18.5
+      },
+      {
+        "label": "可以自行搜索的知识库",
+        "count": 17,
+        "percent": 8.5
+      },
+      {
+        "label": "其他",
+        "count": 7,
+        "percent": 3.5
+      }
+    ],
+    "Q28": [
+      {
+        "label": "第一次了解产品时",
+        "count": 63,
+        "percent": 31.5
+      },
+      {
+        "label": "基金调整资产配置时",
+        "count": 53,
+        "percent": 26.5
+      },
+      {
+        "label": "市场波动较大时",
+        "count": 49,
+        "percent": 24.5
+      },
+      {
+        "label": "购买页面上",
+        "count": 47,
+        "percent": 23.5
+      },
+      {
+        "label": "自己需要时再搜索",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "购买后定期收到",
+        "count": 39,
+        "percent": 19.5
+      },
+      {
+        "label": "其他",
+        "count": 3,
+        "percent": 1.5
+      }
+    ],
+    "Q29": [
+      {
+        "label": "如果提前退休，对基金有什么影响？",
+        "count": 10,
+        "percent": 25.6
+      },
+      {
+        "label": "为什么有的年份涨有的年份跌，能不能更稳定一些？",
+        "count": 7,
+        "percent": 17.9
+      },
+      {
+        "label": "养老目标基金和普通的混合基金到底有什么区别？",
+        "count": 5,
+        "percent": 12.8
+      },
+      {
+        "label": "目标日期到了以后，基金会自动转成什么？",
+        "count": 4,
+        "percent": 10.3
+      },
+      {
+        "label": "怎样才能知道基金经理有没有按承诺的策略来操作？",
+        "count": 4,
+        "percent": 10.3
+      },
+      {
+        "label": "Y份额和普通A/C份额到底哪个更划算？",
+        "count": 3,
+        "percent": 7.7
+      },
+      {
+        "label": "下滑曲线调整后，我的收益会受多大影响？",
+        "count": 3,
+        "percent": 7.7
+      },
+      {
+        "label": "到底什么时候该赎回？",
+        "count": 3,
+        "percent": 7.7
+      }
+    ],
+    "Q30": [
+      {
+        "label": "20 年以上",
+        "count": 90,
+        "percent": 45.0
+      },
+      {
+        "label": "11-20 年",
+        "count": 74,
+        "percent": 37.0
+      },
+      {
+        "label": "6-10 年",
+        "count": 21,
+        "percent": 10.5
+      },
+      {
+        "label": "不确定或不愿回答",
+        "count": 10,
+        "percent": 5.0
+      },
+      {
+        "label": "5 年以内",
+        "count": 5,
+        "percent": 2.5
+      }
+    ],
+    "Q31": [
+      {
+        "label": "1-3 年",
+        "count": 81,
+        "percent": 40.5
+      },
+      {
+        "label": "6 年以上",
+        "count": 52,
+        "percent": 26.0
+      },
+      {
+        "label": "4-6 年",
+        "count": 40,
+        "percent": 20.0
+      },
+      {
+        "label": "不足 1 年",
+        "count": 27,
+        "percent": 13.5
+      }
+    ],
+    "Q32": [
+      {
+        "label": "40—49 岁",
+        "count": 70,
+        "percent": 35.0
+      },
+      {
+        "label": "30—39 岁",
+        "count": 63,
+        "percent": 31.5
+      },
+      {
+        "label": "50—59 岁",
+        "count": 34,
+        "percent": 17.0
+      },
+      {
+        "label": "18—29 岁",
+        "count": 33,
+        "percent": 16.5
+      }
+    ]
+  },
+  "knowledge_summary": {
+    "Q17": {
+      "correct_count": 120,
+      "correct_percent": 60.0
+    },
+    "Q18": {
+      "correct_count": 123,
+      "correct_percent": 61.5
+    },
+    "Q19": {
+      "correct_count": 127,
+      "correct_percent": 63.5
+    },
+    "Q20": {
+      "correct_count": 124,
+      "correct_percent": 62.0
+    },
+    "both_product_correct": {
+      "count": 79,
+      "percent": 39.5
+    },
+    "both_glide_correct": {
+      "count": 86,
+      "percent": 43.0
+    },
+    "all_four_correct": {
+      "count": 40,
+      "percent": 20.0
+    },
+    "none_correct": {
+      "count": 9,
+      "percent": 4.5
+    }
+  },
+  "clarity_summary": {
+    "valid_numeric_n": 188,
+    "median": 3.0,
+    "low_1_2_count": 54,
+    "low_1_2_percent_all": 27.0,
+    "high_4_5_count": 58,
+    "high_4_5_percent_all": 29.0,
+    "remember_unknown_count": 12
+  },
+  "glide_path_indicators": [
+    {
+      "indicator": "听说过下滑曲线",
+      "count": 125,
+      "percent": 62.5
+    },
+    {
+      "indicator": "购买前大致或认真看过",
+      "count": 88,
+      "percent": 44.0
+    },
+    {
+      "indicator": "持有期查看过一次或多次",
+      "count": 60,
+      "percent": 30.0
+    },
+    {
+      "indicator": "购买前主动比较过",
+      "count": 7,
+      "percent": 3.5
+    },
+    {
+      "indicator": "自报曾影响购买、类型或持有决策",
+      "count": 102,
+      "percent": 51.0
+    }
+  ],
+  "age_metrics": {
+    "18—29 岁": {
+      "n": 33,
+      "self_decision_percent": 42.4,
+      "both_product_correct_percent": 27.3,
+      "both_glide_correct_percent": 27.3,
+      "glide_seen_before_percent": 39.4,
+      "glide_used_percent": 60.6
+    },
+    "30—39 岁": {
+      "n": 63,
+      "self_decision_percent": 28.6,
+      "both_product_correct_percent": 41.3,
+      "both_glide_correct_percent": 54.0,
+      "glide_seen_before_percent": 44.4,
+      "glide_used_percent": 52.4
+    },
+    "40—49 岁": {
+      "n": 70,
+      "self_decision_percent": 35.7,
+      "both_product_correct_percent": 48.6,
+      "both_glide_correct_percent": 40.0,
+      "glide_seen_before_percent": 44.3,
+      "glide_used_percent": 48.6
+    },
+    "50—59 岁": {
+      "n": 34,
+      "self_decision_percent": 32.4,
+      "both_product_correct_percent": 29.4,
+      "both_glide_correct_percent": 44.1,
+      "glide_seen_before_percent": 47.1,
+      "glide_used_percent": 44.1
+    }
+  },
+  "age_tables": {
+    "Q4_first_awareness_channel": {
+      "18—29 岁": {
+        "n": 33,
+        "rates": {
+          "第三方基金销售平台": 24.2,
+          "新闻、短视频或其他网络内容": 12.1,
+          "基金公司 APP、网站或公众号": 15.2,
+          "公司或单位宣传": 3.0,
+          "自己搜索发现": 6.1,
+          "银行或客户经理": 18.2,
+          "亲友介绍": 12.1,
+          "其他": 9.1,
+          "记不清": 0.0
+        }
+      },
+      "30—39 岁": {
+        "n": 63,
+        "rates": {
+          "第三方基金销售平台": 22.2,
+          "新闻、短视频或其他网络内容": 17.5,
+          "基金公司 APP、网站或公众号": 9.5,
+          "公司或单位宣传": 6.3,
+          "自己搜索发现": 6.3,
+          "银行或客户经理": 22.2,
+          "亲友介绍": 14.3,
+          "其他": 1.6,
+          "记不清": 0.0
+        }
+      },
+      "40—49 岁": {
+        "n": 70,
+        "rates": {
+          "第三方基金销售平台": 12.9,
+          "新闻、短视频或其他网络内容": 17.1,
+          "基金公司 APP、网站或公众号": 12.9,
+          "公司或单位宣传": 2.9,
+          "自己搜索发现": 14.3,
+          "银行或客户经理": 17.1,
+          "亲友介绍": 18.6,
+          "其他": 2.9,
+          "记不清": 1.4
+        }
+      },
+      "50—59 岁": {
+        "n": 34,
+        "rates": {
+          "第三方基金销售平台": 17.6,
+          "新闻、短视频或其他网络内容": 20.6,
+          "基金公司 APP、网站或公众号": 14.7,
+          "公司或单位宣传": 8.8,
+          "自己搜索发现": 11.8,
+          "银行或客户经理": 14.7,
+          "亲友介绍": 2.9,
+          "其他": 8.8,
+          "记不清": 0.0
+        }
+      }
+    },
+    "Q5_decision_role": {
+      "18—29 岁": {
+        "n": 33,
+        "rates": {
+          "我与家人共同决定": 15.2,
+          "我与客户经理或专业人员共同决定": 15.2,
+          "主要由我自己决定": 42.4,
+          "主要听取客户经理或专业人员建议": 18.2,
+          "主要听取亲友建议": 6.1,
+          "其他": 3.0
+        }
+      },
+      "30—39 岁": {
+        "n": 63,
+        "rates": {
+          "我与家人共同决定": 19.0,
+          "我与客户经理或专业人员共同决定": 23.8,
+          "主要由我自己决定": 28.6,
+          "主要听取客户经理或专业人员建议": 19.0,
+          "主要听取亲友建议": 7.9,
+          "其他": 1.6
+        }
+      },
+      "40—49 岁": {
+        "n": 70,
+        "rates": {
+          "我与家人共同决定": 21.4,
+          "我与客户经理或专业人员共同决定": 11.4,
+          "主要由我自己决定": 35.7,
+          "主要听取客户经理或专业人员建议": 20.0,
+          "主要听取亲友建议": 8.6,
+          "其他": 2.9
+        }
+      },
+      "50—59 岁": {
+        "n": 34,
+        "rates": {
+          "我与家人共同决定": 20.6,
+          "我与客户经理或专业人员共同决定": 11.8,
+          "主要由我自己决定": 32.4,
+          "主要听取客户经理或专业人员建议": 14.7,
+          "主要听取亲友建议": 14.7,
+          "其他": 5.9
+        }
+      }
+    },
+    "Q26_information_need": {
+      "18—29 岁": {
+        "n": 33,
+        "rates": {
+          "持有、追加和赎回规则": 12.1,
+          "目标日期型和目标风险型的简单区别": 30.3,
+          "未来配置会怎样变化，也就是下滑曲线": 30.3,
+          "与其他基金或养老产品的差别": 12.1,
+          "为什么要调整资产配置": 18.2,
+          "Y 份额的费率和个人养老金账户规则": 9.1,
+          "怎样根据退休年份或风险类型选择": 33.3,
+          "市场下跌时怎样理解产品表现": 15.2,
+          "当前资产配置和风险水平": 18.2,
+          "目前不需要更多信息": 0.0
+        }
+      },
+      "30—39 岁": {
+        "n": 63,
+        "rates": {
+          "持有、追加和赎回规则": 17.5,
+          "目标日期型和目标风险型的简单区别": 19.0,
+          "未来配置会怎样变化，也就是下滑曲线": 33.3,
+          "与其他基金或养老产品的差别": 17.5,
+          "为什么要调整资产配置": 27.0,
+          "Y 份额的费率和个人养老金账户规则": 12.7,
+          "怎样根据退休年份或风险类型选择": 19.0,
+          "市场下跌时怎样理解产品表现": 22.2,
+          "当前资产配置和风险水平": 30.2,
+          "目前不需要更多信息": 0.0
+        }
+      },
+      "40—49 岁": {
+        "n": 70,
+        "rates": {
+          "持有、追加和赎回规则": 11.4,
+          "目标日期型和目标风险型的简单区别": 11.4,
+          "未来配置会怎样变化，也就是下滑曲线": 37.1,
+          "与其他基金或养老产品的差别": 20.0,
+          "为什么要调整资产配置": 15.7,
+          "Y 份额的费率和个人养老金账户规则": 20.0,
+          "怎样根据退休年份或风险类型选择": 31.4,
+          "市场下跌时怎样理解产品表现": 24.3,
+          "当前资产配置和风险水平": 25.7,
+          "目前不需要更多信息": 1.4
+        }
+      },
+      "50—59 岁": {
+        "n": 34,
+        "rates": {
+          "持有、追加和赎回规则": 20.6,
+          "目标日期型和目标风险型的简单区别": 17.6,
+          "未来配置会怎样变化，也就是下滑曲线": 14.7,
+          "与其他基金或养老产品的差别": 26.5,
+          "为什么要调整资产配置": 20.6,
+          "Y 份额的费率和个人养老金账户规则": 26.5,
+          "怎样根据退休年份或风险类型选择": 17.6,
+          "市场下跌时怎样理解产品表现": 11.8,
+          "当前资产配置和风险水平": 26.5,
+          "目前不需要更多信息": 0.0
+        }
+      }
+    },
+    "Q27_preferred_format": {
+      "18—29 岁": {
+        "n": 33,
+        "rates": {
+          "简单的下滑曲线图": 21.2,
+          "一句话说明": 15.2,
+          "资产配置表": 18.2,
+          "可以自行搜索的知识库": 6.1,
+          "结合年龄或退休年份举例": 33.3,
+          "常见问题与回答": 24.2,
+          "1-3 分钟短视频": 42.4,
+          "其他": 0.0
+        }
+      },
+      "30—39 岁": {
+        "n": 63,
+        "rates": {
+          "简单的下滑曲线图": 20.6,
+          "一句话说明": 23.8,
+          "资产配置表": 20.6,
+          "可以自行搜索的知识库": 6.3,
+          "结合年龄或退休年份举例": 28.6,
+          "常见问题与回答": 19.0,
+          "1-3 分钟短视频": 28.6,
+          "其他": 6.3
+        }
+      },
+      "40—49 岁": {
+        "n": 70,
+        "rates": {
+          "简单的下滑曲线图": 21.4,
+          "一句话说明": 25.7,
+          "资产配置表": 27.1,
+          "可以自行搜索的知识库": 10.0,
+          "结合年龄或退休年份举例": 24.3,
+          "常见问题与回答": 21.4,
+          "1-3 分钟短视频": 11.4,
+          "其他": 2.9
+        }
+      },
+      "50—59 岁": {
+        "n": 34,
+        "rates": {
+          "简单的下滑曲线图": 5.9,
+          "一句话说明": 29.4,
+          "资产配置表": 32.4,
+          "可以自行搜索的知识库": 11.8,
+          "结合年龄或退休年份举例": 41.2,
+          "常见问题与回答": 23.5,
+          "1-3 分钟短视频": 5.9,
+          "其他": 2.9
+        }
+      }
+    },
+    "Q28_information_timing": {
+      "18—29 岁": {
+        "n": 33,
+        "rates": {
+          "第一次了解产品时": 33.3,
+          "购买后定期收到": 24.2,
+          "购买页面上": 12.1,
+          "基金调整资产配置时": 24.2,
+          "市场波动较大时": 21.2,
+          "自己需要时再搜索": 21.2,
+          "其他": 6.1
+        }
+      },
+      "30—39 岁": {
+        "n": 63,
+        "rates": {
+          "第一次了解产品时": 31.7,
+          "购买后定期收到": 14.3,
+          "购买页面上": 28.6,
+          "基金调整资产配置时": 28.6,
+          "市场波动较大时": 28.6,
+          "自己需要时再搜索": 23.8,
+          "其他": 0.0
+        }
+      },
+      "40—49 岁": {
+        "n": 70,
+        "rates": {
+          "第一次了解产品时": 31.4,
+          "购买后定期收到": 20.0,
+          "购买页面上": 21.4,
+          "基金调整资产配置时": 28.6,
+          "市场波动较大时": 25.7,
+          "自己需要时再搜索": 15.7,
+          "其他": 1.4
+        }
+      },
+      "50—59 岁": {
+        "n": 34,
+        "rates": {
+          "第一次了解产品时": 29.4,
+          "购买后定期收到": 23.5,
+          "购买页面上": 29.4,
+          "基金调整资产配置时": 20.6,
+          "市场波动较大时": 17.6,
+          "自己需要时再搜索": 20.6,
+          "其他": 0.0
+        }
+      }
+    }
+  },
+  "open_question": {
+    "answered_n": 39,
+    "themes": [
+      {
+        "theme": "退休时间变化与产品匹配",
+        "count": 10,
+        "percent_of_open_answers": 25.6,
+        "example_text": "如果提前退休，对基金有什么影响？"
+      },
+      {
+        "theme": "波动原因与稳定性预期",
+        "count": 7,
+        "percent_of_open_answers": 17.9,
+        "example_text": "为什么有的年份涨有的年份跌，能不能更稳定一些？"
+      },
+      {
+        "theme": "与普通混合基金的区别",
+        "count": 5,
+        "percent_of_open_answers": 12.8,
+        "example_text": "养老目标基金和普通的混合基金到底有什么区别？"
+      },
+      {
+        "theme": "到达目标日期后的安排",
+        "count": 4,
+        "percent_of_open_answers": 10.3,
+        "example_text": "目标日期到了以后，基金会自动转成什么？"
+      },
+      {
+        "theme": "策略执行与信息透明",
+        "count": 4,
+        "percent_of_open_answers": 10.3,
+        "example_text": "怎样才能知道基金经理有没有按承诺的策略来操作？"
+      },
+      {
+        "theme": "Y 份额与 A/C 份额区别",
+        "count": 3,
+        "percent_of_open_answers": 7.7,
+        "example_text": "Y份额和普通A/C份额到底哪个更划算？"
+      },
+      {
+        "theme": "下滑曲线与收益波动关系",
+        "count": 3,
+        "percent_of_open_answers": 7.7,
+        "example_text": "下滑曲线调整后，我的收益会受多大影响？"
+      },
+      {
+        "theme": "赎回时点困惑",
+        "count": 3,
+        "percent_of_open_answers": 7.7,
+        "example_text": "到底什么时候该赎回？"
+      }
+    ],
+    "repetition_note": "开放回答出现完全相同表述的重复记录；仅作轻量主题计数，不作为逐字引语或独立真实性证明。"
+  },
+  "hypothesis_assessment": [
+    {
+      "hypothesis_id": "HYP-001",
+      "status": "SUPPORTED",
+      "evidence": "Q17/Q18 同时答对 79/200（39.5%）；单题正确率分别为 60.0% 和 61.5%。",
+      "boundary": "知识题正确率只描述本次样本，不等于全部购买者认知水平。"
+    },
+    {
+      "hypothesis_id": "HYP-002",
+      "status": "PARTIALLY_SUPPORTED_WITH_CONTRADICTION",
+      "evidence": "购买前主动把下滑曲线纳入比较仅 7/200（3.5%），但直接询问时有 102/200（51.0%）称其影响过决策。",
+      "boundary": "不同题目提示强度和回忆方式不同，不能合并为单一使用率。"
+    },
+    {
+      "hypothesis_id": "HYP-003",
+      "status": "NOT_SUPPORTED_FOR_ACTIVE_COMPARISON",
+      "evidence": "主动比较中，退休年份 43.5%、风险类型 40.0%，均高于历史业绩 37.5%；最终最重要因素也是风险类型居首（20.5%）。",
+      "boundary": "购买触发仍更多出现品牌/团队（31.5%）、费率/Y 份额（26.0%）和历史表现（25.5%），说明触发与最终判断并非同一层。"
+    },
+    {
+      "hypothesis_id": "HYP-004",
+      "status": "SUPPORTED",
+      "evidence": "持有期不确定性前三为未来配置变化 27.5%、当前风险 26.0%、配置调整原因 22.5%；最希望补充的内容首位是下滑曲线（31.0%）。",
+      "boundary": "多选比例描述需求频次，不代表内容有效性或业务优先级已经获批。"
+    }
+  ],
+  "report_findings": [
+    {
+      "finding_id": "FINDING-OTF-001",
+      "headline": "购买经历并未转化为稳定的产品类型与风险边界理解",
+      "evidence": [
+        "目标日期与目标风险两题均答对 79/200（39.5%）。",
+        "四道知识题全部答对 40/200（20.0%）。",
+        "购买前信息清晰度中位数为 3，给 4-5 分者 58/200（29.0%）。"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "finding_id": "FINDING-OTF-002",
+      "headline": "下滑曲线在主动比较中弱，但直接提示后自报使用并不低",
+      "evidence": [
+        "购买前主动比较下滑曲线 7/200（3.5%）。",
+        "直接询问时，自报曾影响购买、类型或持有决策 102/200（51.0%）。",
+        "持有期从未查看或想看但找不到入口共 119/200（59.5%）。"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "finding_id": "FINDING-OTF-003",
+      "headline": "购买触发与最终判断依据分成两层",
+      "evidence": [
+        "购买触发前三为品牌/团队 31.5%、费率/Y 份额 26.0%、历史表现 25.5%。",
+        "主动比较前三为退休年份 43.5%、风险类型 40.0%、历史表现 37.5%。",
+        "最终最重要因素首位为风险类型 41/200（20.5%）。"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "finding_id": "FINDING-OTF-004",
+      "headline": "持有期的信息缺口集中在当前风险、未来配置和调整原因",
+      "evidence": [
+        "未来配置变化 55/200（27.5%）。",
+        "当前承担风险 52/200（26.0%）。",
+        "为什么调整配置 45/200（22.5%）。"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "finding_id": "FINDING-OTF-005",
+      "headline": "投教更适合从具体情境和可视化解释切入",
+      "evidence": [
+        "形式偏好前三为结合年龄/退休年份举例 30.0%、资产配置表 24.5%、一句话说明 24.0%。",
+        "触达时点前三为首次了解产品 31.5%、调整资产配置时 26.5%、市场波动较大时 24.5%。",
+        "自行搜索知识库被选择 17/200（8.5%）。"
+      ],
+      "confidence": "MEDIUM"
+    }
+  ],
+  "report_insights": [
+    {
+      "insight_id": "INSIGHT-OTF-001",
+      "statement": "购买者对养老目标基金存在“知道一些、但关键边界不稳定”的中间状态；单纯增加术语曝光不足以替代理解验证。",
+      "source_finding_ids": [
+        "FINDING-OTF-001",
+        "FINDING-OTF-002"
+      ],
+      "alternative_explanations": [
+        "知识题本身的难度和题干理解会影响正确率。",
+        "本次样本来源未知，不能代表市场总体。"
+      ]
+    },
+    {
+      "insight_id": "INSIGHT-OTF-002",
+      "statement": "吸引购买的入口信息与支撑最终判断的信息不同：品牌、费率和历史表现更像触发器，风险类型和退休年份更接近主动判断标准。",
+      "source_finding_ids": [
+        "FINDING-OTF-003"
+      ],
+      "alternative_explanations": [
+        "回忆偏差可能使回答者用当前理解重构过去决策。",
+        "多选触发与单选最重要因素的题型不同。"
+      ]
+    },
+    {
+      "insight_id": "INSIGHT-OTF-003",
+      "statement": "投教不应只发生在购买前；配置变化和市场波动是持有人重新理解产品机制的关键时点。",
+      "source_finding_ids": [
+        "FINDING-OTF-004",
+        "FINDING-OTF-005"
+      ],
+      "alternative_explanations": [
+        "表达偏好不等于真实理解提升。",
+        "未测试具体材料，无法判断不同形式的实际效果。"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendation_id": "REC-OTF-001",
+      "recommendation_domain": "PRODUCT_OR_SERVICE",
+      "statement": "在购买说明中采用“先判断类型与匹配逻辑—再看当前配置与未来变化—最后明确风险边界”的三层信息顺序。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-001",
+        "INSIGHT-OTF-002"
+      ],
+      "priority": "HIGH",
+      "validation": "以改版前后同口径知识题比较理解结果，并记录阅读负担。"
+    },
+    {
+      "recommendation_id": "REC-OTF-002",
+      "recommendation_domain": "PRODUCT_OR_SERVICE",
+      "statement": "在持有页面提供可找到的当前配置、未来配置变化和调整原因说明，并在市场波动或配置调整时主动提示查看。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-003"
+      ],
+      "priority": "HIGH",
+      "validation": "先做小范围可用性测试，确认用户能找到并正确解释信息，再评估长期使用。"
+    },
+    {
+      "recommendation_id": "REC-OTF-003",
+      "recommendation_domain": "INVESTOR_EDUCATION",
+      "statement": "投教优先解释目标日期/目标风险的选择逻辑、下滑曲线、当前风险与市场波动边界，采用年龄/退休年份示例、资产配置表和简短问答组合。",
+      "source_insight_ids": [
+        "INSIGHT-OTF-001",
+        "INSIGHT-OTF-003"
+      ],
+      "priority": "HIGH",
+      "investor_education_design": {
+        "target_learning_need": "区分产品类型，理解下滑曲线、当前风险、配置变化和非保本边界。",
+        "audience_scope": "本项目中知识题未全部答对、未查看配置路径或主动表达相关信息需求的购买者类型；不形成正式客户标签。",
+        "content_focus": [
+          "目标日期型与目标风险型的选择逻辑",
+          "下滑曲线表示配置路径而非收益路径",
+          "降低高波动资产比例不等于本金或收益保证",
+          "当前资产配置、未来变化及调整原因"
+        ],
+        "recommended_moments": [
+          "首次了解产品和购买页面",
+          "基金调整资产配置时",
+          "市场波动较大时"
+        ],
+        "recommended_formats": [
+          "结合年龄或退休年份的例子",
+          "资产配置表和简单下滑曲线图",
+          "一句话说明与常见问题回答",
+          "IMA 等知识库作为次级自助入口"
+        ],
+        "guardrails": [
+          "不承诺收益或本金安全",
+          "不推荐具体产品或赎回时点",
+          "不把内容偏好、点击或阅读意愿当作理解效果"
+        ],
+        "effectiveness_validation": "使用教育前后同口径理解题或材料版本对比，验证是否减少误解；不能只看点击率。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1007 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/insight-package.schema.json",
+  "title": "InsightPackage Schema",
+  "description": "保存从原始资料到证据单元、研究发现、洞察和建议的完整可追溯分析链。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "research_brief_ref",
+    "research_plan_ref",
+    "fieldwork_package_refs",
+    "analysis_scope",
+    "codebook",
+    "analysis_log",
+    "evidence_units",
+    "findings",
+    "insights",
+    "recommendations",
+    "candidate_segments",
+    "candidate_tags",
+    "learning_resource_recommendations",
+    "unanswered_questions",
+    "limitations",
+    "ai_usage",
+    "quality_summary"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_metadata"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "InsightPackage"
+            }
+          }
+        }
+      ]
+    },
+    "research_brief_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ResearchBrief"
+            }
+          }
+        }
+      ]
+    },
+    "research_plan_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ResearchPlan"
+            }
+          }
+        }
+      ]
+    },
+    "fieldwork_package_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          {
+            "properties": {
+              "artifact_type": {
+                "const": "FieldworkPackage"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "analysis_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "included_source_ids",
+        "excluded_source_ids",
+        "included_method_ids",
+        "sample_scope",
+        "analysis_started_at",
+        "analysis_completed_at"
+      ],
+      "properties": {
+        "included_source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "excluded_source_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "included_method_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "sample_scope": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "analysis_started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "analysis_completed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "codebook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "approach",
+        "codes",
+        "revision_notes"
+      ],
+      "properties": {
+        "version": {
+          "$ref": "common.schema.json#/$defs/semantic_version"
+        },
+        "approach": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code_id",
+              "label",
+              "definition",
+              "include_when",
+              "exclude_when",
+              "research_question_ids"
+            ],
+            "properties": {
+              "code_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "definition": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "include_when": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "exclude_when": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "research_question_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/identifier"
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        "revision_notes": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        }
+      }
+    },
+    "analysis_log": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step_id",
+          "performed_at",
+          "performed_by",
+          "method",
+          "input_refs",
+          "output_ids",
+          "parameters_or_rules",
+          "notes"
+        ],
+        "properties": {
+          "step_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "performed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "performed_by": {
+            "$ref": "common.schema.json#/$defs/actor"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "EXTRACTION",
+              "CODING",
+              "STATISTICAL_SUMMARY",
+              "COMPARISON",
+              "SYNTHESIS",
+              "HUMAN_REVIEW",
+              "OTHER"
+            ]
+          },
+          "input_refs": {
+            "$ref": "common.schema.json#/$defs/string_list"
+          },
+          "output_ids": {
+            "$ref": "common.schema.json#/$defs/id_list"
+          },
+          "parameters_or_rules": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidence_units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/evidence_unit"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "insights": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/insight"
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recommendation"
+      }
+    },
+    "candidate_segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "segment_id",
+          "label",
+          "definition",
+          "evidence_ids",
+          "applicable_scope",
+          "size_claim",
+          "official_customer_tag_status"
+        ],
+        "properties": {
+          "segment_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "definition": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "applicable_scope": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "size_claim": {
+            "description": "定性或非概率样本不得估计总体规模。",
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "official_customer_tag_status": {
+            "const": "NOT_CREATED"
+          }
+        }
+      }
+    },
+    "candidate_tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "tag_id",
+          "label",
+          "definition",
+          "evidence_ids",
+          "validation_needed",
+          "official_customer_tag_status"
+        ],
+        "properties": {
+          "tag_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "definition": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "validation_needed": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "official_customer_tag_status": {
+            "const": "NOT_CREATED"
+          }
+        }
+      }
+    },
+    "learning_resource_recommendations": {
+      "description": "把研究发现连接到可选学习资源；资源本身不是证据。",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "resource_id",
+          "recommendation_ids",
+          "target_learning_need",
+          "recommended_context",
+          "evidence_use"
+        ],
+        "properties": {
+          "resource_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "recommendation_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "common.schema.json#/$defs/identifier"
+            },
+            "uniqueItems": true
+          },
+          "target_learning_need": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "recommended_context": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "evidence_use": {
+            "const": "NOT_RESEARCH_EVIDENCE"
+          }
+        }
+      }
+    },
+    "unanswered_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_id",
+          "statement",
+          "why_unanswered",
+          "suggested_next_method"
+        ],
+        "properties": {
+          "question_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "statement": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "why_unanswered": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "suggested_next_method": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/non_empty_string"
+      }
+    },
+    "ai_usage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task",
+          "model_id",
+          "capability_version",
+          "input_scope",
+          "output_scope",
+          "human_review_status"
+        ],
+        "properties": {
+          "task": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "model_id": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "capability_version": {
+            "$ref": "common.schema.json#/$defs/semantic_version"
+          },
+          "input_scope": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "output_scope": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "human_review_status": {
+            "type": "string",
+            "enum": [
+              "NOT_REVIEWED",
+              "PARTIALLY_REVIEWED",
+              "FULLY_REVIEWED"
+            ]
+          }
+        }
+      }
+    },
+    "quality_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "traceability_complete",
+        "negative_cases_reviewed",
+        "sample_scope_declared",
+        "quantitative_denominators_complete",
+        "quotes_source_located",
+        "candidate_tags_not_promoted",
+        "review_notes"
+      ],
+      "properties": {
+        "traceability_complete": {
+          "type": "boolean"
+        },
+        "negative_cases_reviewed": {
+          "type": "boolean"
+        },
+        "sample_scope_declared": {
+          "type": "boolean"
+        },
+        "quantitative_denominators_complete": {
+          "type": "boolean"
+        },
+        "quotes_source_located": {
+          "type": "boolean"
+        },
+        "candidate_tags_not_promoted": {
+          "type": "boolean"
+        },
+        "review_notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidence_unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "evidence_type",
+        "source_id",
+        "source_locator",
+        "participant_or_record_id",
+        "exact_content_or_value",
+        "extraction_method",
+        "extracted_by",
+        "human_verified",
+        "research_question_ids",
+        "hypothesis_ids",
+        "context"
+      ],
+      "properties": {
+        "evidence_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "evidence_type": {
+          "type": "string",
+          "enum": [
+            "QUOTE",
+            "SURVEY_RESPONSE",
+            "STATISTIC",
+            "OBSERVATION",
+            "BEHAVIORAL_EVENT"
+          ]
+        },
+        "source_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "source_locator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scheme",
+            "value"
+          ],
+          "properties": {
+            "scheme": {
+              "type": "string",
+              "enum": [
+                "TIMESTAMP",
+                "LINE_RANGE",
+                "PARAGRAPH_ID",
+                "ROW_AND_ITEM_ID",
+                "EVENT_ID",
+                "OTHER"
+              ]
+            },
+            "value": {
+              "$ref": "common.schema.json#/$defs/non_empty_string"
+            }
+          }
+        },
+        "participant_or_record_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "exact_content_or_value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "object",
+            "array"
+          ]
+        },
+        "extraction_method": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "extracted_by": {
+          "$ref": "common.schema.json#/$defs/actor"
+        },
+        "human_verified": {
+          "type": "boolean"
+        },
+        "research_question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "hypothesis_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "code_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "quote_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "original_language",
+            "is_verbatim",
+            "transcription_clarity"
+          ],
+          "properties": {
+            "original_language": {
+              "$ref": "common.schema.json#/$defs/non_empty_string"
+            },
+            "is_verbatim": {
+              "const": true
+            },
+            "transcription_clarity": {
+              "type": "string",
+              "enum": [
+                "CLEAR",
+                "PARTLY_UNCLEAR",
+                "UNCLEAR"
+              ]
+            },
+            "translation": {
+              "type": "string"
+            }
+          }
+        },
+        "quantitative_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "metric",
+            "numerator",
+            "denominator",
+            "item_ids",
+            "filter_conditions",
+            "missing_value_handling"
+          ],
+          "properties": {
+            "metric": {
+              "$ref": "common.schema.json#/$defs/non_empty_string"
+            },
+            "numerator": {
+              "type": "number"
+            },
+            "denominator": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "item_ids": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "uniqueItems": true
+            },
+            "filter_conditions": {
+              "$ref": "common.schema.json#/$defs/non_empty_string"
+            },
+            "missing_value_handling": {
+              "$ref": "common.schema.json#/$defs/non_empty_string"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evidence_type": {
+                "const": "QUOTE"
+              }
+            },
+            "required": [
+              "evidence_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "quote_context"
+            ],
+            "properties": {
+              "exact_content_or_value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_type": {
+                "const": "STATISTIC"
+              }
+            },
+            "required": [
+              "evidence_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "quantitative_context"
+            ]
+          }
+        }
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "statement",
+        "research_question_ids",
+        "method_ids",
+        "supporting_evidence_ids",
+        "negative_case_evidence_ids",
+        "sample_scope",
+        "conditions",
+        "confidence",
+        "importance",
+        "importance_rationale",
+        "limitations"
+      ],
+      "properties": {
+        "finding_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "statement": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "research_question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "method_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "supporting_evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "negative_case_evidence_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "sample_scope": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "conditions": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "importance": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "importance_rationale": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "limitations": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        }
+      }
+    },
+    "insight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "insight_id",
+        "statement",
+        "source_finding_ids",
+        "reasoning",
+        "alternative_explanations",
+        "decision_relevance",
+        "applicable_scope",
+        "confidence"
+      ],
+      "properties": {
+        "insight_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "statement": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "source_finding_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "reasoning": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "alternative_explanations": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "decision_relevance": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "applicable_scope": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_id",
+        "recommendation_domain",
+        "statement",
+        "source_insight_ids",
+        "expected_effect",
+        "risks",
+        "assumptions",
+        "validation_needed",
+        "owner_suggestion",
+        "suggested_priority",
+        "business_decision_status"
+      ],
+      "properties": {
+        "recommendation_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "recommendation_domain": {
+          "description": "建议主要服务的行动领域；投资者教育建议必须额外填写 investor_education_design。",
+          "type": "string",
+          "enum": [
+            "PRODUCT_OR_SERVICE",
+            "INVESTOR_EDUCATION",
+            "RESEARCH_FOLLOW_UP",
+            "PROCESS_OR_OPERATIONS"
+          ]
+        },
+        "statement": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "source_insight_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "expected_effect": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "risks": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "assumptions": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "validation_needed": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "owner_suggestion": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "suggested_priority": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "related_learning_resource_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "investor_education_design": {
+          "$ref": "#/$defs/investor_education_design"
+        },
+        "business_decision_status": {
+          "const": "NOT_DECIDED"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "recommendation_domain": {
+                "const": "INVESTOR_EDUCATION"
+              }
+            },
+            "required": [
+              "recommendation_domain"
+            ]
+          },
+          "then": {
+            "required": [
+              "investor_education_design"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "investor_education_design"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "investor_education_design": {
+      "description": "由研究证据支持的投资者教育行动设计，不是个性化投资建议、产品推介或已批准业务方案。",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_learning_need",
+        "audience_scope",
+        "content_focus",
+        "recommended_moments",
+        "recommended_formats",
+        "guardrails",
+        "effectiveness_validation",
+        "evidence_boundary"
+      ],
+      "properties": {
+        "target_learning_need": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "audience_scope": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "content_focus": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "recommended_moments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "recommended_formats": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "guardrails": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "effectiveness_validation": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "evidence_boundary": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    }
+  }
+}

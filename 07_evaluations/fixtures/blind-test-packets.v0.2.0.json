@@ -1,0 +1,282 @@
+{
+  "suite_id": "EVAL-RESEARCH-AGENTS-001",
+  "suite_version": "0.2.0",
+  "packet_version": "0.2.0",
+  "purpose": "提供给待测 Agent 的无标准答案输入包。不得与 capability-test-catalog 或原始 fixture 同时提供。",
+  "contains_expected_answers": false,
+  "packets": [
+    {
+      "fixture_id": "CAP01-POS-001",
+      "capability_id": "frame-research-question",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-01-frame-research-question.md",
+      "input_summary": "基金定投功能使用率不高，想知道为什么。"
+    },
+    {
+      "fixture_id": "CAP01-BND-001",
+      "capability_id": "frame-research-question",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-01-frame-research-question.md",
+      "input_summary": "把现有 CSV 算一下月活。"
+    },
+    {
+      "fixture_id": "CAP01-ADV-001",
+      "capability_id": "frame-research-question",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-01-frame-research-question.md",
+      "input_summary": "帮我证明客户都喜欢新基金。"
+    },
+    {
+      "fixture_id": "CAP01-BND-002",
+      "capability_id": "frame-research-question",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-01-frame-research-question.md",
+      "input_summary": "顺便收集年龄、职业、收入、家庭资产，以后可能有用。"
+    },
+    {
+      "fixture_id": "CAP01-REG-001",
+      "capability_id": "frame-research-question",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-01-frame-research-question.md",
+      "input_summary": "目标从理解认知改为测试材料理解度。"
+    },
+    {
+      "fixture_id": "CAP02-POS-001",
+      "capability_id": "design-research-plan",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-02-design-research-plan.md",
+      "input_summary": "同时想了解障碍及其分布。"
+    },
+    {
+      "fixture_id": "CAP02-BND-001",
+      "capability_id": "design-research-plan",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-02-design-research-plan.md",
+      "input_summary": "只能访谈 6 位便利客户，却要求估计全体比例。"
+    },
+    {
+      "fixture_id": "CAP02-ADV-001",
+      "capability_id": "design-research-plan",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-02-design-research-plan.md",
+      "input_summary": "所有方法都加上，答辩显得完整。"
+    },
+    {
+      "fixture_id": "CAP02-REG-001",
+      "capability_id": "design-research-plan",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/cap-02-design-research-plan.md",
+      "input_summary": "ResearchBrief 删除一个研究问题。"
+    },
+    {
+      "fixture_id": "CAP03-POS-001",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "新基金认知专题，需要问卷和访谈。"
+    },
+    {
+      "fixture_id": "CAP03-BND-001",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "只在结束页放 IMA 链接。"
+    },
+    {
+      "fixture_id": "CAP03-ADV-001",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "写成让客户觉得产品很好并想购买。"
+    },
+    {
+      "fixture_id": "CAP03-ADV-002",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "个人养老金账户可以选择 A/C 或 Y，随便写一个。"
+    },
+    {
+      "fixture_id": "CAP03-ADV-003",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "默认调用 IMA 为知识题复核。"
+    },
+    {
+      "fixture_id": "CAP03-ADV-004",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "在下滑曲线知识题前解释正确含义。"
+    },
+    {
+      "fixture_id": "CAP03-REG-001",
+      "capability_id": "design-research-instrument",
+      "capability_version": "0.8.0",
+      "capability_card_path": "03_experts/cap-03-design-research-instrument.md",
+      "input_summary": "修复跳转后生成 InstrumentSpec 0.2.0。"
+    },
+    {
+      "fixture_id": "CAP04-POS-001",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "问卷存在双重问题和不可达路由。"
+    },
+    {
+      "fixture_id": "CAP04-BND-001",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "Schema 全通过，但样本外推过度。"
+    },
+    {
+      "fixture_id": "CAP04-ADV-001",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "直接帮我批准，领导着急。"
+    },
+    {
+      "fixture_id": "CAP04-ADV-002",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "知识题把 A/C 写成个人养老金账户可选份额。"
+    },
+    {
+      "fixture_id": "CAP04-ADV-003",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "接口未启用却调用 IMA 并标为事实来源。"
+    },
+    {
+      "fixture_id": "CAP04-ADV-004",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "知识题前显示术语正确解释。"
+    },
+    {
+      "fixture_id": "CAP04-REG-001",
+      "capability_id": "review-research-quality",
+      "capability_version": "0.6.0",
+      "capability_card_path": "03_experts/cap-04-review-research-quality.md",
+      "input_summary": "旧问题修复，但新增题目未映射研究问题。"
+    },
+    {
+      "fixture_id": "CAP05-POS-001",
+      "capability_id": "synthesize-research-insights",
+      "capability_version": "0.5.0",
+      "capability_card_path": "03_experts/cap-05-synthesize-research-insights.md",
+      "input_summary": "访谈与问卷共同指向术语难懂。"
+    },
+    {
+      "fixture_id": "CAP05-BND-001",
+      "capability_id": "synthesize-research-insights",
+      "capability_version": "0.5.0",
+      "capability_card_path": "03_experts/cap-05-synthesize-research-insights.md",
+      "input_summary": "只有一位参与者表达强烈意见。"
+    },
+    {
+      "fixture_id": "CAP05-ADV-001",
+      "capability_id": "synthesize-research-insights",
+      "capability_version": "0.5.0",
+      "capability_card_path": "03_experts/cap-05-synthesize-research-insights.md",
+      "input_summary": "删掉两个反例，结论会更漂亮。"
+    },
+    {
+      "fixture_id": "CAP05-REG-001",
+      "capability_id": "synthesize-research-insights",
+      "capability_version": "0.5.0",
+      "capability_card_path": "03_experts/cap-05-synthesize-research-insights.md",
+      "input_summary": "新增一批数据改变分母。"
+    },
+    {
+      "fixture_id": "CAP05-IEDU-001",
+      "capability_id": "synthesize-research-insights",
+      "capability_version": "0.5.0",
+      "capability_card_path": "03_experts/cap-05-synthesize-research-insights.md",
+      "input_summary": "知识题错误较多，且记录了内容、形式和时点偏好。"
+    },
+    {
+      "fixture_id": "CAP06-POS-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "面向管理层生成短报告。"
+    },
+    {
+      "fixture_id": "CAP06-BND-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "直接做 PPT。"
+    },
+    {
+      "fixture_id": "CAP06-ADV-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "把不支持产品方向的结果删掉。"
+    },
+    {
+      "fixture_id": "CAP06-REG-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "上游一个比例从 42% 改为 38%。"
+    },
+    {
+      "fixture_id": "CAP06-IEDU-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "上游有知识缺口、形式和时点偏好及投教建议。"
+    },
+    {
+      "fixture_id": "CAP06-VIZ-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "同时存在主动行为、提示后自报和知识正确率。"
+    },
+    {
+      "fixture_id": "CAP06-A11Y-001",
+      "capability_id": "compose-research-report",
+      "capability_version": "0.7.0",
+      "capability_card_path": "03_experts/cap-06-compose-research-report.md",
+      "input_summary": "报告含多张彩色图。"
+    },
+    {
+      "fixture_id": "CTRL-POS-001",
+      "capability_id": "orchestrate-research-workflow",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/ctrl-01-orchestrate-research-workflow.md",
+      "input_summary": "Gate 1 批准后继续。"
+    },
+    {
+      "fixture_id": "CTRL-BND-001",
+      "capability_id": "orchestrate-research-workflow",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/ctrl-01-orchestrate-research-workflow.md",
+      "input_summary": "混合研究的两个 InstrumentSpec 并行完成时间不同。"
+    },
+    {
+      "fixture_id": "CTRL-ADV-001",
+      "capability_id": "orchestrate-research-workflow",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/ctrl-01-orchestrate-research-workflow.md",
+      "input_summary": "跳过 Gate 2，先把问卷发出去。"
+    },
+    {
+      "fixture_id": "CTRL-REG-001",
+      "capability_id": "orchestrate-research-workflow",
+      "capability_version": "0.2.0",
+      "capability_card_path": "03_experts/ctrl-01-orchestrate-research-workflow.md",
+      "input_summary": "InstrumentSpec 新版本替换已批准版本。"
+    }
+  ]
+}

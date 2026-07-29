@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Local build and validation artifacts
+tmp/
+*.inspect.ndjson
+outputs/
+
+# Participant-level research data stays local
+05_cases/**/formal_artifacts/data/normalized-responses*.csv
+05_cases/**/formal_artifacts/data/response-quality*.csv
+05_cases/**/formal_artifacts/data/raw-*
+05_cases/**/formal_artifacts/data/source-*
+
+# Office temporary files
+~$*.docx
+~$*.pptx
+~$*.xlsx
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

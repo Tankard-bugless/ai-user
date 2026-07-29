@@ -1,0 +1,450 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "RR-OTF-001",
+    "artifact_type": "ResearchReport",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者认知与持有行为洞察报告",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-27T12:18:12+08:00",
+    "updated_at": "2026-07-27T12:18:12+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-06",
+      "actor_type": "AGENT",
+      "role": "研究报告专家",
+      "model_id": "codex",
+      "capability_version": "0.4.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0",
+        "approval_id": "APR-OTF-G1-002"
+      },
+      {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "IP-OTF-001",
+        "artifact_type": "InsightPackage",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "把最终展示版 DOCX/PDF 登记为正式 ResearchReport 草稿；保留 Gate 3、Gate 4 未形成记录的真实边界。",
+    "extensions": {
+      "report.files": [
+        {
+          "format": "DOCX",
+          "uri": "../../../output/doc/%E5%85%BB%E8%80%81%E7%9B%AE%E6%A0%87%E5%9F%BA%E9%87%91%E8%B4%AD%E4%B9%B0%E8%80%85%E8%AE%A4%E7%9F%A5%E4%B8%8E%E6%8C%81%E6%9C%89%E8%A1%8C%E4%B8%BA%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A_%E5%B1%95%E7%A4%BA%E7%89%88.docx",
+          "sha256": "2672c9bff402e0d0070a6cdc318947e4e65b1c182378ad5140b9e26e76a327f0",
+          "size_bytes": 1214375
+        },
+        {
+          "format": "PDF",
+          "uri": "../../../output/doc/%E5%85%BB%E8%80%81%E7%9B%AE%E6%A0%87%E5%9F%BA%E9%87%91%E8%B4%AD%E4%B9%B0%E8%80%85%E8%AE%A4%E7%9F%A5%E4%B8%8E%E6%8C%81%E6%9C%89%E8%A1%8C%E4%B8%BA%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A_%E5%B1%95%E7%A4%BA%E7%89%88.pdf",
+          "sha256": "31e2dd01d08d721ba595b7fb7b61d78b55815ff371669fd4f13c1aaf58d4a8ae",
+          "size_bytes": 1523933
+        }
+      ],
+      "report.release_status": "INTERNAL_DRAFT_NO_GATE3_NO_GATE4"
+    }
+  },
+  "research_brief_ref": {
+    "artifact_id": "RB-OTF-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.2.0",
+    "approval_id": "APR-OTF-G1-002"
+  },
+  "research_plan_ref": {
+    "artifact_id": "RP-OTF-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.2.0"
+  },
+  "insight_package_ref": {
+    "artifact_id": "IP-OTF-001",
+    "artifact_type": "InsightPackage",
+    "artifact_version": "0.1.0"
+  },
+  "gate_3_governance_gap": {
+    "gate_id": "GATE_3",
+    "status": "NOT_RECORDED",
+    "reason": "该真实案例先于完整治理链落地运行，当时没有形成可验证的正式批准记录。",
+    "operational_effect": "最终展示版报告已制作并经多轮内容、逻辑和排版迭代，但没有形成证据审核 Gate 3 的正式 ApprovalRecord；ResearchReport 只能登记为 DRAFT。",
+    "required_next_action": "内部答辩可明确展示其历史状态；任何新的正式发布应由研究负责人、数据质量负责人和必要的金融事实/合规角色完成当前版本审核。",
+    "retrospective_approval_prohibited": true
+  },
+  "report_profile": {
+    "audiences": [
+      "内部管理者",
+      "产品与服务团队",
+      "投资者教育团队",
+      "用户研究团队"
+    ],
+    "purpose": "展示本次养老目标基金购买者调研的研究目的、关键判断、证据链、产品与投教建议，并作为 AI 辅助用户研究工作流的真实案例。",
+    "confidentiality": "INTERNAL",
+    "distribution_scope": "仅限内部答辩、复盘与决策讨论；未取得 Gate 4，不得作为外部正式研究结论发布。",
+    "report_date": "2026-07-27"
+  },
+  "executive_summary": {
+    "context": "本研究围绕已经购买过养老目标基金的人群，考察其购买路径、产品类型认知、下滑曲线理解、持有行为和信息需求，并补充投资者教育建议。",
+    "key_answers": [
+      {
+        "research_question_id": "RQ-001",
+        "answer": "购买触发更多出现品牌/团队、费率/Y 份额和历史表现；这些入口信息不等于最终判断依据。",
+        "confidence": "MEDIUM",
+        "finding_ids": [
+          "FINDING-OTF-003"
+        ]
+      },
+      {
+        "research_question_id": "RQ-002",
+        "answer": "购买经历未自动转化为稳定的产品类型理解；目标日期与目标风险两题均答对 79/200。",
+        "confidence": "MEDIUM",
+        "finding_ids": [
+          "FINDING-OTF-001"
+        ]
+      },
+      {
+        "research_question_id": "RQ-003",
+        "answer": "下滑曲线主动比较比例很低，但直接提示后的自报影响率较高，知晓、查看、使用和理解必须分开测量。",
+        "confidence": "MEDIUM",
+        "finding_ids": [
+          "FINDING-OTF-002"
+        ]
+      },
+      {
+        "research_question_id": "RQ-004",
+        "answer": "退休年份和风险类型更接近主动比较与最终判断标准，品牌、费率和历史表现更像购买入口触发。",
+        "confidence": "MEDIUM",
+        "finding_ids": [
+          "FINDING-OTF-003"
+        ]
+      },
+      {
+        "research_question_id": "RQ-005",
+        "answer": "持有期的主要信息缺口集中在当前风险、未来配置和配置调整原因，说明解释需求贯穿持有周期。",
+        "confidence": "MEDIUM",
+        "finding_ids": [
+          "FINDING-OTF-004"
+        ]
+      },
+      {
+        "research_question_id": "RQ-006",
+        "answer": "年龄/退休年份示例、资产配置表和简短说明更适合作为优先验证的表达形式；知识库是次级自助入口。",
+        "confidence": "MEDIUM",
+        "finding_ids": [
+          "FINDING-OTF-005"
+        ]
+      }
+    ],
+    "key_recommendation_ids": [
+      "REC-OTF-001",
+      "REC-OTF-002",
+      "REC-OTF-003"
+    ],
+    "limitation_summary": "样本来源与抽样框未知，100 份答卷保留未逐条人工解决的复核信号，且未形成 Gate 2、Gate 3、Gate 4 正式记录，因此结论只用于内部样本内判断。"
+  },
+  "methodology": {
+    "methods": [
+      "远程非主持结构化问卷",
+      "样本内描述统计",
+      "低时长记录敏感性比较",
+      "证据—发现—洞察—建议链式综合"
+    ],
+    "fieldwork_period": {
+      "started_on": "2026-07-24",
+      "completed_on": "2026-07-24"
+    },
+    "sample_completion": "回传 200 份完成答卷；历史工作分析纳入 200 份，其中 100 份存在正式复核信号。",
+    "exclusions": [
+      "无硬排除。",
+      "原始 CSV 的 IP、UA、地理位置和平台元数据不进入分析。"
+    ],
+    "analysis_approach": "按 InstrumentSpec 映射字段，修正已知互斥冲突与结构性缺失，生成知识题和分群指标；所有正式比例保留分子、分母和题目 ID，并对 12 份低时长记录进行敏感性比较。",
+    "ai_role": "AI 用于字段映射、质量信号生成、描述统计、可视化与报告草拟；没有替代人工审批、金融事实审核或业务决策。"
+  },
+  "finding_presentations": [
+    {
+      "finding_id": "FINDING-OTF-001",
+      "headline": "购买过，不等于已经理解",
+      "statement": "产品类型、下滑曲线与风险边界的综合理解仍不稳定。",
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {
+          "evidence_id": "EVID-OTF-001",
+          "display_text": "目标日期与目标风险两题均答对 79/200（39.5%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-002",
+          "display_text": "四道知识题全部答对 40/200（20.0%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-003",
+          "display_text": "购买前信息清晰度给 4—5 分 58/200（29.0%）"
+        }
+      ],
+      "negative_case_note": "本轮没有形成可定位的定性反例证据。",
+      "limitation_note": "知识题正确率受题目难度影响，不能外推市场总体。"
+    },
+    {
+      "finding_id": "FINDING-OTF-002",
+      "headline": "下滑曲线：主动比较弱，提示后自报不低",
+      "statement": "不同提示强度产生不同回答，不能合并为单一使用率。",
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {
+          "evidence_id": "EVID-OTF-004",
+          "display_text": "购买前主动比较 7/200（3.5%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-005",
+          "display_text": "提示后自报影响过决策 102/200（51.0%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-006",
+          "display_text": "持有期从未查看或想看但找不到 119/200（59.5%）"
+        }
+      ],
+      "negative_case_note": "提示后自报影响较高，是对“普遍不用”的重要矛盾证据。",
+      "limitation_note": "回忆性自报可能受直接提示影响。"
+    },
+    {
+      "finding_id": "FINDING-OTF-003",
+      "headline": "购买触发与最终判断分成两层",
+      "statement": "品牌、费率和历史表现更像入口，退休年份和风险类型更接近判断。",
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {
+          "evidence_id": "EVID-OTF-007",
+          "display_text": "购买触发：品牌/团队 63/200（31.5%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-010",
+          "display_text": "主动比较退休年份 87/200（43.5%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-013",
+          "display_text": "最终最重要因素首位为风险类型 41/200（20.5%）"
+        }
+      ],
+      "negative_case_note": "历史表现同时出现在触发和主动比较中，信息角色并非完全分离。",
+      "limitation_note": "多选触发和单选最重要因素不可直接比较绝对比例。"
+    },
+    {
+      "finding_id": "FINDING-OTF-004",
+      "headline": "持有期需要解释当前风险和未来变化",
+      "statement": "信息缺口集中在未来配置、当前风险与调整原因。",
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {
+          "evidence_id": "EVID-OTF-014",
+          "display_text": "未来资产配置变化 55/200（27.5%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-015",
+          "display_text": "现在承担的风险 52/200（26.0%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-016",
+          "display_text": "为什么调整配置 45/200（22.5%）"
+        }
+      ],
+      "negative_case_note": "“没有明显不确定”仅 3/200，但多选题设计可能强化需求表达。",
+      "limitation_note": "信息需求频次不等于改版优先级已经获批。"
+    },
+    {
+      "finding_id": "FINDING-OTF-005",
+      "headline": "投教应具体、可视，并覆盖关键持有时点",
+      "statement": "具体示例、配置表和简短解释优先于单纯知识库入口。",
+      "sample_scope": "历史工作分析纳入的 200 份答卷。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {
+          "evidence_id": "EVID-OTF-017",
+          "display_text": "年龄/退休年份示例 60/200（30.0%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-018",
+          "display_text": "资产配置表 49/200（24.5%）"
+        },
+        {
+          "evidence_id": "EVID-OTF-023",
+          "display_text": "可自行搜索的知识库 17/200（8.5%）"
+        }
+      ],
+      "negative_case_note": "知识库偏好较低，支持把 IMA 保留为次级自助入口而非主线。",
+      "limitation_note": "偏好不能替代理解效果测试。"
+    }
+  ],
+  "insight_presentations": [
+    {
+      "insight_id": "INSIGHT-OTF-001",
+      "headline": "认知处于中间态",
+      "explanation": "购买者知道部分概念，但关键机制和风险边界不稳定；应以可验证理解替代术语曝光。",
+      "applicable_scope": "本项目 200 份工作分析答卷。",
+      "confidence": "MEDIUM"
+    },
+    {
+      "insight_id": "INSIGHT-OTF-002",
+      "headline": "入口信息与判断信息不是一回事",
+      "explanation": "吸引注意的信息和支持选择的信息承担不同任务，需要分层设计。",
+      "applicable_scope": "本项目最近一次购买回忆。",
+      "confidence": "MEDIUM"
+    },
+    {
+      "insight_id": "INSIGHT-OTF-003",
+      "headline": "投教应进入持有期",
+      "explanation": "配置调整和市场波动会重新激活理解需求，持有陪伴应解释变化而非只展示收益。",
+      "applicable_scope": "本项目样本表达的持有期需求。",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "recommendation_presentations": [
+    {
+      "recommendation_id": "REC-OTF-001",
+      "action": "重构购买说明为三层信息路径。",
+      "rationale": "入口触发和最终判断分层，综合知识正确率仍低。",
+      "expected_effect": "提高类型、配置变化和风险边界的可理解性。",
+      "validation_next_step": "改版前后使用同口径理解题比较，并记录阅读负担。",
+      "suggested_owner": "产品内容负责人",
+      "suggested_priority": "HIGH",
+      "decision_status": "RESEARCH_PROPOSAL"
+    },
+    {
+      "recommendation_id": "REC-OTF-002",
+      "action": "在持有页面提供当前配置、未来变化和调整原因。",
+      "rationale": "这些内容是样本中最集中的持有期信息缺口。",
+      "expected_effect": "支持持有人在波动和配置调整时重新理解产品。",
+      "validation_next_step": "开展任务型可用性测试，验证可发现性与正确解释。",
+      "suggested_owner": "产品与持有陪伴负责人",
+      "suggested_priority": "HIGH",
+      "decision_status": "RESEARCH_PROPOSAL"
+    },
+    {
+      "recommendation_id": "REC-OTF-003",
+      "action": "建设覆盖购买前、配置调整和市场波动时点的投教内容组合。",
+      "rationale": "用户偏好具体情境、配置表与简短解释，且需求延伸至持有期。",
+      "expected_effect": "把理解缺口转化为分阶段、可验证的学习路径。",
+      "validation_next_step": "使用前后同口径理解题或材料版本实验，不以点击率代替效果。",
+      "suggested_owner": "投资者教育与产品内容负责人",
+      "suggested_priority": "HIGH",
+      "decision_status": "RESEARCH_PROPOSAL"
+    }
+  ],
+  "investor_education_section": {
+    "applicable": true,
+    "summary": "投教重点应从泛化科普转向产品类型选择逻辑、下滑曲线、当前风险与配置变化，并覆盖关键持有情境。",
+    "recommendation_ids": [
+      "REC-OTF-003"
+    ],
+    "priority_learning_needs": [
+      "目标日期型与目标风险型的选择逻辑",
+      "下滑曲线是配置路径而非收益保证",
+      "当前风险、未来配置与调整原因",
+      "市场波动不等于产品机制失效"
+    ],
+    "audience_scope": "本项目中知识题未全部答对、未查看配置路径或表达相关信息需求的购买者类型；不形成正式客户标签。",
+    "recommended_moments": [
+      "第一次了解产品时",
+      "基金调整资产配置时",
+      "市场波动较大时"
+    ],
+    "recommended_formats": [
+      "结合年龄或退休年份的例子",
+      "资产配置表与简单下滑曲线图",
+      "一句话说明与常见问题回答",
+      "IMA 知识库作为次级自助入口"
+    ],
+    "guardrails": [
+      "不承诺收益或本金安全",
+      "不推荐具体产品或赎回时点",
+      "不把偏好、链接点击或阅读意愿当作理解效果"
+    ],
+    "effectiveness_boundary": "本轮只识别学习需求与形式偏好；投教效果必须通过前后同口径理解题或材料版本比较另行验证。"
+  },
+  "learning_resources": [
+    {
+      "resource_id": "LR-IMA-OTF-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "在核心答题结束后提供继续搜索养老目标基金金融常识的自愿学习入口。",
+      "placement": "COMPLETION_PAGE",
+      "recommended_search_prompt": "可搜索“养老目标基金”“目标日期基金”“目标风险基金”或“下滑曲线”。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "UNREVIEWED",
+      "review_notes": "发布前确认链接可访问；不记录点击、停留或身份关联。"
+    }
+  ],
+  "limitations": [
+    "未提供抽样框、投放渠道和代表性说明。",
+    "100 份答卷触发正式复核信号但缺少逐条人工解析记录。",
+    "FOMO 部署未启用部分互斥与跳转逻辑。",
+    "不同提示强度和题型的比例不可直接合并或因果解释。",
+    "没有认知访谈、可用性任务或材料版本实验。",
+    "Gate 2、Gate 3、Gate 4 均未形成完整历史记录。"
+  ],
+  "unanswered_questions": [
+    "三层购买说明能否提高理解且不过度增加阅读负担？",
+    "持有页面改版后，用户能否找到并正确解释配置变化？",
+    "本次样本模式能否在明确抽样框和不同渠道中复现？"
+  ],
+  "appendices": [
+    {
+      "appendix_id": "APP-OTF-001",
+      "title": "FieldworkPackage",
+      "content_type": "ARTIFACT",
+      "reference": {
+        "artifact_id": "FWP-OTF-001",
+        "artifact_type": "FieldworkPackage",
+        "artifact_version": "0.1.0"
+      }
+    },
+    {
+      "appendix_id": "APP-OTF-002",
+      "title": "InsightPackage",
+      "content_type": "ARTIFACT",
+      "reference": {
+        "artifact_id": "IP-OTF-001",
+        "artifact_type": "InsightPackage",
+        "artifact_version": "0.1.0"
+      }
+    },
+    {
+      "appendix_id": "APP-OTF-003",
+      "title": "最终展示版 DOCX",
+      "content_type": "OTHER",
+      "reference": "../../../output/doc/%E5%85%BB%E8%80%81%E7%9B%AE%E6%A0%87%E5%9F%BA%E9%87%91%E8%B4%AD%E4%B9%B0%E8%80%85%E8%AE%A4%E7%9F%A5%E4%B8%8E%E6%8C%81%E6%9C%89%E8%A1%8C%E4%B8%BA%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A_%E5%B1%95%E7%A4%BA%E7%89%88.docx"
+    },
+    {
+      "appendix_id": "APP-OTF-004",
+      "title": "最终展示版 PDF",
+      "content_type": "OTHER",
+      "reference": "../../../output/doc/%E5%85%BB%E8%80%81%E7%9B%AE%E6%A0%87%E5%9F%BA%E9%87%91%E8%B4%AD%E4%B9%B0%E8%80%85%E8%AE%A4%E7%9F%A5%E4%B8%8E%E6%8C%81%E6%9C%89%E8%A1%8C%E4%B8%BA%E6%B4%9E%E5%AF%9F%E6%8A%A5%E5%91%8A_%E5%B1%95%E7%A4%BA%E7%89%88.pdf"
+    }
+  ],
+  "decision_boundary": {
+    "contains_business_decisions": false,
+    "statement": "报告中的建议属于研究提案，不构成已批准业务方案、个性化投资建议或对外发布许可。"
+  },
+  "quality_declaration": {
+    "all_claims_traceable": true,
+    "numbers_match_insight_package": true,
+    "limitations_visible": true,
+    "personal_data_removed": true,
+    "human_review_required_before_release": true
+  }
+}

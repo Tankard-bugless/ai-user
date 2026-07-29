@@ -1,0 +1,329 @@
+{
+  "metadata": {
+    "knowledge_base_id": "FIN-FACT-FOF",
+    "domain": "FOF_AND_PENSION_TARGET_FUNDS",
+    "version": "0.1.0",
+    "language": "zh-CN",
+    "status": "ACTIVE",
+    "created_at": "2026-07-23T19:05:00+08:00",
+    "verified_at": "2026-07-23T19:05:00+08:00",
+    "owner_role": "金融事实审核负责人",
+    "review_interval_days": 180,
+    "scope": "中国境内公开募集证券投资基金中的 FOF、养老目标基金、目标日期/目标风险策略、下滑曲线和个人养老金基金份额。",
+    "non_scope": [
+      "个别产品是否适合特定投资者",
+      "未来收益、排名或推荐",
+      "未列明产品的具体费率、持有期和资产配置比例",
+      "法律或合规正式意见"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "SRC-CSRC-FUND-OPERATION",
+      "priority": 1,
+      "authority": "中国证券监督管理委员会",
+      "title": "《公开募集证券投资基金运作管理办法》",
+      "document_number": "证监会令第104号",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653978/content.shtml",
+      "source_type": "REGULATION",
+      "status_checked": "CURRENT_PAGE_CHECKED",
+      "checked_at": "2026-07-23"
+    },
+    {
+      "source_id": "SRC-CSRC-FOF-GUIDELINE",
+      "priority": 1,
+      "authority": "中国证券监督管理委员会",
+      "title": "《公开募集证券投资基金运作指引第2号——基金中基金指引》发布说明",
+      "document_number": "证监会公告〔2016〕20号",
+      "url": "https://www.csrc.gov.cn/csrc/c100028/c1001665/content.shtml",
+      "source_type": "REGULATORY_GUIDANCE",
+      "status_checked": "CURRENT_PAGE_CHECKED",
+      "checked_at": "2026-07-23"
+    },
+    {
+      "source_id": "SRC-CSRC-PENSION-TARGET",
+      "priority": 1,
+      "authority": "中国证券监督管理委员会",
+      "title": "《养老目标证券投资基金指引（试行）》",
+      "document_number": "证监会公告〔2018〕2号",
+      "url": "https://www.csrc.gov.cn/csrc/c101877/c1029550/1029550/files/%E9%99%84%E4%BB%B6%EF%BC%9A%E3%80%8A%E5%85%BB%E8%80%81%E7%9B%AE%E6%A0%87%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91%E6%8C%87%E5%BC%95%EF%BC%88%E8%AF%95%E8%A1%8C%EF%BC%89%E3%80%8B.pdf",
+      "source_type": "REGULATORY_GUIDANCE",
+      "status_checked": "CURRENT_AND_EFFECTIVE",
+      "checked_at": "2026-07-23"
+    },
+    {
+      "source_id": "SRC-CSRC-PERSONAL-PENSION-FUND",
+      "priority": 1,
+      "authority": "中国证券监督管理委员会",
+      "title": "《个人养老金投资公开募集证券投资基金业务管理暂行规定》",
+      "document_number": "证监会公告〔2022〕46号",
+      "url": "https://www.csrc.gov.cn/csrc/c101954/c6289701/6289701/files/%E9%99%84%E4%BB%B61%EF%BC%9A%E3%80%8A%E4%B8%AA%E4%BA%BA%E5%85%BB%E8%80%81%E9%87%91%E6%8A%95%E8%B5%84%E5%85%AC%E5%BC%80%E5%8B%9F%E9%9B%86%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91%E4%B8%9A%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9A%82%E8%A1%8C%E8%A7%84%E5%AE%9A%E3%80%8B.pdf",
+      "source_type": "REGULATION",
+      "status_checked": "CURRENT_AND_EFFECTIVE",
+      "checked_at": "2026-07-23"
+    },
+    {
+      "source_id": "SRC-NATIONAL-PERSONAL-PENSION-2024",
+      "priority": 1,
+      "authority": "人力资源社会保障部等五部门",
+      "title": "《关于全面实施个人养老金制度的通知》",
+      "document_number": "人社部发〔2024〕87号",
+      "url": "https://www.csrc.gov.cn/csrc/c100028/c7524086/content.shtml",
+      "source_type": "POLICY_NOTICE",
+      "status_checked": "CURRENT_PAGE_CHECKED",
+      "checked_at": "2026-07-23"
+    },
+    {
+      "source_id": "SRC-EFUNDS-2043-202606",
+      "priority": 2,
+      "authority": "易方达基金管理有限公司",
+      "title": "《易方达汇诚养老目标日期2043三年持有期混合型基金中基金（FOF）更新的招募说明书》",
+      "document_number": "2026年6月更新",
+      "url": "https://cdn.efunds.com.cn/owch/data/bulletin/20260601/%E6%98%93%E6%96%B9%E8%BE%BE%E6%B1%87%E8%AF%9A%E5%85%BB%E8%80%81%E7%9B%AE%E6%A0%87%E6%97%A5%E6%9C%9F2043%E4%B8%89%E5%B9%B4%E6%8C%81%E6%9C%89%E6%9C%9F%E6%B7%B7%E5%90%88%E5%9E%8B%E5%9F%BA%E9%87%91%E4%B8%AD%E5%9F%BA%E9%87%91%EF%BC%88FOF%EF%BC%89%E6%9B%B4%E6%96%B0%E7%9A%84%E6%8B%9B%E5%8B%9F%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf",
+      "source_type": "PRODUCT_LEGAL_DOCUMENT",
+      "status_checked": "CURRENT_PRODUCT_DOCUMENT_CHECKED",
+      "checked_at": "2026-07-23"
+    },
+    {
+      "source_id": "SRC-EFUNDS-FOF-ARTICLE-LOCAL",
+      "priority": 3,
+      "authority": "易方达基金管理有限公司",
+      "title": "《易方达FOF，一份值得关注的成绩单》",
+      "document_number": "公众号材料，2026-07-22",
+      "local_path": "C:/Users/10247/Desktop/易方达fof.pdf",
+      "source_type": "OFFICIAL_MARKETING_MATERIAL",
+      "status_checked": "VISUALLY_REVIEWED",
+      "checked_at": "2026-07-23",
+      "usage_boundary": "只用于识别产品用语和待核对线索，不得单独作为知识题标准答案或业绩结论来源。"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "FF-FOF-001",
+      "topic": "FOF_DEFINITION",
+      "status": "VERIFIED",
+      "canonical_statement": "公募基金中基金（FOF）以80%以上的基金资产投资于其他公开募集的基金份额。",
+      "plain_language": "FOF 主要不是直接挑选单只股票或债券，而是把其他基金作为主要投资对象，再进行组合配置。",
+      "questionnaire_rule": "若考察 FOF 定义，标准答案应包含“80%以上基金资产投资于其他基金份额”；不得只写成“买了很多只基金”。",
+      "risky_phrasing": [
+        "FOF 就是随便买几只基金",
+        "只要持有两只基金就是 FOF"
+      ],
+      "source_refs": [
+        "SRC-CSRC-FUND-OPERATION",
+        "SRC-CSRC-FOF-GUIDELINE"
+      ],
+      "review_triggers": [
+        "FOF 分类规则修订",
+        "研究对象改为私募 FOF、境外 FOF 或其他资管产品"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-002",
+      "topic": "FOF_PORTFOLIO_LIMITS",
+      "status": "VERIFIED",
+      "canonical_statement": "一般规则下，FOF 持有其他单只基金的市值不得超过其基金资产净值的20%，且不得投资于其他 FOF；特殊基金品种按另行规定执行。",
+      "plain_language": "FOF 需要遵循组合投资要求，不能把大部分资金集中在一只普通基金上，也不能层层嵌套投资其他 FOF。",
+      "questionnaire_rule": "除非研究确实考察监管细节，Demo 不把20%限制设计成普通投资者必答知识；若出现必须保留“一般规则”和特殊情形边界。",
+      "risky_phrasing": [
+        "FOF 可以无限嵌套其他 FOF",
+        "FOF 一定平均分配给所有底层基金"
+      ],
+      "source_refs": [
+        "SRC-CSRC-FUND-OPERATION"
+      ],
+      "review_triggers": [
+        "公募基金投资限制调整",
+        "题目涉及特殊 FOF 或跨境产品"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-003",
+      "topic": "PENSION_TARGET_FUND_DEFINITION",
+      "status": "VERIFIED",
+      "canonical_statement": "养老目标基金以追求养老资产长期稳健增值为目的，鼓励长期持有，采用资产配置策略合理控制组合波动风险，并应采用 FOF 或中国证监会认可的其他形式运作。",
+      "plain_language": "养老目标基金是一类服务长期养老投资安排的公募基金，通常通过 FOF 形式进行资产配置。",
+      "questionnaire_rule": "不得把“FOF”“养老目标基金”和“个人养老金可投基金”写成同义词。",
+      "risky_phrasing": [
+        "所有 FOF 都是养老目标基金",
+        "所有个人养老金可投基金都是养老目标基金",
+        "养老目标基金就是保本养老产品"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PENSION-TARGET"
+      ],
+      "review_triggers": [
+        "养老目标基金指引修订",
+        "研究对象从养老目标 FOF 扩展到其他个人养老金产品"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-004",
+      "topic": "TARGET_DATE_STRATEGY",
+      "status": "VERIFIED",
+      "canonical_statement": "目标日期策略应随着设定目标日期临近，逐步降低权益类资产配置比例并增加非权益类资产配置比例。",
+      "plain_language": "目标日期型通常围绕一个目标年份安排资产配置，并随着目标年份接近逐步降低权益类资产占比。",
+      "questionnaire_rule": "可用“预计退休年份或投资期限”帮助普通投资者理解，但标准答案必须保留“目标日期临近时调整资产配置”，不能写成自动保本。",
+      "risky_phrasing": [
+        "只要按出生年份自动选择即可",
+        "越接近目标年份收益越稳定且不会亏损",
+        "目标年份就是保证到账年份"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PENSION-TARGET"
+      ],
+      "review_triggers": [
+        "目标日期策略规则修订",
+        "题目涉及某只产品的具体目标年份或转型安排"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-005",
+      "topic": "TARGET_RISK_STRATEGY",
+      "status": "VERIFIED",
+      "canonical_statement": "目标风险策略根据特定风险偏好设定权益类与非权益类资产的基准配置比例，或者使用广泛认可的方法界定并控制组合风险。",
+      "plain_language": "目标风险型围绕预设的风险水平安排资产配置，不以某个退休年份作为主要调整轴。",
+      "questionnaire_rule": "标准答案可以表达为“按预设风险水平进行配置和控制”；不得把“稳健型”写成无亏损。",
+      "risky_phrasing": [
+        "目标风险型会根据年龄自动变得更保守",
+        "稳健型不会亏损",
+        "风险等级等于收益承诺"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PENSION-TARGET"
+      ],
+      "review_triggers": [
+        "目标风险策略规则修订",
+        "题目使用具体产品风险等级"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-006",
+      "topic": "GLIDE_PATH",
+      "status": "VERIFIED_WITH_PRODUCT_BOUNDARY",
+      "canonical_statement": "下滑曲线用于描述目标日期基金在不同阶段的权益类与非权益类资产配置路径，不是基金净值或收益的预测曲线；具体曲线、区间和调整权限由产品法律文件约定。",
+      "plain_language": "下滑曲线回答的是“随着目标日期接近，资产配置可能怎样变”，不是“未来收益会怎样走”。",
+      "questionnaire_rule": "知识题可以考察资产配置含义；任何具体年份、比例或曲线图都必须引用待研究产品的最新招募说明书。",
+      "risky_phrasing": [
+        "下滑曲线表示净值会逐年下降",
+        "下滑曲线可以预测未来收益",
+        "所有目标日期基金使用同一条下滑曲线"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PENSION-TARGET",
+        "SRC-EFUNDS-2043-202606"
+      ],
+      "review_triggers": [
+        "加入具体下滑曲线图或比例",
+        "产品招募说明书更新",
+        "更换目标日期基金"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-007",
+      "topic": "NO_GUARANTEE",
+      "status": "VERIFIED",
+      "canonical_statement": "养老目标基金名称中的“养老”不代表收益保障或任何收益承诺；产品不保本，可能发生亏损。",
+      "plain_language": "即使接近目标日期、降低权益类资产比例，基金仍可能发生净值波动或亏损。",
+      "questionnaire_rule": "所有把养老、目标日期、稳健或下滑曲线与“保证本金/收益”“不会亏损”绑定的表述只能作为错误选项，不能成为研究说明或建议。",
+      "risky_phrasing": [
+        "养老基金保本",
+        "到目标日期一定盈利",
+        "降低权益资产后就不会亏损"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PENSION-TARGET"
+      ],
+      "review_triggers": [
+        "加入收益、风险等级或产品推荐表述"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-008",
+      "topic": "HOLDING_AND_REDEMPTION",
+      "status": "VERIFIED_WITH_PRODUCT_BOUNDARY",
+      "canonical_statement": "养老目标基金应采用定期开放方式或设置与投资策略匹配的最短持有期限；具体持有期和赎回安排以产品法律文件为准。",
+      "plain_language": "养老目标基金可能有封闭期或最短持有期，不能默认随时都能赎回。",
+      "questionnaire_rule": "问卷询问持有、追加或赎回经历时，不应暗示所有操作在任何时间都可执行；涉及具体产品时须核对其最新规则。",
+      "risky_phrasing": [
+        "养老目标基金随时都能赎回",
+        "所有养老目标基金的持有期都一样",
+        "达到目标日期后一定自动赎回"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PENSION-TARGET",
+        "SRC-EFUNDS-2043-202606"
+      ],
+      "review_triggers": [
+        "题目出现具体持有年限",
+        "研究对象限定为某只产品",
+        "产品法律文件更新"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-009",
+      "topic": "PERSONAL_PENSION_ELIGIBLE_PRODUCTS",
+      "status": "VERIFIED",
+      "canonical_statement": "个人养老金资金账户购买的是纳入规定范围或名录的金融产品；可投公募基金不只包括养老目标基金，也可包括符合条件的其他基金。具体资格以当期名录为准。",
+      "plain_language": "“个人养老金可以买的基金”和“养老目标基金”不是同一个集合，是否可买还要看当期产品名录。",
+      "questionnaire_rule": "筛选题必须明确研究的是“买过养老目标基金”还是“用个人养老金账户买过任意基金”，不得互相替代。",
+      "risky_phrasing": [
+        "个人养老金账户只能买养老目标基金",
+        "养老目标基金一定都在个人养老金产品名录",
+        "所有公募基金都能用个人养老金账户购买"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PERSONAL-PENSION-FUND",
+        "SRC-NATIONAL-PERSONAL-PENSION-2024"
+      ],
+      "review_triggers": [
+        "个人养老金产品范围或名录调整",
+        "筛选条件从养老目标基金扩展到全部个人养老金产品"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-010",
+      "topic": "PERSONAL_PENSION_SHARE_CLASS",
+      "status": "VERIFIED_WITH_PRODUCT_BOUNDARY",
+      "canonical_statement": "个人养老金基金应为个人养老金业务设置单独的份额类别；在当前易方达相关产品文件中，该专属类别称为 Y 类，个人养老金资金账户申购应选择 Y 类，非个人养老金资金账户申购选择相应的 A/C 等普通份额。",
+      "plain_language": "对当前案例中的易方达产品，用个人养老金资金账户购买的是个人养老金专属 Y 份额；A/C 等普通份额通过非个人养老金资金账户购买。",
+      "questionnaire_rule": "不得在“个人养老金账户购买的份额”选项下列 A/C。通用问卷宜写“个人养老金专属份额（本案例通常称 Y 类）”，具体字母仍需核对产品文件。",
+      "risky_phrasing": [
+        "个人养老金账户可以买同一产品的 A/C 普通份额",
+        "所有基金公司的个人养老金专属份额依法必须叫 Y 类",
+        "Y 类可以通过普通资金账户随意购买"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PERSONAL-PENSION-FUND",
+        "SRC-EFUNDS-2043-202606"
+      ],
+      "review_triggers": [
+        "更换基金管理人或产品",
+        "份额类别或账户规则更新",
+        "题目从当前案例推广为全行业口径"
+      ]
+    },
+    {
+      "fact_id": "FF-FOF-011",
+      "topic": "Y_SHARE_FEES",
+      "status": "VERIFIED_WITH_PRODUCT_BOUNDARY",
+      "canonical_statement": "个人养老金基金的单设份额类别不得收取销售服务费，可以依法豁免部分申购限制和销售费用，也可以对管理费、托管费实施优惠；不能据此推断 Y 类没有任何费用或在所有情形下都最便宜。",
+      "plain_language": "Y 类可能有特定费率安排，但具体费用仍要看当前产品法律文件和销售机构公告。",
+      "questionnaire_rule": "可以询问用户是否关注 Y 份额费率，但解释或知识题不得把“费率更低”“免全部费用”作为跨产品通用事实。",
+      "risky_phrasing": [
+        "Y 类完全免费",
+        "Y 类一定比 A/C 便宜",
+        "所有 Y 类费率都相同"
+      ],
+      "source_refs": [
+        "SRC-CSRC-PERSONAL-PENSION-FUND",
+        "SRC-EFUNDS-2043-202606"
+      ],
+      "review_triggers": [
+        "问卷出现具体费率",
+        "公募基金销售费用规则变化",
+        "产品招募说明书或销售公告更新"
+      ]
+    }
+  ]
+}

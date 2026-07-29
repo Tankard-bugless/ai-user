@@ -1,0 +1,352 @@
+{
+  "registry_version": "0.1.0",
+  "project_id": "PROJ-OTF-001",
+  "run_id": "RUN-OTF-HIST-001",
+  "created_at": "2026-07-27T13:47:13+08:00",
+  "updated_at": "2026-07-27T13:47:14+08:00",
+  "content_classification": "REAL",
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "artifacts": [
+    {
+      "artifact_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT",
+      "reason": "",
+      "content_hash": "fc0165afdc4a3bfa047aa4ace8ebcb98a73734e98dff2596f1a84aa8cf63e161",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\research-brief.v0.2.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "FROZEN",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": []
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "CURRENT",
+      "reason": "",
+      "content_hash": "e13cd6ad384678d284ab3359115a60a3836e18b64a6bb18bc132c5acbc676e82",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\approval-record.gate1.v0.2.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "FROZEN",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RB-OTF-001",
+          "artifact_type": "ResearchBrief",
+          "artifact_version": "0.2.0"
+        }
+      ],
+      "gate_id": "GATE_1",
+      "approval_status": "APPROVED",
+      "reviewed_refs": [
+        {
+          "artifact_id": "RB-OTF-001",
+          "artifact_type": "ResearchBrief",
+          "artifact_version": "0.2.0"
+        }
+      ],
+      "primary_target_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "is_ai_approval": false
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT",
+      "reason": "",
+      "content_hash": "f923af9b9df0b3e051ea764c9ce7df87126e99e493b2a78eaa33d5aead8d51d2",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\research-plan.v0.2.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "DRAFT",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RB-OTF-001",
+          "artifact_type": "ResearchBrief",
+          "artifact_version": "0.2.0",
+          "approval_id": "APR-OTF-G1-002"
+        },
+        {
+          "artifact_id": "APR-OTF-G1-002",
+          "artifact_type": "ApprovalRecord",
+          "artifact_version": "0.1.0"
+        }
+      ]
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT",
+      "reason": "",
+      "content_hash": "5b27701e2902b432d464eb1590772823ccef8cb2f2b8c12d5ef579397d8014f0",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\instrument-spec.v0.2.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "DRAFT",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RP-OTF-001",
+          "artifact_type": "ResearchPlan",
+          "artifact_version": "0.2.0"
+        }
+      ]
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "REVIEW-OTF-G2-001",
+        "artifact_type": "ReviewResult",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT",
+      "reason": "",
+      "content_hash": "a83a78827e26e4ea1315e074374a6f338f08cdf8c68d6e1147fe6508d573d0cd",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\review-result.gate2-precheck.v0.2.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "FROZEN",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RP-OTF-001",
+          "artifact_type": "ResearchPlan",
+          "artifact_version": "0.2.0"
+        },
+        {
+          "artifact_id": "INS-OTF-SURVEY-001",
+          "artifact_type": "InstrumentSpec",
+          "artifact_version": "0.2.0"
+        }
+      ],
+      "review_target_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "review_outcome": "PASS_WITH_WARNINGS",
+      "review_is_formal_approval": false
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "FWP-OTF-001",
+        "artifact_type": "FieldworkPackage",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "真实执行已经发生，但历史上没有形成 Gate 2 ApprovalRecord；仅保留为追溯证据，不视为当前流程有效输入。",
+      "content_hash": "7a44324028ec06e03ae659a47dcefcb49611862cacaad83d351e63e13a8e6a5b",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\formal_artifacts\\fieldwork-package.v0.1.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "DRAFT",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RP-OTF-001",
+          "artifact_type": "ResearchPlan",
+          "artifact_version": "0.2.0"
+        },
+        {
+          "artifact_id": "INS-OTF-SURVEY-001",
+          "artifact_type": "InstrumentSpec",
+          "artifact_version": "0.2.0"
+        }
+      ],
+      "dataset_status": "ANALYSIS_READY_WITH_LIMITS"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "IP-OTF-001",
+        "artifact_type": "InsightPackage",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "依赖未获 Gate 2 正式批准的历史执行，且没有 Gate 3 ApprovalRecord；仅供复盘与答辩展示。",
+      "content_hash": "60741b686376a08e94d3bfd14a820d23c72ae28d922cd35652b10a3fba67c54e",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\formal_artifacts\\insight-package.v0.1.0.json",
+      "registered_at": "2026-07-27T13:47:13+08:00",
+      "lifecycle_status": "DRAFT",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RB-OTF-001",
+          "artifact_type": "ResearchBrief",
+          "artifact_version": "0.2.0",
+          "approval_id": "APR-OTF-G1-002"
+        },
+        {
+          "artifact_id": "RP-OTF-001",
+          "artifact_type": "ResearchPlan",
+          "artifact_version": "0.2.0"
+        },
+        {
+          "artifact_id": "FWP-OTF-001",
+          "artifact_type": "FieldworkPackage",
+          "artifact_version": "0.1.0"
+        }
+      ]
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "RR-OTF-001",
+        "artifact_type": "ResearchReport",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "历史上没有 Gate 3、Gate 4 ApprovalRecord；报告文件真实存在，但不登记为当前流程已批准输出。",
+      "content_hash": "746a22d4347cffc5aca192447d76bd049c15445d29af1342d0d8cead8bb32c2d",
+      "source_path": "D:\\codexprojecttest\\user-research-workflow\\05_cases\\养老目标基金购买者研究\\formal_artifacts\\research-report.v0.1.0.json",
+      "registered_at": "2026-07-27T13:47:14+08:00",
+      "lifecycle_status": "DRAFT",
+      "content_classification": "REAL",
+      "sensitivity_level": "INTERNAL",
+      "contains_personal_data": false,
+      "upstream_refs": [
+        {
+          "artifact_id": "RB-OTF-001",
+          "artifact_type": "ResearchBrief",
+          "artifact_version": "0.2.0",
+          "approval_id": "APR-OTF-G1-002"
+        },
+        {
+          "artifact_id": "RP-OTF-001",
+          "artifact_type": "ResearchPlan",
+          "artifact_version": "0.2.0"
+        },
+        {
+          "artifact_id": "IP-OTF-001",
+          "artifact_type": "InsightPackage",
+          "artifact_version": "0.1.0"
+        }
+      ]
+    }
+  ],
+  "active_approval_refs": [
+    {
+      "artifact_id": "APR-OTF-G1-002",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "state_revisions": [
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 1,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0001.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 2,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0002.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 3,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0003.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 4,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0004.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 5,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0005.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 6,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0006.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 7,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0007.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 8,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0008.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 9,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0009.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 10,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0010.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 11,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0011.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 12,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0012.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 13,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0013.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 14,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0014.json"
+    },
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_revision": 15,
+      "path": "states/WFS-RUN-OTF-HIST-001.r0015.json"
+    }
+  ],
+  "task_records": [
+    {
+      "task_id": "TASK-OTF-HIST-IMPORT-001",
+      "latest_revision": 2,
+      "status": "SUCCEEDED",
+      "path": "tasks/TASK-OTF-HIST-IMPORT-001.r0002.json"
+    },
+    {
+      "task_id": "TASK-OTF-HIST-PLAN-001",
+      "latest_revision": 2,
+      "status": "SUCCEEDED",
+      "path": "tasks/TASK-OTF-HIST-PLAN-001.r0002.json"
+    }
+  ],
+  "audit_event_count": 15
+}

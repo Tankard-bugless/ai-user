@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/handoff-record.schema.json",
+  "title": "HandoffRecord Schema",
+  "description": "两个任务或责任主体之间的最小上下文交接记录；正式语义由所引用产物承载。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "state_ref",
+    "from_task_id",
+    "to_task_id",
+    "from_actor",
+    "target",
+    "purpose",
+    "status",
+    "payload",
+    "expected_output",
+    "acceptance_criteria",
+    "return_route"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/control_record_metadata"
+        },
+        {
+          "properties": {
+            "record_type": {
+              "const": "HandoffRecord"
+            }
+          }
+        }
+      ]
+    },
+    "state_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/control_record_reference"
+        },
+        {
+          "properties": {
+            "record_type": {
+              "const": "WorkflowState"
+            }
+          }
+        }
+      ]
+    },
+    "from_task_id": {
+      "$ref": "common.schema.json#/$defs/identifier"
+    },
+    "to_task_id": {
+      "$ref": "common.schema.json#/$defs/identifier"
+    },
+    "from_actor": {
+      "$ref": "common.schema.json#/$defs/actor"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_type",
+        "target_id"
+      ],
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "CAPABILITY",
+            "HUMAN_ROLE",
+            "SERVICE",
+            "ADAPTER",
+            "VALIDATOR"
+          ]
+        },
+        "target_id": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "purpose": {
+      "$ref": "common.schema.json#/$defs/non_empty_string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "DELIVERED",
+        "ACCEPTED",
+        "REJECTED",
+        "COMPLETED",
+        "CANCELLED"
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_refs",
+        "record_refs",
+        "included_artifact_fields",
+        "excluded_data_categories",
+        "chat_history_included",
+        "personal_data_access",
+        "minimization_rationale"
+      ],
+      "properties": {
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          "uniqueItems": true
+        },
+        "record_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/control_record_reference"
+          },
+          "uniqueItems": true
+        },
+        "included_artifact_fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifact_ref",
+              "field_paths"
+            ],
+            "properties": {
+              "artifact_ref": {
+                "$ref": "common.schema.json#/$defs/artifact_reference"
+              },
+              "field_paths": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^/.*"
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        "excluded_data_categories": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "chat_history_included": {
+          "const": false
+        },
+        "personal_data_access": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "DEIDENTIFIED_ONLY",
+            "MINIMUM_AUTHORIZED"
+          ]
+        },
+        "minimization_rationale": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "expected_output": {
+      "$ref": "task-record.schema.json#/$defs/expected_output"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/non_empty_string"
+      },
+      "uniqueItems": true
+    },
+    "return_route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "on_success",
+        "on_failure_stage",
+        "escalation_role"
+      ],
+      "properties": {
+        "on_success": {
+          "const": "RETURN_TO_ORCHESTRATOR"
+        },
+        "on_failure_stage": {
+          "$ref": "common.schema.json#/$defs/workflow_stage"
+        },
+        "escalation_role": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "delivered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "accepted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rejection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reason_code",
+        "message",
+        "return_stage"
+      ],
+      "properties": {
+        "reason_code": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "message": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "return_stage": {
+          "$ref": "common.schema.json#/$defs/workflow_stage"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "DELIVERED",
+              "ACCEPTED",
+              "COMPLETED",
+              "REJECTED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "delivered_at"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "ACCEPTED",
+              "COMPLETED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "accepted_at"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "COMPLETED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "completed_at"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "REJECTED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "completed_at",
+          "rejection"
+        ]
+      }
+    }
+  ]
+}

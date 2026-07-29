@@ -1,0 +1,798 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/fieldwork-package.schema.json",
+  "title": "FieldworkPackage Schema",
+  "description": "汇集实际研究执行过程、原始资料清单、数据质量和脱敏状态；不在本文件中复制全部原始内容。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "research_plan_ref",
+    "instrument_refs",
+    "execution_summary",
+    "participant_index",
+    "consent_summary",
+    "source_records",
+    "fieldwork_events",
+    "learning_resource_delivery",
+    "data_quality",
+    "deviations",
+    "deidentification",
+    "unresolved_issues"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_metadata"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "FieldworkPackage"
+            }
+          }
+        }
+      ]
+    },
+    "research_plan_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ResearchPlan"
+            }
+          }
+        }
+      ]
+    },
+    "gate_2_approval_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        {
+          "properties": {
+            "artifact_type": {
+              "const": "ApprovalRecord"
+            }
+          }
+        }
+      ]
+    },
+    "gate_2_governance_gap": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/historical_approval_gap"
+        },
+        {
+          "properties": {
+            "gate_id": {
+              "const": "GATE_2"
+            }
+          }
+        }
+      ]
+    },
+    "instrument_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          {
+            "properties": {
+              "artifact_type": {
+                "const": "InstrumentSpec"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "execution_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fieldwork_scope",
+        "status",
+        "started_at",
+        "ended_at",
+        "timezone",
+        "method_completion"
+      ],
+      "properties": {
+        "fieldwork_scope": {
+          "type": "string",
+          "enum": [
+            "PILOT",
+            "MAIN",
+            "COMBINED"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "IN_PROGRESS",
+            "COMPLETED",
+            "CANCELLED"
+          ]
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ended_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "timezone": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "method_completion": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method_id",
+              "instrument_ref",
+              "planned",
+              "invited",
+              "started",
+              "completed",
+              "included",
+              "excluded"
+            ],
+            "properties": {
+              "method_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "instrument_ref": {
+                "allOf": [
+                  {
+                    "$ref": "common.schema.json#/$defs/artifact_reference"
+                  },
+                  {
+                    "properties": {
+                      "artifact_type": {
+                        "const": "InstrumentSpec"
+                      }
+                    }
+                  }
+                ]
+              },
+              "planned": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "invited": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "started": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "completed": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "included": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "excluded": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "participant_index": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "storage_uri",
+        "total_records",
+        "id_scheme",
+        "contains_direct_identifiers",
+        "contact_linkage_separated"
+      ],
+      "properties": {
+        "storage_uri": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 8
+        },
+        "total_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "id_scheme": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "contains_direct_identifiers": {
+          "type": "boolean"
+        },
+        "contact_linkage_separated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "consent_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "consent_process",
+        "consented",
+        "declined",
+        "withdrawn",
+        "recording_consented",
+        "recording_declined",
+        "withdrawal_handling"
+      ],
+      "properties": {
+        "consent_process": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "consented": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "declined": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "withdrawn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recording_consented": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recording_declined": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "withdrawal_handling": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "source_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source_record"
+      }
+    },
+    "fieldwork_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fieldwork_event"
+      }
+    },
+    "learning_resource_delivery": {
+      "description": "只记录学习链接是否配置和可用，不记录参与者点击或停留。",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "resource_id",
+          "instrument_ref",
+          "placement",
+          "delivery_status",
+          "checked_at",
+          "evidence_use",
+          "notes"
+        ],
+        "properties": {
+          "resource_id": {
+            "$ref": "common.schema.json#/$defs/identifier"
+          },
+          "instrument_ref": {
+            "$ref": "common.schema.json#/$defs/artifact_reference"
+          },
+          "placement": {
+            "type": "string",
+            "enum": [
+              "AFTER_SURVEY_SECTION",
+              "COMPLETION_PAGE",
+              "POST_INTERVIEW_FOLLOW_UP"
+            ]
+          },
+          "delivery_status": {
+            "type": "string",
+            "enum": [
+              "CONFIGURED",
+              "AVAILABLE",
+              "UNAVAILABLE",
+              "REMOVED"
+            ]
+          },
+          "checked_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence_use": {
+            "const": "NOT_RESEARCH_EVIDENCE"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "data_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "overall_status",
+        "quality_checks",
+        "response_status_summary",
+        "reason_code_summary",
+        "dataset_status",
+        "dataset_status_reason",
+        "excluded_records",
+        "missing_data_summary",
+        "transcription_quality",
+        "duplicate_handling"
+      ],
+      "properties": {
+        "overall_status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "PASS_WITH_ISSUES",
+            "FAIL"
+          ]
+        },
+        "quality_checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "label",
+              "status",
+              "details"
+            ],
+            "properties": {
+              "check_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "WARNING",
+                  "FAIL",
+                  "NOT_APPLICABLE"
+                ]
+              },
+              "details": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              }
+            }
+          }
+        },
+        "response_status_summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "unassessed_count",
+            "valid_count",
+            "review_required_count",
+            "excluded_count"
+          ],
+          "properties": {
+            "unassessed_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "valid_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "review_required_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "excluded_count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "reason_code_summary": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "reason_code",
+              "count"
+            ],
+            "properties": {
+              "reason_code": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "dataset_status": {
+          "type": "string",
+          "enum": [
+            "ANALYSIS_READY",
+            "ANALYSIS_READY_WITH_LIMITS",
+            "BLOCKED"
+          ]
+        },
+        "dataset_status_reason": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "excluded_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "record_or_participant_id",
+              "method_id",
+              "exclusion_rule",
+              "reason",
+              "decided_by"
+            ],
+            "properties": {
+              "record_or_participant_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "method_id": {
+                "$ref": "common.schema.json#/$defs/identifier"
+              },
+              "exclusion_rule": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "reason": {
+                "$ref": "common.schema.json#/$defs/non_empty_string"
+              },
+              "decided_by": {
+                "$ref": "common.schema.json#/$defs/actor"
+              }
+            }
+          }
+        },
+        "missing_data_summary": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "transcription_quality": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "applicable",
+            "unclear_segments",
+            "review_rule"
+          ],
+          "properties": {
+            "applicable": {
+              "type": "boolean"
+            },
+            "unclear_segments": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "review_rule": {
+              "type": "string"
+            }
+          }
+        },
+        "duplicate_handling": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "deviations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/deviation"
+      }
+    },
+    "deidentification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "direct_identifier_rule",
+        "replacement_rule",
+        "linkage_storage_rule",
+        "completed_by",
+        "completed_at"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_REQUIRED",
+            "PENDING",
+            "COMPLETED",
+            "FAILED"
+          ]
+        },
+        "direct_identifier_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "replacement_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "linkage_storage_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "completed_by": {
+          "$ref": "common.schema.json#/$defs/actor"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "unresolved_issues": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/risk_item"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "gate_2_approval_ref"
+      ],
+      "not": {
+        "required": [
+          "gate_2_governance_gap"
+        ]
+      }
+    },
+    {
+      "required": [
+        "gate_2_governance_gap"
+      ],
+      "properties": {
+        "metadata": {
+          "properties": {
+            "lifecycle_status": {
+              "const": "DRAFT"
+            }
+          }
+        }
+      },
+      "not": {
+        "required": [
+          "gate_2_approval_ref"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "source_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_type",
+        "method_id",
+        "instrument_ref",
+        "storage_uri",
+        "captured_at",
+        "version",
+        "sensitivity_level",
+        "contains_direct_identifiers",
+        "deidentification_status",
+        "quality_status",
+        "included_in_analysis",
+        "locator_scheme"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "SURVEY_DATASET",
+            "TRANSCRIPT",
+            "TRANSCRIPT_CORPUS",
+            "AUDIO_RECORDING",
+            "MODERATOR_NOTES",
+            "OBSERVATION_LOG",
+            "RECRUITMENT_RECORD",
+            "EXECUTION_LOG",
+            "OTHER"
+          ]
+        },
+        "participant_or_record_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "method_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "instrument_ref": {
+          "$ref": "common.schema.json#/$defs/artifact_reference"
+        },
+        "storage_uri": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 8
+        },
+        "sensitivity_level": {
+          "type": "string",
+          "enum": [
+            "PUBLIC",
+            "INTERNAL",
+            "CONFIDENTIAL",
+            "RESTRICTED"
+          ]
+        },
+        "contains_direct_identifiers": {
+          "type": "boolean"
+        },
+        "deidentification_status": {
+          "type": "string",
+          "enum": [
+            "NOT_REQUIRED",
+            "PENDING",
+            "COMPLETED",
+            "FAILED"
+          ]
+        },
+        "quality_status": {
+          "type": "string",
+          "enum": [
+            "RAW",
+            "CHECKED",
+            "ACCEPTED",
+            "EXCLUDED"
+          ]
+        },
+        "included_in_analysis": {
+          "type": "boolean"
+        },
+        "locator_scheme": {
+          "description": "下游证据单元如何定位到本资料，例如行号、题目ID+行号、时间戳或段落ID。",
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      }
+    },
+    "fieldwork_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "event_type",
+        "occurred_at",
+        "description",
+        "resolution_status"
+      ],
+      "properties": {
+        "event_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "FIELDWORK_STARTED",
+            "FIELDWORK_COMPLETED",
+            "SESSION_ABORTED",
+            "CONSENT_WITHDRAWN",
+            "INSTRUMENT_VERSION_CHANGED",
+            "MATERIAL_VERSION_CHANGED",
+            "TECHNICAL_ISSUE",
+            "PROCESS_DEVIATION",
+            "OTHER"
+          ]
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "participant_or_record_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "description": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "resolution_status": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "RESOLVED",
+            "ACCEPTED_RISK",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "resolution": {
+          "type": "string"
+        }
+      }
+    },
+    "deviation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deviation_id",
+        "planned_rule",
+        "actual_execution",
+        "reason",
+        "affected_records",
+        "impact_assessment",
+        "decision"
+      ],
+      "properties": {
+        "deviation_id": {
+          "$ref": "common.schema.json#/$defs/identifier"
+        },
+        "planned_rule": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "actual_execution": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "affected_records": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "impact_assessment": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "INCLUDE_WITH_LIMITATION",
+            "EXCLUDE",
+            "RECOLLECT",
+            "NO_IMPACT"
+          ]
+        }
+      }
+    }
+  }
+}

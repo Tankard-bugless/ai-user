@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 12,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:13+08:00",
+    "updated_at": "2026-07-27T13:47:13+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "登记 Artifact FieldworkPackage FWP-OTF-001@0.1.0。",
+    "previous_record_ref": {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 11
+    }
+  },
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "current_stage": "INSTRUMENT_DESIGN",
+  "run_status": "ACTIVE",
+  "active_task_ids": [],
+  "completed_task_ids": [
+    "TASK-OTF-HIST-IMPORT-001",
+    "TASK-OTF-HIST-PLAN-001"
+  ],
+  "blocked_task_ids": [],
+  "artifact_registry": [
+    {
+      "artifact_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "REVIEW-OTF-G2-001",
+        "artifact_type": "ReviewResult",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "FWP-OTF-001",
+        "artifact_type": "FieldworkPackage",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "STALE",
+      "reason": "真实执行已经发生，但历史上没有形成 Gate 2 ApprovalRecord；仅保留为追溯证据，不视为当前流程有效输入。"
+    }
+  ],
+  "approval_refs": [
+    {
+      "artifact_id": "APR-OTF-G1-002",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "stale_artifact_refs": [
+    {
+      "artifact_id": "FWP-OTF-001",
+      "artifact_type": "FieldworkPackage",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "transition": {
+    "event_id": "EVT-00012-E056C261",
+    "event_type": "REGISTRY_UPDATED",
+    "from_stage": "INSTRUMENT_DESIGN",
+    "to_stage": "INSTRUMENT_DESIGN",
+    "triggered_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "occurred_at": "2026-07-27T13:47:13+08:00",
+    "reason": "登记 Artifact FieldworkPackage FWP-OTF-001@0.1.0。",
+    "related_task_ids": [],
+    "related_artifact_refs": [
+      {
+        "artifact_id": "FWP-OTF-001",
+        "artifact_type": "FieldworkPackage",
+        "artifact_version": "0.1.0"
+      }
+    ]
+  }
+}

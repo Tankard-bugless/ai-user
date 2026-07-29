@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 9,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:13+08:00",
+    "updated_at": "2026-07-27T13:47:13+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "ResearchPlan v0.2.0 登记完成；推进到 Instrument 设计复核阶段。",
+    "previous_record_ref": {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 8
+    }
+  },
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "current_stage": "INSTRUMENT_DESIGN",
+  "run_status": "ACTIVE",
+  "active_task_ids": [],
+  "completed_task_ids": [
+    "TASK-OTF-HIST-IMPORT-001",
+    "TASK-OTF-HIST-PLAN-001"
+  ],
+  "blocked_task_ids": [],
+  "artifact_registry": [
+    {
+      "artifact_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    }
+  ],
+  "approval_refs": [
+    {
+      "artifact_id": "APR-OTF-G1-002",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "stale_artifact_refs": [],
+  "transition": {
+    "event_id": "EVT-00009-9957E5D9",
+    "event_type": "TASK_SUCCEEDED",
+    "from_stage": "PLAN_DESIGN",
+    "to_stage": "INSTRUMENT_DESIGN",
+    "triggered_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "occurred_at": "2026-07-27T13:47:13+08:00",
+    "reason": "ResearchPlan v0.2.0 登记完成；推进到 Instrument 设计复核阶段。",
+    "related_task_ids": [
+      "TASK-OTF-HIST-PLAN-001"
+    ],
+    "related_artifact_refs": []
+  }
+}

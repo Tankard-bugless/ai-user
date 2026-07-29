@@ -1,0 +1,57 @@
+{
+  "adapter": "tencent-survey",
+  "adapter_version": "0.1.0",
+  "source_document": "养老目标基金购买与持有情况调查问卷_v0.1.docx",
+  "source_sha256": "550162bb7e962fe7f83617b7933598d92c3c1ae75a388281d5fb934f47949c63",
+  "scene": 1,
+  "answerable_question_count": 32,
+  "option_count": 198,
+  "question_ids": [
+    "C0",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q13",
+    "Q14",
+    "Q15",
+    "Q16",
+    "Q17",
+    "Q18",
+    "Q19",
+    "Q20",
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q29",
+    "Q30",
+    "Q31"
+  ],
+  "optional_question_ids": [
+    "Q11",
+    "Q29"
+  ],
+  "post_create_logic": [
+    "C0=不同意 -> END",
+    "Q22=没有经历过或记不清 -> Q24"
+  ],
+  "manual_release_checks": [
+    "Configure multi-select maximum selections.",
+    "Configure mutually exclusive options.",
+    "Confirm login and location collection are disabled.",
+    "Confirm internal answer keys are absent."
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/research-report.schema.json",
+  "title": "ResearchReport Schema",
+  "description": "面向业务沟通与归档的研究报告；只呈现已通过证据审核的发现、洞察和研究建议，不替代业务决策。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "research_brief_ref",
+    "research_plan_ref",
+    "insight_package_ref",
+    "report_profile",
+    "executive_summary",
+    "methodology",
+    "finding_presentations",
+    "insight_presentations",
+    "recommendation_presentations",
+    "investor_education_section",
+    "learning_resources",
+    "limitations",
+    "unanswered_questions",
+    "appendices",
+    "decision_boundary",
+    "quality_declaration"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/artifact_metadata"},
+        {"properties": {"artifact_type": {"const": "ResearchReport"}}}
+      ]
+    },
+    "research_brief_ref": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/artifact_reference"},
+        {"properties": {"artifact_type": {"const": "ResearchBrief"}}}
+      ]
+    },
+    "research_plan_ref": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/artifact_reference"},
+        {"properties": {"artifact_type": {"const": "ResearchPlan"}}}
+      ]
+    },
+    "insight_package_ref": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/artifact_reference"},
+        {"properties": {"artifact_type": {"const": "InsightPackage"}}}
+      ]
+    },
+    "gate_3_approval_ref": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/artifact_reference"},
+        {"properties": {"artifact_type": {"const": "ApprovalRecord"}}}
+      ]
+    },
+    "gate_3_governance_gap": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/historical_approval_gap"},
+        {"properties": {"gate_id": {"const": "GATE_3"}}}
+      ]
+    },
+    "report_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["audiences", "purpose", "confidentiality", "distribution_scope", "report_date"],
+      "properties": {
+        "audiences": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/non_empty_string"}, "uniqueItems": true},
+        "purpose": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "confidentiality": {"type": "string", "enum": ["PUBLIC", "INTERNAL", "CONFIDENTIAL", "RESTRICTED"]},
+        "distribution_scope": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "report_date": {"type": "string", "format": "date"}
+      }
+    },
+    "executive_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context", "key_answers", "key_recommendation_ids", "limitation_summary"],
+      "properties": {
+        "context": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "key_answers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["research_question_id", "answer", "confidence", "finding_ids"],
+            "properties": {
+              "research_question_id": {"$ref": "common.schema.json#/$defs/identifier"},
+              "answer": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+              "confidence": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH"]},
+              "finding_ids": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/identifier"}, "uniqueItems": true}
+            }
+          }
+        },
+        "key_recommendation_ids": {"$ref": "common.schema.json#/$defs/id_list"},
+        "limitation_summary": {"$ref": "common.schema.json#/$defs/non_empty_string"}
+      }
+    },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["methods", "fieldwork_period", "sample_completion", "exclusions", "analysis_approach", "ai_role"],
+      "properties": {
+        "methods": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/non_empty_string"}, "uniqueItems": true},
+        "fieldwork_period": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["started_on", "completed_on"],
+          "properties": {
+            "started_on": {"type": "string", "format": "date"},
+            "completed_on": {"type": "string", "format": "date"}
+          }
+        },
+        "sample_completion": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "exclusions": {"$ref": "common.schema.json#/$defs/string_list"},
+        "analysis_approach": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "ai_role": {"$ref": "common.schema.json#/$defs/non_empty_string"}
+      }
+    },
+    "finding_presentations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/finding_presentation"}
+    },
+    "insight_presentations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["insight_id", "headline", "explanation", "applicable_scope", "confidence"],
+        "properties": {
+          "insight_id": {"$ref": "common.schema.json#/$defs/identifier"},
+          "headline": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "explanation": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "applicable_scope": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "confidence": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH"]}
+        }
+      }
+    },
+    "recommendation_presentations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["recommendation_id", "action", "rationale", "expected_effect", "validation_next_step", "suggested_owner", "suggested_priority", "decision_status"],
+        "properties": {
+          "recommendation_id": {"$ref": "common.schema.json#/$defs/identifier"},
+          "action": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "rationale": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "expected_effect": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "validation_next_step": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "suggested_owner": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "suggested_priority": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH"]},
+          "decision_status": {"const": "RESEARCH_PROPOSAL"}
+        }
+      }
+    },
+    "investor_education_section": {
+      "description": "金融用户研究报告中的独立投教建议板块。没有足够证据时必须明确标记不适用，不得用通用科普内容填充。",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applicable",
+        "summary",
+        "recommendation_ids",
+        "priority_learning_needs",
+        "audience_scope",
+        "recommended_moments",
+        "recommended_formats",
+        "guardrails",
+        "effectiveness_boundary"
+      ],
+      "properties": {
+        "applicable": {
+          "type": "boolean"
+        },
+        "summary": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "recommendation_ids": {
+          "$ref": "common.schema.json#/$defs/id_list"
+        },
+        "priority_learning_needs": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "audience_scope": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "recommended_moments": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "recommended_formats": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "guardrails": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "effectiveness_boundary": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "applicable": {
+                "const": true
+              }
+            },
+            "required": [
+              "applicable"
+            ]
+          },
+          "then": {
+            "properties": {
+              "recommendation_ids": {
+                "minItems": 1
+              },
+              "priority_learning_needs": {
+                "minItems": 1
+              },
+              "recommended_moments": {
+                "minItems": 1
+              },
+              "recommended_formats": {
+                "minItems": 1
+              },
+              "guardrails": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "recommendation_ids": {
+                "maxItems": 0
+              },
+              "priority_learning_needs": {
+                "maxItems": 0
+              },
+              "recommended_moments": {
+                "maxItems": 0
+              },
+              "recommended_formats": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "learning_resources": {
+      "description": "可选的调研后学习桥梁，不是研究证据。",
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/learning_resource"}
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/non_empty_string"}, "uniqueItems": true},
+    "unanswered_questions": {"$ref": "common.schema.json#/$defs/string_list"},
+    "appendices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["appendix_id", "title", "content_type", "reference"],
+        "properties": {
+          "appendix_id": {"$ref": "common.schema.json#/$defs/identifier"},
+          "title": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+          "content_type": {"type": "string", "enum": ["ARTIFACT", "DATA_TABLE", "CHART", "METHOD_NOTE", "OTHER"]},
+          "reference": {"oneOf": [{"$ref": "common.schema.json#/$defs/artifact_reference"}, {"type": "string", "format": "uri-reference"}]}
+        }
+      }
+    },
+    "decision_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contains_business_decisions", "statement"],
+      "properties": {
+        "contains_business_decisions": {"const": false},
+        "statement": {"$ref": "common.schema.json#/$defs/non_empty_string"}
+      }
+    },
+    "quality_declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_claims_traceable", "numbers_match_insight_package", "limitations_visible", "personal_data_removed", "human_review_required_before_release"],
+      "properties": {
+        "all_claims_traceable": {"const": true},
+        "numbers_match_insight_package": {"const": true},
+        "limitations_visible": {"const": true},
+        "personal_data_removed": {"const": true},
+        "human_review_required_before_release": {"const": true}
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["gate_3_approval_ref"],
+      "not": {"required": ["gate_3_governance_gap"]}
+    },
+    {
+      "required": ["gate_3_governance_gap"],
+      "properties": {
+        "metadata": {
+          "properties": {
+            "lifecycle_status": {"const": "DRAFT"}
+          }
+        }
+      },
+      "not": {"required": ["gate_3_approval_ref"]}
+    }
+  ],
+  "$defs": {
+    "finding_presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finding_id", "headline", "statement", "sample_scope", "confidence", "evidence_highlights", "negative_case_note", "limitation_note"],
+      "properties": {
+        "finding_id": {"$ref": "common.schema.json#/$defs/identifier"},
+        "headline": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "statement": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "sample_scope": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+        "confidence": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH"]},
+        "evidence_highlights": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["evidence_id", "display_text"],
+            "properties": {
+              "evidence_id": {"$ref": "common.schema.json#/$defs/identifier"},
+              "display_text": {"$ref": "common.schema.json#/$defs/non_empty_string"},
+              "participant_label": {"type": "string"}
+            }
+          }
+        },
+        "negative_case_note": {"type": "string"},
+        "limitation_note": {"$ref": "common.schema.json#/$defs/non_empty_string"}
+      }
+    }
+  }
+}

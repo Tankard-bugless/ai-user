@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "REPORT-DEMO-001",
+    "artifact_type": "ResearchReport",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：新基金说明材料理解研究报告",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-08-22T16:00:00+08:00",
+    "updated_at": "2026-08-22T16:00:00+08:00",
+    "created_by": {"actor_id": "AGENT-REPORT-001", "actor_type": "AGENT", "role": "研究报告生成专家", "model_id": "demo-model", "capability_version": "0.1.0"},
+    "upstream_refs": [
+      {"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"},
+      {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+      {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0", "approval_id": "APR-DEMO-G3-001"}
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "基于 Gate 3 已批准洞察包生成的合成报告。"
+  },
+  "research_brief_ref": {"artifact_id": "RB-DEMO-001", "artifact_type": "ResearchBrief", "artifact_version": "0.1.0"},
+  "research_plan_ref": {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+  "insight_package_ref": {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0", "approval_id": "APR-DEMO-G3-001"},
+  "gate_3_approval_ref": {"artifact_id": "APR-DEMO-G3-001", "artifact_type": "ApprovalRecord", "artifact_version": "0.1.0"},
+  "report_profile": {
+    "audiences": ["产品与投教负责人", "研究团队", "合规审核人员"],
+    "purpose": "支持决定当前说明材料中哪些表达需要重写、前置或补充验证。",
+    "confidentiality": "INTERNAL",
+    "distribution_scope": "仅限项目相关的产品、投教、研究和合规人员。",
+    "report_date": "2026-08-22"
+  },
+  "executive_summary": {
+    "context": "本研究使用 8 次访谈和 96 份有效问卷，评估当前冻结版基金说明材料的理解情况。",
+    "key_answers": [
+      {"research_question_id": "RQ-001", "answer": "部分低经验参与者会把“偏稳健”直接解释为本金安全，并优先依赖显眼词而非完整限定条件。", "confidence": "MEDIUM", "finding_ids": ["FINDING-001"]},
+      {"research_question_id": "RQ-002", "answer": "用户主观觉得材料清楚，不代表其能正确识别非保本和净值波动边界。", "confidence": "MEDIUM", "finding_ids": ["FINDING-001", "FINDING-002"]},
+      {"research_question_id": "RQ-003", "answer": "在本项目样本中，低经验组的本金保障误解比例高于高经验组；该差异不能外推为总体规律或因果关系。", "confidence": "MEDIUM", "finding_ids": ["FINDING-001"]}
+    ],
+    "key_recommendation_ids": ["REC-001", "REC-002"],
+    "limitation_summary": "样本来自有限授权渠道且并非概率抽样，所有比例和分组差异只描述本项目样本。"
+  },
+  "methodology": {
+    "methods": ["远程半结构访谈", "在线结构化问卷"],
+    "fieldwork_period": {"started_on": "2026-08-03", "completed_on": "2026-08-14"},
+    "sample_completion": "访谈完成并纳入 8 人；问卷完成 100 份、按预设规则排除 4 份、纳入 96 份。",
+    "exclusions": ["1 份低质量快速作答", "1 份分组信息矛盾", "1 份重复记录", "1 份核心变量缺失"],
+    "analysis_approach": "定性材料使用演绎与归纳结合的编码，并保留反例；定量材料报告分子、分母、题目和筛选条件，再按研究问题综合。",
+    "ai_role": "AI 辅助候选引文提取、编码和报告草拟；研究人员逐项复核原文、统计、限制和表述，AI 不完成正式批准。"
+  },
+  "finding_presentations": [
+    {
+      "finding_id": "FINDING-001",
+      "headline": "“偏稳健”可能被转换成“本金安全”",
+      "statement": "低经验组更常出现本金保障误解，访谈显示显眼词优先和忽略限定条件是常见路径。",
+      "sample_scope": "8 名访谈参与者；低经验和高经验问卷组各 48 人。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {"evidence_id": "EVID-001", "display_text": "低经验参与者在无提示复述中把偏稳健等同于本金不会动。", "participant_label": "P-INT-001"},
+        {"evidence_id": "EVID-003", "display_text": "低经验组 32/48 出现预设的本金保障误解。"},
+        {"evidence_id": "EVID-004", "display_text": "高经验组 8/48 出现同一误解。"}
+      ],
+      "negative_case_note": "P-INT-006 能主动说明稳健只是相对概念，且仍可能亏损，说明该模式并非人人如此。",
+      "limitation_note": "分组差异只适用于本项目样本，不能用于估计全部客户或形成正式客户标签。"
+    },
+    {
+      "finding_id": "FINDING-002",
+      "headline": "觉得清楚不等于真正看懂",
+      "statement": "75/96 的参与者给出较高清晰度评价，但只有 54/96 正确识别关键风险边界。",
+      "sample_scope": "96 份纳入问卷。",
+      "confidence": "MEDIUM",
+      "evidence_highlights": [
+        {"evidence_id": "EVID-006", "display_text": "75/96 对材料清晰度给出较高评价。"},
+        {"evidence_id": "EVID-007", "display_text": "54/96 正确识别非保本和净值波动边界。"}
+      ],
+      "negative_case_note": "该发现比较不同构念的样本内比例，不代表两项之间存在因果关系。",
+      "limitation_note": "理解题本身仍需在后续版本测试中继续校准。"
+    }
+  ],
+  "insight_presentations": [
+    {"insight_id": "INSIGHT-001", "headline": "相对术语会触发绝对安全捷径", "explanation": "用户可能先抓住熟悉且显眼的“稳健”，再把后续风险限定当作常规提示；因此风险边界出现得太晚时，未必能纠正第一判断。", "applicable_scope": "当前冻结版材料和本项目样本。", "confidence": "MEDIUM"},
+    {"insight_id": "INSIGHT-002", "headline": "阅读流畅会制造理解错觉", "explanation": "版面或语言容易读会提高主观清晰度，但不保证用户能够复述非保本和波动边界。", "applicable_scope": "当前材料评估。", "confidence": "MEDIUM"}
+  ],
+  "recommendation_presentations": [
+    {"recommendation_id": "REC-001", "action": "把“非保本、净值会波动”的说明放在“偏稳健”首次出现的位置附近，并增加一个解释相对含义的反例。", "rationale": "对应相对术语被绝对化以及后置限定未被整合的问题。", "expected_effect": "降低用户只依据显眼词形成绝对安全判断的机会。", "validation_next_step": "修订后开展小规模认知访谈，并用同口径理解题进行版本对比。", "suggested_owner": "产品内容负责人和投教负责人", "suggested_priority": "HIGH", "decision_status": "RESEARCH_PROPOSAL"},
+    {"recommendation_id": "REC-002", "action": "保留独立理解自检题，答题完成后提供可选的 IMA 知识库入口。", "rationale": "避免用主观清晰度替代理解测量，同时为希望继续学习的用户提供官方知识桥梁。", "expected_effect": "形成“调研—自检—可选学习”的轻量路径。", "validation_next_step": "发布前检查链接可用性与引导语；不记录点击，不把使用行为纳入研究结论。", "suggested_owner": "问卷设计人员和投教内容负责人", "suggested_priority": "MEDIUM", "decision_status": "RESEARCH_PROPOSAL"}
+  ],
+  "investor_education_section": {
+    "applicable": true,
+    "summary": "本轮最需要优先回应的不是增加产品卖点，而是帮助出现误解的参与者区分“相对稳健”“净值波动”和“非保本”三者的边界。",
+    "recommendation_ids": ["REC-002"],
+    "priority_learning_needs": ["相对风险不等于本金安全", "材料读起来清楚不等于已经正确理解风险边界"],
+    "audience_scope": "仅指本项目中出现相关误解或主动表达学习需求的参与者类型，不形成正式客户标签。",
+    "recommended_moments": ["完成核心理解测量后", "阅读相关产品说明或风险揭示材料时"],
+    "recommended_formats": ["简短风险边界卡片", "可选的官方知识库搜索入口"],
+    "guardrails": ["不承诺收益或本金安全", "不推荐具体产品", "IMA 等学习资源不作为研究证据"],
+    "effectiveness_boundary": "本研究只能说明学习需求与形式偏好；若要证明投教有效，需要另行比较教育前后的理解结果。"
+  },
+  "learning_resources": [
+    {
+      "resource_id": "LR-IMA-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "让希望继续了解的用户自行搜索基金风险、波动和非保本等金融常识。",
+      "placement": "AFTER_SURVEY_SECTION",
+      "placement_after_component_id": "SEC-COMPREHENSION",
+      "recommended_search_prompt": "如果您希望进一步了解相关金融常识，可在知识库中搜索“基金净值波动”“非保本”“风险与收益”。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "REVIEWED",
+      "review_notes": "仅作可选学习入口，不记录点击和停留，不构成投资建议。"
+    }
+  ],
+  "limitations": [
+    "样本来自有限的授权联系渠道，不能代表全部客户或市场总体。",
+    "分组比较是描述性的，不能推断投资经验导致理解差异。",
+    "本报告中的数据和引文均为合成示例，不是实际研究结果。"
+  ],
+  "unanswered_questions": ["改写后的前置信息能否在不增加过多阅读负担的情况下持续降低误解？"],
+  "appendices": [
+    {"appendix_id": "APPENDIX-INSIGHT", "title": "完整证据链与分析记录", "content_type": "ARTIFACT", "reference": {"artifact_id": "IP-DEMO-001", "artifact_type": "InsightPackage", "artifact_version": "0.1.0"}},
+    {"appendix_id": "APPENDIX-FIELDWORK", "title": "执行、样本与数据质量记录", "content_type": "ARTIFACT", "reference": {"artifact_id": "FWP-DEMO-001", "artifact_type": "FieldworkPackage", "artifact_version": "0.1.0"}}
+  ],
+  "decision_boundary": {
+    "contains_business_decisions": false,
+    "statement": "报告中的建议是研究建议，不代表产品、投教、合规或经营负责人已经决定实施；实施前仍需业务和合规审批。"
+  },
+  "quality_declaration": {
+    "all_claims_traceable": true,
+    "numbers_match_insight_package": true,
+    "limitations_visible": true,
+    "personal_data_removed": true,
+    "human_review_required_before_release": true
+  }
+}

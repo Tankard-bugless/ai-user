@@ -1,0 +1,435 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "artifact_id": "RP-OTF-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.2.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者的选择与持有认知问卷研究方案",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-23T19:12:00+08:00",
+    "updated_at": "2026-07-23T19:12:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-02",
+      "actor_type": "AGENT",
+      "role": "研究方案设计专家",
+      "model_id": "codex",
+      "capability_version": "0.3.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0",
+        "approval_id": "APR-OTF-G1-002"
+      },
+      {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "supersedes_ref": {
+      "artifact_id": "RP-OTF-001",
+      "artifact_type": "ResearchPlan",
+      "artifact_version": "0.1.0"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "基于已批准 ResearchBrief 0.2.0 增加年龄分群、五点信息清晰度测量，并将题目值语义、单份答卷状态与整体数据集状态纳入问卷同版设计。"
+  },
+  "research_brief_ref": {
+    "artifact_id": "RB-OTF-001",
+    "artifact_type": "ResearchBrief",
+    "artifact_version": "0.2.0",
+    "approval_id": "APR-OTF-G1-002"
+  },
+  "gate_1_approval_ref": {
+    "artifact_id": "APR-OTF-G1-002",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0"
+  },
+  "research_design": {
+    "design_type": "QUANTITATIVE",
+    "rationale": "本案例的目标是生成一份结构清楚、可直接分析和形成报告的问卷。研究问题已经具体，业务方不要求系统负责寻找受访者，也不要求另行开展访谈或人工试答，因此采用单一结构化问卷作为最小充分方法。问卷允许少量可选开放回答，用于补充预设选项之外的信息，但不构成独立定性研究。",
+    "method_ids": [
+      "METHOD-SUR-OTF-001"
+    ],
+    "sequence_logic": "只运行 METHOD-SUR-OTF-001。问卷工具同时冻结题目、变量、特殊值、单份答卷状态和数据集输出状态；业务方或外部渠道提供匿名答卷后，系统按同版契约整理数据、分析并生成报告。"
+  },
+  "method_specs": [
+    {
+      "method_id": "METHOD-SUR-OTF-001",
+      "method_type": "SURVEY",
+      "method_mode": "HYPOTHESIS_VALIDATION",
+      "purpose": "描述养老目标基金购买者的购买决策、产品类型认知、下滑曲线知晓与使用、持有行为和信息需求，并检验四项业务假设在本次答卷中的支持或反驳情况。",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-002",
+        "RQ-003",
+        "RQ-004",
+        "RQ-005",
+        "RQ-006"
+      ],
+      "execution_mode": "REMOTE_UNMODERATED",
+      "sequence": 1,
+      "depends_on_method_ids": []
+    }
+  ],
+  "question_method_map": [
+    {
+      "research_question_id": "RQ-001",
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "required_evidence": "最近一次购买的大致时间、首次了解渠道、购买触发、主要决策人和购买前实际查看的信息。",
+      "planned_output": "购买路径概览，以及信息触点、实际查看内容和最终决策之间的区别。"
+    },
+    {
+      "research_question_id": "RQ-002",
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "required_evidence": "参与者自报所购类型、对目标日期与目标风险选择逻辑的中性知识题作答，以及“不确定”回答。",
+      "planned_output": "所购类型识别情况、关键概念理解情况和主要混淆点。"
+    },
+    {
+      "research_question_id": "RQ-003",
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "required_evidence": "下滑曲线的既有知晓、购买前查看、持有期查看、实际使用和风险边界理解题作答。",
+      "planned_output": "下滑曲线从知晓到实际使用的分层结果，以及正确理解和常见误解。"
+    },
+    {
+      "research_question_id": "RQ-004",
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "required_evidence": "购买前看到过、认真比较过和最终最重要的决策因素分别作答，以及对当时产品信息清晰度的五点评分。",
+      "planned_output": "产品机制、业绩、品牌、推荐、费率和份额类别等因素在购买决策中的相对位置，以及信息清晰度的主观分布。"
+    },
+    {
+      "research_question_id": "RQ-005",
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "required_evidence": "当前持有状态、追加或赎回行为、遇到波动时的实际应对、是否查看配置变化及其原因。",
+      "planned_output": "持有行为类型、波动应对方式和持有期判断依据。"
+    },
+    {
+      "research_question_id": "RQ-006",
+      "method_ids": [
+        "METHOD-SUR-OTF-001"
+      ],
+      "required_evidence": "最需要的产品解释、希望获得信息的阶段和偏好的通俗呈现方式。",
+      "planned_output": "产品说明与持有陪伴内容的优先级，以及适合继续验证的表达形式。"
+    }
+  ],
+  "participant_profile": {
+    "population_description": "年满 18 周岁，目前持有或过去曾购买过至少一只养老目标基金，并能够回顾具体购买或持有经历的基金投资者。",
+    "required_characteristics": [
+      "年满 18 周岁",
+      "当前持有或过去曾购买过养老目标基金",
+      "能够基于自己的经历完成匿名问卷"
+    ],
+    "excluded_characteristics": [
+      "仅开立个人养老金账户但从未购买养老目标基金",
+      "仅购买过储蓄、保险、理财或非养老目标基金",
+      "直接参与本次问卷或相关测试内容设计"
+    ],
+    "analysis_dimensions": [
+      "主要分群：年龄段（18—29、30—39、40—49、50—59、60 岁及以上、不愿回答）",
+      "研究变量：目标日期型、目标风险型或不确定",
+      "研究变量：当前持有或已经赎回",
+      "研究变量：自主选择、专业人员推荐、亲友协助或共同决策",
+      "研究变量：个人养老金账户 Y 份额、普通份额或不确定",
+      "研究变量：距离预期退休的大致年限和基金投资经验"
+    ],
+    "provisioning_responsibility": "EXTERNAL_BUSINESS_OR_CHANNEL",
+    "system_responsibility": "DEFINE_PROFILE_ONLY"
+  },
+  "materials_plan": [],
+  "learning_resources_plan": [
+    {
+      "resource_id": "LR-IMA-OTF-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "在全部核心题目回答完成后，为希望继续了解养老目标基金、目标日期、目标风险或下滑曲线等概念的参与者提供自愿学习入口。",
+      "placement": "COMPLETION_PAGE",
+      "recommended_search_prompt": "如想继续了解，可在知识库中搜索“养老目标基金”“目标日期基金”“目标风险基金”或“下滑曲线”。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "UNREVIEWED",
+      "review_notes": "发布前仅需人工确认链接仍可访问；不记录点击、停留或身份关联，也不将访问行为用于研究分析。"
+    }
+  ],
+  "analysis_plan": {
+    "unit_of_analysis": "一名匿名问卷回答者及其题目作答。主分析只纳入状态为 VALID 的记录；所有比例使用对应题目的适用有效回答人数作为分母。",
+    "question_analysis": [
+      {
+        "research_question_id": "RQ-001",
+        "method_ids": [
+          "METHOD-SUR-OTF-001"
+        ],
+        "analysis_type": "CROSS_TABULATION",
+        "variables_or_codes": [
+          "purchase_recency",
+          "first_awareness_channel",
+          "purchase_trigger",
+          "decision_role",
+          "information_seen_before_purchase",
+          "information_compared_before_purchase",
+          "age_group"
+        ],
+        "decision_rule": "先分别统计首次接触、实际查看、认真比较和最终决策信息，再按年龄段方向性比较信息渠道和决策角色；不把多选题中的“见过”解释为决定购买。"
+      },
+      {
+        "research_question_id": "RQ-002",
+        "method_ids": [
+          "METHOD-SUR-OTF-001"
+        ],
+        "analysis_type": "CROSS_TABULATION",
+        "variables_or_codes": [
+          "reported_fund_type",
+          "fund_type_confidence",
+          "target_date_knowledge",
+          "target_risk_knowledge",
+          "fund_type_knowledge_score",
+          "age_group"
+        ],
+        "decision_rule": "自报产品类型、主观确定程度和知识题正确作答分别报告，再按年龄段作方向性比较；正确、错误和不确定分别呈现，不把不确定强行归入错误产品类型。"
+      },
+      {
+        "research_question_id": "RQ-003",
+        "method_ids": [
+          "METHOD-SUR-OTF-001"
+        ],
+        "analysis_type": "CROSS_TABULATION",
+        "variables_or_codes": [
+          "glide_path_awareness",
+          "glide_path_viewed_before_purchase",
+          "glide_path_viewed_during_holding",
+          "glide_path_used_in_decision",
+          "glide_path_comprehension_score",
+          "glide_path_risk_misunderstanding",
+          "age_group"
+        ],
+        "decision_rule": "按知晓、查看、使用和理解四层分别统计并按年龄段作方向性比较；只有知识题作答用于理解判断，自报“看懂”不能替代知识题结果。"
+      },
+      {
+        "research_question_id": "RQ-004",
+        "method_ids": [
+          "METHOD-SUR-OTF-001"
+        ],
+        "analysis_type": "DESCRIPTIVE_STATISTICS",
+        "variables_or_codes": [
+          "factor_seen",
+          "factor_compared",
+          "factor_most_important",
+          "purchase_information_clarity_5"
+        ],
+        "decision_rule": "报告全体有效答卷中的因素分布，以及五点信息清晰度的各选项分布和中位数；主观清晰度不替代客观知识题，也不解释为实际理解。"
+      },
+      {
+        "research_question_id": "RQ-005",
+        "method_ids": [
+          "METHOD-SUR-OTF-001"
+        ],
+        "analysis_type": "CROSS_TABULATION",
+        "variables_or_codes": [
+          "holding_status",
+          "holding_action",
+          "reaction_to_volatility",
+          "allocation_change_check",
+          "holding_uncertainty"
+        ],
+        "decision_rule": "分别呈现当前状态、已经采取的行动和行动理由，不把未来意愿当作已经发生的行为。"
+      },
+      {
+        "research_question_id": "RQ-006",
+        "method_ids": [
+          "METHOD-SUR-OTF-001"
+        ],
+        "analysis_type": "DESCRIPTIVE_STATISTICS",
+        "variables_or_codes": [
+          "information_need",
+          "information_timing",
+          "preferred_explanation_format",
+          "optional_open_comment",
+          "age_group"
+        ],
+        "decision_rule": "按选择频次形成内容优先级，并按年龄段方向性比较信息主题、形式和时点；呈现偏好只作为设计方向，不宣称能够提升实际理解度。"
+      }
+    ],
+    "qualitative_plan": {
+      "applicable": true,
+      "coding_approach": "仅对“其他”说明和最后的可选开放回答进行轻量内容编码；先按六个研究问题归类，再保留无法归入预设选项的新主题。",
+      "quality_check": "开放回答必须保留匿名回答者编号和原文定位；单个回答不能直接写成共同规律，与主要模式相反的回答保留为反例。"
+    },
+    "quantitative_plan": {
+      "applicable": true,
+      "statistics": [
+        "题目级有效人数、缺失人数、分子和比例",
+        "多选题选择频次和选择率",
+        "目标日期、目标风险和下滑曲线知识题的题目级正确率",
+        "五点信息清晰度的各选项分布和中位数",
+        "年龄段与预定义结果变量的方向性交叉表"
+      ],
+      "weighting_rule": "不加权；业务方未提供抽样框和总体结构，结果只描述本次匿名答卷。",
+      "subgroup_rule": "只以年龄段作为基础分群。年龄组 n<10 不单独展示比例；10-19 可展示但标注“小样本，仅供方向观察”；n>=20 仍只作描述性比较。不得在看到结果后临时增加画像分群。"
+    },
+    "missing_data_rule": "区分正常答案、UNKNOWN、NOT_APPLICABLE、PREFER_NOT_TO_SAY、STRUCTURAL_MISSING 和 ITEM_MISSING。结构性空缺和不适用不进入该题分母；题目缺失单独报告且不插补。知识题合成得分仅在预先指定题目均有有效作答时计算；不确定按未答对计分但仍保留在题目分布中。",
+    "negative_case_rule": "主动查看并实际使用下滑曲线、能够准确解释产品类型，或现有信息已经完全满足需求的回答均作为可能反驳业务假设的证据保留。",
+    "evidence_thresholds": [
+      {
+        "claim_type": "FINDING",
+        "minimum_requirement": "至少有一项可复算的题目汇总或交叉表支持，并同时记录有效分母、缺失和适用人群；开放回答形成模式时需有多个独立回答支持。",
+        "confidence_rule": "根据样本来源说明、有效回答数量、题目质量、结果一致性和反例判断低、中或高；无抽样信息时不得标为总体性高置信结论。"
+      },
+      {
+        "claim_type": "INSIGHT",
+        "minimum_requirement": "至少引用一个 Finding，并说明购买行为、认知或信息需求之间的推理关系及其他可能解释。",
+        "confidence_rule": "Insight 的置信度不得高于关键上游 Finding；只有态度题支持时不得推断真实行为。"
+      },
+      {
+        "claim_type": "RECOMMENDATION",
+        "minimum_requirement": "至少引用一个 Insight，并明确建议针对购买前说明还是购买后陪伴，以及需要业务或合规继续判断的部分。",
+        "confidence_rule": "Recommendation 是待业务方评估的研究建议，不自动成为产品决定或对客户的投资建议。"
+      }
+    ],
+    "synthesis_plan": "按照“购买经历—产品类型认知—下滑曲线—决策因素—持有行为—信息需求”顺序整合结果。每项假设同时汇总支持证据、反驳证据和无法判断的原因，最终形成“发现—证据—洞察—建议”报告。"
+  },
+  "quality_plan": {
+    "pilot_required": false,
+    "instrument_review_rules": [
+      "每个核心题目必须映射到 Research Question、Hypothesis 和分析变量，删除没有分析用途的题目",
+      "首次测量既有认知前不得先解释目标日期、目标风险或下滑曲线，以免提示答案",
+      "一题只测一个概念，区分见过、查看过、使用过、理解和态度",
+      "单选和多选选项互斥且尽量穷尽，并在需要时提供不知道、不确定、不适用和其他",
+      "检查全部跳转路径、必答设置、变量名称、输出值和缺失值规则",
+      "InstrumentSpec 必须与问卷正文同版定义变量角色、特殊值语义、单份答卷状态和整体数据集状态",
+      "知识题答错、不确定、年龄不愿回答和开放题空白不得被直接判为无效答卷",
+      "检查是否包含收益保证、产品优越性、投资推荐或适当性判断",
+      "IMA 链接只位于完成页，不进入研究变量和报告证据"
+    ],
+    "invalid_response_rules": [
+      "导入记录初始为 UNASSESSED；只允许转为 VALID、REVIEW_REQUIRED 或 EXCLUDED",
+      "未同意、明确不符合购买经历、全部核心模块无实质数据、无法修复的版本错误和人工确认重复属于硬排除",
+      "不确定是否买过养老目标基金、完成时长异常、逻辑冲突、疑似重复和核心题高缺失只进入 REVIEW_REQUIRED",
+      "至少有 30 份完成记录后，低于当批中位完成时长三分之一才触发 SPEEDING_SUSPECTED，且不能单独用于排除",
+      "全部 REVIEW_REQUIRED 必须由研究人员转为 VALID 或 EXCLUDED；排除保留原因码、决定人、时间和影响"
+    ],
+    "fieldwork_quality_checks": [
+      "导入前确认数据已匿名化且不包含姓名、联系方式、账户号码或交易截图",
+      "检查导出字段与 InstrumentSpec 的 item_id 和 variable_name 一一对应",
+      "检查选项值、特殊值、题目缺失、跳转后结构性空缺和重复记录标记",
+      "汇总 UNASSESSED、VALID、REVIEW_REQUIRED、EXCLUDED 及原因码数量",
+      "只有数据集为 ANALYSIS_READY 或 ANALYSIS_READY_WITH_LIMITS 才能进入洞察分析；BLOCKED 时退回整理",
+      "记录业务方提供的实际答卷数量、来源说明和已知限制",
+      "IMA 链接不可用不影响核心答卷有效性"
+    ]
+  },
+  "data_management": {
+    "participant_id_scheme": "数据导入时生成 RESP-0001 形式的匿名回答者编号；外部渠道持有的名单或联系方式不得与该编号映射后传入系统。",
+    "data_minimization": "只接收题目作答、必要的分析维度和质量标记；不收集姓名、联系方式、账户、精确金额、资产总额、交易截图或完整持仓。",
+    "deidentification": "导入前由业务方或外部渠道移除直接标识；开放回答中的姓名、机构、地点等识别信息在分析前替换为通用描述。",
+    "access_roles": [
+      "研究负责人",
+      "经授权的分析人员",
+      "必要时的合规审核人员"
+    ],
+    "retention_rule": "匿名答卷和研究产物按机构确认的用户研究数据保存周期执行；保存周期未确认前不得设置永久保留。",
+    "deletion_rule": "到期后由数据责任人删除原始答卷导入文件；保留报告和不可回溯到个人的聚合结果需遵循机构归档规则。",
+    "external_transfer_rule": "不得向外部模型或平台传输可识别个人或账户的信息；需要外部处理时只使用已经匿名化的数据和最小必要字段。"
+  },
+  "risks": [
+    {
+      "risk_id": "RISK-PLAN-OTF-001",
+      "category": "SAMPLE",
+      "description": "受访者由业务方或外部渠道提供，实际样本可能集中于特定渠道或特定产品。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "记录实际答卷来源和画像覆盖，所有结果限定为本次答卷，不估计购买者总体比例。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-PLAN-OTF-002",
+      "category": "METHOD",
+      "description": "参与者可能混淆养老目标基金、普通 FOF 和其他个人养老金产品。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "问卷允许填写基金名称或目标年份并提供“不确定”选项；无法判断产品类型者单独呈现，不由系统核验名单。",
+      "owner_role": "研究工具设计负责人"
+    },
+    {
+      "risk_id": "RISK-PLAN-OTF-003",
+      "category": "METHOD",
+      "description": "购买时间较早时，回答者可能用当前认知重构当时决策。",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "题目围绕最近一次具体购买，先问当时看过和做过什么，再问现在的理解和评价；报告注明回忆偏差。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-PLAN-OTF-004",
+      "category": "METHOD",
+      "description": "本案例不进行人工试答，部分术语或选项仍可能被不同回答者理解为不同含义。",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "使用普通语言、术语分层测量和不知道选项，并执行题目追溯、选项、跳转和金融表达自动检查及研究人员审核。",
+      "owner_role": "研究质量审核负责人"
+    },
+    {
+      "risk_id": "RISK-PLAN-OTF-005",
+      "category": "DATA",
+      "description": "外部问卷平台导出的字段、缺失值或跳转空缺可能与 InstrumentSpec 不一致。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "在分析前运行字段字典、选项值、缺失值和跳转一致性检查；不一致时暂停报告生成并返回数据导入环节。",
+      "owner_role": "数据导入与分析负责人"
+    },
+    {
+      "risk_id": "RISK-PLAN-OTF-006",
+      "category": "FINANCIAL_EXPRESSION",
+      "description": "知识题、解释文字或报告建议可能被理解为产品宣传或投资建议。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "问卷和报告发布前检查产品事实、风险边界和中性表达；不使用业绩排名、收益承诺或鼓励交易的措辞。",
+      "owner_role": "合规审核人员"
+    }
+  ],
+  "limitations": [
+    "受访者来源和数量由业务方或外部渠道决定，本研究不能自动保证样本代表性。",
+    "购买、查看材料、追加和赎回均为匿名问卷自报，不等同于已核验的交易记录。",
+    "单一问卷适合结构化描述，但发现完全未预期动机和复杂情境的能力弱于深度访谈。",
+    "未进行人工试答会保留一定题意理解风险，报告需结合不知道、其他和开放回答判断。",
+    "交叉表只用于本次答卷中的方向性比较，不用于显著性、因果或市场总体推断。",
+    "对说明形式的偏好不等于该形式能够提高实际理解；如需证明效果，需要另行设计材料比较研究。"
+  ],
+  "deliverables": [
+    {
+      "deliverable_type": "InstrumentSpec",
+      "owner_role": "CAP-03 研究工具设计专家"
+    },
+    {
+      "deliverable_type": "ReviewResult",
+      "owner_role": "CAP-04 研究质量审核专家"
+    },
+    {
+      "deliverable_type": "FieldworkPackage",
+      "owner_role": "数据导入服务或人工执行方"
+    },
+    {
+      "deliverable_type": "InsightPackage",
+      "owner_role": "CAP-05 证据与洞察专家"
+    },
+    {
+      "deliverable_type": "ResearchReport",
+      "owner_role": "CAP-06 研究报告表达专家"
+    }
+  ]
+}

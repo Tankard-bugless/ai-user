@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "APR-DEMO-G2-001",
+    "artifact_type": "ApprovalRecord",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：Gate 2 研究方案与工具确认记录",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-23T12:00:00+08:00",
+    "updated_at": "2026-07-23T12:00:00+08:00",
+    "created_by": {"actor_id": "HUMAN-METHOD-LEAD", "actor_type": "HUMAN", "role": "研究方法审核人"},
+    "upstream_refs": [
+      {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+      {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+      {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+      {"artifact_id": "REVIEW-DEMO-002", "artifact_type": "ReviewResult", "artifact_version": "0.1.0"}
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "合成的 Gate 2 人工批准记录。"
+  },
+  "gate_id": "GATE_2",
+  "status": "APPROVED",
+  "primary_target_ref": {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+  "reviewed_refs": [
+    {"artifact_id": "RP-DEMO-001", "artifact_type": "ResearchPlan", "artifact_version": "0.1.0"},
+    {"artifact_id": "INS-SURVEY-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+    {"artifact_id": "INS-INTERVIEW-DEMO-001", "artifact_type": "InstrumentSpec", "artifact_version": "0.1.0"},
+    {"artifact_id": "REVIEW-DEMO-002", "artifact_type": "ReviewResult", "artifact_version": "0.1.0"}
+  ],
+  "reviewer": {"actor_id": "HUMAN-METHOD-LEAD", "actor_type": "HUMAN", "role": "研究方法审核人"},
+  "reviewer_role": "研究方法审核人",
+  "authority_basis": "被授权确认研究方法、样本、工具和执行准备情况。",
+  "recorded_at": "2026-07-23T12:00:00+08:00",
+  "decided_at": "2026-07-23T12:00:00+08:00",
+  "decision_basis": "方案、问卷、访谈提纲和预审结果共同满足执行条件；IMA 仅作为答题后的可选学习入口。",
+  "blocking_issues": [],
+  "required_changes": [],
+  "accepted_risks": ["示例样本只能支持项目内描述和方向性比较。"],
+  "attestations": {
+    "reviewed_primary_target": true,
+    "reviewed_supporting_artifacts": true,
+    "reviewed_material_changes": true,
+    "authorized_to_decide": true
+  },
+  "comments": "批准指定版本进入执行；任何题目、提纲或材料变更都需要新版本和重新审核。",
+  "invalidation_rule": "ANY_REVIEWED_ARTIFACT_VERSION_CHANGE_REQUIRES_NEW_APPROVAL",
+  "is_ai_approval": false
+}

@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "schema_version": "0.2.0",
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 6,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:13+08:00",
+    "updated_at": "2026-07-27T13:47:13+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "GATE_1 真实人工 ApprovalRecord 已验证并应用。",
+    "previous_record_ref": {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 5
+    }
+  },
+  "workflow_template": {
+    "template_id": "WF-UR-V1",
+    "template_version": "0.1.0"
+  },
+  "current_stage": "PLAN_DESIGN",
+  "run_status": "ACTIVE",
+  "active_task_ids": [],
+  "completed_task_ids": [
+    "TASK-OTF-HIST-IMPORT-001"
+  ],
+  "blocked_task_ids": [],
+  "artifact_registry": [
+    {
+      "artifact_ref": {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      "workflow_validity": "CURRENT"
+    },
+    {
+      "artifact_ref": {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      },
+      "workflow_validity": "CURRENT"
+    }
+  ],
+  "approval_refs": [
+    {
+      "artifact_id": "APR-OTF-G1-002",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "stale_artifact_refs": [],
+  "transition": {
+    "event_id": "EVT-00006-F1090953",
+    "event_type": "GATE_APPROVED",
+    "from_stage": "GATE_1_REVIEW",
+    "to_stage": "PLAN_DESIGN",
+    "triggered_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "occurred_at": "2026-07-27T13:47:13+08:00",
+    "reason": "GATE_1 真实人工 ApprovalRecord 已验证并应用。",
+    "related_task_ids": [],
+    "related_artifact_refs": [
+      {
+        "artifact_id": "RB-OTF-001",
+        "artifact_type": "ResearchBrief",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "APR-OTF-G1-002",
+        "artifact_type": "ApprovalRecord",
+        "artifact_version": "0.1.0"
+      }
+    ]
+  }
+}

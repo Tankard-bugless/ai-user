@@ -1,0 +1,541 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/task-record.schema.json",
+  "title": "TaskRecord Schema",
+  "description": "状态机分派的一次可执行工作记录，冻结输入、目标能力、权限、输出契约和失败处理。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "state_ref",
+    "task_kind",
+    "purpose",
+    "status",
+    "target",
+    "idempotency_key",
+    "attempt",
+    "max_attempts",
+    "dependency_task_ids",
+    "input_artifact_refs",
+    "input_record_refs",
+    "expected_output",
+    "output_artifact_refs",
+    "output_record_refs",
+    "external_output_refs",
+    "entry_conditions",
+    "completion_criteria",
+    "permission_scope"
+  ],
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/control_record_metadata"
+        },
+        {
+          "properties": {
+            "record_type": {
+              "const": "TaskRecord"
+            }
+          }
+        }
+      ]
+    },
+    "state_ref": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/control_record_reference"
+        },
+        {
+          "properties": {
+            "record_type": {
+              "const": "WorkflowState"
+            }
+          }
+        }
+      ]
+    },
+    "task_kind": {
+      "type": "string",
+      "enum": [
+        "EXPERT",
+        "VALIDATOR",
+        "HUMAN_GATE",
+        "FIELDWORK_SERVICE",
+        "ADAPTER",
+        "ARCHIVE_SERVICE"
+      ]
+    },
+    "purpose": {
+      "$ref": "common.schema.json#/$defs/non_empty_string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "READY",
+        "RUNNING",
+        "WAITING_INPUT",
+        "WAITING_HUMAN",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+        "STALE"
+      ]
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_type",
+        "target_id"
+      ],
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "CAPABILITY",
+            "VALIDATOR",
+            "HUMAN_ROLE",
+            "SERVICE",
+            "ADAPTER"
+          ]
+        },
+        "target_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "assigned_actor": {
+      "$ref": "common.schema.json#/$defs/actor"
+    },
+    "gate_id": {
+      "$ref": "common.schema.json#/$defs/gate_id"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 256
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dependency_task_ids": {
+      "$ref": "common.schema.json#/$defs/id_list"
+    },
+    "input_artifact_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/artifact_reference"
+      },
+      "uniqueItems": true
+    },
+    "input_record_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_record_reference"
+      },
+      "uniqueItems": true
+    },
+    "expected_output": {
+      "$ref": "#/$defs/expected_output"
+    },
+    "output_artifact_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/artifact_reference"
+      },
+      "uniqueItems": true
+    },
+    "output_record_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_record_reference"
+      },
+      "uniqueItems": true
+    },
+    "external_output_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "uniqueItems": true
+    },
+    "entry_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/non_empty_string"
+      },
+      "uniqueItems": true
+    },
+    "completion_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/non_empty_string"
+      },
+      "uniqueItems": true
+    },
+    "permission_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "data_access",
+        "allowed_actions",
+        "forbidden_actions",
+        "external_write_allowed",
+        "human_approval_required"
+      ],
+      "properties": {
+        "data_access": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "NO_PERSONAL_DATA",
+              "DEIDENTIFIED_RESEARCH_DATA",
+              "PERSONAL_DATA_MINIMUM_AUTHORIZED"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "allowed_actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "READ_ARTIFACT",
+              "READ_CONTROL_RECORD",
+              "CREATE_ARTIFACT_DRAFT",
+              "CREATE_CONTROL_RECORD",
+              "RUN_VALIDATOR",
+              "CALL_APPROVED_TOOL",
+              "WRITE_EXTERNAL_SYSTEM",
+              "CONTACT_PARTICIPANT"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "forbidden_actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/non_empty_string"
+          },
+          "uniqueItems": true
+        },
+        "external_write_allowed": {
+          "type": "boolean"
+        },
+        "human_approval_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completion_summary": {
+      "type": "string"
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "error_code",
+        "message",
+        "retryable"
+      ],
+      "properties": {
+        "classification": {
+          "type": "string",
+          "enum": [
+            "TECHNICAL",
+            "INPUT_MISSING",
+            "SEMANTIC",
+            "PRIVACY",
+            "COMPLIANCE",
+            "PERMISSION",
+            "EXTERNAL_SERVICE"
+          ]
+        },
+        "error_code": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "message": {
+          "$ref": "common.schema.json#/$defs/non_empty_string"
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "return_stage": {
+          "$ref": "common.schema.json#/$defs/workflow_stage"
+        },
+        "escalation_role": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "expected_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output_kind",
+        "cardinality"
+      ],
+      "properties": {
+        "output_kind": {
+          "type": "string",
+          "enum": [
+            "ARTIFACT",
+            "CONTROL_RECORD",
+            "VALIDATION_RESULT",
+            "EXTERNAL_PACKAGE",
+            "NONE"
+          ]
+        },
+        "artifact_type": {
+          "type": "string"
+        },
+        "record_type": {
+          "type": "string",
+          "enum": [
+            "WorkflowState",
+            "TaskRecord",
+            "HandoffRecord"
+          ]
+        },
+        "schema_uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "cardinality": {
+          "type": "string",
+          "enum": [
+            "SINGLE",
+            "MULTIPLE"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "output_kind": {
+                "const": "ARTIFACT"
+              }
+            },
+            "required": [
+              "output_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "artifact_type",
+              "schema_uri"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "output_kind": {
+                "const": "CONTROL_RECORD"
+              }
+            },
+            "required": [
+              "output_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "record_type",
+              "schema_uri"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "task_kind": {
+            "const": "EXPERT"
+          }
+        },
+        "required": [
+          "task_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "target": {
+            "properties": {
+              "target_type": {
+                "const": "CAPABILITY"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "task_kind": {
+            "const": "HUMAN_GATE"
+          }
+        },
+        "required": [
+          "task_kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "gate_id"
+        ],
+        "properties": {
+          "target": {
+            "properties": {
+              "target_type": {
+                "const": "HUMAN_ROLE"
+              }
+            }
+          },
+          "expected_output": {
+            "properties": {
+              "output_kind": {
+                "const": "ARTIFACT"
+              },
+              "artifact_type": {
+                "const": "ApprovalRecord"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "RUNNING",
+              "WAITING_INPUT",
+              "WAITING_HUMAN",
+              "SUCCEEDED",
+              "FAILED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "started_at"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUCCEEDED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "completed_at",
+          "completion_summary"
+        ],
+        "anyOf": [
+          {
+            "properties": {
+              "output_artifact_refs": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "output_artifact_refs"
+            ]
+          },
+          {
+            "properties": {
+              "output_record_refs": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "output_record_refs"
+            ]
+          },
+          {
+            "properties": {
+              "external_output_refs": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "external_output_refs"
+            ]
+          },
+          {
+            "properties": {
+              "expected_output": {
+                "properties": {
+                  "output_kind": {
+                    "const": "NONE"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "FAILED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "completed_at",
+          "failure"
+        ]
+      }
+    }
+  ]
+}

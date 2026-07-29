@@ -1,0 +1,143 @@
+{
+  "version": "1.1",
+  "created_from": [
+    "05_cases\\养老目标基金购买者研究\\analysis-results.v0.1.0.json",
+    "tmp\\survey-analysis-20260724\\attitude-analysis.v1.1.json"
+  ],
+  "source_sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+  "style": {
+    "font": "Microsoft YaHei",
+    "palette": {
+      "blue": "#1F6E8C",
+      "green": "#2A9D8F",
+      "orange": "#C85C1A",
+      "gold": "#B7791F",
+      "purple": "#7C5C99"
+    },
+    "principles": [
+      "条形图和比例编码使用零起点",
+      "颜色之外使用分面、排序、图例和直接标签",
+      "不同提问口径不绘制为漏斗",
+      "复合回答信号明确分母和定义，不表述为心理量表",
+      "图题先陈述分析结论，图注明确样本和解释边界"
+    ]
+  },
+  "figures": [
+    {
+      "figure_id": "FIG-OTF-00",
+      "file": "fig0_attitude_overview_v1.1.png",
+      "title": "投资者接受已经发生，判断框架尚未稳定",
+      "source_fields": [
+        "descriptive_results.Q1",
+        "knowledge_summary.all_four_correct",
+        "descriptive_results.Q8",
+        "descriptive_results.Q22"
+      ],
+      "transformations": [
+        "选取四个不同维度的原始比例作为并列观察",
+        "不连线、不排序为漏斗、不计算综合得分"
+      ],
+      "note": "四项指标口径不同，不能相减、相乘或解释为阶段转化。"
+    },
+    {
+      "figure_id": "FIG-OTF-01",
+      "file": "fig1_knowledge_v1.0.png",
+      "title": "单项知识正确率约六成，但四项全部答对仅 20.0%",
+      "source_fields": [
+        "knowledge_summary"
+      ],
+      "transformations": [
+        "使用已校正百分比",
+        "无平滑、无插值、无再加权"
+      ],
+      "note": "四道题均为预定义知识题。"
+    },
+    {
+      "figure_id": "FIG-OTF-02",
+      "file": "fig2_glide_v1.0.png",
+      "title": "主动比较仅 3.5%，提示后自报影响达到 51.0%",
+      "source_fields": [
+        "glide_path_indicators",
+        "knowledge_summary.both_glide_correct"
+      ],
+      "transformations": [
+        "自然行为、提示后回忆性自报和知识理解分开呈现",
+        "不按漏斗或因果链解释"
+      ],
+      "note": "不同题型和提示强度造成的口径差异必须保留。"
+    },
+    {
+      "figure_id": "FIG-OTF-03",
+      "file": "fig3_decision_path_v1.0.png",
+      "title": "触发关注与最终判断是两层机制",
+      "source_fields": [
+        "descriptive_results.Q6",
+        "descriptive_results.Q8",
+        "descriptive_results.Q9"
+      ],
+      "transformations": [
+        "仅展示各题排名前三",
+        "多选题与单选题不跨题相加"
+      ],
+      "note": "Q6、Q8 为多选题，Q9 为单选题。"
+    },
+    {
+      "figure_id": "FIG-OTF-04",
+      "file": "fig4_education_v1.0.png",
+      "title": "投教应贯穿购买前与持有期，优先场景化、可视化解释",
+      "source_fields": [
+        "descriptive_results.Q26",
+        "descriptive_results.Q27",
+        "descriptive_results.Q28"
+      ],
+      "transformations": [
+        "仅展示各题前五项",
+        "偏好不等同于材料效果"
+      ],
+      "note": "三题均为多选题，各题比例不相加。"
+    },
+    {
+      "figure_id": "FIG-OTF-05",
+      "file": "fig5_age_heatmap_v1.0.png",
+      "title": "年龄差异适合指导原型选择，不宜转化为客户标签",
+      "source_fields": [
+        "age_metrics",
+        "age_tables.Q27_preferred_format"
+      ],
+      "transformations": [
+        "使用已校正百分比",
+        "未进行显著性检验"
+      ],
+      "note": "仅作描述性比较，不用于个体标签。"
+    },
+    {
+      "figure_id": "FIG-OTF-06",
+      "file": "fig6_holding_tension_v1.1.png",
+      "title": "长期认同与短期焦虑可以在同一受访者身上共现",
+      "source_fields": [
+        "attitude-analysis.v1.1.holding_tension"
+      ],
+      "transformations": [
+        "分母限定为 Q23 适用的 157 人",
+        "长期/理解信号为两个预定义选项的任一命中",
+        "焦虑/不明信号为两个预定义选项的任一命中",
+        "将两类二值信号交叉为四个互斥组"
+      ],
+      "note": "复合分类是回答信号，不是心理量表或因果推断。"
+    },
+    {
+      "figure_id": "FIG-OTF-07",
+      "file": "fig7_knowledge_behavior_gap_v1.1.png",
+      "title": "知道、答对与主动调用是不同层次",
+      "source_fields": [
+        "attitude-analysis.v1.1.knowledge_behavior_gap"
+      ],
+      "transformations": [
+        "左图按四题答对题数统计分布",
+        "右图并列展示无提示主动比较与直接提示后自报影响",
+        "不把两个比例解释为转化率"
+      ],
+      "note": "Q8 与 Q16 的提示强度、题型和选项上限不同。"
+    }
+  ]
+}

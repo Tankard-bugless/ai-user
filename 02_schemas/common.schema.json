@@ -1,0 +1,640 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.local/user-research-workflow/v1/common.schema.json",
+  "title": "User Research Workflow Common Definitions",
+  "description": "核心研究产物共同使用的元数据、主体、引用和基础类型。",
+  "$defs": {
+    "semantic_version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "non_empty_string": {
+      "type": "string",
+      "minLength": 1
+    },
+    "string_list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/non_empty_string"
+      },
+      "uniqueItems": true
+    },
+    "id_list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "actor_type",
+        "role"
+      ],
+      "properties": {
+        "actor_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "actor_type": {
+          "type": "string",
+          "enum": [
+            "HUMAN",
+            "AGENT",
+            "SYSTEM"
+          ]
+        },
+        "role": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "model_id": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "capability_version": {
+          "$ref": "#/$defs/semantic_version"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "actor_type": {
+                "const": "AGENT"
+              }
+            },
+            "required": [
+              "actor_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "model_id",
+              "capability_version"
+            ]
+          }
+        }
+      ]
+    },
+    "artifact_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "artifact_type",
+        "artifact_version"
+      ],
+      "properties": {
+        "artifact_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "artifact_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_version": {
+          "$ref": "#/$defs/semantic_version"
+        },
+        "approval_id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "artifact_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "artifact_id",
+        "artifact_type",
+        "artifact_version",
+        "project_id",
+        "title",
+        "lifecycle_status",
+        "created_at",
+        "updated_at",
+        "created_by",
+        "upstream_refs",
+        "content_classification",
+        "sensitivity_level",
+        "contains_personal_data",
+        "change_summary"
+      ],
+      "properties": {
+        "schema_version": {
+          "$ref": "#/$defs/semantic_version"
+        },
+        "artifact_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "artifact_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_version": {
+          "$ref": "#/$defs/semantic_version"
+        },
+        "project_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "language": {
+          "type": "string",
+          "default": "zh-CN"
+        },
+        "lifecycle_status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "IN_REVIEW",
+            "FROZEN",
+            "SUPERSEDED",
+            "ARCHIVED"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_by": {
+          "$ref": "#/$defs/actor"
+        },
+        "upstream_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact_reference"
+          },
+          "uniqueItems": true
+        },
+        "supersedes_ref": {
+          "$ref": "#/$defs/artifact_reference"
+        },
+        "content_classification": {
+          "type": "string",
+          "enum": [
+            "REAL",
+            "SANITIZED",
+            "SYNTHETIC",
+            "TEMPLATE"
+          ]
+        },
+        "sensitivity_level": {
+          "type": "string",
+          "enum": [
+            "PUBLIC",
+            "INTERNAL",
+            "CONFIDENTIAL",
+            "RESTRICTED"
+          ]
+        },
+        "contains_personal_data": {
+          "type": "boolean"
+        },
+        "change_summary": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "extensions": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_-]*\\.[a-zA-Z0-9_.-]+$"
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "control_record_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "record_type",
+        "record_revision"
+      ],
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "record_type": {
+          "type": "string",
+          "enum": [
+            "WorkflowState",
+            "TaskRecord",
+            "HandoffRecord"
+          ]
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "control_record_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "record_id",
+        "record_type",
+        "record_revision",
+        "project_id",
+        "run_id",
+        "created_at",
+        "updated_at",
+        "created_by",
+        "content_classification",
+        "sensitivity_level",
+        "contains_personal_data",
+        "change_summary"
+      ],
+      "properties": {
+        "schema_version": {
+          "$ref": "#/$defs/semantic_version"
+        },
+        "record_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "record_type": {
+          "type": "string",
+          "enum": [
+            "WorkflowState",
+            "TaskRecord",
+            "HandoffRecord"
+          ]
+        },
+        "record_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "project_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "run_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "previous_record_ref": {
+          "$ref": "#/$defs/control_record_reference"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_by": {
+          "$ref": "#/$defs/actor"
+        },
+        "content_classification": {
+          "type": "string",
+          "enum": [
+            "REAL",
+            "SANITIZED",
+            "SYNTHETIC",
+            "TEMPLATE"
+          ]
+        },
+        "sensitivity_level": {
+          "type": "string",
+          "enum": [
+            "PUBLIC",
+            "INTERNAL",
+            "CONFIDENTIAL",
+            "RESTRICTED"
+          ]
+        },
+        "contains_personal_data": {
+          "const": false
+        },
+        "change_summary": {
+          "$ref": "#/$defs/non_empty_string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "record_revision": {
+                "const": 1
+              }
+            },
+            "required": [
+              "record_revision"
+            ]
+          },
+          "then": {
+            "not": {
+              "required": [
+                "previous_record_ref"
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "previous_record_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "gate_id": {
+      "type": "string",
+      "enum": [
+        "GATE_1",
+        "GATE_2",
+        "GATE_3",
+        "GATE_4"
+      ]
+    },
+    "workflow_stage": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "BRIEF_DESIGN",
+        "GATE_1_REVIEW",
+        "PLAN_DESIGN",
+        "INSTRUMENT_DESIGN",
+        "GATE_2_REVIEW",
+        "FIELDWORK",
+        "ANALYSIS",
+        "GATE_3_REVIEW",
+        "REPORT_COMPOSITION",
+        "GATE_4_REVIEW",
+        "ARCHIVE",
+        "COMPLETED"
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "statement",
+        "rationale"
+      ],
+      "properties": {
+        "criterion_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "statement": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "rationale": {
+          "$ref": "#/$defs/non_empty_string"
+        }
+      }
+    },
+    "risk_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk_id",
+        "category",
+        "description",
+        "likelihood",
+        "impact",
+        "mitigation",
+        "owner_role"
+      ],
+      "properties": {
+        "risk_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "METHOD",
+            "SAMPLE",
+            "EXECUTION",
+            "DATA",
+            "PRIVACY",
+            "COMPLIANCE",
+            "FINANCIAL_EXPRESSION",
+            "TECHNICAL",
+            "OTHER"
+          ]
+        },
+        "description": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "likelihood": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "impact": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "mitigation": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "owner_role": {
+          "$ref": "#/$defs/non_empty_string"
+        }
+      }
+    },
+    "material_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "material_id",
+        "title",
+        "source_type",
+        "version",
+        "purpose",
+        "presentation_position",
+        "exposure_tracking"
+      ],
+      "properties": {
+        "material_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "IMA",
+            "OFFICIAL_PRODUCT",
+            "CONCEPT_CARD",
+            "PROTOTYPE",
+            "IMAGE",
+            "VIDEO",
+            "OTHER"
+          ]
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "version": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 8
+        },
+        "purpose": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "presentation_position": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "exposure_tracking": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "method"
+          ],
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": [
+                "LINK_OPEN",
+                "PAGE_VIEW",
+                "TIME_ON_MATERIAL",
+                "MODERATOR_OBSERVED",
+                "SELF_REPORT",
+                "NONE"
+              ]
+            },
+            "minimum_exposure_seconds": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "approval_required": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "historical_approval_gap": {
+      "description": "仅用于追溯登记已实际运行、但当时没有形成正式批准记录的历史案例。它不能替代批准，也不得用于新项目绕过 Gate。",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "status",
+        "reason",
+        "operational_effect",
+        "required_next_action",
+        "retrospective_approval_prohibited"
+      ],
+      "properties": {
+        "gate_id": {
+          "$ref": "#/$defs/gate_id"
+        },
+        "status": {
+          "const": "NOT_RECORDED"
+        },
+        "reason": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "operational_effect": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "required_next_action": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "retrospective_approval_prohibited": {
+          "const": true
+        }
+      }
+    },
+    "learning_resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource_id",
+        "title",
+        "source_type",
+        "uri",
+        "purpose",
+        "placement",
+        "optional_for_participant",
+        "evidence_use",
+        "link_review_status"
+      ],
+      "properties": {
+        "resource_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "IMA",
+            "OFFICIAL_WEBSITE",
+            "EDUCATION_ARTICLE",
+            "OTHER"
+          ]
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "purpose": {
+          "$ref": "#/$defs/non_empty_string"
+        },
+        "placement": {
+          "type": "string",
+          "enum": [
+            "AFTER_SURVEY_SECTION",
+            "COMPLETION_PAGE",
+            "POST_INTERVIEW_FOLLOW_UP"
+          ]
+        },
+        "placement_after_component_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "recommended_search_prompt": {
+          "type": "string"
+        },
+        "optional_for_participant": {
+          "const": true
+        },
+        "evidence_use": {
+          "const": "NOT_RESEARCH_EVIDENCE"
+        },
+        "link_review_status": {
+          "type": "string",
+          "enum": [
+            "UNREVIEWED",
+            "REVIEWED",
+            "APPROVED"
+          ]
+        },
+        "review_notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

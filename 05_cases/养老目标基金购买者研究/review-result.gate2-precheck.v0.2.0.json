@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "REVIEW-OTF-G2-001",
+    "artifact_type": "ReviewResult",
+    "artifact_version": "0.2.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者问卷 v0.2 Gate 2 质量预审",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-23T19:52:00+08:00",
+    "updated_at": "2026-07-23T19:52:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-04",
+      "actor_type": "AGENT",
+      "role": "研究质量审核专家",
+      "model_id": "codex",
+      "capability_version": "0.3.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RP-OTF-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.2.0"
+      },
+      {
+        "artifact_id": "INS-OTF-SURVEY-001",
+        "artifact_type": "InstrumentSpec",
+        "artifact_version": "0.2.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "复核年龄分群、五点评分、FOF 金融事实、答卷有效性状态、平台转换和数据输出边界。"
+  },
+  "target_ref": {
+    "artifact_id": "INS-OTF-SURVEY-001",
+    "artifact_type": "InstrumentSpec",
+    "artifact_version": "0.2.0"
+  },
+  "review_scope": "InstrumentSpec",
+  "review_types": [
+    "STRUCTURE",
+    "METHOD",
+    "TRACEABILITY",
+    "LOGIC",
+    "WORDING",
+    "ACCESSIBILITY",
+    "PRIVACY",
+    "COMPLIANCE",
+    "FINANCIAL_EXPRESSION",
+    "DATA_QUALITY"
+  ],
+  "reviewer": {
+    "actor_id": "AGENT-CAP-04",
+    "actor_type": "AGENT",
+    "role": "研究质量审核专家",
+    "model_id": "codex",
+    "capability_version": "0.3.0"
+  },
+  "reviewed_at": "2026-07-23T19:52:00+08:00",
+  "ruleset_refs": [
+    {
+      "ruleset_id": "STD-REVIEW-GATES",
+      "version": "0.6.0",
+      "uri": "../../01_standards/review-gates.md"
+    },
+    {
+      "ruleset_id": "STD-DATA-VALIDITY-OUTPUT",
+      "version": "0.1.0",
+      "uri": "../../01_standards/data-validity-and-output-status.md"
+    },
+    {
+      "ruleset_id": "FIN-FACT-FOF",
+      "version": "0.1.0",
+      "uri": "../../01_standards/financial-facts/fof-core.v0.1.0.json"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "CHECK-VERSION-001",
+      "label": "Brief—Plan—Instrument 版本链",
+      "status": "PASS",
+      "details": "ResearchBrief 0.2.0 已有 APR-OTF-G1-002；ResearchPlan 和 InstrumentSpec 均引用 0.2.0。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-TRACE-001",
+      "label": "题目、变量、研究问题与分析预案追溯",
+      "status": "PASS",
+      "details": "35 个输出变量与题目一一对应；年龄只用于 RQ-001/002/003/006 的预设比较，Q9A 映射 RQ-004。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-DATA-001",
+      "label": "题目值语义、答卷状态与数据集状态",
+      "status": "PASS",
+      "details": "已区分 UNKNOWN、PREFER_NOT_TO_SAY、STRUCTURAL_MISSING 和 ITEM_MISSING，并定义 VALID、REVIEW_REQUIRED、EXCLUDED 及三类数据集状态。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-WORDING-001",
+      "label": "题型和措辞",
+      "status": "PASS",
+      "details": "Q9A 只询问信息清晰度，五点方向一致且“记不清”独立；未发现新增双重、诱导或收益暗示。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-FINANCE-001",
+      "label": "FOF 金融事实",
+      "status": "PASS",
+      "details": "S1、Q2、Q10、Q17—Q20 已映射 FIN-FACT-FOF@0.1.0；未发现标准答案错误。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-PRIVACY-001",
+      "label": "最小数据和画像边界",
+      "status": "PASS",
+      "details": "只新增年龄区间，不收生日、收入、职业、资产或账户；不愿回答仍为有效值。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-PLATFORM-001",
+      "label": "腾讯问卷结构与逻辑",
+      "status": "WARNING",
+      "details": "线上逐题一致性校验通过，3 条逻辑无错误；多选上限和互斥选项仍需正式投放前在平台做一次人工检查。",
+      "related_issue_ids": [
+        "ISSUE-PLATFORM-001"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "issue_id": "ISSUE-PLATFORM-001",
+      "severity": "WARNING",
+      "category": "OTHER",
+      "rule_id": "RULE-ADAPTER-MANUAL-CHECK-001",
+      "location": {
+        "json_pointer": "/survey_spec/sections",
+        "component_id": "INS-OTF-SURVEY-001"
+      },
+      "description": "当前腾讯问卷接口不能可靠自动设置全部多选上限和互斥选项。",
+      "evidence": "平台问卷题目、选项、必答和跳转已校验一致，但适配器清单仍保留多选设置人工检查项。",
+      "recommended_change": "正式投放前由问卷执行负责人逐项确认 Q6/Q8/Q23/Q25/Q26 的最多选 3 项、Q27/Q28 的最多选 2 项及各互斥选项。",
+      "status": "OPEN",
+      "owner_role": "问卷执行负责人"
+    }
+  ],
+  "summary": {
+    "outcome": "PASS_WITH_WARNINGS",
+    "blocker_count": 0,
+    "major_count": 0,
+    "minor_count": 0,
+    "warning_count": 1,
+    "summary_text": "研究逻辑、题型、金融事实、数据有效性和平台主结构符合当前 Demo 设定；完成平台多选设置人工检查后，可提交 Gate 2 人工审核。"
+  },
+  "residual_risks": [
+    {
+      "risk_id": "RISK-REVIEW-SAMPLE-001",
+      "category": "SAMPLE",
+      "description": "实际答卷来源由外部渠道决定，年龄组可能分布不均且不能代表购买者总体。",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "只描述本次 VALID 答卷；按预设年龄基数规则展示，并在报告中披露来源限制。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-REVIEW-PILOT-001",
+      "category": "METHOD",
+      "description": "当前 Demo 不要求人工试答，仍可能存在少量术语理解差异。",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "保留不确定和开放回答，监控题目缺失与逻辑冲突；发现集中问题时生成新工具版本。",
+      "owner_role": "研究负责人"
+    },
+    {
+      "risk_id": "RISK-REVIEW-FACT-001",
+      "category": "COMPLIANCE",
+      "description": "费率、产品名录、具体持有期和具体下滑曲线会随规则或产品文件变化。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "每次加入动态或产品特定数值时重新执行金融事实审核，不沿用本次通用结论。",
+      "owner_role": "合规审核人员"
+    }
+  ],
+  "recommended_next_action": "READY_FOR_HUMAN_REVIEW",
+  "is_formal_approval": false
+}

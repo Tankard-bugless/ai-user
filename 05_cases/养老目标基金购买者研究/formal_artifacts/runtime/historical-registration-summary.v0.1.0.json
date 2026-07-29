@@ -1,0 +1,40 @@
+{
+  "summary_version": "0.1.0",
+  "project_id": "PROJ-OTF-001",
+  "run_id": "RUN-OTF-HIST-001",
+  "registration_mode": "HISTORICAL_GOVERNANCE_IMPORT",
+  "historical_execution_recreated": false,
+  "retrospective_approvals_created": false,
+  "current_stage": "GATE_2_REVIEW",
+  "run_status": "WAITING_GATE",
+  "current_gate": {
+    "gate_id": "GATE_2",
+    "status": "PENDING",
+    "required_role": "经组织授权的 Gate 审批人"
+  },
+  "active_approvals": [
+    {
+      "artifact_id": "APR-OTF-G1-002",
+      "artifact_type": "ApprovalRecord",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "stale_artifacts": [
+    {
+      "artifact_id": "FWP-OTF-001",
+      "artifact_type": "FieldworkPackage",
+      "artifact_version": "0.1.0"
+    },
+    {
+      "artifact_id": "IP-OTF-001",
+      "artifact_type": "InsightPackage",
+      "artifact_version": "0.1.0"
+    },
+    {
+      "artifact_id": "RR-OTF-001",
+      "artifact_type": "ResearchReport",
+      "artifact_version": "0.1.0"
+    }
+  ],
+  "interpretation": "案例已登记到最早治理缺口 Gate 2。Gate 1 真实审批保持有效；执行、洞察与报告保留为可追溯但 stale 的历史产物。"
+}

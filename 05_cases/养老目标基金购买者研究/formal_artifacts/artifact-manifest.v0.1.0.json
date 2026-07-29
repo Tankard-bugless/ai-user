@@ -1,0 +1,51 @@
+{
+  "manifest_version": "0.1.0",
+  "project_id": "PROJ-OTF-001",
+  "generated_at": "2026-07-27T12:18:12+08:00",
+  "source": {
+    "logical_name": "FOF问卷回答_200人.csv",
+    "sha256": "a5d531ac3fac82e284014c13558dce55868df817d67121b0fe61ce1804d36b4f",
+    "size_bytes": 352349,
+    "copied_into_project": false,
+    "reason": "原始 CSV 含平台 IP、UA、地理位置等元数据，正式目录只保留哈希和脱敏派生文件。"
+  },
+  "outputs": [
+    {
+      "path": "formal_artifacts/data/field-mapping.v0.1.0.json",
+      "sha256": "a21232d3e7f5202eb567cd4e28f460d5fdb606497998cd0708bd48a9c426cac8",
+      "size_bytes": 20867
+    },
+    {
+      "path": "formal_artifacts/data/normalized-responses.v0.1.0.csv",
+      "sha256": "fb910b37d4a6ca55ac3921a95192adef42f382717c81e19a9c825e9e9a3aa6f2",
+      "size_bytes": 299854
+    },
+    {
+      "path": "formal_artifacts/data/response-quality.v0.1.0.csv",
+      "sha256": "5e78462499e167e53e1aff633f9ef39cb4fb58ea2c8c5331994cdc5123faef50",
+      "size_bytes": 25052
+    },
+    {
+      "path": "formal_artifacts/fieldwork-package.v0.1.0.json",
+      "sha256": "7a44324028ec06e03ae659a47dcefcb49611862cacaad83d351e63e13a8e6a5b",
+      "size_bytes": 15373
+    },
+    {
+      "path": "formal_artifacts/insight-package.v0.1.0.json",
+      "sha256": "60741b686376a08e94d3bfd14a820d23c72ae28d922cd35652b10a3fba67c54e",
+      "size_bytes": 60624
+    },
+    {
+      "path": "formal_artifacts/research-report.v0.1.0.json",
+      "sha256": "746a22d4347cffc5aca192447d76bd049c15445d29af1342d0d8cead8bb32c2d",
+      "size_bytes": 20066
+    }
+  ],
+  "governance": {
+    "gate_1": "RECORDED: APR-OTF-G1-002",
+    "gate_2": "NOT_RECORDED; NOT RETROSPECTIVELY CREATED",
+    "gate_3": "NOT_RECORDED; NOT RETROSPECTIVELY CREATED",
+    "gate_4": "NOT_RECORDED; NOT RETROSPECTIVELY CREATED",
+    "release_status": "INTERNAL_DRAFT"
+  }
+}

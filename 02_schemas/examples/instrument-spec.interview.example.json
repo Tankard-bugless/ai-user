@@ -1,0 +1,547 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "INS-INTERVIEW-DEMO-001",
+    "artifact_type": "InstrumentSpec",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：基金说明材料理解访谈提纲",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-23T11:30:00+08:00",
+    "updated_at": "2026-07-23T11:30:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-INTERVIEW-001",
+      "actor_type": "AGENT",
+      "role": "访谈设计专家",
+      "model_id": "demo-model",
+      "capability_version": "0.1.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RP-DEMO-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "首个材料理解探索访谈合成示例。"
+  },
+  "research_plan_ref": {
+    "artifact_id": "RP-DEMO-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.1.0"
+  },
+  "instrument_type": "INTERVIEW",
+  "instrument_mode": "MATERIAL_COMPREHENSION",
+  "participant_facing_title": "基金产品说明材料理解访谈",
+  "purpose": "探索参与者阅读基金材料前后的理解路径、信息判断过程、具体误解及其形成原因。",
+  "research_question_ids": [
+    "RQ-001",
+    "RQ-002"
+  ],
+  "hypothesis_ids": [
+    "HYP-001",
+    "HYP-002"
+  ],
+  "estimated_duration_minutes": 45,
+  "languages": [
+    "zh-CN"
+  ],
+  "eligibility_rules": [],
+  "consent_and_intro": {
+    "participant_intro": "今天想了解您如何阅读和理解基金产品说明材料。这里没有标准表现要求，我们关注的是您的真实理解过程，不会向您推荐产品。",
+    "voluntary_statement": "参与完全自愿，任何问题都可以选择不回答，也可以随时结束访谈。",
+    "data_use_statement": "访谈内容只用于本次研究，将以参与者编号和脱敏片段进行分析。",
+    "withdrawal_statement": "如希望中止或撤回，请直接告诉主持人，主持人将按研究规则处理。",
+    "recording_notice": "经您单独同意后才会录音；不同意录音仍可决定是否继续访谈。",
+    "consent_capture": "VERBAL"
+  },
+  "test_materials": [
+    {
+      "material_id": "MAT-PRODUCT-001",
+      "title": "示例基金产品说明材料",
+      "source_type": "OFFICIAL_PRODUCT",
+      "uri": "https://example.invalid/product/demo-fund-material",
+      "version": "demo-2026-07-23",
+      "content_hash": "synthetic-demo-hash-001",
+      "purpose": "观察参与者阅读过程，并测试产品特征、风险和流动性信息的理解。",
+      "presentation_position": "既有理解与最近经历访谈之后、复述与理解追问之前。",
+      "exposure_tracking": {
+        "method": "MODERATOR_OBSERVED",
+        "minimum_exposure_seconds": 60,
+        "notes": "主持人记录能否打开、实际阅读时长、跳过位置和主动停留位置。"
+      },
+      "approval_required": true
+    }
+  ],
+  "learning_resources": [
+    {
+      "resource_id": "LR-IMA-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "访谈结束后提供可选的金融常识学习入口，不影响本次访谈证据。",
+      "placement": "POST_INTERVIEW_FOLLOW_UP",
+      "recommended_search_prompt": "如希望继续了解基金风险、净值波动、持有期或赎回等概念，可在知识库中自行搜索。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "REVIEWED",
+      "review_notes": "由主持人在结束研究问题后提供，不记录访问行为。"
+    }
+  ],
+  "material_measurement_plan": [
+    {
+      "material_id": "MAT-PRODUCT-001",
+      "baseline_component_ids": [
+        "IQ-BASE-001",
+        "IQ-BASE-002"
+      ],
+      "exposure_check_component_ids": [
+        "IQ-READ-001"
+      ],
+      "comprehension_component_ids": [
+        "IQ-TEACHBACK-001",
+        "IQ-RISK-001"
+      ],
+      "attitude_component_ids": [
+        "IQ-CLARITY-001"
+      ],
+      "separation_rule": "主持人先记录未经提示的阅读行为，再要求参与者复述；理解、主观清晰度和任何行动意向分别记录，不用意向替代理解。"
+    }
+  ],
+  "traceability_map": [
+    {
+      "component_id": "MOD-BASELINE",
+      "component_type": "INTERVIEW_MODULE",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "IQ-BASE-001",
+      "component_type": "INTERVIEW_QUESTION",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": []
+    },
+    {
+      "component_id": "IQ-BASE-002",
+      "component_type": "INTERVIEW_QUESTION",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "IQ-READ-001",
+      "component_type": "INTERVIEW_QUESTION",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "IQ-TEACHBACK-001",
+      "component_type": "INTERVIEW_QUESTION",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "IQ-RISK-001",
+      "component_type": "INTERVIEW_QUESTION",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-001",
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "IQ-CLARITY-001",
+      "component_type": "INTERVIEW_QUESTION",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": []
+    }
+  ],
+  "privacy_and_compliance": {
+    "collects_personal_data": false,
+    "personal_data_fields": [],
+    "contact_data_separation": "主持人只使用参与者编号；招募联系人另行保存联系映射，访谈文件不记录真实姓名。",
+    "financial_expression_review_required": true,
+    "no_return_promise_confirmed": true,
+    "suitability_data_separated": true,
+    "review_notes": "主持人不得评价参与者答案是否专业，也不得根据回答推荐任何基金产品。"
+  },
+  "pilot_config": {
+    "required": true,
+    "planned_participants": 2,
+    "objectives": [
+      "检查问题是否诱导",
+      "检查材料展示和观察记录是否可执行",
+      "检查各模块时长",
+      "检查追问能否获得具体经历和反例"
+    ],
+    "success_criteria": [
+      "参与者能用自己的语言回答而不是复述主持人措辞",
+      "主持人可以区分观察、原话和解释",
+      "总时长不超过45分钟",
+      "材料链接和冻结版本一致"
+    ],
+    "revision_rule": "出现明显诱导、时长超限、材料无法展示或关键研究问题无对应证据时，修订版本后重新预测试。"
+  },
+  "interview_spec": {
+    "opening_script": "感谢您参加。今天没有正确或错误的表现要求，请说出您真实的理解和疑问。我们研究的是材料，不是在测试您本人。",
+    "consent_check": "确认参与者已理解自愿、数据使用和退出规则；如需录音，再单独询问并记录同意。",
+    "modules": [
+      {
+        "module_id": "MOD-BASELINE",
+        "title": "最近经历与阅读前理解",
+        "objective": "从具体经历了解参与者如何查找和解释基金信息。",
+        "research_question_ids": [
+          "RQ-001"
+        ],
+        "estimated_minutes": 10,
+        "moderator_instructions": "先问最近一次真实经历，再谈概念；不要先给出基金术语定义。",
+        "questions": [
+          {
+            "question_id": "IQ-BASE-001",
+            "prompt": "请回想最近一次您主动了解某个基金或类似投资产品的经历，当时发生了什么？",
+            "purpose": "获得具体行为、触发情境、信息来源和决策过程。",
+            "research_question_ids": [
+              "RQ-001"
+            ],
+            "hypothesis_ids": [],
+            "priority": "CORE",
+            "probes": [
+              {
+                "probe_id": "PROBE-BASE-001",
+                "prompt": "您最先看了什么，接下来又看了什么？",
+                "probe_type": "PROCESS",
+                "trigger": "参与者只给出概括评价，没有描述过程。"
+              },
+              {
+                "probe_id": "PROBE-BASE-002",
+                "prompt": "当时有什么信息让您停下来或者感到不确定？",
+                "probe_type": "EXAMPLE",
+                "trigger": "参与者提到材料容易或困难，但没有具体位置。"
+              }
+            ],
+            "key_probe_points": [
+              "最近一次真实事件而非一般态度",
+              "信息来源和查看顺序",
+              "自己采取的替代办法或求助行为"
+            ],
+            "unexpected_answer_followup": "如果参与者表示从不主动了解基金信息，继续追问最近一次被动接触信息的场景、由谁提供以及如何判断是否可信。",
+            "material_ids": [],
+            "avoid_suggesting": [
+              "不要问是不是因为风险太高",
+              "不要把未购买解释为风险厌恶"
+            ],
+            "estimated_minutes": 6,
+            "capture_notes": "记录事件顺序、使用渠道、判断线索、具体困难和没有发生的行为。"
+          },
+          {
+            "question_id": "IQ-BASE-002",
+            "prompt": "如果一份基金介绍说产品整体风格偏稳健，您会怎样理解这句话？",
+            "purpose": "获取阅读材料前对稳健、波动和本金保障边界的自发理解。",
+            "research_question_ids": [
+              "RQ-001"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "priority": "CORE",
+            "probes": [
+              {
+                "probe_id": "PROBE-BASE-003",
+                "prompt": "在什么情况下，您会发现原来的理解并不成立？",
+                "probe_type": "COUNTEREXAMPLE",
+                "trigger": "参与者给出绝对化定义。"
+              }
+            ],
+            "key_probe_points": [
+              "稳健与本金保障是否被关联",
+              "对波动、亏损和固定收益的自发理解"
+            ],
+            "unexpected_answer_followup": "如果参与者主动准确区分相对稳健和保本，追问其知识来源、使用这一判断的最近场景以及可能失效的条件。",
+            "material_ids": [],
+            "avoid_suggesting": [
+              "不要主动提到保本或固定收益",
+              "不要评价答案正确与否"
+            ],
+            "estimated_minutes": 4,
+            "capture_notes": "逐字记录对稳健、本金、亏损和波动的自发关联。"
+          }
+        ]
+      },
+      {
+        "module_id": "MOD-READING",
+        "title": "材料阅读过程",
+        "objective": "观察材料能否打开、参与者注意什么、跳过什么以及如何即时解释。",
+        "research_question_ids": [
+          "RQ-002"
+        ],
+        "estimated_minutes": 10,
+        "moderator_instructions": "展示冻结材料版本。请参与者按平常方式阅读并说出正在关注的内容；除非技术故障，不解释材料。",
+        "questions": [
+          {
+            "question_id": "IQ-READ-001",
+            "prompt": "请按您平时的方式阅读这份材料。阅读时可以说出您在看什么、想到什么，也可以保持安静。",
+            "purpose": "记录真实暴露、注意路径和即时理解，不把主持人提示当作材料效果。",
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "priority": "CORE",
+            "probes": [
+              {
+                "probe_id": "PROBE-READ-001",
+                "prompt": "刚才这里让您停了一下，您当时在想什么？",
+                "probe_type": "CLARIFICATION",
+                "trigger": "参与者明显停留、返回或跳过某一位置。"
+              }
+            ],
+            "key_probe_points": [
+              "材料是否成功打开",
+              "实际阅读时长和路径",
+              "主动停留、返回和跳过的位置"
+            ],
+            "unexpected_answer_followup": "如果参与者完全不按材料顺序阅读，追问其选择入口和判断优先级的依据，不要求其改用预设顺序。",
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "avoid_suggesting": [
+              "不要提醒参与者关注特定风险段落",
+              "不要解释术语含义"
+            ],
+            "estimated_minutes": 10,
+            "capture_notes": "记录链接状态、开始结束时间、滚动顺序、停留位置、跳过位置和自发评论。"
+          }
+        ]
+      },
+      {
+        "module_id": "MOD-COMPREHENSION",
+        "title": "复述、风险边界与误解",
+        "objective": "在不提示正确答案的情况下获取材料理解和误解。",
+        "research_question_ids": [
+          "RQ-002"
+        ],
+        "estimated_minutes": 15,
+        "moderator_instructions": "先完整复述，再进行澄清和反例追问。主持人不得纠正答案。",
+        "questions": [
+          {
+            "question_id": "IQ-TEACHBACK-001",
+            "prompt": "假设您要向一位没看过材料的朋友介绍它，请用自己的话说说这是什么、最重要的特点是什么。",
+            "purpose": "通过教回法检查参与者实际形成的心智模型。",
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "priority": "CORE",
+            "probes": [
+              {
+                "probe_id": "PROBE-TEACH-001",
+                "prompt": "您刚才说的这一点，是从材料哪个位置理解到的？",
+                "probe_type": "CLARIFICATION",
+                "trigger": "参与者给出产品特征或结论。"
+              },
+              {
+                "probe_id": "PROBE-TEACH-002",
+                "prompt": "还有什么您不确定、不会向朋友解释的地方？",
+                "probe_type": "COUNTEREXAMPLE",
+                "trigger": "复述看似完整，没有主动提到疑问。"
+              }
+            ],
+            "key_probe_points": [
+              "未经提示的核心信息复述",
+              "信息来源定位",
+              "遗漏、推断、明确误解和不确定"
+            ],
+            "unexpected_answer_followup": "如果参与者复述出材料未包含的结论，追问该结论来自材料、既有知识还是个人推断，并请其定位依据。",
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "avoid_suggesting": [
+              "不要用材料原句替参与者补全",
+              "不要把遗漏直接解释为不理解"
+            ],
+            "estimated_minutes": 8,
+            "capture_notes": "区分准确复述、推断、遗漏、明确误解和不确定。"
+          },
+          {
+            "question_id": "IQ-RISK-001",
+            "prompt": "根据您的理解，在什么情况下这项投资可能与您的预期不一样？",
+            "purpose": "探索参与者是否理解净值波动、亏损和流动性边界。",
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-001",
+              "HYP-002"
+            ],
+            "priority": "CORE",
+            "probes": [
+              {
+                "probe_id": "PROBE-RISK-001",
+                "prompt": "如果短期需要用钱，您会从材料中确认哪些信息？",
+                "probe_type": "EXAMPLE",
+                "trigger": "参与者没有提到持有期或赎回安排。"
+              },
+              {
+                "probe_id": "PROBE-RISK-002",
+                "prompt": "有什么证据会让您改变刚才的判断？",
+                "probe_type": "COUNTEREXAMPLE",
+                "trigger": "参与者使用一定、肯定、不会等绝对表达。"
+              }
+            ],
+            "key_probe_points": [
+              "净值波动和可能亏损",
+              "持有期或赎回安排",
+              "判断改变的反例条件"
+            ],
+            "unexpected_answer_followup": "如果参与者提出材料之外的重要风险，先确认其依据和经历，再记录为未预期主题，不用材料内容纠正或压制。",
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "avoid_suggesting": [
+              "不要直接问会不会亏损",
+              "不要询问参与者应该购买多少"
+            ],
+            "estimated_minutes": 7,
+            "capture_notes": "记录风险来源、发生条件、损失边界、流动性理解和信心程度。"
+          }
+        ]
+      },
+      {
+        "module_id": "MOD-REFLECTION",
+        "title": "主观清晰度与改进",
+        "objective": "获得材料清晰度评价和具体改进机会，并与正确理解分开。",
+        "research_question_ids": [
+          "RQ-002"
+        ],
+        "estimated_minutes": 5,
+        "moderator_instructions": "先要求定位具体内容，再问改进建议。不要询问购买意向。",
+        "questions": [
+          {
+            "question_id": "IQ-CLARITY-001",
+            "prompt": "这份材料中，哪些地方最容易理解，哪些地方最难理解？请尽量指出具体位置。",
+            "purpose": "获得主观清晰度和具体材料问题。",
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [],
+            "priority": "CORE",
+            "probes": [
+              {
+                "probe_id": "PROBE-CLARITY-001",
+                "prompt": "如果只能改一个地方，您会先改哪里？为什么？",
+                "probe_type": "CONTRAST",
+                "trigger": "参与者提出多个改进点。"
+              }
+            ],
+            "key_probe_points": [
+              "具体材料位置",
+              "困难类型和形成原因",
+              "只改一个地方时的优先级"
+            ],
+            "unexpected_answer_followup": "如果参与者认为全部清晰但前面存在理解错误，分别记录主观清晰度和客观理解差异，追问其信心来源，不直接指出错误。",
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "avoid_suggesting": [
+              "不要把喜欢材料解释为理解材料",
+              "不要询问是否愿意购买"
+            ],
+            "estimated_minutes": 5,
+            "capture_notes": "记录具体位置、问题类型、参与者建议及其理由。"
+          }
+        ]
+      }
+    ],
+    "closing_script": "今天的问题到这里。还有没有我们没有问到、但会影响您理解这类材料的事情？感谢参与。再次说明，本次研究不构成投资建议。",
+    "follow_up_permission_prompt": "如果后续仅为澄清今天的回答再次联系您，您是否愿意？该选择不会影响任何服务，并由招募联系人单独记录。",
+    "capture_fields": [
+      {
+        "field_id": "FIELD-TRANSCRIPT",
+        "label": "脱敏逐字稿",
+        "source": "TRANSCRIPT",
+        "required": true
+      },
+      {
+        "field_id": "FIELD-NOTES",
+        "label": "主持人执行与观察笔记",
+        "source": "MODERATOR_NOTE",
+        "required": true
+      },
+      {
+        "field_id": "FIELD-EXPOSURE",
+        "label": "材料暴露记录",
+        "source": "MATERIAL_EXPOSURE_LOG",
+        "required": true
+      },
+      {
+        "field_id": "FIELD-DEVIATION",
+        "label": "访谈流程偏离记录",
+        "source": "OBSERVATION",
+        "required": true
+      }
+    ],
+    "flexibility_rule": "允许根据参与者回答调整追问顺序，但不得跳过核心主问题、替参与者解释材料或新增投资推荐问题；任何跳过、改写和技术中断必须记录。",
+    "distress_or_risk_protocol": "如参与者因个人亏损经历出现明显不适，主持人停止追问并确认是否继续；如参与者寻求具体投资建议，重申研究边界并不提供建议。",
+    "moderator_memo": {
+      "priority_topics": [
+        "最近一次真实信息搜集经历",
+        "材料暴露和阅读路径",
+        "未经提示的复述与风险边界",
+        "与假设相反的回答和重要反例"
+      ],
+      "backup_prompts": [
+        "能不能讲一个最近发生的具体例子？",
+        "当时您下一步做了什么？",
+        "您是从哪里得出这个判断的？",
+        "有没有一次情况与刚才说的不一样？"
+      ],
+      "timebox_notes": [
+        "暖场和阅读前理解最多10分钟",
+        "材料阅读约10分钟，不因沉默而立即打断",
+        "复述和风险边界至少保留15分钟",
+        "最后5分钟用于具体改进和开放收尾"
+      ],
+      "bias_watchouts": [
+        "不要把已有假设写进追问语气",
+        "不要用专业术语替参与者总结",
+        "不要因单个新主题有趣而挤占全部核心问题",
+        "不要把材料喜欢程度或购买意向当作理解"
+      ],
+      "evidence_to_seek": [
+        "可定位的具体事件和行为顺序",
+        "参与者逐字表达",
+        "材料具体位置和阅读动作",
+        "替代做法、求助行为和未预期信息来源",
+        "反例及改变判断的条件"
+      ]
+    }
+  }
+}

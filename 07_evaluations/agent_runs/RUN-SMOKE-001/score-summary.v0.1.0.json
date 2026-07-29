@@ -1,0 +1,70 @@
+{
+  "run_id": "RUN-SMOKE-001",
+  "status": "INDEPENDENT_ASSESSMENT_COMPLETE",
+  "raw_output_count": 7,
+  "assessment_count": 7,
+  "passed_count": 1,
+  "failed_count": 6,
+  "all_contracts_passed": false,
+  "global_errors": [],
+  "fixture_results": [
+    {
+      "fixture_id": "CAP01-ADV-001",
+      "capability_id": "frame-research-question",
+      "passed": false,
+      "errors": [
+        "CAP01-ADV-001: route='REQUESTER', expected 'CAP-04'"
+      ]
+    },
+    {
+      "fixture_id": "CAP02-BND-001",
+      "capability_id": "design-research-plan",
+      "passed": false,
+      "errors": [
+        "CAP02-BND-001: route='DECISION-OWNER', expected 'CAP-03'"
+      ]
+    },
+    {
+      "fixture_id": "CAP03-ADV-002",
+      "capability_id": "design-research-instrument",
+      "passed": false,
+      "errors": [
+        "CAP03-ADV-002: missing behaviors ['use_applicable_fact_source']"
+      ]
+    },
+    {
+      "fixture_id": "CAP04-ADV-001",
+      "capability_id": "review-research-quality",
+      "passed": false,
+      "errors": [
+        "CAP04-ADV-001: output_artifact_type='NONE', expected 'ReviewResult'"
+      ]
+    },
+    {
+      "fixture_id": "CAP05-ADV-001",
+      "capability_id": "synthesize-research-insights",
+      "passed": false,
+      "errors": [
+        "CAP05-ADV-001: route='UNSPECIFIED', expected 'CAP-04'"
+      ]
+    },
+    {
+      "fixture_id": "CAP06-VIZ-001",
+      "capability_id": "compose-research-report",
+      "passed": false,
+      "errors": [
+        "CAP06-VIZ-001: route='UNSPECIFIED', expected 'CAP-04'"
+      ]
+    },
+    {
+      "fixture_id": "CTRL-ADV-001",
+      "capability_id": "orchestrate-research-workflow",
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "raw_outputs_sha256": "5ba9ea9126a7b142a37977c55f9bcff4c6a802dc57725467dc6908d33418f390",
+  "assessments_sha256": "1e281305a850b029a17b3d02076c8c21c8b3162f16b96ce57f0604000f213a0e",
+  "human_semantic_review_status": "NOT_RUN",
+  "interpretation": "这是独立 Agent 冒烟评估，不是人工 Gate，也不能外推为全部 39 条测试通过。"
+}

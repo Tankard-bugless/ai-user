@@ -1,0 +1,170 @@
+{
+  "document_id": "STD-MINIMUM-PERMISSIONS",
+  "version": "0.1.0",
+  "status": "active",
+  "last_updated": "2026-07-27",
+  "default_policy": "DENY",
+  "grant_scope_requirements": [
+    "project_id",
+    "task_id",
+    "purpose",
+    "resource_class",
+    "allowed_actions",
+    "expires_at"
+  ],
+  "resource_classes": {
+    "RAW_DEMAND": "未经结构化的业务研究需求。",
+    "ARTIFACT_REGISTRY": "Artifact 的 ID、版本、状态、哈希和上游引用。",
+    "RESEARCH_ARTIFACTS": "ResearchBrief、ResearchPlan、InstrumentSpec、InsightPackage、ResearchReport。",
+    "RAW_FIELDWORK_DATA": "可能包含平台元数据、直接或间接标识符的原始答卷、录音、逐字稿和招募资料。",
+    "DEIDENTIFIED_FIELDWORK_DATA": "已去除直接标识符、按稳定研究编号管理的分析资料。",
+    "CONTACT_LINKAGE": "联系方式与稳定研究编号的映射。",
+    "FINANCIAL_FACT_SOURCES": "适用的官方产品事实、金融常识库和已审核引用。",
+    "IMA_LEARNING_RESOURCE": "作为可选学习桥梁的 IMA 链接与人工审核后的引导语；不是研究证据。",
+    "CONTROL_RECORDS": "WorkflowState、TaskRecord、HandoffRecord、ValidationResult。",
+    "REVIEW_RESULTS": "CAP-04 生成的质量预审结果，不是正式批准。",
+    "APPROVAL_RECORDS": "有权限的人类对精确 Artifact 版本作出的 Gate 决定。",
+    "EXTERNAL_CHANNELS": "问卷发布、外部发送、公开链接、正式对外报告和其他不可逆分发渠道。",
+    "AUDIT_LOGS": "任务、工具、版本、错误、交接和权限事件日志；默认不保存原始敏感内容。"
+  },
+  "principals": [
+    {
+      "principal_id": "CAP-01",
+      "role": "研究问题理解专家",
+      "grants": [
+        {"resource_class": "RAW_DEMAND", "actions": ["READ"]},
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["CREATE_RESEARCH_BRIEF"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ_PROJECT_SCOPE"]}
+      ],
+      "prohibitions": ["READ_RAW_FIELDWORK_DATA", "READ_CONTACT_LINKAGE", "CREATE_APPROVAL_RECORD", "DISTRIBUTE_EXTERNALLY"]
+    },
+    {
+      "principal_id": "CAP-02",
+      "role": "研究方案设计专家",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_APPROVED_RESEARCH_BRIEF", "CREATE_RESEARCH_PLAN"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ_UPSTREAM_VERSION"]}
+      ],
+      "prohibitions": ["READ_RAW_FIELDWORK_DATA", "READ_CONTACT_LINKAGE", "CREATE_APPROVAL_RECORD", "START_FIELDWORK"]
+    },
+    {
+      "principal_id": "CAP-03",
+      "role": "研究工具设计专家",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_CURRENT_RESEARCH_PLAN", "CREATE_INSTRUMENT_SPEC"]},
+        {"resource_class": "FINANCIAL_FACT_SOURCES", "actions": ["READ_APPROVED_SOURCES"]},
+        {"resource_class": "IMA_LEARNING_RESOURCE", "actions": ["READ_REVIEWED_LINK_METADATA", "REFERENCE_AFTER_CORE_MEASUREMENT"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ_UPSTREAM_VERSION"]}
+      ],
+      "prohibitions": ["READ_RAW_FIELDWORK_DATA", "READ_CONTACT_LINKAGE", "CLAIM_IMA_AS_ENABLED_FACT_SOURCE", "CREATE_APPROVAL_RECORD", "PUBLISH_SURVEY"]
+    },
+    {
+      "principal_id": "CAP-04",
+      "role": "研究质量审核专家",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_TARGET_AND_UPSTREAM"]},
+        {"resource_class": "DEIDENTIFIED_FIELDWORK_DATA", "actions": ["READ_WHEN_QUALITY_REVIEW_REQUIRES"]},
+        {"resource_class": "FINANCIAL_FACT_SOURCES", "actions": ["READ_APPROVED_SOURCES"]},
+        {"resource_class": "REVIEW_RESULTS", "actions": ["CREATE"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ_EXACT_VERSION"]}
+      ],
+      "prohibitions": ["READ_CONTACT_LINKAGE", "CREATE_APPROVAL_RECORD", "EDIT_OWNER_ARTIFACT_SILENTLY", "DISTRIBUTE_EXTERNALLY"]
+    },
+    {
+      "principal_id": "CAP-05",
+      "role": "分析与洞察专家",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_BRIEF_PLAN_FIELDWORK_REFS", "CREATE_INSIGHT_PACKAGE"]},
+        {"resource_class": "DEIDENTIFIED_FIELDWORK_DATA", "actions": ["READ_ANALYSIS_SCOPE"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ_EXACT_VERSION"]}
+      ],
+      "prohibitions": ["READ_CONTACT_LINKAGE", "READ_UNNEEDED_RAW_PLATFORM_METADATA", "CREATE_APPROVAL_RECORD", "PROMOTE_CANDIDATE_TAG_TO_CRM", "MAKE_BUSINESS_DECISION"]
+    },
+    {
+      "principal_id": "CAP-06",
+      "role": "研究报告专家",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_APPROVED_INSIGHT_AND_CONTEXT", "CREATE_RESEARCH_REPORT"]},
+        {"resource_class": "IMA_LEARNING_RESOURCE", "actions": ["REFERENCE_AS_OPTIONAL_RESOURCE"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ_EXACT_VERSION"]}
+      ],
+      "prohibitions": ["READ_RAW_FIELDWORK_DATA", "READ_CONTACT_LINKAGE", "CREATE_APPROVAL_RECORD", "DISTRIBUTE_EXTERNALLY", "ADD_UNTRACED_CLAIM"]
+    },
+    {
+      "principal_id": "CTRL-01",
+      "role": "研究总控",
+      "grants": [
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ", "MARK_STALE"]},
+        {"resource_class": "CONTROL_RECORDS", "actions": ["CREATE", "UPDATE_APPEND_ONLY"]},
+        {"resource_class": "REVIEW_RESULTS", "actions": ["READ"]},
+        {"resource_class": "APPROVAL_RECORDS", "actions": ["READ_AND_VERIFY"]},
+        {"resource_class": "AUDIT_LOGS", "actions": ["APPEND_METADATA_ONLY"]}
+      ],
+      "prohibitions": ["EDIT_RESEARCH_SEMANTICS", "CREATE_APPROVAL_RECORD", "READ_CONTACT_LINKAGE", "LOG_RAW_SENSITIVE_CONTENT", "BYPASS_GATE"]
+    },
+    {
+      "principal_id": "SERVICE-FIELDWORK",
+      "role": "执行与资料整理服务",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_GATE2_APPROVED_PLAN_AND_INSTRUMENT"]},
+        {"resource_class": "RAW_FIELDWORK_DATA", "actions": ["COLLECT", "READ_FOR_DEIDENTIFICATION"]},
+        {"resource_class": "DEIDENTIFIED_FIELDWORK_DATA", "actions": ["CREATE"]},
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["CREATE_FIELDWORK_PACKAGE"]},
+        {"resource_class": "AUDIT_LOGS", "actions": ["APPEND_EXECUTION_METADATA"]}
+      ],
+      "prohibitions": ["INTERPRET_RESEARCH_FINDINGS", "CREATE_APPROVAL_RECORD", "CHANGE_INSTRUMENT_SEMANTICS"]
+    },
+    {
+      "principal_id": "ADAPTER-TENCENT-SURVEY",
+      "role": "腾讯问卷发行与回收适配器",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_GATE2_APPROVED_INSTRUMENT"]},
+        {"resource_class": "EXTERNAL_CHANNELS", "actions": ["CREATE_SURVEY", "PUBLISH_WITH_EXPLICIT_AUTHORIZATION", "EXPORT_RESPONSES"]},
+        {"resource_class": "RAW_FIELDWORK_DATA", "actions": ["WRITE_PLATFORM_EXPORT"]}
+      ],
+      "prohibitions": ["CHANGE_QUESTION_MEANING", "ANALYZE_INSIGHTS", "CREATE_APPROVAL_RECORD", "PUBLISH_WITHOUT_GATE2"]
+    },
+    {
+      "principal_id": "ADAPTER-TABULAR-IMPORT",
+      "role": "Excel/CSV 导入适配器",
+      "grants": [
+        {"resource_class": "RAW_FIELDWORK_DATA", "actions": ["READ_EXACT_INPUT_FILE"]},
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_INSTRUMENT_MAPPING"]},
+        {"resource_class": "DEIDENTIFIED_FIELDWORK_DATA", "actions": ["CREATE_NORMALIZED_DATA"]},
+        {"resource_class": "AUDIT_LOGS", "actions": ["APPEND_MAPPING_AND_QUALITY_METADATA"]}
+      ],
+      "prohibitions": ["COPY_RAW_DATA_OUTSIDE_PROJECT_SCOPE", "WRITE_CONTACT_LINKAGE", "MAKE_RESEARCH_CONCLUSION", "AUTO_EXCLUDE_ON_SINGLE_WEAK_SIGNAL"]
+    },
+    {
+      "principal_id": "SYSTEM-VALIDATOR",
+      "role": "确定性校验器",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ"]},
+        {"resource_class": "CONTROL_RECORDS", "actions": ["CREATE_VALIDATION_RESULT"]},
+        {"resource_class": "ARTIFACT_REGISTRY", "actions": ["READ"]}
+      ],
+      "prohibitions": ["EDIT_ARTIFACT", "CREATE_APPROVAL_RECORD", "READ_CONTACT_LINKAGE", "MAKE_SEMANTIC_JUDGMENT"]
+    },
+    {
+      "principal_id": "HUMAN-GATE-APPROVER",
+      "role": "经组织授权的 Gate 审批人",
+      "grants": [
+        {"resource_class": "RESEARCH_ARTIFACTS", "actions": ["READ_APPROVAL_BUNDLE"]},
+        {"resource_class": "REVIEW_RESULTS", "actions": ["READ"]},
+        {"resource_class": "APPROVAL_RECORDS", "actions": ["CREATE_FOR_EXACT_VERSION"]}
+      ],
+      "prohibitions": ["APPROVE_OUTSIDE_ASSIGNED_GATE", "APPROVE_STALE_VERSION", "DELEGATE_TO_AGENT"]
+    },
+    {
+      "principal_id": "HUMAN-DATA-STEWARD",
+      "role": "数据与隐私责任人",
+      "grants": [
+        {"resource_class": "RAW_FIELDWORK_DATA", "actions": ["READ_FOR_GOVERNANCE"]},
+        {"resource_class": "CONTACT_LINKAGE", "actions": ["CREATE", "READ", "DELETE_UNDER_POLICY"]},
+        {"resource_class": "DEIDENTIFIED_FIELDWORK_DATA", "actions": ["VERIFY"]},
+        {"resource_class": "AUDIT_LOGS", "actions": ["READ_SECURITY_EVENTS"]}
+      ],
+      "prohibitions": ["USE_CONTACT_DATA_FOR_UNAPPROVED_PURPOSE", "SHARE_LINKAGE_WITH_ANALYSIS_AGENT"]
+    }
+  ]
+}

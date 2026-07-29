@@ -1,0 +1,103 @@
+{
+  "deployment_id": "DEPLOY-TENCENT-OTF-001",
+  "deployment_version": "0.1.0",
+  "created_at": "2026-07-23",
+  "platform": "TENCENT_SURVEY",
+  "scene": 1,
+  "survey_id": 27388585,
+  "hash": "6e69",
+  "collection_url": "https://wj.qq.com/s2/27388585/6e69",
+  "platform_state_code": 2,
+  "platform_state": "COLLECTING",
+  "source": {
+    "document": "养老目标基金购买与持有情况调查问卷_v0.1.docx",
+    "document_sha256": "550162bb7e962fe7f83617b7933598d92c3c1ae75a388281d5fb934f47949c63",
+    "dsl": "case-otf-questionnaire.v0.1.0.dsl.txt",
+    "dsl_sha256": "6de0a157e014b443eb1da45a24660b00880d0ec1f51275399395efc961f40871"
+  },
+  "online_structure": {
+    "page_count": 10,
+    "answerable_question_count": 32,
+    "description_block_count": 11,
+    "selection_option_count": 198,
+    "optional_question_ids": [
+      "Q11",
+      "Q29"
+    ]
+  },
+  "question_id_map": {
+    "C0": "q-2-9d02",
+    "Q1": "q-4-289b",
+    "Q2": "q-5-52a5",
+    "Q3": "q-6-a3b6",
+    "Q4": "q-7-6d4c",
+    "Q5": "q-8-af8e",
+    "Q6": "q-10-4952",
+    "Q7": "q-11-aade",
+    "Q8": "q-12-a156",
+    "Q9": "q-13-d64c",
+    "Q10": "q-15-fac1",
+    "Q11": "q-16-d5d0",
+    "Q12": "q-17-fcaf",
+    "Q13": "q-19-adb9",
+    "Q14": "q-20-ac04",
+    "Q15": "q-21-b5fd",
+    "Q16": "q-22-068b",
+    "Q17": "q-24-c346",
+    "Q18": "q-25-21eb",
+    "Q19": "q-26-5589",
+    "Q20": "q-27-36a3",
+    "Q21": "q-29-2ea0",
+    "Q22": "q-30-cfe3",
+    "Q23": "q-31-aa41",
+    "Q24": "q-32-ccd5",
+    "Q25": "q-33-7271",
+    "Q26": "q-35-9770",
+    "Q27": "q-36-d2e6",
+    "Q28": "q-37-a6de",
+    "Q29": "q-38-8647",
+    "Q30": "q-40-990b",
+    "Q31": "q-41-d9f0"
+  },
+  "logic": {
+    "status": "VALID",
+    "error_count": 0,
+    "rules": [
+      {
+        "rule_id": "LOGIC-CONSENT-EXIT",
+        "condition": "C0=不同意",
+        "action": "END",
+        "source_option_id": "o-102-c011"
+      },
+      {
+        "rule_id": "LOGIC-Q22-SKIP-Q23",
+        "condition": "Q22=没有经历过或记不清",
+        "action": "Q24",
+        "source_option_id": "o-106-6681"
+      }
+    ]
+  },
+  "privacy_checks": {
+    "login_check": false,
+    "location_collection": false,
+    "internal_appendix_absent": true,
+    "answer_keys_absent": true,
+    "ima_usage_is_research_variable": false
+  },
+  "validation": {
+    "http_status": 200,
+    "title_match": true,
+    "question_order_match": true,
+    "question_type_match": true,
+    "required_status_match": true,
+    "option_text_and_order_match": true,
+    "logic_validation_passed": true
+  },
+  "release_status": "NEEDS_MANUAL_PLATFORM_CHECK",
+  "remaining_manual_checks": [
+    "为 Q6、Q8、Q23、Q25、Q26 设置最多选择 3 项。",
+    "为 Q27、Q28 设置最多选择 2 项。",
+    "为 Q7、Q21 等题设置“没有/记不清/未调整”与其他选项互斥。",
+    "正式投放前由研究人员完成 Gate 2 内容审核。"
+  ]
+}

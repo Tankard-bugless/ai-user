@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "REVIEW-RR-OTF-002",
+    "artifact_type": "ReviewResult",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-OTF-001",
+    "title": "养老目标基金购买者调查报告 0.2.0 轻量预审",
+    "language": "zh-CN",
+    "lifecycle_status": "FROZEN",
+    "created_at": "2026-07-28T16:21:39+08:00",
+    "updated_at": "2026-07-28T16:21:39+08:00",
+    "created_by": {
+      "actor_id": "AGENT-CAP-04",
+      "actor_type": "AGENT",
+      "role": "研究质量审核专家",
+      "model_id": "codex",
+      "capability_version": "0.6.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RR-OTF-001",
+        "artifact_type": "ResearchReport",
+        "artifact_version": "0.2.0"
+      }
+    ],
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "检查最新分群追溯、首次阅读上下文、IMA 边界和历史审批缺口。"
+  },
+  "target_ref": {
+    "artifact_id": "RR-OTF-001",
+    "artifact_type": "ResearchReport",
+    "artifact_version": "0.2.0"
+  },
+  "review_scope": "ResearchReport",
+  "review_types": [
+    "STRUCTURE",
+    "TRACEABILITY",
+    "LOGIC",
+    "WORDING",
+    "ACCESSIBILITY",
+    "COMPLIANCE",
+    "FINANCIAL_EXPRESSION",
+    "DATA_QUALITY"
+  ],
+  "reviewer": {
+    "actor_id": "AGENT-CAP-04",
+    "actor_type": "AGENT",
+    "role": "研究质量审核专家",
+    "model_id": "codex",
+    "capability_version": "0.6.0"
+  },
+  "reviewed_at": "2026-07-28T16:21:39+08:00",
+  "ruleset_refs": [
+    {
+      "ruleset_id": "STD-REPORT-READABILITY",
+      "version": "0.1.0",
+      "uri": "../../../01_standards/report-readability-and-context.md"
+    },
+    {
+      "ruleset_id": "STD-REVIEW-GATES",
+      "version": "0.10.0",
+      "uri": "../../../01_standards/review-gates.md"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "CHECK-RR-TRACE-002",
+      "label": "新增分群结论追溯",
+      "status": "PASS",
+      "details": "年龄、经验和多重校正结论已回写 InsightPackage 0.2.0。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-RR-READ-002",
+      "label": "首次阅读上下文",
+      "status": "PASS",
+      "details": "研究目的、样本、四道知识题含义和分群口径均在首次出现时说明。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-RR-SEG-002",
+      "label": "分群证据边界",
+      "status": "PASS",
+      "details": "报告明确 50 组比较校正后均未显著，不生成正式客户标签。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-RR-IMA-002",
+      "label": "IMA 使用边界",
+      "status": "PASS",
+      "details": "已删除“通过读取 IMA 生成知识题”的不实表述；IMA 仅保留为可选学习入口，当前接口不启用。",
+      "related_issue_ids": []
+    },
+    {
+      "check_id": "CHECK-RR-GOV-002",
+      "label": "历史审批边界",
+      "status": "WARNING",
+      "details": "Gate 3、Gate 4 没有历史 ApprovalRecord；本预审不构成批准，报告只能作为内部草稿。",
+      "related_issue_ids": [
+        "ISSUE-RR-OTF-002-GOV"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "issue_id": "ISSUE-RR-OTF-002-GOV",
+      "severity": "WARNING",
+      "category": "OTHER",
+      "rule_id": "RULE-GATE-HISTORY",
+      "location": {
+        "json_pointer": "/gate_3_governance_gap",
+        "component_id": "RR-OTF-001"
+      },
+      "description": "Gate 3、Gate 4 没有可验证的历史正式批准。",
+      "evidence": "项目只保留真实 Gate 1；未发现 Gate 3、Gate 4 ApprovalRecord。",
+      "recommended_change": "保持 DRAFT；如需正式外发，对精确版本重新执行人工审核。",
+      "status": "ACCEPTED_RISK",
+      "owner_role": "研究负责人"
+    }
+  ],
+  "summary": {
+    "outcome": "PASS_WITH_WARNINGS",
+    "blocker_count": 0,
+    "major_count": 0,
+    "minor_count": 0,
+    "warning_count": 1,
+    "summary_text": "内容、追溯和首次阅读检查通过；因缺少历史 Gate 3、Gate 4，只可作为内部草稿，不构成正式发布批准。"
+  },
+  "residual_risks": [
+    {
+      "risk_id": "RISK-RR-OTF-002",
+      "category": "OTHER",
+      "description": "报告可能被误当作已经完成正式发布审批。",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "文件和语义产物保持 INTERNAL_DRAFT，并展示审批边界。",
+      "owner_role": "研究负责人"
+    }
+  ],
+  "recommended_next_action": "READY_FOR_HUMAN_REVIEW",
+  "is_formal_approval": false
+}

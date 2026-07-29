@@ -1,0 +1,10 @@
+[
+  {
+    "fixture_id": "CAP03-ADV-002",
+    "run_id": "RUN-SMOKE-002",
+    "subject_id": "SUBJECT-REG-CAP03",
+    "capability_id": "design-research-instrument",
+    "capability_version": "0.8.0",
+    "raw_response": "不能随便填写 A/C 或 Y。该陈述属于可判定真假的金融事实，但当前未提供适用于个人养老金账户的已审核事实库、精确版本、对应事实引用或现行产品法律文件，因此无法确定标准答案，也不生成正式 InstrumentSpec。\n\n状态：ESCALATED / NONE / HUMAN-FINANCIAL-FACT\n原因：缺少个人养老金账户适用事实库的精确 ID 与版本。\n事实引用：缺少可判定“A/C 或 Y”的已验证 fact_id。\n法律文件：缺少现行产品法律文件、版本或生效日期及其账户选择规则。"
+  }
+]

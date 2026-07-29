@@ -1,0 +1,868 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "artifact_id": "INS-SURVEY-DEMO-001",
+    "artifact_type": "InstrumentSpec",
+    "artifact_version": "0.1.0",
+    "project_id": "PROJ-DEMO-001",
+    "title": "示例：基金说明材料理解问卷",
+    "language": "zh-CN",
+    "lifecycle_status": "DRAFT",
+    "created_at": "2026-07-23T11:00:00+08:00",
+    "updated_at": "2026-07-23T11:00:00+08:00",
+    "created_by": {
+      "actor_id": "AGENT-SURVEY-001",
+      "actor_type": "AGENT",
+      "role": "问卷设计专家",
+      "model_id": "demo-model",
+      "capability_version": "0.1.0"
+    },
+    "upstream_refs": [
+      {
+        "artifact_id": "RP-DEMO-001",
+        "artifact_type": "ResearchPlan",
+        "artifact_version": "0.1.0"
+      }
+    ],
+    "supersedes_ref": {
+      "artifact_id": "INS-SURVEY-DEMO-001",
+      "artifact_type": "InstrumentSpec",
+      "artifact_version": "0.0.1"
+    },
+    "content_classification": "SYNTHETIC",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "将材料清晰度与购买意向拆分，并新增材料暴露检查。"
+  },
+  "research_plan_ref": {
+    "artifact_id": "RP-DEMO-001",
+    "artifact_type": "ResearchPlan",
+    "artifact_version": "0.1.0"
+  },
+  "instrument_type": "SURVEY",
+  "instrument_mode": "MATERIAL_COMPREHENSION",
+  "participant_facing_title": "基金产品说明材料理解调研",
+  "purpose": "测量参与者接触指定材料前后的概念理解、材料暴露状态和具体误解，不进行产品推荐或适当性评估。",
+  "research_question_ids": [
+    "RQ-001",
+    "RQ-002",
+    "RQ-003"
+  ],
+  "hypothesis_ids": [
+    "HYP-001",
+    "HYP-002"
+  ],
+  "estimated_duration_minutes": 10,
+  "languages": [
+    "zh-CN"
+  ],
+  "eligibility_rules": [
+    {
+      "rule_id": "ELIG-ADULT-001",
+      "criterion": "参与者必须年满 18 周岁。",
+      "implementation_component_ids": [
+        "Q-AGE"
+      ],
+      "outcome": "ELIGIBLE"
+    },
+    {
+      "rule_id": "ELIG-RELEVANCE-001",
+      "criterion": "过去一年了解过基金，或未来一年计划了解基金。",
+      "implementation_component_ids": [
+        "Q-RELEVANCE"
+      ],
+      "outcome": "ELIGIBLE"
+    }
+  ],
+  "consent_and_intro": {
+    "participant_intro": "本调研用于了解基金产品说明材料是否容易理解，不构成投资建议，也不会影响您获得任何服务。",
+    "voluntary_statement": "参与完全自愿，您可以不回答任何问题或随时退出。",
+    "data_use_statement": "回答仅用于本次研究分析，并以编号和汇总方式处理。",
+    "withdrawal_statement": "提交前可以关闭页面退出；提交后的撤回方式以研究联系人说明为准。",
+    "recording_notice": "本问卷不录制音频或视频。",
+    "consent_capture": "CHECKBOX"
+  },
+  "test_materials": [
+    {
+      "material_id": "MAT-PRODUCT-001",
+      "title": "示例基金产品说明材料",
+      "source_type": "OFFICIAL_PRODUCT",
+      "uri": "https://example.invalid/product/demo-fund-material",
+      "version": "demo-2026-07-23",
+      "content_hash": "synthetic-demo-hash-001",
+      "purpose": "测试参与者对产品特征、风险和流动性信息的理解。",
+      "presentation_position": "阅读前基线问题之后、理解度问题之前。",
+      "exposure_tracking": {
+        "method": "LINK_OPEN",
+        "minimum_exposure_seconds": 60,
+        "notes": "平台事件日志与 Q-EXPOSURE 自报结果共同保存。"
+      },
+      "approval_required": true
+    }
+  ],
+  "learning_resources": [
+    {
+      "resource_id": "LR-IMA-001",
+      "title": "易方达基金 IMA 知识库",
+      "source_type": "IMA",
+      "uri": "https://ima.qq.com/wiki/?shareId=3f82c28e1844208f0d4489f0ef3057c012f070cdce772a8ee050212c899234fc",
+      "purpose": "在完成材料理解问题后，向参与者提供继续搜索金融常识的自愿学习入口。",
+      "placement": "AFTER_SURVEY_SECTION",
+      "placement_after_component_id": "SEC-COMPREHENSION",
+      "recommended_search_prompt": "如果想进一步了解基金风险、净值波动、持有期或赎回等概念，可以在知识库中自行搜索。",
+      "optional_for_participant": true,
+      "evidence_use": "NOT_RESEARCH_EVIDENCE",
+      "link_review_status": "REVIEWED",
+      "review_notes": "不记录是否点击或停留时长，不将访问行为用于研究分析。"
+    }
+  ],
+  "material_measurement_plan": [
+    {
+      "material_id": "MAT-PRODUCT-001",
+      "baseline_component_ids": [
+        "Q-BASE-RISK"
+      ],
+      "exposure_check_component_ids": [
+        "Q-EXPOSURE"
+      ],
+      "comprehension_component_ids": [
+        "Q-COMP-RISK",
+        "Q-COMP-LIQUID",
+        "Q-OPEN-MISUNDERSTANDING"
+      ],
+      "attitude_component_ids": [
+        "Q-CLARITY"
+      ],
+      "separation_rule": "链接打开和自报阅读只表示材料暴露；理解题与开放复述表示理解；清晰度只表示主观态度，不作为正确理解或购买意向。"
+    }
+  ],
+  "traceability_map": [
+    {
+      "component_id": "Q-EXP",
+      "component_type": "SCREENER",
+      "research_question_ids": [
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "Q-BASE-RISK",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-001"
+      ],
+      "hypothesis_ids": [
+        "HYP-001"
+      ]
+    },
+    {
+      "component_id": "Q-EXPOSURE",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "Q-COMP-RISK",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003"
+      ],
+      "hypothesis_ids": [
+        "HYP-001",
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "Q-COMP-LIQUID",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": [
+        "HYP-002"
+      ]
+    },
+    {
+      "component_id": "Q-OPEN-MISUNDERSTANDING",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": []
+    },
+    {
+      "component_id": "Q-CLARITY",
+      "component_type": "SURVEY_ITEM",
+      "research_question_ids": [
+        "RQ-002"
+      ],
+      "hypothesis_ids": []
+    }
+  ],
+  "privacy_and_compliance": {
+    "collects_personal_data": false,
+    "personal_data_fields": [],
+    "contact_data_separation": "问卷链接通过独立联系名单发送，答卷不保存姓名、手机号或企业微信标识。",
+    "financial_expression_review_required": true,
+    "no_return_promise_confirmed": true,
+    "suitability_data_separated": true,
+    "review_notes": "材料和引导语仍需在 Gate 2 由合规人员审核。"
+  },
+  "pilot_config": {
+    "required": true,
+    "planned_participants": 5,
+    "objectives": [
+      "验证题意和选项覆盖",
+      "验证链接打开与暴露日志",
+      "验证跳转、终止和变量输出",
+      "估计完成时长"
+    ],
+    "success_criteria": [
+      "无阻断性跳转错误",
+      "参与者能够区分阅读材料与回答理解题",
+      "理解题不泄露正确答案",
+      "中位完成时间不超过 12 分钟"
+    ],
+    "revision_rule": "任何阻断问题或两名及以上预测试参与者对同一核心题产生非目标理解时，修订后重新测试。"
+  },
+  "survey_spec": {
+    "sections": [
+      {
+        "section_id": "SEC-CONSENT",
+        "title": "研究说明与同意",
+        "purpose": "取得知情同意。",
+        "research_question_ids": [],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "Q-CONSENT",
+            "item_type": "CONSENT",
+            "prompt": "我已阅读上述说明，自愿参加本次调研。",
+            "required": true,
+            "research_question_ids": [],
+            "hypothesis_ids": [],
+            "answer_options": [
+              {
+                "option_id": "OPT-CONSENT-YES",
+                "label": "同意参加",
+                "value": "yes"
+              },
+              {
+                "option_id": "OPT-CONSENT-NO",
+                "label": "不同意参加",
+                "value": "no"
+              }
+            ],
+            "randomize_options": false,
+            "variable_name": "consent",
+            "quality_note": "不同意时立即结束，不继续采集研究数据。"
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-SCREENER",
+        "title": "基本甄别",
+        "purpose": "确认年龄、研究相关性和基金投资经验分组。",
+        "research_question_ids": [
+          "RQ-003"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "Q-AGE",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "您的年龄范围是？",
+            "required": true,
+            "research_question_ids": [],
+            "hypothesis_ids": [],
+            "answer_options": [
+              {
+                "option_id": "OPT-AGE-U18",
+                "label": "未满18周岁",
+                "value": "under_18"
+              },
+              {
+                "option_id": "OPT-AGE-18-29",
+                "label": "18—29周岁",
+                "value": "18_29"
+              },
+              {
+                "option_id": "OPT-AGE-30-44",
+                "label": "30—44周岁",
+                "value": "30_44"
+              },
+              {
+                "option_id": "OPT-AGE-45P",
+                "label": "45周岁及以上",
+                "value": "45_plus"
+              }
+            ],
+            "randomize_options": false,
+            "variable_name": "age_group",
+            "quality_note": "只收集研究所需年龄段，不收集生日。"
+          },
+          {
+            "item_id": "Q-RELEVANCE",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "以下哪项更符合您的情况？",
+            "required": true,
+            "research_question_ids": [],
+            "hypothesis_ids": [],
+            "answer_options": [
+              {
+                "option_id": "OPT-REL-PAST",
+                "label": "过去一年主动了解过基金产品",
+                "value": "past_year"
+              },
+              {
+                "option_id": "OPT-REL-FUTURE",
+                "label": "未来一年计划了解基金产品",
+                "value": "future_year"
+              },
+              {
+                "option_id": "OPT-REL-NONE",
+                "label": "以上都不符合",
+                "value": "none"
+              }
+            ],
+            "randomize_options": false,
+            "variable_name": "research_relevance",
+            "quality_note": "只用于研究相关性甄别，不作为营销线索。"
+          },
+          {
+            "item_id": "Q-EXP",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "截至目前，您的基金投资经验大约是？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "answer_options": [
+              {
+                "option_id": "OPT-EXP-NONE",
+                "label": "从未购买基金",
+                "value": "none"
+              },
+              {
+                "option_id": "OPT-EXP-LT1",
+                "label": "不足1年",
+                "value": "less_than_1_year"
+              },
+              {
+                "option_id": "OPT-EXP-1-3",
+                "label": "1—3年",
+                "value": "1_to_3_years"
+              },
+              {
+                "option_id": "OPT-EXP-GT3",
+                "label": "3年以上",
+                "value": "more_than_3_years"
+              }
+            ],
+            "randomize_options": false,
+            "variable_name": "fund_experience",
+            "quality_note": "经验分组仅用于当前研究分析，不形成正式客户标签。"
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-BASELINE",
+        "title": "阅读前理解",
+        "purpose": "记录接触测试材料前的概念理解。",
+        "research_question_ids": [
+          "RQ-001"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "Q-BASE-RISK",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "在基金产品介绍中看到“整体风格偏稳健”时，以下哪种理解最接近您目前的看法？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-001"
+            ],
+            "hypothesis_ids": [
+              "HYP-001"
+            ],
+            "answer_options": [
+              {
+                "option_id": "OPT-BASE-GUARANTEE",
+                "label": "本金通常可以得到保证",
+                "value": "principal_guaranteed"
+              },
+              {
+                "option_id": "OPT-BASE-RELATIVE",
+                "label": "相对某些产品波动可能较低，但仍可能亏损",
+                "value": "relative_risk"
+              },
+              {
+                "option_id": "OPT-BASE-RETURN",
+                "label": "预期收益通常固定",
+                "value": "fixed_return"
+              },
+              {
+                "option_id": "OPT-BASE-UNSURE",
+                "label": "不确定",
+                "value": "unsure"
+              }
+            ],
+            "randomize_options": true,
+            "variable_name": "baseline_steady_meaning",
+            "quality_note": "措辞测量已有理解，不先讲授正确答案。"
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-MATERIAL",
+        "title": "阅读材料",
+        "purpose": "提供统一材料并记录实际暴露。",
+        "research_question_ids": [
+          "RQ-002"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "INFO-MATERIAL",
+            "item_type": "INFO",
+            "prompt": "请打开并阅读下面的示例基金产品官方解读材料，阅读完成后返回本页面继续答题。",
+            "help_text": "示例链接仅用于结构演示，实际项目必须替换为已审核的冻结版本。",
+            "required": false,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "quality_note": "材料展示位置固定，不在题目中泄露理解题答案。"
+          },
+          {
+            "item_id": "Q-EXPOSURE",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "刚才的材料阅读情况是？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "answer_options": [
+              {
+                "option_id": "OPT-EXPOSURE-ALL",
+                "label": "已完整阅读",
+                "value": "read_all"
+              },
+              {
+                "option_id": "OPT-EXPOSURE-PART",
+                "label": "只阅读了一部分",
+                "value": "read_part"
+              },
+              {
+                "option_id": "OPT-EXPOSURE-FAIL",
+                "label": "链接无法打开或没有阅读",
+                "value": "not_exposed"
+              }
+            ],
+            "randomize_options": false,
+            "variable_name": "material_exposure_self_report",
+            "quality_note": "自报结果与平台日志联合使用，不能单独证明充分阅读。"
+          }
+        ]
+      },
+      {
+        "section_id": "SEC-COMPREHENSION",
+        "title": "材料理解",
+        "purpose": "分别测量风险、流动性、开放复述和主观清晰度。",
+        "research_question_ids": [
+          "RQ-002",
+          "RQ-003"
+        ],
+        "randomize_items": false,
+        "items": [
+          {
+            "item_id": "Q-COMP-RISK",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "根据刚才的材料，以下哪项说法符合材料表达？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002",
+              "RQ-003"
+            ],
+            "hypothesis_ids": [
+              "HYP-001",
+              "HYP-002"
+            ],
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "answer_options": [
+              {
+                "option_id": "OPT-COMP-RISK-A",
+                "label": "净值可能波动，投资者可能发生亏损",
+                "value": 1
+              },
+              {
+                "option_id": "OPT-COMP-RISK-B",
+                "label": "材料保证本金不会亏损",
+                "value": 0
+              },
+              {
+                "option_id": "OPT-COMP-RISK-C",
+                "label": "材料保证获得固定收益",
+                "value": 0
+              },
+              {
+                "option_id": "OPT-COMP-RISK-D",
+                "label": "不确定",
+                "value": 0
+              }
+            ],
+            "randomize_options": true,
+            "variable_name": "comprehension_risk",
+            "quality_note": "正确值用于分析导出，不在参与者界面显示。"
+          },
+          {
+            "item_id": "Q-COMP-LIQUID",
+            "item_type": "SINGLE_SELECT",
+            "prompt": "如果材料提到持有期或赎回安排，以下哪种做法最符合材料理解要求？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [
+              "HYP-002"
+            ],
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "answer_options": [
+              {
+                "option_id": "OPT-COMP-LIQ-A",
+                "label": "在决策前确认具体持有期和赎回规则",
+                "value": 1
+              },
+              {
+                "option_id": "OPT-COMP-LIQ-B",
+                "label": "默认任何时候都可以无条件立即取出",
+                "value": 0
+              },
+              {
+                "option_id": "OPT-COMP-LIQ-C",
+                "label": "只需要关注历史收益，不必关注赎回规则",
+                "value": 0
+              },
+              {
+                "option_id": "OPT-COMP-LIQ-D",
+                "label": "不确定",
+                "value": 0
+              }
+            ],
+            "randomize_options": true,
+            "variable_name": "comprehension_liquidity",
+            "quality_note": "示例题必须在真实项目中与冻结材料逐字核对。"
+          },
+          {
+            "item_id": "Q-OPEN-MISUNDERSTANDING",
+            "item_type": "TEXT_LONG",
+            "prompt": "请用自己的话写出这份材料最想让您理解的两点；如果有不确定或容易误解的地方，也请写出来。",
+            "required": false,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [],
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "validation": {
+              "maximum_length": 1000,
+              "validation_message": "请控制在1000字以内。"
+            },
+            "variable_name": "open_material_understanding",
+            "quality_note": "开放题用于发现预设选项未覆盖的理解和反例。"
+          },
+          {
+            "item_id": "Q-CLARITY",
+            "item_type": "LIKERT",
+            "prompt": "总体而言，您觉得刚才的材料容易理解吗？",
+            "required": true,
+            "research_question_ids": [
+              "RQ-002"
+            ],
+            "hypothesis_ids": [],
+            "material_ids": [
+              "MAT-PRODUCT-001"
+            ],
+            "scale": {
+              "minimum": 1,
+              "maximum": 5,
+              "step": 1,
+              "minimum_label": "非常难理解",
+              "maximum_label": "非常容易理解",
+              "direction": "LOW_TO_HIGH"
+            },
+            "variable_name": "material_clarity_rating",
+            "quality_note": "主观清晰度与客观理解度分开呈现，不询问购买意向。"
+          }
+        ]
+      }
+    ],
+    "logic_rules": [
+      {
+        "rule_id": "LOGIC-NO-CONSENT",
+        "conditions": [
+          {
+            "source_item_id": "Q-CONSENT",
+            "operator": "EQUALS",
+            "value": "no"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "TERMINATE",
+        "target_id": "END-NO-CONSENT",
+        "message": "参与者未同意研究。",
+        "priority": 1
+      },
+      {
+        "rule_id": "LOGIC-UNDERAGE",
+        "conditions": [
+          {
+            "source_item_id": "Q-AGE",
+            "operator": "EQUALS",
+            "value": "under_18"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "TERMINATE",
+        "target_id": "END-INELIGIBLE",
+        "message": "参与者未通过年龄甄别。",
+        "priority": 2
+      },
+      {
+        "rule_id": "LOGIC-NOT-RELEVANT",
+        "conditions": [
+          {
+            "source_item_id": "Q-RELEVANCE",
+            "operator": "EQUALS",
+            "value": "none"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "TERMINATE",
+        "target_id": "END-INELIGIBLE",
+        "message": "参与者与当前研究主题不匹配。",
+        "priority": 3
+      },
+      {
+        "rule_id": "LOGIC-NO-EXPOSURE",
+        "conditions": [
+          {
+            "source_item_id": "Q-EXPOSURE",
+            "operator": "EQUALS",
+            "value": "not_exposed"
+          }
+        ],
+        "condition_join": "ALL",
+        "action": "TERMINATE",
+        "target_id": "END-MATERIAL-FAILED",
+        "message": "未完成材料暴露，不进入理解度测量。",
+        "priority": 4
+      }
+    ],
+    "quota_rules": [
+      {
+        "quota_id": "QUOTA-LOWEXP",
+        "label": "低基金投资经验组",
+        "conditions": [
+          {
+            "source_item_id": "Q-EXP",
+            "operator": "IN",
+            "value": [
+              "none",
+              "less_than_1_year"
+            ]
+          }
+        ],
+        "target_count": 50,
+        "action_when_full": "CONTINUE_AND_FLAG"
+      },
+      {
+        "quota_id": "QUOTA-HIGHEXP",
+        "label": "较高基金投资经验组",
+        "conditions": [
+          {
+            "source_item_id": "Q-EXP",
+            "operator": "IN",
+            "value": [
+              "1_to_3_years",
+              "more_than_3_years"
+            ]
+          }
+        ],
+        "target_count": 50,
+        "action_when_full": "CONTINUE_AND_FLAG"
+      }
+    ],
+    "termination_messages": [
+      {
+        "termination_id": "END-NO-CONSENT",
+        "message": "感谢您的时间。由于您未同意参加，本次调研已结束。"
+      },
+      {
+        "termination_id": "END-INELIGIBLE",
+        "message": "感谢您的关注。本次研究需要符合特定条件的参与者，问卷到此结束。"
+      },
+      {
+        "termination_id": "END-MATERIAL-FAILED",
+        "message": "感谢反馈。由于材料未能成功阅读，本次不继续回答理解题。"
+      }
+    ],
+    "output_variables": [
+      {
+        "variable_id": "VAR-CONSENT",
+        "source_item_id": "Q-CONSENT",
+        "label": "研究同意",
+        "data_type": "STRING",
+        "analysis_role": "CONSENT",
+        "missing_value_rule": "缺失视为未同意，不进入研究数据。"
+      },
+      {
+        "variable_id": "VAR-AGE",
+        "source_item_id": "Q-AGE",
+        "label": "年龄分组",
+        "data_type": "STRING",
+        "analysis_role": "ELIGIBILITY",
+        "missing_value_rule": "缺失则判定甄别未完成。"
+      },
+      {
+        "variable_id": "VAR-RELEVANCE",
+        "source_item_id": "Q-RELEVANCE",
+        "label": "研究相关性",
+        "data_type": "STRING",
+        "analysis_role": "ELIGIBILITY",
+        "missing_value_rule": "缺失则判定甄别未完成。"
+      },
+      {
+        "variable_id": "VAR-EXP",
+        "source_item_id": "Q-EXP",
+        "label": "基金投资经验",
+        "data_type": "STRING",
+        "analysis_role": "SEGMENT",
+        "missing_value_rule": "缺失时不进入经验分组比较。"
+      },
+      {
+        "variable_id": "VAR-BASE-RISK",
+        "source_item_id": "Q-BASE-RISK",
+        "label": "阅读前稳健概念理解",
+        "data_type": "STRING",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "缺失时不进行前后理解描述。"
+      },
+      {
+        "variable_id": "VAR-EXPOSURE",
+        "source_item_id": "Q-EXPOSURE",
+        "label": "材料暴露自报",
+        "data_type": "STRING",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "缺失视为未确认暴露，不进入理解度主分析。"
+      },
+      {
+        "variable_id": "VAR-COMP-RISK",
+        "source_item_id": "Q-COMP-RISK",
+        "label": "风险边界理解得分",
+        "data_type": "INTEGER",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "缺失不计分，并从完整理解度总分分析中排除。"
+      },
+      {
+        "variable_id": "VAR-COMP-LIQUID",
+        "source_item_id": "Q-COMP-LIQUID",
+        "label": "流动性理解得分",
+        "data_type": "INTEGER",
+        "analysis_role": "KNOWLEDGE",
+        "missing_value_rule": "缺失不计分，并从完整理解度总分分析中排除。"
+      },
+      {
+        "variable_id": "VAR-OPEN",
+        "source_item_id": "Q-OPEN-MISUNDERSTANDING",
+        "label": "开放复述与误解",
+        "data_type": "STRING",
+        "analysis_role": "OPEN_TEXT",
+        "missing_value_rule": "允许缺失，单独报告有效回答数。"
+      },
+      {
+        "variable_id": "VAR-CLARITY",
+        "source_item_id": "Q-CLARITY",
+        "label": "材料主观清晰度",
+        "data_type": "INTEGER",
+        "analysis_role": "OUTCOME",
+        "missing_value_rule": "缺失时不纳入清晰度描述。"
+      }
+    ],
+    "response_validity_plan": {
+      "initial_status": "UNASSESSED",
+      "final_statuses": [
+        "VALID",
+        "REVIEW_REQUIRED",
+        "EXCLUDED"
+      ],
+      "hard_exclusion_rules": [
+        {
+          "rule_id": "DQ-EX-CONSENT",
+          "reason_code": "CONSENT_NOT_GIVEN",
+          "condition": "同意字段缺失或选择不同意。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "确定性规则；记录原因，不需要模型判断。"
+        },
+        {
+          "rule_id": "DQ-EX-ELIGIBILITY",
+          "reason_code": "INELIGIBLE",
+          "condition": "明确未达到已批准的年龄或研究相关性条件。",
+          "default_action": "EXCLUDE",
+          "decision_authority": "确定性甄别规则。"
+        }
+      ],
+      "review_rules": [
+        {
+          "rule_id": "DQ-RV-SPEED",
+          "reason_code": "SPEEDING_SUSPECTED",
+          "condition": "至少有 30 份完成记录且该记录时长低于当批中位数的三分之一。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员结合其他信号复核；不得仅按时长排除。"
+        },
+        {
+          "rule_id": "DQ-RV-CONFLICT",
+          "reason_code": "LOGIC_CONFLICT",
+          "condition": "关键甄别或核心事实题之间出现无法由跳转解释的冲突。",
+          "default_action": "REVIEW",
+          "decision_authority": "研究人员复核原始记录和路由。"
+        }
+      ],
+      "status_transition_rule": "每份导入记录先为 UNASSESSED；硬规则可转 EXCLUDED，其他可疑信号只转 REVIEW_REQUIRED；人工解决全部复核后才冻结为 VALID 或 EXCLUDED。",
+      "dataset_statuses": [
+        "ANALYSIS_READY",
+        "ANALYSIS_READY_WITH_LIMITS",
+        "BLOCKED"
+      ],
+      "subgroup_reporting_rule": "子组 n<10 不单独展示比例；10-19 标注小样本；n>=20 仍只作描述性比较。"
+    },
+    "progress_display": true,
+    "back_navigation": false
+  }
+}

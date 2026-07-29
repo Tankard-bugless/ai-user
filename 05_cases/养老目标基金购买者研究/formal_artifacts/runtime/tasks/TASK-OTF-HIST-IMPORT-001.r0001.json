@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "schema_version": "0.1.0",
+    "record_id": "TASK-OTF-HIST-IMPORT-001",
+    "record_type": "TaskRecord",
+    "record_revision": 1,
+    "project_id": "PROJ-OTF-001",
+    "run_id": "RUN-OTF-HIST-001",
+    "created_at": "2026-07-27T13:47:13+08:00",
+    "updated_at": "2026-07-27T13:47:13+08:00",
+    "created_by": {
+      "actor_id": "SYSTEM-ORCHESTRATOR",
+      "actor_type": "SYSTEM",
+      "role": "研究工作流状态机"
+    },
+    "content_classification": "REAL",
+    "sensitivity_level": "INTERNAL",
+    "contains_personal_data": false,
+    "change_summary": "创建最小权限任务。"
+  },
+  "state_ref": {
+    "record_id": "WFS-RUN-OTF-HIST-001",
+    "record_type": "WorkflowState",
+    "record_revision": 1
+  },
+  "task_kind": "VALIDATOR",
+  "purpose": "登记当前历史迁移动作：确认既有研究需求可进入 Brief 登记；不声称补做历史研究任务。",
+  "status": "READY",
+  "target": {
+    "target_type": "VALIDATOR",
+    "target_id": "SYSTEM-HISTORICAL-REGISTRAR"
+  },
+  "idempotency_key": "edd8045fafe0a75217337b2511d041181b4fa5af7a3f7aafa471f5f5e3dd75dd",
+  "attempt": 1,
+  "max_attempts": 2,
+  "dependency_task_ids": [],
+  "input_artifact_refs": [],
+  "input_record_refs": [
+    {
+      "record_id": "WFS-RUN-OTF-HIST-001",
+      "record_type": "WorkflowState",
+      "record_revision": 1
+    }
+  ],
+  "expected_output": {
+    "output_kind": "NONE",
+    "cardinality": "SINGLE"
+  },
+  "output_artifact_refs": [],
+  "output_record_refs": [],
+  "external_output_refs": [],
+  "entry_conditions": [
+    "全部输入 Artifact 为 CURRENT 精确版本。",
+    "权限快照与最小权限矩阵一致。"
+  ],
+  "completion_criteria": [
+    "输出满足 expected_output 契约。",
+    "不得执行 forbidden_actions。"
+  ],
+  "permission_scope": {
+    "data_access": [
+      "NO_PERSONAL_DATA"
+    ],
+    "allowed_actions": [
+      "CREATE_CONTROL_RECORD",
+      "READ_CONTROL_RECORD"
+    ],
+    "forbidden_actions": [
+      "EDIT_ARTIFACT",
+      "CREATE_APPROVAL_RECORD",
+      "READ_CONTACT_LINKAGE",
+      "MAKE_SEMANTIC_JUDGMENT"
+    ],
+    "external_write_allowed": false,
+    "human_approval_required": false
+  }
+}
